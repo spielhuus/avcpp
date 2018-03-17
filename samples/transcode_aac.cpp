@@ -19,7 +19,7 @@ int main(int argc, char* argv[]) {
     auto _codec = std::find_if( format.begin(), format.end(), av::is_audio );
     std::cout << *(*_codec) << std::endl;
 
-    av::Codec _target_codec( av::CODEC::MP3, av::SAMPLE_FMT_FLTP, av::Options( { { "ar", 8000 }, {"ac", 2}, {"b", 128000} } ) );
+    av::Codec _target_codec( av::CODEC::MP3, av::SAMPLE_FMT_FLTP, av::Options( { { "ar", "8000" }, {"ac", "2"}, {"b", "128000"} } ) );
     std::cout << _target_codec << std::endl;
 
     av::Resample _resampler(
