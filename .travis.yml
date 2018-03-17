@@ -1,0 +1,21 @@
+sudo: required
+language: cpp
+services:
+- docker
+env:
+  global:
+  - secure: "dsIO/tqbp14Byk/LBwuOzmWxwsstVRl/4NUqD+sSF3BMCyhE5qvzrzlM4t08LNhZJhmdJ5jWQ0GGr5Q6gJrJ0Jm3xAF2HCc8fm0P8nKmweamMzL/Yy8BvQpIKMYXnLRDvyDcxRLWE7NyoLCoJs1vRzs+gOw+de9gFiFD5EyL/ArG2SRJI266oqRGYQ9EnqekgZR/AUSPEtzY04N42CAS/s9tGj3vAmchQte0sATyQLuu+KaAVaL8SNsVA6Ep+iY4RuCKXDJUd0jMinO0klw9yf6jN8tQgm5KJ7/q4miTYAVJEfAGAOF9m5PlCtofxKU16UAQZy+IRNH5QuXIQs59CGmHlQpIwG/deZLciFLnY+S9mxu3IolAJsVd1gaNlesaszCmSj/8eZzmeWLO1JFoHZ90mCPfHFh2AO5azeDqHk5vFKZx9oFQ+SqwlHJA5YJt4O4wTGT+WT1bggPk6/6omEElWFEh2gtL1Pbwx1drY56XdkGVJJsezzWosZ19hXp/rt8FmQFvc5wR9HeFZFhYytZGFeMG4yKJMXuQPjHO/WEVsTA4lq/6TadiC7V2worH7s39iwO0jB5dcj6pr1cI9eD8ucdjRep0OXutPU5OFCN61AXF4CMH7pg/kAqsIOtUw3dq4loGYIiKG7ekfAjIrnk7WNI7T7qojHW3GsgJyM4=" #BINTRAY_KEY
+before_install:
+- sudo git clone https://github.com/squawkcpp/avcpp.git /avcpp
+script:
+- sudo /bin/bash -c "cd /avcpp && /bin/bash build.sh $BINTRAY_KEY $TRAVIS_BRANCH"
+deploy:
+  provider: releases
+  api_key:
+    secure: OO1+/n5AoT+vosctG/tgDcTL2myASDU1kimp1CMWu8jzfsfQjk6z9gDc3aVdn3BDOBm0rCis0BoOBmBRkWqD9Y/9eFHZ3DKADIUxOADIHhpKOfAmrd8p0vQRnDzHiz3bAlHd+mjsh53muCekd5SdRE1X2lxYdwXw/VJ6INQCIIu46fKaE7S9VGZFWIggSLNtW4ikMPCKVNoDztQq02Rstr7zNB8YJyKaxhmEwJs4VzVawq24bRRQtPZOyUJ+kwbE9P4zGcSXQBjk80hHCklKGqrgx4qBN+o89pK5eNFjuczjvyuyS9yx8ImOyW8hBg4GBiARifFcbm24CLH1ZDHWzFDNg/YXV601DFyBTylZMe8Xpz9rXModbNEjjtGfKhy7LVgR+hRwkXnX3iLXKc10WZMylPsPPRZ2lJ4UnS8BYfYswvAUbbTy9IDgcde1ukb606VOvXdBB7d57QCthAwTjrUCg1fKYyeAD9zw+n2mXHxN9tSayj4W2x4TbadtABTF4yJPX0go8KGh5X2W1lzmOuogG/xDHG2sswxvJz4X8wlhkIOfnWp4KzMD7TdO8XkOsGpFtohzO6RZzu2UzXZug3Nbd+yuyIR2sgNmgB2Ftrzwh6yD7zLPlIVLxjdVlZC9qUi9fm8IuOcyCUm4inc/VyrS+18wZzU5wgROaCYX2m8=
+  file: '/avcpp/.build/avcpp_$TRAVIS_BRANCH.tar.gz'
+  skip_cleanup: true
+  on:
+    tags: true
+    all_branches: true
+    repo: squawkcpp/avcpp
