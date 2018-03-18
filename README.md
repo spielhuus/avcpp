@@ -1,9 +1,9 @@
 ## C++ wrapper for ffmpeg.
 
-[![Build Status](https://travis-ci.org/squawkcpp/avcpp.svg?branch=master)](https://travis-ci.org/squawkcpp/avcpp)
+[![Build Status](https://travis-ci.org/spielhuus/avcpp.svg?branch=master)](https://travis-ci.org/spielhuus/avcpp)
 [ ![Download](https://api.bintray.com/packages/squawkcpp/conan-cpp/avcpp%3Aconan-cpp/images/download.svg) ](https://bintray.com/squawkcpp/conan-cpp/avcpp%3Aconan-cpp)
 
-C++ wrapper for the [ffmpeg](http://www.ffmpeg.org) multimedia library project.
+Functional C++ wrapper for the [ffmpeg](http://www.ffmpeg.org) multimedia library project.
 
 ## Usage
 
@@ -16,7 +16,7 @@ or codec to load.
 The av::Format class provides std::system_error reporting the internal state. When av::format is in read
 mode the automatically loaded av::Codec classes can be iteratored. This class can read or write av::Packages.
 
-'''
+```cpp
 enum Format::Mode { READ, WRITE };
 
 av::Format ( const std::string& filename,   /** The path to the file to open */
@@ -24,7 +24,7 @@ av::Format ( const std::string& filename,   /** The path to the file to open */
              Options options = Options()    /** Set the AV option for the format. */
 );
 
-'''
+```
 
 #### Open a file and get the codecs.
 
