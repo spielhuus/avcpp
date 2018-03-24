@@ -85,7 +85,7 @@ TEST ( ResampleTest, resample ) {
                             dst_channel_layout, av::SampleFormat::SAMPLE_FMT_S16, dst_rate );
     ASSERT_TRUE ( !resample );
 
-    uint8_t** src_data = av::make_sample_buffer (
+    auto src_data = av::make_sample_buffer (
                              src_channel_layout, src_nb_samples,
                              av::SampleFormat::SAMPLE_FMT_DBL, &src_linesize );
     EXPECT_EQ ( 16384, src_linesize );

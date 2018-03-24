@@ -7,6 +7,7 @@ extern "C" {
 #include "../av/format.h"
 #include "../av/frame.h"
 #include "../av/packet.h"
+#include "../av/utils.h"
 
 int main(int argc, char* argv[]) {
 
@@ -35,6 +36,8 @@ int main(int argc, char* argv[]) {
 
     ao_device* device = ao_open_live(driver, &sample_format, nullptr);
 
+    const int _data_size = av::get_bytes_per_sample( (*_codec)->sample_fmt() );
+
     std::error_code errc = format.read( [&]( av::Packet& package ) {
         if( package.stream_index() == (*_codec)->index() ) {
             (*_codec)->decode( package, [&]( av::Frame& frame ) {
@@ -42,7 +45,7 @@ int main(int argc, char* argv[]) {
                 if( (*_codec)->is_planar() ) {
                     for( int i = 0; i < frame.nb_samples(); i++ )
                         for( int ch = 0; ch < (*_codec)->channels(); ch++ )
-                            ao_play(device, reinterpret_cast< char* >(frame.data(ch) + frame.data_size()*i), frame.data_size() );
+                            ao_play(device, reinterpret_cast< char* >(frame.data(ch) + _data_size * i), _data_size );
                 } else {
                     ao_play(device,  reinterpret_cast< char* >( frame.extended_data()[0] ), frame.linesize(0) );
                 }

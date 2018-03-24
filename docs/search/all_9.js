@@ -13,6 +13,7 @@ var searchData=
   ['indeo5',['INDEO5',['../structav_1_1_c_o_d_e_c.html#a83ac43dd91958b0392000e37fe2a8377a052bd6c5a9ea627a6b5e02ebdbb9976d',1,'av::CODEC']]],
   ['index',['index',['../classav_1_1_codec.html#a847863c1ef75b32acb63c07557e13619',1,'av::Codec']]],
   ['info',['INFO',['../namespaceav.html#a2bfba3b34ce13b5d44f97492550827e5a551b723eafd6a31d444fcb2f5920fbd3',1,'av']]],
+  ['init',['init',['../namespaceav.html#a8af8bc6a4ff6560e22bd4adae8957990',1,'av']]],
   ['init_5finput_5fformat_5fcontext',['init_input_format_context',['../classav_1_1_io_context.html#a029866eac4ae9e1ca27672715bf47b4a',1,'av::IoContext']]],
   ['init_5foutput_5fformat_5fcontext',['init_output_format_context',['../classav_1_1_io_context.html#a44a97b1f71e037c14fb1acbd617f0d46',1,'av::IoContext']]],
   ['int',['INT',['../classav_1_1_option.html#aa12c6950d355561f3e4a73975d8ad45cab28b789b0b2f2b0046af98286f7b4b77',1,'av::Option']]],

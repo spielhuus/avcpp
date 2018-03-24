@@ -1,3 +1,18 @@
+/*
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 2.1 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+*/
 #include <string>
 #include <fstream>
 #include <map>
@@ -12,7 +27,6 @@ namespace av {
 
 static const char* FILE_SAMPLE_MP3 = TESTFILES "sample.mp3";
 static const char* FILE_MPEGTHREE = TESTFILES "mpthreetest.mp3";
-static const char* FILE_SAMPLE_FLAC = TESTFILES "sample.flac";
 
 TEST( MetadataTest, metadata ) {
     Format _format( FILE_SAMPLE_MP3 );
@@ -90,8 +104,12 @@ TEST( MetadataTest, ParseMkvCover ) {
     Format _format( std::string( TESTFILES ) + "/cover_art.mkv" );
     ASSERT_FALSE( _format );
 
+    EXPECT_EQ( 6, _format.size() );
     auto _audio_codec = std::find_if( _format.begin(), _format.end(), is_audio );
     auto _video_codec = std::find_if( _format.begin(), _format.end(), is_video );
+    auto _cover_codec = std::find_if( _video_codec+1, _format.end(), is_video );
+    auto _cover_codec2 = std::find_if( _cover_codec+1, _format.end(), is_video );
+
 
     EXPECT_EQ( 0, (*_audio_codec)->bitrate() );
     EXPECT_EQ( 2, (*_audio_codec)->channels() );
@@ -101,13 +119,36 @@ TEST( MetadataTest, ParseMkvCover ) {
     EXPECT_EQ( 1272, (*_video_codec)->width() );
     EXPECT_EQ( 720, (*_video_codec)->height() );
 
+    EXPECT_EQ( 600, (*_cover_codec)->width() );
+    EXPECT_EQ( 882, (*_cover_codec)->height() );
+
+    EXPECT_EQ( 120, (*_cover_codec2)->width() );
+    EXPECT_EQ( 176, (*_cover_codec2)->height() );
+
     EXPECT_EQ( 156, _format.playtime() );
 
     av::Metadata _metadata = _format.metadata();
     ASSERT_STREQ( "Dexter Season 5 trailer", _metadata.get ( av::Metadata::TITLE ).c_str() );
     ASSERT_STREQ( "", _metadata.get ( av::Metadata::COMMENT ).c_str() );
 
-    //TODO get cover.
+    static uint8_t *video_dst_data[4] = {nullptr};
+    static int      video_dst_linesize[4];
+    static int img_buf_size = (*_cover_codec)->malloc_image( video_dst_data, video_dst_linesize );
+
+    std::ofstream outfile_cover ( "/tmp/cover.raw" );
+
+    int count = 0;
+    auto err = _format.read( [&]( av::Packet& package ) {
+        if( package.stream_index() == (*_cover_codec)->index() ) {
+            (*_cover_codec)->decode( package, [&]( av::Frame& frame ) {
+                (*_cover_codec)->copy_image( frame, video_dst_data, video_dst_linesize );
+                outfile_cover.write( reinterpret_cast< char* >( video_dst_data[0] ), img_buf_size );
+                ++count;
+            });
+        }
+    });
+    EXPECT_EQ( "End of file", err.message() );
+    EXPECT_EQ( 1, count );
 }
 TEST( MetadataTest, open_audio_file_metadata_file_flac ) {
 

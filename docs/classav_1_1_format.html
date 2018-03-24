@@ -66,7 +66,6 @@ $(function() {
   <div class="summary">
 <a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#friends">Friends</a> &#124;
 <a href="classav_1_1_format-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">av::Format Class Reference</div>  </div>
@@ -96,7 +95,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a29e0451a877c9b547a0b7d4c9fd7d258"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open mediafile with a file by path.  <a href="#a29e0451a877c9b547a0b7d4c9fd7d258">More...</a><br /></td></tr>
 <tr class="separator:a29e0451a877c9b547a0b7d4c9fd7d258"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a590e6addeafb1f1f65b7e3fa4d3376e6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_format.html#a590e6addeafb1f1f65b7e3fa4d3376e6">Format</a> (std::iostream *s, <a class="el" href="classav_1_1_format.html#aa2b5fe128c6490b54ffe74425160c06a">Mode</a> mode=<a class="el" href="classav_1_1_format.html#aa2b5fe128c6490b54ffe74425160c06aaf0069a4dddcf4901baea1a76e198a3ed">READ</a>, <a class="el" href="classav_1_1_options.html">Options</a> options=<a class="el" href="classav_1_1_options.html">Options</a>())</td></tr>
-<tr class="memdesc:a590e6addeafb1f1f65b7e3fa4d3376e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open mediafile from stream.  <a href="#a590e6addeafb1f1f65b7e3fa4d3376e6">More...</a><br /></td></tr>
+<tr class="memdesc:a590e6addeafb1f1f65b7e3fa4d3376e6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Open mediafile from stream <a class="el" href="classav_1_1_options.html" title="av option list. ">Options</a> short_name if non-NULL checks if short_name matches with the names of the registered formats filename if non-NULL checks if filename terminates with the extensions of the registered formats mime_type if non-NULL checks if mime_type matches with the MIME type of the registered formats.  <a href="#a590e6addeafb1f1f65b7e3fa4d3376e6">More...</a><br /></td></tr>
 <tr class="separator:a590e6addeafb1f1f65b7e3fa4d3376e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adad35842e874879c4bb4244708e1cf9a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_format.html#adad35842e874879c4bb4244708e1cf9a">~Format</a> ()</td></tr>
 <tr class="memdesc:adad35842e874879c4bb4244708e1cf9a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Free all ressources.  <a href="#adad35842e874879c4bb4244708e1cf9a">More...</a><br /></td></tr>
@@ -134,10 +133,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a98bf8ef3cd4b61366c6f57db4a3de9c8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write packet to output.  <a href="#a98bf8ef3cd4b61366c6f57db4a3de9c8">More...</a><br /></td></tr>
 <tr class="separator:a98bf8ef3cd4b61366c6f57db4a3de9c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a4a60f6b486d0618315cac4c4886eb5"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_format.html#a2a4a60f6b486d0618315cac4c4886eb5">operator!</a> () const</td></tr>
-<tr class="memdesc:a2a4a60f6b486d0618315cac4c4886eb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks if an error has occurred. Returns true if an error has occurred on the associated format context.  <a href="#a2a4a60f6b486d0618315cac4c4886eb5">More...</a><br /></td></tr>
+<tr class="memdesc:a2a4a60f6b486d0618315cac4c4886eb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks if an error has occurred.  <a href="#a2a4a60f6b486d0618315cac4c4886eb5">More...</a><br /></td></tr>
 <tr class="separator:a2a4a60f6b486d0618315cac4c4886eb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af232947f322943477e6081169ea44f6a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_format.html#af232947f322943477e6081169ea44f6a">good</a> ()</td></tr>
-<tr class="memdesc:af232947f322943477e6081169ea44f6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks if no error has occurred i.e. I/O operations are available  <a href="#af232947f322943477e6081169ea44f6a">More...</a><br /></td></tr>
+<tr class="memdesc:af232947f322943477e6081169ea44f6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks if no error has occurred i.e.  <a href="#af232947f322943477e6081169ea44f6a">More...</a><br /></td></tr>
 <tr class="separator:af232947f322943477e6081169ea44f6a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac890ee6222c8692bc4ed1bb22573f37b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_format.html#ac890ee6222c8692bc4ed1bb22573f37b">eof</a> ()</td></tr>
 <tr class="memdesc:ac890ee6222c8692bc4ed1bb22573f37b"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks if end-of-file has been reached  <a href="#ac890ee6222c8692bc4ed1bb22573f37b">More...</a><br /></td></tr>
@@ -148,11 +147,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac734912e18b0ade74cdbd92f0f6298fe"><td class="memItemLeft" align="right" valign="top">std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_format.html#ac734912e18b0ade74cdbd92f0f6298fe">errc</a> ()</td></tr>
 <tr class="memdesc:ac734912e18b0ade74cdbd92f0f6298fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the actual error state of the assiciated format context.  <a href="#ac734912e18b0ade74cdbd92f0f6298fe">More...</a><br /></td></tr>
 <tr class="separator:ac734912e18b0ade74cdbd92f0f6298fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
-Friends</h2></td></tr>
-<tr class="memitem:ae51cb555166657e5996a76768db998e3"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_format.html#ae51cb555166657e5996a76768db998e3">Packet</a></td></tr>
-<tr class="separator:ae51cb555166657e5996a76768db998e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Media file as av format. </p>
@@ -291,7 +285,7 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>Open mediafile from stream. </p>
+<p>Open mediafile from stream <a class="el" href="classav_1_1_options.html" title="av option list. ">Options</a> short_name if non-NULL checks if short_name matches with the names of the registered formats filename if non-NULL checks if filename terminates with the extensions of the registered formats mime_type if non-NULL checks if mime_type matches with the MIME type of the registered formats. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">s</td><td>The stream to open </td></tr>
@@ -305,7 +299,9 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="classav_1_1_format_a590e6addeafb1f1f65b7e3fa4d3376e6_cgraph.png" border="0" usemap="#classav_1_1_format_a590e6addeafb1f1f65b7e3fa4d3376e6_cgraph" alt=""/></div>
 <map name="classav_1_1_format_a590e6addeafb1f1f65b7e3fa4d3376e6_cgraph" id="classav_1_1_format_a590e6addeafb1f1f65b7e3fa4d3376e6_cgraph">
-<area shape="rect" id="node2" href="namespaceav.html#a24e72910ad0405124d9e96adfad3b792" title="av::make_error_code" alt="" coords="199,5,357,32"/>
+<area shape="rect" id="node2" href="classav_1_1_options.html#a8c2cee9b0fa45451e07af83174cb464e" title="Get the entry with the key. " alt="" coords="216,5,340,32"/>
+<area shape="rect" id="node3" href="classav_1_1_option.html#a38f7767b514d27ee6f2802a8fc46896b" title="av::Option::c_str" alt="" coords="215,56,341,83"/>
+<area shape="rect" id="node4" href="namespaceav.html#a24e72910ad0405124d9e96adfad3b792" title="av::make_error_code" alt="" coords="199,107,357,133"/>
 </map>
 </div>
 
@@ -520,7 +516,8 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>checks if no error has occurred i.e. I/O operations are available </p>
+<p>checks if no error has occurred i.e. </p>
+<p>I/O operations are available </p>
 
 </div>
 </div>
@@ -566,8 +563,8 @@ Here is the call graph for this function:</div>
       </table>
 </div><div class="memdoc">
 
-<p>checks if an error has occurred. Returns true if an error has occurred on the associated format context. </p>
-<dl class="section return"><dt>Returns</dt><dd>true if an error has occurred, false otherwise. </dd></dl>
+<p>checks if an error has occurred. </p>
+<p>Returns true if an error has occurred on the associated format context. </p><dl class="section return"><dt>Returns</dt><dd>true if an error has occurred, false otherwise. </dd></dl>
 
 </div>
 </div>
@@ -715,7 +712,7 @@ Here is the call graph for this function:</div>
 <p>Write packet to output. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">packet</td><td><a class="el" href="structav_1_1_packet.html" title="The av::Packet struct. ">Packet</a> to write. </td></tr>
+    <tr><td class="paramname">packet</td><td><a class="el" href="structav_1_1_packet.html" title="This structure stores compressed data. ">Packet</a> to write. </td></tr>
   </table>
   </dd>
 </dl>
@@ -730,29 +727,6 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<h2 class="groupheader">Friends And Related Function Documentation</h2>
-<a id="ae51cb555166657e5996a76768db998e3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae51cb555166657e5996a76768db998e3">&#9670;&nbsp;</a></span>Packet</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">friend class <a class="el" href="structav_1_1_packet.html">Packet</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/etienne/Projects/avcpp/av/<a class="el" href="format_8h_source.html">format.h</a></li>
 <li>/home/etienne/Projects/avcpp/av/<a class="el" href="format_8cpp.html">format.cpp</a></li>
@@ -760,7 +734,7 @@ Here is the call graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 17 2018 23:02:06 for avcpp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Mar 24 2018 12:04:43 for avcpp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

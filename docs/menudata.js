@@ -6,6 +6,7 @@ var menudata={children:[
 {text:"All",url:"namespacemembers.html",children:[
 {text:"_",url:"namespacemembers.html#index__"},
 {text:"a",url:"namespacemembers.html#index_a"},
+{text:"g",url:"namespacemembers.html#index_g"},
 {text:"i",url:"namespacemembers.html#index_i"},
 {text:"l",url:"namespacemembers.html#index_l"},
 {text:"m",url:"namespacemembers.html#index_m"},
@@ -56,6 +57,7 @@ var menudata={children:[
 {text:"z",url:"functions_z.html#index_z"},
 {text:"~",url:"functions_0x7e.html#index_0x7e"}]},
 {text:"Functions",url:"functions_func.html",children:[
+{text:"_",url:"functions_func.html#index__"},
 {text:"a",url:"functions_func.html#index_a"},
 {text:"b",url:"functions_func.html#index_b"},
 {text:"c",url:"functions_func.html#index_c"},

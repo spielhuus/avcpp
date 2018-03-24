@@ -51,7 +51,11 @@ public:
              /** Set the format i/o mode to READ or WRITE. */   Mode mode = READ,
              /** Set the AV option for the format. */           Options options = Options()
            );
-    /** @brief Open mediafile from stream */
+    /** @brief Open mediafile from stream
+        Options
+            short_name	if non-NULL checks if short_name matches with the names of the registered formats
+            filename	if non-NULL checks if filename terminates with the extensions of the registered formats
+            mime_type	if non-NULL checks if mime_type matches with the MIME type of the registered formats*/
     Format ( /** The stream to open */                          std::iostream* s,
              /** Set the format i/o mode to READ or WRITE. */   Mode mode = READ,
              /** Set the AV option for the format. */           Options options = Options()

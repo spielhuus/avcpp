@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['dr_5fmeter',['dr_meter',['../structav_1_1dr__meter.html',1,'av']]],
-  ['dynamicrange',['DynamicRange',['../classav_1_1_dynamic_range.html',1,'av']]]
+  ['channellayout',['ChannelLayout',['../classav_1_1_channel_layout.html',1,'av']]],
+  ['codec',['CODEC',['../structav_1_1_c_o_d_e_c.html',1,'av::CODEC'],['../classav_1_1_codec.html',1,'av::Codec']]],
+  ['codec_5ftype',['CODEC_TYPE',['../structav_1_1_c_o_d_e_c___t_y_p_e.html',1,'av']]]
 ];

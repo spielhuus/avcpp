@@ -13,7 +13,6 @@
     License along with this library; if not, write to the Free Software
     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
-
 #include <algorithm>
 #include <cmath>
 #include <functional>
@@ -24,6 +23,7 @@
 #include "../av/averrc.h"
 #include "../av/format.h"
 #include "../av/codec.h"
+#include "../av/utils.h"
 
 #include <gtest/gtest.h>
 
@@ -58,14 +58,16 @@ TEST(CodecTest, decode_audio) {
     std::ofstream outfile ( FILE_DECODE_RESULT );
 
     auto _audio_codec = std::find_if( format.begin(), format.end(), av::is_audio );
-    std::error_code errc = format.read( [_audio_codec,&outfile]( av::Packet& package ) {
+    const int _data_size = av::get_bytes_per_sample( (*_audio_codec)->sample_fmt() );
+
+    std::error_code errc = format.read( [&]( av::Packet& package ) {
         if( package.stream_index() == (*_audio_codec)->index() ) {
-            (*_audio_codec)->decode( package, [_audio_codec,&outfile]( av::Frame& frame ) {
+            (*_audio_codec)->decode( package, [&]( av::Frame& frame ) {
                 //write to out file
                 if( (*_audio_codec)->is_planar() ) {
                     for( int i = 0; i < frame.nb_samples(); i++ )
                         for( int ch = 0; ch < (*_audio_codec)->channels(); ch++ )
-                            outfile.write( reinterpret_cast< char* >(frame.data(ch) + frame.data_size()*i), frame.data_size() );
+                            outfile.write( reinterpret_cast< char* >(frame.data(ch) + _data_size * i ), _data_size );
                 } else {
                     outfile.write( reinterpret_cast< char* >( frame.extended_data()[0] ), frame.linesize(0) );
                 }
@@ -95,15 +97,16 @@ TEST(CodecTest, decode) {
     std::ofstream outfile_video ( FILE_DECODE_VIDEO_RESULT );
     auto _codec = std::find_if( format.begin(), format.end(), av::is_audio );
     auto _codec_video = std::find_if( format.begin(), format.end(), av::is_video );
+    const int _data_size = av::get_bytes_per_sample( (*_codec)->sample_fmt() );
     static int img_buf_size = (*_codec_video)->malloc_image( video_dst_data, video_dst_linesize );
     std::error_code errc = format.read( [&]( av::Packet& package ) {
         if( package.stream_index() == (*_codec)->index() ) {
-            (*_codec)->decode( package, [_codec,&outfile]( av::Frame& frame ) {
+            (*_codec)->decode( package, [&]( av::Frame& frame ) {
                 //write to out file
                 if( (*_codec)->is_planar() ) {
                     for( int i = 0; i < frame.nb_samples(); i++ )
                         for( int ch = 0; ch < (*_codec)->channels(); ch++ )
-                            outfile.write( reinterpret_cast< char* >(frame.data(ch) + frame.data_size()*i), frame.data_size() );
+                            outfile.write( reinterpret_cast< char* >(frame.data(ch) + _data_size * i ), _data_size );
                 } else {
                     outfile.write( reinterpret_cast< char* >( frame.extended_data()[0] ), frame.linesize(0) );
                 }

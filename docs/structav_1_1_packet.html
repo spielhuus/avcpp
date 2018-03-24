@@ -65,14 +65,13 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#friends">Friends</a> &#124;
 <a href="structav_1_1_packet-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">av::Packet Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>The <a class="el" href="structav_1_1_packet.html" title="The av::Packet struct. ">av::Packet</a> struct.  
+<p>This structure stores compressed data.  
  <a href="structav_1_1_packet.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="packet_8h_source.html">packet.h</a>&gt;</code></p>
@@ -114,18 +113,17 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a155f9d10b8f1d8e3ad30b01255990d64"><td class="mdescLeft">&#160;</td><td class="mdescRight">A combination of AV_PKT_FLAG values.  <a href="#a155f9d10b8f1d8e3ad30b01255990d64">More...</a><br /></td></tr>
 <tr class="separator:a155f9d10b8f1d8e3ad30b01255990d64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a529ede5e32e55f2a33364bbf87853877"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structav_1_1_packet.html#a529ede5e32e55f2a33364bbf87853877">unref</a> ()</td></tr>
-<tr class="memdesc:a529ede5e32e55f2a33364bbf87853877"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wipe the packet. Unreference the buffer referenced by the packet and reset the remaining packet fields to their default values.  <a href="#a529ede5e32e55f2a33364bbf87853877">More...</a><br /></td></tr>
+<tr class="memdesc:a529ede5e32e55f2a33364bbf87853877"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wipe the packet.  <a href="#a529ede5e32e55f2a33364bbf87853877">More...</a><br /></td></tr>
 <tr class="separator:a529ede5e32e55f2a33364bbf87853877"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
-Friends</h2></td></tr>
-<tr class="memitem:a4fce8d25ec2cb0944565a6ab357de759"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structav_1_1_packet.html#a4fce8d25ec2cb0944565a6ab357de759">Format</a></td></tr>
-<tr class="separator:a4fce8d25ec2cb0944565a6ab357de759"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5f161bb3dfc2a04eeac3d219c2f80ddd"><td class="memItemLeft" align="right" valign="top">class&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structav_1_1_packet.html#a5f161bb3dfc2a04eeac3d219c2f80ddd">Codec</a></td></tr>
-<tr class="separator:a5f161bb3dfc2a04eeac3d219c2f80ddd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>The <a class="el" href="structav_1_1_packet.html" title="The av::Packet struct. ">av::Packet</a> struct. </p>
+<div class="textblock"><p>This structure stores compressed data. </p>
+<p>It is typically exported by demuxers and then passed as input to decoders, or received as output from encoders and then passed to muxers.</p>
+<p>For video, it should typically contain one compressed frame. For audio it may contain several compressed frames. Encoders are allowed to output empty packets, with no compressed data, containing only side data (e.g. to update some stream parameters at the end of encoding).</p>
+<p>AVPacket is one of the few structs in FFmpeg, whose size is a part of public ABI. Thus it may be allocated on stack and no new fields can be added to it without libavcodec and libavformat major bump.</p>
+<p>The semantics of data ownership depends on the buf field. If it is set, the packet data is dynamically allocated and is valid indefinitely until a call to av_packet_unref() reduces the reference count to 0.</p>
+<p>If the buf field is not set av_packet_ref() would make a copy instead of increasing the reference count.</p>
+<p>The side data is always allocated with av_malloc(), copied by av_packet_ref() and freed by av_packet_unref(). </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="abccce49cb6e60a878077d4739e8c0a02"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abccce49cb6e60a878077d4739e8c0a02">&#9670;&nbsp;</a></span>Packet() <span class="overload">[1/4]</span></h2>
@@ -419,52 +417,8 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Wipe the packet. Unreference the buffer referenced by the packet and reset the remaining packet fields to their default values. </p>
-
-</div>
-</div>
-<h2 class="groupheader">Friends And Related Function Documentation</h2>
-<a id="a5f161bb3dfc2a04eeac3d219c2f80ddd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5f161bb3dfc2a04eeac3d219c2f80ddd">&#9670;&nbsp;</a></span>Codec</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">friend class <a class="el" href="classav_1_1_codec.html">Codec</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a4fce8d25ec2cb0944565a6ab357de759"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4fce8d25ec2cb0944565a6ab357de759">&#9670;&nbsp;</a></span>Format</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">friend class <a class="el" href="classav_1_1_format.html">Format</a></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
+<p>Wipe the packet. </p>
+<p>Unreference the buffer referenced by the packet and reset the remaining packet fields to their default values. </p>
 
 </div>
 </div>
@@ -475,7 +429,7 @@ Friends</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 17 2018 23:02:06 for avcpp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Mar 24 2018 12:04:43 for avcpp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

@@ -1,6 +1,7 @@
 var searchData=
 [
   ['index',['index',['../classav_1_1_codec.html#a847863c1ef75b32acb63c07557e13619',1,'av::Codec']]],
+  ['init',['init',['../namespaceav.html#a8af8bc6a4ff6560e22bd4adae8957990',1,'av']]],
   ['init_5finput_5fformat_5fcontext',['init_input_format_context',['../classav_1_1_io_context.html#a029866eac4ae9e1ca27672715bf47b4a',1,'av::IoContext']]],
   ['init_5foutput_5fformat_5fcontext',['init_output_format_context',['../classav_1_1_io_context.html#a44a97b1f71e037c14fb1acbd617f0d46',1,'av::IoContext']]],
   ['iocontext',['IoContext',['../classav_1_1_io_context.html#a24e6452b8eed76e0805c4e7e69ca1026',1,'av::IoContext::IoContext()'],['../classav_1_1_io_context.html#ace70d6859337f7a4fe5c8af5b751ee1b',1,'av::IoContext::IoContext(const IoContext &amp;)=delete']]],

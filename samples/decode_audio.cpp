@@ -19,44 +19,49 @@
 #include "../av/format.h"
 #include "../av/frame.h"
 #include "../av/packet.h"
+#include "../av/utils.h"
 
-int main(int argc, char* argv[]) {
+int main ( int argc, char* argv[] ) {
 
-    if (argc <= 2) {
-        fprintf(stderr, "Usage: %s <input file> <output file>\n", argv[0]);
-        exit(0);
+    if ( argc <= 2 ) {
+        fprintf ( stderr, "Usage: %s <input file> <output file>\n", argv[0] );
+        exit ( 0 );
     }
 
-    av::Format format( argv[1] );
-    if( !!format ) {
+    av::Format format ( argv[1] );
+
+    if ( !!format ) {
         std::cout << "Error: " << format.errc().message() << std::endl;
-        exit(1);
+        exit ( 1 );
     }
 
     std::ofstream outfile ( argv[2] );
     auto metadata_ = format.metadata();
     std::cout << "Decode: " << argv[1] << ", " <<
-                 "playtime: " << format.playtime() << "\n" <<
-                  metadata_ << "\n";
+              "playtime: " << format.playtime() << "\n" <<
+              metadata_ << "\n";
 
-    auto _codec = std::find_if( format.begin(), format.end(), av::is_audio );
-    std::cout << *(*_codec) << std::endl;
+    auto _codec = std::find_if ( format.begin(), format.end(), av::is_audio );
+    std::cout << * ( *_codec ) << std::endl;
 
-    auto _audio_codec = std::find_if( format.begin(), format.end(), av::is_audio );
-    std::error_code errc = format.read( [_audio_codec,&outfile]( av::Packet& package ) {
-        if( package.stream_index() == (*_audio_codec)->index() ) {
-            (*_audio_codec)->decode( package, [_audio_codec,&outfile]( av::Frame& frame ) {
+    const int _data_size = av::get_bytes_per_sample( (*_codec)->sample_fmt() );
+
+    std::error_code errc = format.read ( [&] ( av::Packet& package ) {
+        if ( package.stream_index() == ( *_codec )->index() ) {
+            ( *_codec )->decode ( package, [&] ( av::Frame& frame ) {
                 //write to out file
-                if( (*_audio_codec)->is_planar() ) {
-                    for( int i = 0; i < frame.nb_samples(); i++ )
-                        for( int ch = 0; ch < (*_audio_codec)->channels(); ch++ )
-                            outfile.write( reinterpret_cast< char* >(frame.data(ch) + frame.data_size()*i), frame.data_size() );
+                if ( ( *_codec )->is_planar() ) {
+                    for ( int i = 0; i < frame.nb_samples(); i++ )
+                        for ( int ch = 0; ch < ( *_codec )->channels(); ch++ )
+                        { outfile.write ( reinterpret_cast< char* > ( frame.data ( ch ) + _data_size *i ), _data_size ); }
+
                 } else {
-                    outfile.write( reinterpret_cast< char* >( frame.extended_data()[0] ), frame.linesize(0) );
+                    outfile.write ( reinterpret_cast< char* > ( frame.extended_data() [0] ), frame.linesize ( 0 ) );
                 }
-            });
+            } );
         }
-    });    std::cout << errc.message() << std::endl;
+    } );
+    std::cout << errc.message() << std::endl;
     outfile.close();
     return 0;
 }

@@ -15,8 +15,6 @@
 */
 #include "format.h"
 
-#include <mutex>
-
 extern "C" {
 #include "libavformat/avformat.h"
 #include "libavcodec/avcodec.h"
@@ -27,17 +25,6 @@ extern "C" {
 #include "averrc.h"
 
 namespace av {
-
-static std::once_flag _register_flag;
-static bool av_init ( LOG_LEVEL log = LOG_LEVEL::QUIET ) {
-    std::call_once ( _register_flag, [&log]() {
-        av_register_all ();
-        av_log_set_flags ( AV_LOG_SKIP_REPEATED );
-        av_log_set_level ( static_cast< int > ( log ) );
-    } );
-    return true;
-}
-static bool codecs_loaded = av_init ( LOG_LEVEL::QUIET );
 
 Format::Format ( const std::string& filename, Mode mode, Options ) {
 
@@ -93,17 +80,18 @@ Format::Format ( const std::string& filename, Mode mode, Options ) {
         }
     }
 }
-Format::Format ( std::iostream* stream, Mode mode, Options ) : io_context_ ( std::make_unique< IoContext >() ) {
+Format::Format ( std::iostream* stream, Mode mode, Options options ) : io_context_ ( std::make_unique< IoContext >() ) {
 
     if ( mode == Mode::WRITE ) {
 
-        //TODO STREAM NOT SET
         //open stream for writing
         format_context_ = avformat_alloc_context();
         format_context_->pb = io_context_->av_io_context_;
         format_context_->flags |= AVFMT_FLAG_CUSTOM_IO;
 
-        AVOutputFormat* of = av_guess_format ( "flac", nullptr, nullptr ); //TODO
+        AVOutputFormat* of = av_guess_format ( options.get("short_name").c_str(),
+                                               options.get("filename").c_str(),
+                                               options.get("mime_Type").c_str() );
 
         if ( of == nullptr )
         { errc_ = make_error_code ( AV_ENCODER_NOT_FOUND ); return; }
@@ -130,7 +118,6 @@ Format::Format ( std::iostream* stream, Mode mode, Options ) : io_context_ ( std
 
         //load the codecs
         codecs_.clear();
-
         for ( unsigned short i=0; i<format_context_->nb_streams; ++i ) {
             auto _codec = std::shared_ptr< Codec > ( new Codec ( format_context_, i ) );
 
@@ -144,8 +131,8 @@ Format::Format ( std::iostream* stream, Mode mode, Options ) : io_context_ ( std
 
 Format::~Format() {
     //free ressources
-//    if( format_context_ ) {
-//        avio_closep(&format_context_->pb);
+//    if( format_context_ != nullptr ) {
+//        if( io_context_ == nullptr ) avio_closep(&format_context_->pb);
 //        avformat_free_context(format_context_);
 //        format_context_ = nullptr;
 //    }
@@ -237,7 +224,6 @@ std::error_code Format::read ( std::function< void ( Packet& ) > callback ) {
             else return make_error_code ( _ret );
 
         } else if ( _ret != 0 ) {
-            std::cout << "size: " << _ret << std::endl;
             return make_error_code ( _ret );
         }
 
@@ -245,11 +231,6 @@ std::error_code Format::read ( std::function< void ( Packet& ) > callback ) {
     }
 
     //flush the codec
-//    do { //TODO original code
-//        decode_packet(&got_frame, 1);
-//    } while (got_frame);
-
-
     _package.packet_->data = nullptr;
     _package.packet_->size = 0;
     callback ( _package );

@@ -19,6 +19,7 @@
 #include "../av/format.h"
 #include "../av/frame.h"
 #include "../av/packet.h"
+#include "../av/utils.h"
 
 int main (int argc, char **argv) {
 
@@ -49,14 +50,15 @@ int main (int argc, char **argv) {
     auto _codec = std::find_if( format.begin(), format.end(), av::is_audio );
     auto _codec_video = std::find_if( format.begin(), format.end(), av::is_video );
     static int img_buf_size = (*_codec_video)->malloc_image( video_dst_data, video_dst_linesize );
+    const int _data_size = av::get_bytes_per_sample( (*_codec)->sample_fmt() );
     std::error_code errc = format.read( [&]( av::Packet& package ) {
         if( package.stream_index() == (*_codec)->index() ) {
-            (*_codec)->decode( package, [_codec,&outfile]( av::Frame& frame ) {
+            (*_codec)->decode( package, [&]( av::Frame& frame ) {
                 //write to out file
                 if( (*_codec)->is_planar() ) {
                     for( int i = 0; i < frame.nb_samples(); i++ )
                         for( int ch = 0; ch < (*_codec)->channels(); ch++ )
-                            outfile.write( reinterpret_cast< char* >(frame.data(ch) + frame.data_size()*i), frame.data_size() );
+                            outfile.write( reinterpret_cast< char* >(frame.data(ch) + _data_size*i), _data_size );
                 } else {
                     outfile.write( reinterpret_cast< char* >( frame.extended_data()[0] ), frame.linesize(0) );
                 }

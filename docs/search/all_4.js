@@ -2,7 +2,6 @@ var searchData=
 [
   ['daala',['DAALA',['../structav_1_1_c_o_d_e_c.html#a83ac43dd91958b0392000e37fe2a8377ab8d4c322872ffee62355d85dde87f5a6',1,'av::CODEC']]],
   ['data',['data',['../classav_1_1_frame.html#a647bd08078d7c7b53d40a92f00cf9b88',1,'av::Frame::data(int index)'],['../classav_1_1_frame.html#a166d368ae67735190d6d137dfff912cf',1,'av::Frame::data()'],['../structav_1_1_packet.html#a877c7299b7d6408f37ac6c8bffd9713c',1,'av::Packet::data()'],['../structav_1_1_c_o_d_e_c___t_y_p_e.html#a7c15bcb8cf5040330a1d7eae9883ce67aaa11297904b28b1e2ec2a64bfdbebce0',1,'av::CODEC_TYPE::DATA()']]],
-  ['data_5fsize',['data_size',['../classav_1_1_frame.html#a63e00701a9efca483a1ef889e482a398',1,'av::Frame']]],
   ['datafile',['datafile',['../classav_1_1_io_context.html#a89ff39bcbeadfae27faab8bfbaf47a93',1,'av::IoContext']]],
   ['dds',['DDS',['../structav_1_1_c_o_d_e_c.html#a83ac43dd91958b0392000e37fe2a8377a79057fb5b119adf5b6bfb2d1cb84dfff',1,'av::CODEC']]],
   ['debugging',['DEBUGGING',['../namespaceav.html#a2bfba3b34ce13b5d44f97492550827e5a6e0d2a351777f8e1349133544e885f8a',1,'av']]],

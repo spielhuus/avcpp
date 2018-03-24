@@ -28,6 +28,7 @@ extern "C" {
 namespace av {
 
 uint8_t** make_sample_buffer ( ChannelLayout::Enum channel_layout, int nb_samples, SampleFormat sample_format, int* dst_linesize ) {
+
     int dst_nb_channels = av_get_channel_layout_nb_channels ( ChannelLayout::get ( channel_layout ) );
     uint8_t **src_data = nullptr;
     int ret = av_samples_alloc_array_and_samples ( &src_data, dst_linesize, dst_nb_channels,
@@ -37,6 +38,13 @@ uint8_t** make_sample_buffer ( ChannelLayout::Enum channel_layout, int nb_sample
     { throw make_error_code ( ret ); }
 
     return src_data;
+
+//    auto ptr = std::shared_ptr< uint8_t[] >( *src_data, [&](auto p) {
+//        if (p)
+//            av_freep(&p[0]);
+//        av_freep(&p);
+//    });
+//    return ptr;
 }
 
 static int add_samples_to_fifo ( AVAudioFifo *fifo,
@@ -91,13 +99,12 @@ Resample::Resample ( ChannelLayout::Enum source_channels, SampleFormat source_sa
     }
 }
 Resample::~Resample() {
-//TODO
 }
 
 std::error_code Resample::resample ( Frame& frame, int frame_size, std::function< void ( Frame& ) > callback ) {
 
     int _size = frame.linesize ( 0 );
-    return resample ( frame.data(), &frame_size, [&] ( uint8_t** data, const int size ) {
+    return resample ( frame.frame_->extended_data, &frame_size, [&] ( uint8_t** data, const int size ) {
 
         std::cout << "resampled, size: " << size << std::endl;
 

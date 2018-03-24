@@ -5,6 +5,7 @@
 #include "../av/format.h"
 #include "../av/frame.h"
 #include "../av/packet.h"
+#include "../av/utils.h"
 
 int main(int argc, char* argv[]) {
 
@@ -20,8 +21,11 @@ int main(int argc, char* argv[]) {
     }
 
     std::error_code errc;
-    av::Codec _codec( av::CODEC::MP2, av::SAMPLE_FMT_S16 );
-
+    av::Codec _codec( av::CODEC::MP2, av::SAMPLE_FMT_S16, av::Options( { { "ar", 44100 }, {"ac", 2}, {"ab", 64000} } ) );
+    if( !!_codec ) {
+        std::cout << _codec.errc().message() << std::endl;
+        return 1;
+    }
     std::cout << "Encode: " << _codec << std::endl;
 
     av::Frame _frame( _codec.frame_size(), _codec.sample_fmt(), _codec.channel_layout(), _codec.sample_rate() );

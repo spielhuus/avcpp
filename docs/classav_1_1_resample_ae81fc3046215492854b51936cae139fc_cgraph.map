@@ -2,7 +2,5 @@
 <area shape="rect" id="node2" href="$classav_1_1_frame.html#a623ab5cfb9babe5cf566af3fe174e439" title="av::Frame::linesize" alt="" coords="250,5,393,32"/>
 <area shape="rect" id="node3" href="$classav_1_1_resample.html#a41bc98af825b9ea549dd07479f40e1ee" title="av::Resample::resample" alt="" coords="232,56,411,83"/>
 <area shape="rect" id="node5" href="$namespaceav.html#a24e72910ad0405124d9e96adfad3b792" title="av::make_error_code" alt="" coords="465,107,623,133"/>
-<area shape="rect" id="node6" href="$classav_1_1_frame.html#a647bd08078d7c7b53d40a92f00cf9b88" title="pointer to the picture/channel planes. " alt="" coords="260,157,383,184"/>
-<area shape="rect" id="node7" href="$classav_1_1_frame.html#a2a83133bffc6dbdf4a7b13318ce4fe0a" title="number of audio samples (per channel) described by this frame. " alt="" coords="236,208,407,235"/>
 <area shape="rect" id="node4" href="$classav_1_1_channel_layout.html#aaba3292a394de0f99dd95c18792ddd95" title="av::ChannelLayout::get" alt="" coords="459,56,629,83"/>
 </map>

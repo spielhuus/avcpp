@@ -60,7 +60,7 @@ int main ( int argc, char* argv[] ) {
 
     av::Resample resample ( src_channel_layout, av::SampleFormat::SAMPLE_FMT_DBL, src_rate,
                             dst_channel_layout, av::SampleFormat::SAMPLE_FMT_S16, dst_rate );
-    uint8_t** src_data = av::make_sample_buffer (
+    auto src_data = av::make_sample_buffer (
                              src_channel_layout, src_nb_samples,
                              av::SampleFormat::SAMPLE_FMT_DBL, &src_linesize );
     double t = 0;
@@ -70,6 +70,7 @@ int main ( int argc, char* argv[] ) {
         fill_samples ( reinterpret_cast<double*> ( src_data[0] ), src_nb_samples, src_nb_channels, src_rate, &t );
         std::error_code err = resample.resample (
             reinterpret_cast<uint8_t**> ( src_data ), &src_nb_samples, [&] ( uint8_t** dst_data, const int buffer_size ) {
+
             printf ( "t:%f in:%d out:%d\n", t, src_nb_samples, buffer_size );
             outfile.write ( reinterpret_cast< char* > ( dst_data[0] ), buffer_size );
         } );

@@ -47,8 +47,6 @@ Frame::~Frame() {
 
 int Frame::nb_samples() const
 { return frame_->nb_samples; }
-int Frame::data_size() const
-{ return data_size_; }
 uint8_t* Frame::data ( int index ) {
     return frame_->data[index];
 }

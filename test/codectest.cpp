@@ -149,6 +149,7 @@ TEST(CodecTest, OpenCodecs) {
     }
     EXPECT_EQ( 6, count );
 }
+
 TEST(CodecTest, OpenAudioCodecFlac) {
     Format format_( FILE_FLAC );
     EXPECT_TRUE( !format_ );

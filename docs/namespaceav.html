@@ -75,6 +75,8 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structav_1_1____av__init.html">__av_init</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><b>av_category_t</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_channel_layout.html">ChannelLayout</a></td></tr>
@@ -111,7 +113,7 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">av option list.  <a href="classav_1_1_options.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structav_1_1_packet.html">Packet</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="structav_1_1_packet.html" title="The av::Packet struct. ">av::Packet</a> struct.  <a href="structav_1_1_packet.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This structure stores compressed data.  <a href="structav_1_1_packet.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_resample.html">Resample</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -228,6 +230,11 @@ Functions</h2></td></tr>
 <tr class="separator:a3f1133797ddd9136a80dfa0fd63d724c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3d66a49a0823bc07ab60f217d285c5c1"><td class="memItemLeft" align="right" valign="top">uint8_t **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceav.html#a3d66a49a0823bc07ab60f217d285c5c1">make_sample_buffer</a> (<a class="el" href="classav_1_1_channel_layout.html#a95975507b611b5f117c22b93d4a91316">ChannelLayout::Enum</a> channel_layout, int nb_samples, <a class="el" href="namespaceav.html#ae593d8406e0f3102fcbfd5ee8931d6c1">SampleFormat</a> sample_format, int *dst_linesize)</td></tr>
 <tr class="separator:a3d66a49a0823bc07ab60f217d285c5c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8af8bc6a4ff6560e22bd4adae8957990"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceav.html#a8af8bc6a4ff6560e22bd4adae8957990">init</a> ()</td></tr>
+<tr class="separator:a8af8bc6a4ff6560e22bd4adae8957990"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a90507a7eb5f1d7c4946187fa7caa41"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceav.html#a0a90507a7eb5f1d7c4946187fa7caa41">get_bytes_per_sample</a> ( <a class="el" href="namespaceav.html#ae593d8406e0f3102fcbfd5ee8931d6c1">SampleFormat</a> sample_format)</td></tr>
+<tr class="memdesc:a0a90507a7eb5f1d7c4946187fa7caa41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of bytes per sample.  <a href="#a0a90507a7eb5f1d7c4946187fa7caa41">More...</a><br /></td></tr>
+<tr class="separator:a0a90507a7eb5f1d7c4946187fa7caa41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -340,15 +347,19 @@ Variables</h2></td></tr>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a2bfba3b34ce13b5d44f97492550827e5a1b4462755110ae77a3bb7e319f6544fa"></a>QUIET&#160;</td><td class="fielddoc"><p>Show nothing at all; be silent. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2bfba3b34ce13b5d44f97492550827e5a98a11b6a207bf1c64618790847ab8055"></a>PANIC&#160;</td><td class="fielddoc"><p>Only show fatal errors which could lead the process to crash, such as an assertion failure. This is not currently used for anything. </p>
+<tr><td class="fieldname"><a id="a2bfba3b34ce13b5d44f97492550827e5a98a11b6a207bf1c64618790847ab8055"></a>PANIC&#160;</td><td class="fielddoc"><p>Only show fatal errors which could lead the process to crash, such as an assertion failure. </p>
+<p>This is not currently used for anything. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2bfba3b34ce13b5d44f97492550827e5a19da7170bea36556dde582519795f3fc"></a>FATAL&#160;</td><td class="fielddoc"><p>Only show fatal errors. These are errors after which the process absolutely cannot continue. </p>
+<tr><td class="fieldname"><a id="a2bfba3b34ce13b5d44f97492550827e5a19da7170bea36556dde582519795f3fc"></a>FATAL&#160;</td><td class="fielddoc"><p>Only show fatal errors. </p>
+<p>These are errors after which the process absolutely cannot continue. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a2bfba3b34ce13b5d44f97492550827e5abb1ca97ec761fc37101737ba0aa2e7c5"></a>ERROR&#160;</td><td class="fielddoc"><p>Show all errors, including ones which can be recovered from. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2bfba3b34ce13b5d44f97492550827e5a059e9861e0400dfbe05c98a841f3f96b"></a>WARNING&#160;</td><td class="fielddoc"><p>Show all warnings and errors. Any message related to possibly incorrect or unexpected events will be shown. </p>
+<tr><td class="fieldname"><a id="a2bfba3b34ce13b5d44f97492550827e5a059e9861e0400dfbe05c98a841f3f96b"></a>WARNING&#160;</td><td class="fielddoc"><p>Show all warnings and errors. </p>
+<p>Any message related to possibly incorrect or unexpected events will be shown. </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a2bfba3b34ce13b5d44f97492550827e5a551b723eafd6a31d444fcb2f5920fbd3"></a>INFO&#160;</td><td class="fielddoc"><p>Show informative messages during processing. This is in addition to warnings and errors. This is the default value. </p>
+<tr><td class="fieldname"><a id="a2bfba3b34ce13b5d44f97492550827e5a551b723eafd6a31d444fcb2f5920fbd3"></a>INFO&#160;</td><td class="fielddoc"><p>Show informative messages during processing. </p>
+<p>This is in addition to warnings and errors. This is the default value. </p>
 </td></tr>
 <tr><td class="fieldname"><a id="a2bfba3b34ce13b5d44f97492550827e5aec1f06e9fb39c4ef0729b3c7c9c8e8cc"></a>VERBOSE&#160;</td><td class="fielddoc"><p>Same as info, except more verbose. </p>
 </td></tr>
@@ -471,17 +482,61 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="namespaceav_affb54f179ec410bda8b6febfcc794623_cgraph.png" border="0" usemap="#namespaceav_affb54f179ec410bda8b6febfcc794623_cgraph" alt=""/></div>
 <map name="namespaceav_affb54f179ec410bda8b6febfcc794623_cgraph" id="namespaceav_affb54f179ec410bda8b6febfcc794623_cgraph">
-<area shape="rect" id="node2" href="classav_1_1_codec.html#a65a2d57a68f6038294b55fdddae385a1" title="get the codec " alt="" coords="152,5,283,32"/>
+<area shape="rect" id="node2" href="classav_1_1_codec.html#a65a2d57a68f6038294b55fdddae385a1" title="get the codec " alt="" coords="152,31,283,57"/>
 <area shape="rect" id="node4" href="classav_1_1_codec.html#a02c52369be582abd265d48f4e0e4cc2f" title="Create new Encoder. " alt="" coords="151,107,284,133"/>
-<area shape="rect" id="node6" href="namespaceav.html#a24e72910ad0405124d9e96adfad3b792" title="av::make_error_code" alt="" coords="332,56,491,83"/>
-<area shape="rect" id="node10" href="classav_1_1_codec.html#a847863c1ef75b32acb63c07557e13619" title="The stream index. " alt="" coords="153,157,282,184"/>
+<area shape="rect" id="node6" href="namespaceav.html#a24e72910ad0405124d9e96adfad3b792" title="av::make_error_code" alt="" coords="332,208,491,235"/>
+<area shape="rect" id="node9" href="classav_1_1_codec.html#a847863c1ef75b32acb63c07557e13619" title="The stream index. " alt="" coords="153,208,282,235"/>
+<area shape="rect" id="node10" href="namespaceav.html#a8af8bc6a4ff6560e22bd4adae8957990" title="av::init" alt="" coords="184,259,251,285"/>
 <area shape="rect" id="node3" href="namespaceav.html#a070cf6e528b4b70e7e053f2bc58cbfc6" title="av::__codec" alt="" coords="363,5,460,32"/>
-<area shape="rect" id="node5" href="classav_1_1_options.html#ad7c9fdff2cd99841f241c7aa3dde7697" title="test if options contain an entry with key " alt="" coords="332,208,491,235"/>
-<area shape="rect" id="node7" href="classav_1_1_options.html#a8c2cee9b0fa45451e07af83174cb464e" title="Get the entry with the key. " alt="" coords="349,259,473,285"/>
-<area shape="rect" id="node8" href="classav_1_1_option.html#a38f7767b514d27ee6f2802a8fc46896b" title="av::Option::c_str" alt="" coords="348,107,475,133"/>
-<area shape="rect" id="node9" href="classav_1_1_option.html#a75a03be23fc17fbacc37954734a9b0c9" title="av::Option::c_int" alt="" coords="348,157,475,184"/>
+<area shape="rect" id="node5" href="classav_1_1_options.html#ad7c9fdff2cd99841f241c7aa3dde7697" title="test if options contain an entry with key " alt="" coords="332,56,491,83"/>
+<area shape="rect" id="node7" href="classav_1_1_options.html#a8c2cee9b0fa45451e07af83174cb464e" title="Get the entry with the key. " alt="" coords="349,107,473,133"/>
+<area shape="rect" id="node8" href="classav_1_1_option.html#a75a03be23fc17fbacc37954734a9b0c9" title="av::Option::c_int" alt="" coords="348,157,475,184"/>
 </map>
 </div>
+
+</div>
+</div>
+<a id="a0a90507a7eb5f1d7c4946187fa7caa41"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0a90507a7eb5f1d7c4946187fa7caa41">&#9670;&nbsp;</a></span>get_bytes_per_sample()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int av::get_bytes_per_sample </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="namespaceav.html#ae593d8406e0f3102fcbfd5ee8931d6c1">SampleFormat</a>&#160;</td>
+          <td class="paramname"><em>sample_format</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Number of bytes per sample. </p>
+<dl class="section return"><dt>Returns</dt><dd>number of bytes per sample or zero if unknown for the given sample format </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sample_format</td><td>the sample format </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a8af8bc6a4ff6560e22bd4adae8957990"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8af8bc6a4ff6560e22bd4adae8957990">&#9670;&nbsp;</a></span>init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int av::init </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -829,7 +884,7 @@ Here is the call graph for this function:</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 17 2018 23:02:06 for avcpp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Mar 24 2018 12:04:43 for avcpp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

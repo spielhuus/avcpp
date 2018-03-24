@@ -24,6 +24,7 @@ extern "C" {
 
 #include "averrc.h"
 #include "packet.h"
+#include "utils.h"
 
 namespace av {
 
@@ -62,7 +63,7 @@ std::string Codec::name ( CODEC_TYPE::Enum codec ) {
 }
 
 Codec::Codec ( AVFormatContext* format_context, const int index ) : index_ ( index ) {
-
+    init();
     AVCodec *input_codec;
 
     //Find a decoder for the stream.
@@ -126,7 +127,6 @@ Codec::Codec ( CODEC::Enum codec, SampleFormat sample_format, Options options ) 
         return;
     }
 
-    std::cout << options.get("ac").c_str() << std::endl;
     codec_context_->sample_fmt = static_cast< AVSampleFormat > ( sample_format );
     codec_context_->channel_layout = av_get_default_channel_layout ( options.get("ac").c_int() );
 
@@ -196,15 +196,15 @@ std::error_code Codec::decode ( Packet& package, std::function< void ( Frame& ) 
 
         else if ( ret < 0 ) {
             fprintf ( stderr, "Error during decoding\n" );
-            return make_error_code ( AV_EXIT );
+            return make_error_code ( ret );
         }
 
-        frame_.data_size_ = av_get_bytes_per_sample ( codec_context_->sample_fmt );
+//        frame_.data_size_ = av_get_bytes_per_sample ( codec_context_->sample_fmt );
 
-        if ( frame_.data_size_ < 0 ) {
-            //This should not occur, checking just for paranoia
-            return make_error_code ( AV_EXIT );
-        }
+//        if ( frame_.data_size_ < 0 ) {
+//            //This should not occur, checking just for paranoia
+//            return make_error_code ( AV_EXIT );
+//        }
 
         callback ( frame_ );
     }

@@ -40,8 +40,6 @@ public:
     /** @brief number of audio samples (per channel) described by this frame. */
     int nb_samples() const;
 
-    int data_size() const;
-
     /** @brief pointer to the picture/channel planes. */
     uint8_t* data ( int index );
     uint8_t** data ();
@@ -54,7 +52,7 @@ public:
 private:
     friend class Codec;
     friend class Resample;
-    int data_size_;
+//TODO    int data_size_;
     AVFrame* frame_ = nullptr;
 };
 }//namespace av

@@ -56,8 +56,6 @@ public:
     Codec ( Codec&& codec ) = delete;
     Codec& operator= ( Codec&& ) = delete;
 
-//TODO implement equals
-
     /** @brief get the codec type */
     CODEC_TYPE::Enum codec_type() const;
     /** @brief get the codec */
@@ -96,11 +94,12 @@ public:
     /** @brief Flush the encoder and write Package. */
     std::error_code encode ( /** Callback function to call with the package */  std::function< void ( Packet& ) > fn );
 
-    //TODO
-    int malloc_image ( uint8_t** video_dst_data, int* video_dst_linesize );
-    //    void copy_image(Frame& frame, uint8_t* video_dst_data[4], int video_dst_linesize[4]);
-    //TODO
-    void copy_image ( Frame& frame, uint8_t* video_dst_data[4], int video_dst_linesize[4] );
+    /** @brief Allocate memory for the image */
+    int malloc_image ( /** pointer to the buffer */ uint8_t** video_dst_data, /** size of the buffer */ int* video_dst_linesize );
+    /** @brief Copy the image from the frame */
+    void copy_image ( /** The source frame. */      Frame& frame,
+                      /** Destination buffers */    uint8_t* video_dst_data[4],
+                      /** Destination linesizes */  int video_dst_linesize[4] );
 
     /**
      * @brief checks if an error has occurred.
