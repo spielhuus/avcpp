@@ -55,10 +55,6 @@ int main(int argc, char* argv[]) {
             fwrite(_package.data(), 1, _package.size(), outfile);
             _package.unref();
         });
-        if( !!errc ) {
-            std::cout << errc.message() << std::endl;
-            return -1;
-        }
     }
     /* flush the encoder */
     errc = _codec.encode( [&](av::Packet& _package ) {

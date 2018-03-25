@@ -16,12 +16,27 @@
 #ifndef AVCPP_UTILS_H
 #define AVCPP_UTILS_H
 
+#include <memory>
+
 #include "constant.h"
 
 /** @brief av namespace */
 namespace av {
 
-int init();
+int init(); //TODO
+
+/** \brief Sampleformat enum. */
+enum SampleFormat {
+    SAMPLE_FMT_NONE = -1, SAMPLE_FMT_U8, SAMPLE_FMT_S16, SAMPLE_FMT_S32,
+    SAMPLE_FMT_FLT, SAMPLE_FMT_DBL, SAMPLE_FMT_U8P, SAMPLE_FMT_S16P,
+    SAMPLE_FMT_S32P, SAMPLE_FMT_FLTP, SAMPLE_FMT_DBLP, SAMPLE_FMT_NB
+};
+
+std::string str(SampleFormat format);
+
+
+std::shared_ptr< uint8_t* > make_sample_buffer (
+        ChannelLayout::Enum channel_layout, int nb_samples, SampleFormat sample_format, int* dst_linesize );
 
 /** @brief Number of bytes per sample.
     @return number of bytes per sample or zero if unknown for the given sample format */

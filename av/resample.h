@@ -28,7 +28,7 @@ struct AVAudioFifo;
 
 namespace av {
 
-uint8_t** make_sample_buffer ( ChannelLayout::Enum channel_layout, int nb_samples, SampleFormat sample_format, int* linesize );
+//uint8_t** make_sample_buffer ( ChannelLayout::Enum channel_layout, int nb_samples, SampleFormat sample_format, int* linesize );
 
 //static int init_converted_samples(uint8_t ***converted_input_samples,
 //                                  AVCodecContext *output_codec_context,
@@ -41,7 +41,7 @@ public:
                ChannelLayout::Enum target_channels, SampleFormat target_sample_fmt, int target_sample_rate );
     ~Resample();
 
-    std::error_code resample ( uint8_t **src_data, int* src_linesize, std::function< void ( uint8_t**, const int ) > fn );
+    std::error_code resample ( const uint8_t **src_data, int* src_linesize, std::function< void ( uint8_t**, const int ) > fn );
     std::error_code resample ( Frame& frame, int frame_size, std::function< void ( Frame& ) > fn );
 
     int dst_buffer_size();

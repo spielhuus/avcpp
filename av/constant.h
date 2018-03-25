@@ -517,13 +517,6 @@ struct CODEC_TYPE {
     enum Enum { NONE = -1, VIDEO=0, AUDIO=1, DATA=2, SUBTITLE=3, ATTACHMENT=4, NB=5 };
 };
 
-/** \brief Sampleformat enum. */
-enum SampleFormat {
-    SAMPLE_FMT_NONE = -1, SAMPLE_FMT_U8, SAMPLE_FMT_S16, SAMPLE_FMT_S32,
-    SAMPLE_FMT_FLT, SAMPLE_FMT_DBL, SAMPLE_FMT_U8P, SAMPLE_FMT_S16P,
-    SAMPLE_FMT_S32P, SAMPLE_FMT_FLTP, SAMPLE_FMT_DBLP, SAMPLE_FMT_NB
-};
-
 /** \brief Channel Layout enum. */
 class ChannelLayout {
 public:

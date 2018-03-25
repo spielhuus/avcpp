@@ -25,7 +25,7 @@ class AVFrame;
 /** @brief av namespace */
 namespace av {
 
-/** @brief av namespace */
+/** @brief This structure describes decoded (raw) audio or video data. */
 class Frame {
 public:
     Frame() {}

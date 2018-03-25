@@ -131,11 +131,11 @@ Format::Format ( std::iostream* stream, Mode mode, Options options ) : io_contex
 
 Format::~Format() {
     //free ressources
-//    if( format_context_ != nullptr ) {
-//        if( io_context_ == nullptr ) avio_closep(&format_context_->pb);
-//        avformat_free_context(format_context_);
-//        format_context_ = nullptr;
-//    }
+    if( format_context_ != nullptr ) {
+        if( io_context_ == nullptr ) avio_closep(&format_context_->pb);
+        avformat_free_context(format_context_);
+        format_context_ = nullptr;
+    }
 }
 
 const Format::iterator Format::begin()
@@ -241,14 +241,12 @@ std::error_code Format::read ( std::function< void ( Packet& ) > callback ) {
 std::error_code Format::write ( Packet& packet ) {
 
     if( !_header_written ) {
-        std::cout << "write header" << std::endl;
         _header_written = true;
         int error;
         if( ( error = avformat_write_header( format_context_, nullptr ) ) < 0 )
         {return make_error_code( error );}
     }
     int error;
-    std::cout << "write " << std::endl;
 
     if ( ( error = av_write_frame ( format_context_, packet.packet_ ) ) < 0 )
     { return make_error_code ( error ); }

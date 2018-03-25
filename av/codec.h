@@ -26,6 +26,7 @@
 #include "frame.h"
 #include "packet.h"
 #include "option.h"
+#include "utils.h"
 
 ///@cond DOC_INTERNAL
 class AVFrame;

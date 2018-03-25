@@ -13,6 +13,7 @@
     License along with this library; if not, write to the Free Software
     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 */
+#include <cstdio>
 #include <fstream>
 #include <iostream>
 
@@ -23,23 +24,20 @@
 
 int main (int argc, char **argv) {
 
-    if (argc != 4 && argc != 5) {
-        fprintf(stderr, "usage: %s [-refcount] input_file video_output_file audio_output_file\n"
+    if (argc != 4) {
+        fprintf(stderr, "usage: %s input_file video_output_file audio_output_file\n"
                 "API example program to show how to read frames from an input file.\n"
                 "This program reads frames from a file, decodes them, and writes decoded\n"
                 "video frames to a rawvideo file named video_output_file, and decoded\n"
-                "audio frames to a rawaudio file named audio_output_file.\n\n"
-                "If the -refcount option is specified, the program use the\n"
-                "reference counting frame system which allows keeping a copy of\n"
-                "the data for longer than one decode call.\n"
+                "audio frames to a rawaudio file named audio_output_file.\n"
                 "\n", argv[0]);
         exit(1);
     }
 
     av::Format format( argv[1] );
     if( !!format ) {
-        std::cout << "Error: " << format.errc().message() << std::endl;
-        exit(1);
+        std::cout << format.errc().message() << std::endl;
+        return format.errc().value();
     }
 
     static uint8_t *video_dst_data[4] = {nullptr};
@@ -73,5 +71,10 @@ int main (int argc, char **argv) {
     outfile.close();
     outfile_video.close();
     std::cout << errc.message() << std::endl;
+    printf("Play the output audio file with the command:\n"
+           "ffplay -f %s -ac %d -ar %d %s\n",
+           av::str( (*_codec)->sample_fmt() ).c_str(), (*_codec)->channels(), (*_codec)->sample_rate(),
+           argv[3]);
+
     return 0;
 }

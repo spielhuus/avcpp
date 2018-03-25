@@ -42,13 +42,13 @@ int main(int argc, char* argv[]) {
         if( package.stream_index() == (*_codec)->index() ) {
             (*_codec)->decode( package, [&]( av::Frame& frame ) {
                 //write to out file
-                if( (*_codec)->is_planar() ) {
-                    for( int i = 0; i < frame.nb_samples(); i++ )
-                        for( int ch = 0; ch < (*_codec)->channels(); ch++ )
-                            ao_play(device, reinterpret_cast< char* >(frame.data(ch) + _data_size * i), _data_size );
-                } else {
-                    ao_play(device,  reinterpret_cast< char* >( frame.extended_data()[0] ), frame.linesize(0) );
-                }
+//                if( (*_codec)->is_planar() ) {
+//                    for( int i = 0; i < frame.nb_samples(); i++ )
+//                        for( int ch = 0; ch < (*_codec)->channels(); ch++ )
+//                            ao_play(device, reinterpret_cast< char* >(frame.data(ch) + _data_size * i), _data_size );
+//                } else {
+                    ao_play(device,  reinterpret_cast< char* >( frame.data()[0] ), frame.linesize(0) );
+//                }
             });
         }
     });

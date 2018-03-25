@@ -20,6 +20,7 @@
 
 #include "../av/format.h"
 #include "../av/resample.h"
+#include "../av/utils.h"
 
 /** Fill dst buffer with nb_samples, generated starting from t. */
 static void fill_samples ( double *dst, int nb_samples, int nb_channels, int sample_rate, double *t )
@@ -67,9 +68,9 @@ int main ( int argc, char* argv[] ) {
 
     do {
         /* generate synthetic audio */
-        fill_samples ( reinterpret_cast<double*> ( src_data[0] ), src_nb_samples, src_nb_channels, src_rate, &t );
+        fill_samples ( reinterpret_cast<double*> ( src_data.get()[0] ), src_nb_samples, src_nb_channels, src_rate, &t );
         std::error_code err = resample.resample (
-            reinterpret_cast<uint8_t**> ( src_data ), &src_nb_samples, [&] ( uint8_t** dst_data, const int buffer_size ) {
+            (const uint8_t**)src_data.get(), &src_nb_samples, [&] ( uint8_t** dst_data, const int buffer_size ) {
 
             printf ( "t:%f in:%d out:%d\n", t, src_nb_samples, buffer_size );
             outfile.write ( reinterpret_cast< char* > ( dst_data[0] ), buffer_size );

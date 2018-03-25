@@ -27,26 +27,7 @@ extern "C" {
 
 namespace av {
 
-uint8_t** make_sample_buffer ( ChannelLayout::Enum channel_layout, int nb_samples, SampleFormat sample_format, int* dst_linesize ) {
-
-    int dst_nb_channels = av_get_channel_layout_nb_channels ( ChannelLayout::get ( channel_layout ) );
-    uint8_t **src_data = nullptr;
-    int ret = av_samples_alloc_array_and_samples ( &src_data, dst_linesize, dst_nb_channels,
-              nb_samples, static_cast< AVSampleFormat > ( sample_format ), 0 );
-
-    if ( ret < 0 )
-    { throw make_error_code ( ret ); }
-
-    return src_data;
-
-//    auto ptr = std::shared_ptr< uint8_t[] >( *src_data, [&](auto p) {
-//        if (p)
-//            av_freep(&p[0]);
-//        av_freep(&p);
-//    });
-//    return ptr;
-}
-
+/** \internal */
 static int add_samples_to_fifo ( AVAudioFifo *fifo,
                                  uint8_t **converted_input_samples,
                                  const int frame_size ) {
@@ -61,6 +42,7 @@ static int add_samples_to_fifo ( AVAudioFifo *fifo,
     {return AVERROR_EXIT;}
     return 0;
 }
+/** \endinternal */
 
 Resample::Resample ( ChannelLayout::Enum source_channels, SampleFormat source_sample_fmt, int source_sample_rate,
                      ChannelLayout::Enum target_channels, SampleFormat target_sample_fmt, int target_sample_rate ) :
@@ -98,13 +80,21 @@ Resample::Resample ( ChannelLayout::Enum source_channels, SampleFormat source_sa
         return;
     }
 }
+
 Resample::~Resample() {
+    if (dst_data)
+        av_freep(&dst_data[0]);
+    av_freep(&dst_data);
+    if( resample_context_ )
+    {swr_free(&resample_context_);}
+    if( fifo_ )
+    {av_audio_fifo_free( fifo_ );}
 }
 
 std::error_code Resample::resample ( Frame& frame, int frame_size, std::function< void ( Frame& ) > callback ) {
 
     int _size = frame.linesize ( 0 );
-    return resample ( frame.frame_->extended_data, &frame_size, [&] ( uint8_t** data, const int size ) {
+    return resample ( (const uint8_t**) frame.frame_->extended_data, &frame_size, [&] ( uint8_t** data, const int size ) {
 
         std::cout << "resampled, size: " << size << std::endl;
 
@@ -124,7 +114,7 @@ std::error_code Resample::resample ( Frame& frame, int frame_size, std::function
     } );
 }
 
-std::error_code Resample::resample ( uint8_t **src_data, int* src_nb_samples, std::function< void ( uint8_t**, const int ) > fn ) {
+std::error_code Resample::resample ( const uint8_t **src_data, int* src_nb_samples, std::function< void ( uint8_t**, const int ) > fn ) {
 
     int ret;
 

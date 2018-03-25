@@ -15,6 +15,8 @@
 */
 #include "codec.h"
 
+#include <cassert>
+
 extern "C" {
 #include "libavformat/avformat.h"
 #include "libavcodec/avcodec.h"
@@ -63,7 +65,7 @@ std::string Codec::name ( CODEC_TYPE::Enum codec ) {
 }
 
 Codec::Codec ( AVFormatContext* format_context, const int index ) : index_ ( index ) {
-    init();
+    init(); //TODO
     AVCodec *input_codec;
 
     //Find a decoder for the stream.
@@ -108,10 +110,7 @@ Codec::Codec ( AVFormatContext* format_context, const int index ) : index_ ( ind
 
 Codec::Codec ( CODEC::Enum codec, SampleFormat sample_format, Options options ) {
 
-    if ( !options.contains ( "ac" ) ) {
-        std::cout << "channels not specified." << std::endl;
-        return;
-    }
+    assert( options.contains ( "ac" ) );
 
     const AVCodec* _codec = avcodec_find_encoder ( __codec ( codec ) );
 
@@ -128,7 +127,8 @@ Codec::Codec ( CODEC::Enum codec, SampleFormat sample_format, Options options ) 
     }
 
     codec_context_->sample_fmt = static_cast< AVSampleFormat > ( sample_format );
-    codec_context_->channel_layout = av_get_default_channel_layout ( options.get("ac").c_int() );
+    codec_context_->channel_layout =
+            static_cast< uint64_t >( av_get_default_channel_layout ( options.get("ac").c_int() ) );
 
     //open it
     int ret;
@@ -176,38 +176,23 @@ std::error_code Codec::decode ( Packet& package, std::function< void ( Frame& ) 
     //send package to codec
     int ret;
 
-    if ( ( ret = avcodec_send_packet ( codec_context_, package.packet_ ) ) < 0 ) {
-        return make_error_code ( ret );
-    }
+    if ( ( ret = avcodec_send_packet ( codec_context_, package.packet_ ) ) < 0 )
+    {return make_error_code ( ret );}
+
+    //create frame
+    if ( !frame_.frame_ && ! ( frame_.frame_ = av_frame_alloc() ) )
+    { return make_error_code ( AV_EXIT ); }
 
     //receive frame from the codec
-    if ( !frame_.frame_ ) {
-        if ( ! ( frame_.frame_ = av_frame_alloc() ) ) {
-            fprintf ( stderr, "Could not allocate audio frame\n" );
-            { return make_error_code ( AV_EXIT ); }
-        }
-    }
-
     while ( ret >= 0 ) {
         ret = avcodec_receive_frame ( codec_context_, frame_.frame_ );
 
-        if ( ret == AVERROR ( EAGAIN ) || ret == AVERROR_EOF )
-        { return make_error_code ( ret ); }
-
-        else if ( ret < 0 ) {
-            fprintf ( stderr, "Error during decoding\n" );
-            return make_error_code ( ret );
-        }
-
-//        frame_.data_size_ = av_get_bytes_per_sample ( codec_context_->sample_fmt );
-
-//        if ( frame_.data_size_ < 0 ) {
-//            //This should not occur, checking just for paranoia
-//            return make_error_code ( AV_EXIT );
-//        }
+        if ( ret < 0 )
+        {return make_error_code ( ret );}
 
         callback ( frame_ );
     }
+    av_frame_unref( frame_.frame_ );
     return make_error_code ( ret );
 }
 
@@ -247,7 +232,7 @@ int Codec::malloc_image ( uint8_t** video_dst_data, int* video_dst_linesize ) {
 }
 void Codec::copy_image ( Frame& frame, uint8_t* video_dst_data[4], int video_dst_linesize[4] ) {
     av_image_copy ( video_dst_data, video_dst_linesize,
-                    ( const uint8_t ** ) ( frame.frame_->data ), frame.frame_->linesize,
+                    const_cast< const uint8_t ** > ( frame.frame_->data ), frame.frame_->linesize,
                     codec_context_->pix_fmt, codec_context_->width, codec_context_->height );
 }
 
@@ -261,5 +246,4 @@ bool Codec::fail()
 { return !errc_ && errc_.value() != AV_EOF; }
 std::error_code Codec::errc ()
 { return errc_; }
-
 }//namespace av

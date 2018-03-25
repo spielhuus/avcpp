@@ -24,6 +24,7 @@
 #include "../av/metadata.h"
 #include "../av/packet.h"
 #include "../av/resample.h"
+#include "../av/utils.h"
 
 #include <gtest/gtest.h>
 
@@ -94,9 +95,9 @@ TEST ( ResampleTest, resample ) {
 
     do {
         /* generate synthetic audio */
-        fill_samples ( reinterpret_cast<double*> ( src_data[0] ), src_nb_samples, src_nb_channels, src_rate, &t );
+        fill_samples ( reinterpret_cast<double*> ( src_data.get()[0] ), src_nb_samples, src_nb_channels, src_rate, &t );
         std::error_code ret = resample.resample (
-            reinterpret_cast<uint8_t**> ( src_data ), &src_nb_samples, [&] ( uint8_t** dst_data, const int buffer_size ) {
+            (const uint8_t**) ( src_data.get() ), &src_nb_samples, [&] ( uint8_t** dst_data, const int buffer_size ) {
             outfile.write ( reinterpret_cast< char* >( dst_data[0] ), buffer_size );
         } );
         ASSERT_TRUE ( !ret );
