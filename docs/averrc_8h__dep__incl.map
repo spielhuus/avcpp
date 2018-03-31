@@ -1,8 +1,3 @@
 <map id="/home/etienne/Projects/avcpp/av/averrc.h" name="/home/etienne/Projects/avcpp/av/averrc.h">
-<area shape="rect" id="node2" href="$__iocontext_8cpp.html" title="/home/etienne/Projects\l/avcpp/av/_iocontext.cpp" alt="" coords="5,95,189,136"/>
-<area shape="rect" id="node3" href="$averrc_8cpp.html" title="/home/etienne/Projects\l/avcpp/av/averrc.cpp" alt="" coords="214,95,386,136"/>
-<area shape="rect" id="node4" href="$codec_8cpp.html" title="/home/etienne/Projects\l/avcpp/av/codec.cpp" alt="" coords="410,95,582,136"/>
-<area shape="rect" id="node5" href="$format_8cpp.html" title="/home/etienne/Projects\l/avcpp/av/format.cpp" alt="" coords="606,95,778,136"/>
-<area shape="rect" id="node6" href="$frame_8cpp.html" title="/home/etienne/Projects\l/avcpp/av/frame.cpp" alt="" coords="802,95,974,136"/>
-<area shape="rect" id="node7" href="$resample_8cpp.html" title="/home/etienne/Projects\l/avcpp/av/resample.cpp" alt="" coords="998,95,1175,136"/>
+<area shape="rect" id="node2" href="$av_8h.html" title="/home/etienne/Projects\l/avcpp/av/av.h" alt="" coords="5,95,161,136"/>
 </map>

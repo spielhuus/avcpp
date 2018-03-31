@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['packet',['Packet',['../structav_1_1_packet.html',1,'av']]]
+  ['resample',['Resample',['../classav_1_1_resample.html',1,'av']]]
 ];

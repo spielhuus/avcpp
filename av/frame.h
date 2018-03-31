@@ -18,9 +18,9 @@
 
 #include <system_error>
 
-///@cond DOC_INTERNAL
+#include "utils.h"
+
 class AVFrame;
-///@endcond DOC_INTERNAL
 
 /** @brief av namespace */
 namespace av {
@@ -29,7 +29,7 @@ namespace av {
 class Frame {
 public:
     Frame() {}
-    Frame ( int frame_size, int sample_fmt, uint64_t channel_layout, int sample_rate );
+    Frame ( int frame_size, SampleFormat sample_fmt, ChannelLayout::Enum channel_layout, int sample_rate );
     ~Frame();
 
     Frame ( const Frame& ) = delete;
@@ -41,10 +41,10 @@ public:
     int nb_samples() const;
 
     /** @brief pointer to the picture/channel planes. */
+    /* TODO cleanup */
     uint8_t* data ( int index );
-    uint8_t** data ();
-
-    uint8_t** extended_data ();
+    uint8_t** data();
+    uint8_t** extended_data();
     int linesize ( int index );
 
     std::error_code writeable();
@@ -52,7 +52,6 @@ public:
 private:
     friend class Codec;
     friend class Resample;
-//TODO    int data_size_;
     AVFrame* frame_ = nullptr;
 };
 }//namespace av

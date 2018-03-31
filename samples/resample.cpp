@@ -70,7 +70,7 @@ int main ( int argc, char* argv[] ) {
         /* generate synthetic audio */
         fill_samples ( reinterpret_cast<double*> ( src_data.get()[0] ), src_nb_samples, src_nb_channels, src_rate, &t );
         std::error_code err = resample.resample (
-            (const uint8_t**)src_data.get(), &src_nb_samples, [&] ( uint8_t** dst_data, const int buffer_size ) {
+            (const uint8_t**)src_data.get(), &src_nb_samples, [&] ( uint8_t** dst_data, const uint64_t /*nb_samples*/, const int buffer_size ) {
 
             printf ( "t:%f in:%d out:%d\n", t, src_nb_samples, buffer_size );
             outfile.write ( reinterpret_cast< char* > ( dst_data[0] ), buffer_size );

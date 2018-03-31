@@ -30,34 +30,34 @@ extern "C" {
 
 namespace av {
 
-inline CODEC::Enum __codec ( AVCodecID codec_id )
-{return static_cast<CODEC::Enum>( codec_id ); }
+inline Codec::ID __codec ( AVCodecID codec_id )
+{return static_cast<Codec::ID>( codec_id ); }
 
-inline AVCodecID __codec ( CODEC::Enum codec )
+inline AVCodecID __codec ( Codec::ID codec )
 {return static_cast< AVCodecID >( codec );}
 
-std::string Codec::name ( CODEC::Enum codec )
+std::string Codec::name ( Codec::ID codec )
 {return avcodec_get_name(static_cast<AVCodecID>( codec ) );}
 
-inline CODEC_TYPE::Enum __codec ( AVMediaType codec_type ) {
+inline Codec::TYPE __codec ( AVMediaType codec_type ) {
     switch ( codec_type ) {
     case AVMEDIA_TYPE_VIDEO:
-        return CODEC_TYPE::VIDEO;
+        return Codec::TYPE::VIDEO;
 
     case AVMEDIA_TYPE_AUDIO:
-        return CODEC_TYPE::AUDIO;
+        return Codec::TYPE::AUDIO;
 
     case AVMEDIA_TYPE_DATA:
-        return CODEC_TYPE::DATA;
+        return Codec::TYPE::DATA;
 
     default:
-        return CODEC_TYPE::NONE;
+        return Codec::TYPE::NONE;
     }
 }
 
 std::array< std::string, 6 > Codec::codec_type_names_ {{"VIDEO", "AUDIO", "DATA", "SUBTITLE", "ATTACHEMENT", "NB"}};
-std::string Codec::name ( CODEC_TYPE::Enum codec ) {
-    if ( codec == CODEC_TYPE::NONE )
+std::string Codec::name ( Codec::TYPE codec ) {
+    if ( codec == Codec::TYPE::NONE )
     { return "none"; }
 
     else
@@ -65,7 +65,7 @@ std::string Codec::name ( CODEC_TYPE::Enum codec ) {
 }
 
 Codec::Codec ( AVFormatContext* format_context, const int index ) : index_ ( index ) {
-    init(); //TODO
+
     AVCodec *input_codec;
 
     //Find a decoder for the stream.
@@ -108,7 +108,7 @@ Codec::Codec ( AVFormatContext* format_context, const int index ) : index_ ( ind
     }
 }
 
-Codec::Codec ( CODEC::Enum codec, SampleFormat sample_format, Options options ) {
+Codec::Codec ( Codec::ID codec, SampleFormat sample_format, Options options ) {
 
     assert( options.contains ( "ac" ) );
 
@@ -126,7 +126,7 @@ Codec::Codec ( CODEC::Enum codec, SampleFormat sample_format, Options options ) 
         return;
     }
 
-    codec_context_->sample_fmt = static_cast< AVSampleFormat > ( sample_format );
+    codec_context_->sample_fmt = static_cast< AVSampleFormat > ( sample_format ); //TODO get from output_codec->sample_fmts[0];
     codec_context_->channel_layout =
             static_cast< uint64_t >( av_get_default_channel_layout ( options.get("ac").c_int() ) );
 
@@ -146,9 +146,9 @@ Codec::~Codec() {
 int Codec::index() const {
     return index_;
 }
-CODEC_TYPE::Enum Codec::codec_type() const
+Codec::TYPE Codec::codec_type() const
 { return __codec ( codec_context_->codec_type ); }
-CODEC::Enum Codec::codec() const
+Codec::ID Codec::codec() const
 { return __codec ( codec_context_->codec_id ); }
 int64_t Codec::bitrate() const
 { return codec_context_->bit_rate; }
@@ -156,10 +156,12 @@ int Codec::sample_rate() const
 { return codec_context_->sample_rate; }
 SampleFormat Codec::sample_fmt() const
 { return static_cast< SampleFormat > ( codec_context_->sample_fmt ); }
+PixelFormat Codec::pix_fmt() const
+{ return static_cast< PixelFormat > ( codec_context_->pix_fmt ); }
 int Codec::channels() const
 { return codec_context_->channels; }
 ChannelLayout::Enum Codec::channel_layout() const
-{ return static_cast< ChannelLayout::Enum > ( codec_context_->channel_layout ); }
+{ return ChannelLayout::get( codec_context_->channel_layout ); }
 int Codec::bits_per_sample() const
 { return codec_context_->bits_per_raw_sample; }
 int Codec::width() const
@@ -237,7 +239,7 @@ void Codec::copy_image ( Frame& frame, uint8_t* video_dst_data[4], int video_dst
 }
 
 bool Codec::operator!() const
-{ return !errc_ ; }
+{ return !errc_; }
 bool Codec::good()
 { return errc_.value() == 0; }
 bool Codec::eof()

@@ -24,9 +24,7 @@
 #include <system_error>
 #include <vector>
 
-///@cond DOC_INTERNAL
 class AVFormatContext;
-///@endcond DOC_INTERNAL
 
 #include "codec.h"
 #include "packet.h"
@@ -37,10 +35,15 @@ namespace av {
 
 class IoContext;
 
-/** @brief Media file as av format. */
+/** @brief Media Input/Output Format.
+To open a media file the av::Format is created with a filename as std::string or with std::iostream.
+The write flag indicates the i/o mode of the av::Format. Default is READ.
+
+The av::Options parameter contains default options for the format or codec to load.*/
 class Format {
 public:
-    typedef std::vector< std::shared_ptr< Codec > > codec_list;
+
+    typedef std::vector< codec_ptr > codec_list;
     typedef codec_list::iterator iterator;
 
     /** @brief The i/o mode */
@@ -52,10 +55,12 @@ public:
              /** Set the AV option for the format. */           Options options = Options()
            );
     /** @brief Open mediafile from stream
-        Options
-            short_name	if non-NULL checks if short_name matches with the names of the registered formats
-            filename	if non-NULL checks if filename terminates with the extensions of the registered formats
-            mime_type	if non-NULL checks if mime_type matches with the MIME type of the registered formats*/
+        Options:
+        <ul>
+            <li>short_name	if non-NULL checks if short_name matches with the names of the registered formats</li>
+            <li>filename	if non-NULL checks if filename terminates with the extensions of the registered formats</li>
+            <li>mime_type	if non-NULL checks if mime_type matches with the MIME type of the registered formats</li>
+        </ul>*/
     Format ( /** The stream to open */                          std::iostream* s,
              /** Set the format i/o mode to READ or WRITE. */   Mode mode = READ,
              /** Set the AV option for the format. */           Options options = Options()
@@ -74,9 +79,10 @@ public:
     /** @brief Returns an iterator to the last codec of the format. */
     const iterator end();
     /** @brief Returns a reference to the codec at specified location pos, with bounds checking. */
-    const std::shared_ptr< Codec > at ( /** Position of the element to return */ const std::size_t& position ) const;
+    const codec_ptr at ( /** Position of the element to return */ const std::size_t& position ) const;
     /** @brief Returns the number of codecs in the format. */
     std::size_t size() const;
+
     /**
      * @brief play length of this media format in milliseconds.
      * @return play length in milliseconds.
@@ -85,6 +91,8 @@ public:
 
     /** @brief Returns the metadata of the associated format context. */
     av::Metadata metadata() const ;
+
+    std::error_code add_encoder( Codec& codec );
 
     /** @brief Read packet from input. */
     std::error_code read ( /** callback. */ std::function< void ( Packet& ) > callback  );
@@ -109,8 +117,14 @@ public:
      */
     std::error_code errc ();
 
+    /** @brief write the format information to the output stream.
+        @return reference to output stream */
+    friend std::ostream& operator<< ( /** The target output stream. */  std::ostream& stream,
+                                      /** The format to print */        Format& format );
+
 private:
-    friend class Packet;
+    friend struct Packet;
+    const Mode mode_;
     bool _header_written = false;
     AVFormatContext* format_context_ = nullptr;
     std::shared_ptr < IoContext > io_context_ = nullptr;
@@ -118,23 +132,23 @@ private:
     codec_list codecs_;
 };
 
-inline bool is_audio ( std::shared_ptr< Codec > codec ) {
-    return codec->codec_type() == CODEC_TYPE::AUDIO;
+inline bool is_audio ( codec_ptr codec ) {
+    return codec->codec_type() == Codec::TYPE::AUDIO;
 }
-inline bool is_video ( std::shared_ptr< Codec > codec ) {
-    return codec->codec_type() == CODEC_TYPE::VIDEO;
+inline bool is_video ( codec_ptr codec ) {
+    return codec->codec_type() == Codec::TYPE::VIDEO;
 }
-inline bool is_data ( std::shared_ptr< Codec > codec ) {
-    return codec->codec_type() == CODEC_TYPE::DATA;
+inline bool is_data ( codec_ptr codec ) {
+    return codec->codec_type() == Codec::TYPE::DATA;
 }
-inline bool is_subtitle ( std::shared_ptr< Codec > codec ) {
-    return codec->codec_type() == CODEC_TYPE::SUBTITLE;
+inline bool is_subtitle ( codec_ptr codec ) {
+    return codec->codec_type() == Codec::TYPE::SUBTITLE;
 }
-inline bool is_attachement ( std::shared_ptr< Codec > codec ) {
-    return codec->codec_type() == CODEC_TYPE::ATTACHMENT;
+inline bool is_attachement ( codec_ptr codec ) {
+    return codec->codec_type() == Codec::TYPE::ATTACHMENT;
 }
-inline bool is_nb ( std::shared_ptr< Codec > codec ) {
-    return codec->codec_type() == CODEC_TYPE::NB;
+inline bool is_nb ( codec_ptr codec ) {
+    return codec->codec_type() == Codec::TYPE::NB;
 }
 }//namespace av
 #endif // FORMAT_H

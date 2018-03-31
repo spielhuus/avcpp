@@ -15,6 +15,8 @@
 */
 #include "format.h"
 
+#include <cassert>
+
 extern "C" {
 #include "libavformat/avformat.h"
 #include "libavcodec/avcodec.h"
@@ -26,7 +28,18 @@ extern "C" {
 
 namespace av {
 
-Format::Format ( const std::string& filename, Mode mode, Options ) {
+std::ostream& operator<< ( std::ostream& stream, Format& format ) {
+    stream << "File: '" << format.format_context_->filename << "' (" << format.playtime() << ")\n";
+    for( auto __codec : format )
+        stream << *__codec << "\n";
+    auto _meta = format.metadata();
+    if( _meta.size() == 0 )
+        stream << "(no metadata)\n";
+    else stream << format.metadata() << "\n";
+    return stream;
+}
+
+Format::Format ( const std::string& filename, Mode mode, Options ) : mode_( mode ) {
 
     if ( mode == Mode::WRITE ) {
         //open file for writing
@@ -71,7 +84,7 @@ Format::Format ( const std::string& filename, Mode mode, Options ) {
         codecs_.clear();
 
         for ( unsigned short i=0; i<format_context_->nb_streams; ++i ) {
-            auto _codec = std::shared_ptr< Codec > ( new Codec ( format_context_, i ) );
+            auto _codec = codec_ptr ( new Codec ( format_context_, i ) );
 
             if ( !*_codec )
             { codecs_.push_back ( _codec ); }
@@ -80,7 +93,7 @@ Format::Format ( const std::string& filename, Mode mode, Options ) {
         }
     }
 }
-Format::Format ( std::iostream* stream, Mode mode, Options options ) : io_context_ ( std::make_unique< IoContext >() ) {
+Format::Format ( std::iostream* stream, Mode mode, Options options ) : mode_( mode ), io_context_ ( std::make_unique< IoContext >() ) {
 
     if ( mode == Mode::WRITE ) {
 
@@ -119,7 +132,7 @@ Format::Format ( std::iostream* stream, Mode mode, Options options ) : io_contex
         //load the codecs
         codecs_.clear();
         for ( unsigned short i=0; i<format_context_->nb_streams; ++i ) {
-            auto _codec = std::shared_ptr< Codec > ( new Codec ( format_context_, i ) );
+            auto _codec = codec_ptr ( new Codec ( format_context_, i ) );
 
             if ( !*_codec )
             { codecs_.push_back ( _codec ); }
@@ -138,11 +151,28 @@ Format::~Format() {
     }
 }
 
+std::error_code Format::add_encoder( Codec& codec ) {
+
+    AVStream *stream = nullptr;
+    int error;
+    /** Create a new audio stream in the output file container. */
+    if( ! ( stream = avformat_new_stream( format_context_, nullptr ) ) ) {
+        fprintf(stderr, "Could not create new stream\n");
+        return( make_error_code( ENOMEM ) );
+    }
+    error = avcodec_parameters_from_context(stream->codecpar, codec.codec_context_ );
+    if (error < 0) {
+        return( make_error_code( error ) );
+    }
+
+    return std::error_code();
+}
+
 const Format::iterator Format::begin()
 { return codecs_.begin(); }
 const Format::iterator Format::end()
 { return codecs_.end(); }
-const std::shared_ptr< Codec > Format::at ( const std::size_t& position ) const
+const codec_ptr Format::at ( const std::size_t& position ) const
 { return codecs_.at ( position ); }
 std::size_t Format::size() const
 { return codecs_.size(); }
@@ -215,18 +245,16 @@ long Format::playtime() const {
 }
 
 std::error_code Format::read ( std::function< void ( Packet& ) > callback ) {
+    assert( mode_ == READ );
+
     Packet _package;
     int _ret = 0;
 
-    while ( true ) {
+    while ( true ) { //read packages until end of file.
         if ( ( _ret  = av_read_frame ( format_context_, _package.packet_ ) ) < 0 ) {
             if( _ret == AV_EOF ) break;
             else return make_error_code ( _ret );
-
-        } else if ( _ret != 0 ) {
-            return make_error_code ( _ret );
         }
-
         callback ( _package );
     }
 
@@ -239,6 +267,7 @@ std::error_code Format::read ( std::function< void ( Packet& ) > callback ) {
 }
 
 std::error_code Format::write ( Packet& packet ) {
+    assert( mode_ == WRITE );
 
     if( !_header_written ) {
         _header_written = true;
@@ -256,7 +285,7 @@ std::error_code Format::write ( Packet& packet ) {
 }
 
 bool Format::operator!() const
-{ return !errc_ ; }
+{ return !errc_ && errc_.value() != AV_EOF; }
 bool Format::good()
 { return errc_.value() == 0; }
 bool Format::eof()

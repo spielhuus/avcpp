@@ -53,6 +53,16 @@ if (build_documentation)
     find_package(Doxygen)
     if( DOXYGEN_FOUND )
         configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY)
+#        configure_file(${CMAKE_CURRENT_SOURCE_DIR}/templates/header.html ${CMAKE_CURRENT_SOURCE_DIR}/docs/header.html COPYONLY)
+##        configure_file(${CMAKE_CURRENT_SOURCE_DIR}/templates/doxygen.css ${CMAKE_CURRENT_SOURCE_DIR}/docs/doxygen.css COPYONLY)
+#        configure_file(${CMAKE_CURRENT_SOURCE_DIR}/templates/footer.html ${CMAKE_CURRENT_SOURCE_DIR}/docs/footer.html COPYONLY)
+#        configure_file(${CMAKE_CURRENT_SOURCE_DIR}/templates/doxy-boot.js ${CMAKE_CURRENT_SOURCE_DIR}/docs/doxy-boot.js COPYONLY)
+#        configure_file(${CMAKE_CURRENT_SOURCE_DIR}/templates/customdoxygen.css ${CMAKE_CURRENT_SOURCE_DIR}/docs/customdoxygen.css COPYONLY)
+
+#        configure_file(${CMAKE_CURRENT_SOURCE_DIR}/templates/jquery.smartmenus.bootstrap.css ${CMAKE_CURRENT_SOURCE_DIR}/docs/jquery.smartmenus.bootstrap.css COPYONLY)
+#        configure_file(${CMAKE_CURRENT_SOURCE_DIR}/templates/jquery.smartmenus.bootstrap.js ${CMAKE_CURRENT_SOURCE_DIR}/docs/jquery.smartmenus.bootstrap.js COPYONLY)
+#        configure_file(${CMAKE_CURRENT_SOURCE_DIR}/templates/jquery.smartmenus.js ${CMAKE_CURRENT_SOURCE_DIR}/docs/jquery.smartmenus.js COPYONLY)
+
         add_custom_target(doc ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
             WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
             COMMENT "Generating API documentation with Doxygen" VERBATIM

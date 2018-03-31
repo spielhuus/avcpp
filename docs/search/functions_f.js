@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['packet',['Packet',['../structav_1_1_packet.html#abccce49cb6e60a878077d4739e8c0a02',1,'av::Packet::Packet()'],['../structav_1_1_packet.html#afa43e9d80c36056d512d1fcdd82658c7',1,'av::Packet::Packet(Format *format)'],['../structav_1_1_packet.html#a03025564e76b7fa8fad11a7005550bed',1,'av::Packet::Packet(const Packet &amp;)=delete'],['../structav_1_1_packet.html#ab519504bf09f861e82cc06722d1aadfd',1,'av::Packet::Packet(Packet &amp;&amp;)=delete']]],
-  ['playtime',['playtime',['../classav_1_1_format.html#ad8db94ee2895b63e7934bec575bca1da',1,'av::Format']]],
-  ['pts',['pts',['../structav_1_1_packet.html#a754f067ea7005e635d2b5a412eef6e17',1,'av::Packet']]]
+  ['read',['read',['../classav_1_1_format.html#a868c2f2408deab4d0fc0c4fab0e74c22',1,'av::Format']]],
+  ['resample',['Resample',['../classav_1_1_resample.html#ac4487b2f16951f80be3212899675b58d',1,'av::Resample::Resample(ChannelLayout::Enum source_channels, SampleFormat source_sample_fmt, int source_sample_rate, ChannelLayout::Enum target_channels, SampleFormat target_sample_fmt, int target_sample_rate)'],['../classav_1_1_resample.html#a388f2aaae2364fea877b51cdb2a53d76',1,'av::Resample::resample(const uint8_t **src_data, int *src_linesize, std::function&lt; void(uint8_t **, const int, const int) &gt; fn)'],['../classav_1_1_resample.html#ae81fc3046215492854b51936cae139fc',1,'av::Resample::resample(Frame &amp;frame, int frame_size, std::function&lt; void(Frame &amp;) &gt; fn)']]]
 ];

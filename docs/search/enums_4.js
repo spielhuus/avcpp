@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sampleformat',['SampleFormat',['../namespaceav.html#ae593d8406e0f3102fcbfd5ee8931d6c1',1,'av']]]
+  ['mode',['Mode',['../classav_1_1_format.html#aa2b5fe128c6490b54ffe74425160c06a',1,'av::Format']]]
 ];

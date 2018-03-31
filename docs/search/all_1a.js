@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['zerocodec',['ZEROCODEC',['../structav_1_1_c_o_d_e_c.html#a83ac43dd91958b0392000e37fe2a8377a2d2931a0e8cee8ba75168519dc3704ca',1,'av::CODEC']]],
-  ['zlib',['ZLIB',['../structav_1_1_c_o_d_e_c.html#a83ac43dd91958b0392000e37fe2a8377a8e7e5e8adcdc78ad9aa4ad33fde65855',1,'av::CODEC']]],
-  ['zmbv',['ZMBV',['../structav_1_1_c_o_d_e_c.html#a83ac43dd91958b0392000e37fe2a8377a5614442b33c99ebc7e54a1bae70ddfa8',1,'av::CODEC']]]
+  ['zerocodec',['ZEROCODEC',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930ac3ca6d36d490add5e246d23aed2beacc',1,'av::Codec']]],
+  ['zlib',['ZLIB',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930ad86df05e9c96404cd1e2b22a6362834b',1,'av::Codec']]],
+  ['zmbv',['ZMBV',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a0b12832ceb5c39d0b25b04faf7bd2fba',1,'av::Codec']]]
 ];

@@ -97,7 +97,7 @@ TEST ( ResampleTest, resample ) {
         /* generate synthetic audio */
         fill_samples ( reinterpret_cast<double*> ( src_data.get()[0] ), src_nb_samples, src_nb_channels, src_rate, &t );
         std::error_code ret = resample.resample (
-            (const uint8_t**) ( src_data.get() ), &src_nb_samples, [&] ( uint8_t** dst_data, const int buffer_size ) {
+            (const uint8_t**) ( src_data.get() ), &src_nb_samples, [&] ( uint8_t** dst_data, const int /*nb_sammples*/, const int buffer_size ) {
             outfile.write ( reinterpret_cast< char* >( dst_data[0] ), buffer_size );
         } );
         ASSERT_TRUE ( !ret );

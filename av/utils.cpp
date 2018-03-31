@@ -23,14 +23,14 @@ extern "C" {
 #include "libavformat/avformat.h"
 #include "libavcodec/avcodec.h"
 #include "libavutil/frame.h"
-#include "libavutil/samplefmt.h"
+#include "libavutil/pixfmt.h"
+#include <libavutil/imgutils.h>
+#include <libavutil/samplefmt.h>
 #include "libavformat/avformat.h"
-
 }
 
 namespace av {
 
-/*! \internal */
 static std::once_flag _register_flag;
 struct __av_init {
 __av_init ( LOG_LEVEL log ) {
@@ -39,30 +39,29 @@ __av_init ( LOG_LEVEL log ) {
         av_register_all ();
         av_log_set_flags ( AV_LOG_SKIP_REPEATED );
         av_log_set_level ( static_cast< int > ( log ) );
-    } );
+    });
 }
 };
-const static __av_init __av( LOG_LEVEL::FATAL );
-/** \endinternal */
-
-int init() {return 0;} //TODO
+const static __av_init __av( LOG_LEVEL::ERROR );
 
 std::string str(SampleFormat format) {
+    std::string _smp_fmt;
     switch( format ) {
-    case SAMPLE_FMT_NONE: return "";
-    case SampleFormat::SAMPLE_FMT_DBL: return "dbl";
-    case SampleFormat::SAMPLE_FMT_DBLP: return "dblp";
-    case SampleFormat::SAMPLE_FMT_FLT: return "flt";
-    case SampleFormat::SAMPLE_FMT_FLTP: return "fltp";
-    case SampleFormat::SAMPLE_FMT_NB: return "nb";
-    case SampleFormat::SAMPLE_FMT_S16: return "s16";
-    case SampleFormat::SAMPLE_FMT_S16P: return "s16p";
-    case SampleFormat::SAMPLE_FMT_S32: return "s32";
-    case SampleFormat::SAMPLE_FMT_S32P: return "s32p";
-    case SampleFormat::SAMPLE_FMT_U8: return "u8";
-    case SampleFormat::SAMPLE_FMT_U8P: return "u8p";
+    case SampleFormat::SAMPLE_FMT_NONE: return "";
+    case SampleFormat::SAMPLE_FMT_DBL: _smp_fmt.append( "dbl" ); break;
+    case SampleFormat::SAMPLE_FMT_DBLP: _smp_fmt.append( "dbl" ); break;
+    case SampleFormat::SAMPLE_FMT_FLT: _smp_fmt.append( "flt" ); break;
+    case SampleFormat::SAMPLE_FMT_FLTP: _smp_fmt.append( "flt" ); break;
+    case SampleFormat::SAMPLE_FMT_NB: _smp_fmt.append( "nb" ); break;
+    case SampleFormat::SAMPLE_FMT_S16: _smp_fmt.append( "s16" ); break;
+    case SampleFormat::SAMPLE_FMT_S16P: _smp_fmt.append( "s16" ); break;
+    case SampleFormat::SAMPLE_FMT_S32: _smp_fmt.append( "s32" ); break;
+    case SampleFormat::SAMPLE_FMT_S32P: _smp_fmt.append( "s32" ); break;
+    case SampleFormat::SAMPLE_FMT_U8: _smp_fmt.append( "u8" ); break;
+    case SampleFormat::SAMPLE_FMT_U8P: _smp_fmt.append( "u8" ); break;
     }
-    return "";
+    _smp_fmt.append( AV_NE("be", "le" ) );
+    return _smp_fmt;
 }
 
 int get_bytes_per_sample( SampleFormat sample_format )
@@ -86,4 +85,156 @@ std::shared_ptr< uint8_t* > make_sample_buffer ( ChannelLayout::Enum channel_lay
     });
     return ptr;
 }
+ChannelLayout::Enum ChannelLayout::get ( uint64_t format ) {
+    switch ( format ) {
+    case AV_CH_FRONT_CENTER:
+        return ( CH_LAYOUT_MONO );
+    case AV_CH_FRONT_LEFT|AV_CH_FRONT_RIGHT:
+        return ( CH_LAYOUT_STEREO );
+    case AV_CH_LAYOUT_STEREO|AV_CH_LOW_FREQUENCY:
+        return ( CH_LAYOUT_2POINT1 );
+    case AV_CH_LAYOUT_STEREO|AV_CH_BACK_CENTER:
+        return ( CH_LAYOUT_2_1 );
+    case AV_CH_LAYOUT_STEREO|AV_CH_FRONT_CENTER:
+        return ( CH_LAYOUT_SURROUND );
+    case AV_CH_LAYOUT_SURROUND|AV_CH_LOW_FREQUENCY:
+        return ( CH_LAYOUT_3POINT1 );
+    case AV_CH_LAYOUT_SURROUND|AV_CH_BACK_CENTER:
+        return ( CH_LAYOUT_4POINT0 );
+    case AV_CH_LAYOUT_4POINT0|AV_CH_LOW_FREQUENCY:
+        return ( CH_LAYOUT_4POINT1 );
+    case AV_CH_LAYOUT_STEREO|AV_CH_SIDE_LEFT|AV_CH_SIDE_RIGHT:
+        return ( CH_LAYOUT_2_2 );
+    case AV_CH_LAYOUT_STEREO|AV_CH_BACK_LEFT|AV_CH_BACK_RIGHT:
+        return ( CH_LAYOUT_QUAD );
+    case AV_CH_LAYOUT_SURROUND|AV_CH_SIDE_LEFT|AV_CH_SIDE_RIGHT:
+        return ( CH_LAYOUT_5POINT0 );
+    case AV_CH_LAYOUT_5POINT0|AV_CH_LOW_FREQUENCY:
+        return ( CH_LAYOUT_5POINT1 );
+    case AV_CH_LAYOUT_SURROUND|AV_CH_BACK_LEFT|AV_CH_BACK_RIGHT:
+        return ( CH_LAYOUT_5POINT0_BACK );
+    case AV_CH_LAYOUT_5POINT0_BACK|AV_CH_LOW_FREQUENCY:
+        return ( CH_LAYOUT_5POINT1_BACK );
+    case AV_CH_LAYOUT_5POINT0|AV_CH_BACK_CENTER:
+        return ( CH_LAYOUT_6POINT0 );
+    case AV_CH_LAYOUT_2_2|AV_CH_FRONT_LEFT_OF_CENTER|AV_CH_FRONT_RIGHT_OF_CENTER:
+        return ( CH_LAYOUT_6POINT0_FRONT );
+    case AV_CH_LAYOUT_5POINT0_BACK|AV_CH_BACK_CENTER:
+        return ( CH_LAYOUT_HEXAGONAL );
+    case AV_CH_LAYOUT_5POINT1|AV_CH_BACK_CENTER:
+        return ( CH_LAYOUT_6POINT1 );
+    case AV_CH_LAYOUT_5POINT1_BACK|AV_CH_BACK_CENTER:
+        return ( CH_LAYOUT_6POINT1_BACK );
+    case AV_CH_LAYOUT_6POINT0_FRONT|AV_CH_LOW_FREQUENCY:
+        return ( CH_LAYOUT_6POINT1_FRONT );
+    case AV_CH_LAYOUT_5POINT0|AV_CH_BACK_LEFT|AV_CH_BACK_RIGHT:
+        return ( CH_LAYOUT_7POINT0 );
+    case AV_CH_LAYOUT_5POINT0|AV_CH_FRONT_LEFT_OF_CENTER|AV_CH_FRONT_RIGHT_OF_CENTER:
+        return ( CH_LAYOUT_7POINT0_FRONT );
+    case AV_CH_LAYOUT_5POINT1|AV_CH_BACK_LEFT|AV_CH_BACK_RIGHT:
+        return ( CH_LAYOUT_7POINT1 );
+    case AV_CH_LAYOUT_5POINT1|AV_CH_FRONT_LEFT_OF_CENTER|AV_CH_FRONT_RIGHT_OF_CENTER:
+        return ( CH_LAYOUT_7POINT1_WIDE );
+    case AV_CH_LAYOUT_5POINT1_BACK|AV_CH_FRONT_LEFT_OF_CENTER|AV_CH_FRONT_RIGHT_OF_CENTER:
+        return ( CH_LAYOUT_7POINT1_WIDE_BACK );
+    case AV_CH_LAYOUT_5POINT0|AV_CH_BACK_LEFT|AV_CH_BACK_CENTER|AV_CH_BACK_RIGHT:
+        return ( CH_LAYOUT_OCTAGONAL );
+    case AV_CH_LAYOUT_OCTAGONAL|AV_CH_WIDE_LEFT|AV_CH_WIDE_RIGHT|AV_CH_TOP_BACK_LEFT|AV_CH_TOP_BACK_RIGHT|AV_CH_TOP_BACK_CENTER|AV_CH_TOP_FRONT_CENTER|AV_CH_TOP_FRONT_LEFT|AV_CH_TOP_FRONT_RIGHT:
+        return ( CH_LAYOUT_HEXADECAGONAL );
+    case AV_CH_STEREO_LEFT|AV_CH_STEREO_RIGHT:
+        return ( CH_LAYOUT_STEREO_DOWNMIX );
+    }
+    throw( std::out_of_range( "channel layout not found." ) );
+}
+uint64_t ChannelLayout::get ( ChannelLayout::Enum format ) {
+    switch ( format ) {
+    case CH_LAYOUT_MONO:
+        return ( AV_CH_FRONT_CENTER );
+
+    case CH_LAYOUT_STEREO:
+        return ( AV_CH_FRONT_LEFT|AV_CH_FRONT_RIGHT );
+
+    case CH_LAYOUT_2POINT1:
+        return ( AV_CH_LAYOUT_STEREO|AV_CH_LOW_FREQUENCY );
+
+    case CH_LAYOUT_2_1:
+        return ( AV_CH_LAYOUT_STEREO|AV_CH_BACK_CENTER );
+
+    case CH_LAYOUT_SURROUND:
+        return ( AV_CH_LAYOUT_STEREO|AV_CH_FRONT_CENTER );
+
+    case CH_LAYOUT_3POINT1:
+        return ( AV_CH_LAYOUT_SURROUND|AV_CH_LOW_FREQUENCY );
+
+    case CH_LAYOUT_4POINT0:
+        return ( AV_CH_LAYOUT_SURROUND|AV_CH_BACK_CENTER );
+
+    case CH_LAYOUT_4POINT1:
+        return ( AV_CH_LAYOUT_4POINT0|AV_CH_LOW_FREQUENCY );
+
+    case CH_LAYOUT_2_2:
+        return ( AV_CH_LAYOUT_STEREO|AV_CH_SIDE_LEFT|AV_CH_SIDE_RIGHT );
+
+    case CH_LAYOUT_QUAD:
+        return ( AV_CH_LAYOUT_STEREO|AV_CH_BACK_LEFT|AV_CH_BACK_RIGHT );
+
+    case CH_LAYOUT_5POINT0:
+        return ( AV_CH_LAYOUT_SURROUND|AV_CH_SIDE_LEFT|AV_CH_SIDE_RIGHT );
+
+    case CH_LAYOUT_5POINT1:
+        return ( AV_CH_LAYOUT_5POINT0|AV_CH_LOW_FREQUENCY );
+
+    case CH_LAYOUT_5POINT0_BACK:
+        return ( AV_CH_LAYOUT_SURROUND|AV_CH_BACK_LEFT|AV_CH_BACK_RIGHT );
+
+    case CH_LAYOUT_5POINT1_BACK:
+        return ( AV_CH_LAYOUT_5POINT0_BACK|AV_CH_LOW_FREQUENCY );
+
+    case CH_LAYOUT_6POINT0:
+        return ( AV_CH_LAYOUT_5POINT0|AV_CH_BACK_CENTER );
+
+    case CH_LAYOUT_6POINT0_FRONT:
+        return ( AV_CH_LAYOUT_2_2|AV_CH_FRONT_LEFT_OF_CENTER|AV_CH_FRONT_RIGHT_OF_CENTER );
+
+    case CH_LAYOUT_HEXAGONAL   :
+        return ( AV_CH_LAYOUT_5POINT0_BACK|AV_CH_BACK_CENTER );
+
+    case CH_LAYOUT_6POINT1:
+        return ( AV_CH_LAYOUT_5POINT1|AV_CH_BACK_CENTER );
+
+    case CH_LAYOUT_6POINT1_BACK:
+        return ( AV_CH_LAYOUT_5POINT1_BACK|AV_CH_BACK_CENTER );
+
+    case CH_LAYOUT_6POINT1_FRONT:
+        return ( AV_CH_LAYOUT_6POINT0_FRONT|AV_CH_LOW_FREQUENCY );
+
+    case CH_LAYOUT_7POINT0:
+        return ( AV_CH_LAYOUT_5POINT0|AV_CH_BACK_LEFT|AV_CH_BACK_RIGHT );
+
+    case CH_LAYOUT_7POINT0_FRONT:
+        return ( AV_CH_LAYOUT_5POINT0|AV_CH_FRONT_LEFT_OF_CENTER|AV_CH_FRONT_RIGHT_OF_CENTER );
+
+    case CH_LAYOUT_7POINT1:
+        return ( AV_CH_LAYOUT_5POINT1|AV_CH_BACK_LEFT|AV_CH_BACK_RIGHT );
+
+    case CH_LAYOUT_7POINT1_WIDE:
+        return ( AV_CH_LAYOUT_5POINT1|AV_CH_FRONT_LEFT_OF_CENTER|AV_CH_FRONT_RIGHT_OF_CENTER );
+
+    case CH_LAYOUT_7POINT1_WIDE_BACK:
+        return ( AV_CH_LAYOUT_5POINT1_BACK|AV_CH_FRONT_LEFT_OF_CENTER|AV_CH_FRONT_RIGHT_OF_CENTER );
+
+    case CH_LAYOUT_OCTAGONAL   :
+        return ( AV_CH_LAYOUT_5POINT0|AV_CH_BACK_LEFT|AV_CH_BACK_CENTER|AV_CH_BACK_RIGHT );
+
+    case CH_LAYOUT_HEXADECAGONAL:
+        return ( AV_CH_LAYOUT_OCTAGONAL|AV_CH_WIDE_LEFT|AV_CH_WIDE_RIGHT|AV_CH_TOP_BACK_LEFT|AV_CH_TOP_BACK_RIGHT|AV_CH_TOP_BACK_CENTER|AV_CH_TOP_FRONT_CENTER|AV_CH_TOP_FRONT_LEFT|AV_CH_TOP_FRONT_RIGHT );
+
+    case CH_LAYOUT_STEREO_DOWNMIX:
+        return ( AV_CH_STEREO_LEFT|AV_CH_STEREO_RIGHT );
+    }
+    throw( std::out_of_range( "channel layout not found." ) );
+}
+std::string str( PixelFormat format )
+{return av_get_pix_fmt_name( static_cast< AVPixelFormat >( format ) ); }
+
 }//namespace av

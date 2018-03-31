@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['jacosub',['JACOSUB',['../structav_1_1_c_o_d_e_c.html#a83ac43dd91958b0392000e37fe2a8377a94ffbd632ddda7a66f4a4fe79dfcef23',1,'av::CODEC']]],
-  ['jpeg2000',['JPEG2000',['../structav_1_1_c_o_d_e_c.html#a83ac43dd91958b0392000e37fe2a8377ac1c3280326864bbf12ff6734870d3f68',1,'av::CODEC']]],
-  ['jpegls',['JPEGLS',['../structav_1_1_c_o_d_e_c.html#a83ac43dd91958b0392000e37fe2a8377ab5fe698a6f7c7239864407e257b703bb',1,'av::CODEC']]],
-  ['jv',['JV',['../structav_1_1_c_o_d_e_c.html#a83ac43dd91958b0392000e37fe2a8377aca60e699d306991d111fb9ccec3cd906',1,'av::CODEC']]]
+  ['jacosub',['JACOSUB',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930ad4dcf4da2721314de2d06d51c4c0b409',1,'av::Codec']]],
+  ['jpeg2000',['JPEG2000',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a4dc717ffa5d7b96a9e7d6ab09514d56b',1,'av::Codec']]],
+  ['jpegls',['JPEGLS',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930acd0e0490a9b476bb5f79aba9edb1f34a',1,'av::Codec']]],
+  ['jv',['JV',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a73a2be494b8d2187841fe7113acaac5a',1,'av::Codec']]]
 ];

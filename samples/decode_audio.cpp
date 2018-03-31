@@ -16,52 +16,65 @@
 #include <fstream>
 #include <iostream>
 
-#include "../av/format.h"
-#include "../av/frame.h"
-#include "../av/packet.h"
-#include "../av/utils.h"
+#include "../av/av.h"
 
 int main ( int argc, char* argv[] ) {
 
     if ( argc <= 2 ) {
-        fprintf ( stderr, "Usage: %s <input file> <output file>\n", argv[0] );
-        exit ( 0 );
+        std::cout << "Usage: " << argv[0] << "<input file> <output file>\n";
+        return ( 0 );
     }
 
+    //open format
     av::Format format ( argv[1] );
 
     if ( !!format ) {
         std::cout << "Error: " << format.errc().message() << std::endl;
-        exit ( 1 );
+        return ( format.errc().value() );
     }
 
+    //check of there is only one audio stream in input.
+    if ( 1 != std::count_if ( format.begin(), format.end(), av::is_audio ) ) {
+        std::cout << "Error: file contains more then one audio stream." << std::endl;
+        return ( 1 );
+    }
+
+    std::cout << "Decode Audio: " << format; //output file information
+
+    //open output file
     std::ofstream outfile ( argv[2] );
-    auto metadata_ = format.metadata();
-    std::cout << "Decode: " << argv[1] << ", " <<
-              "playtime: " << format.playtime() << "\n" <<
-              metadata_ << "\n";
 
-    auto _codec = std::find_if ( format.begin(), format.end(), av::is_audio );
-    std::cout << * ( *_codec ) << std::endl;
+    //read all packages from format
+    std::error_code errc;
 
-    const int _data_size = av::get_bytes_per_sample( (*_codec)->sample_fmt() );
+    if ( ( errc = format.read ( [&] ( av::Packet& package ) {
 
-    std::error_code errc = format.read ( [&] ( av::Packet& package ) {
-        if ( package.stream_index() == ( *_codec )->index() ) {
-            ( *_codec )->decode ( package, [&] ( av::Frame& frame ) {
+    //decode if package contains audio data
+    auto codec = format.at ( static_cast< size_t > ( package.stream_index() ) );
+
+        if ( av::is_audio ( codec ) ) {
+            errc = codec->decode ( package, [&] ( av::Frame& frame ) {
                 //write to out file
-                if ( ( *_codec )->is_planar() ) {
-                    for ( int i = 0; i < frame.nb_samples(); i++ )
-                        for ( int ch = 0; ch < ( *_codec )->channels(); ch++ )
-                        { outfile.write ( reinterpret_cast< char* > ( frame.data ( ch ) + _data_size *i ), _data_size ); }
-
-                } else {
-                    outfile.write ( reinterpret_cast< char* > ( frame.extended_data() [0] ), frame.linesize ( 0 ) );
-                }
+                av::utils::write_audio ( outfile, codec, frame );
             } );
+
+            //check for error
+            if ( !!errc && errc.value() != av::AV_EOF && errc.value() != EAGAIN )
+            { std::cout << errc.message() << std::endl; }
         }
-    } );
-    std::cout << errc.message() << std::endl;
-    outfile.close();
+
+        //check if complete file was read.
+    } ) ).value() != av::AV_EOF ) {
+        std::cout << errc.message() << std::endl;
+        return errc.value();
+    }
+
+    //output information how to play the result
+    auto codec_ = *std::find_if ( format.begin(), format.end(), av::is_audio );
+    std::cout << "Play the output audio file with the command:\n" <<
+              "ffplay -f " << str ( codec_->sample_fmt() ) <<
+              " -ac " << codec_->channels() <<
+              " -ar " << codec_->sample_rate() <<
+              " '" << argv[2] << "'\n";
     return 0;
 }

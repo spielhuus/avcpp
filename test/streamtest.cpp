@@ -36,7 +36,7 @@ TEST( StreamTest, open_audio_file ) {
     ASSERT_FALSE( _format );
     int audio=0, other=0;
     for( auto& __stream : _format ) {
-        if(__stream->codec_type() == CODEC_TYPE::AUDIO ) ++audio;
+        if(__stream->codec_type() == Codec::TYPE::AUDIO ) ++audio;
         else ++other;
     }
     EXPECT_EQ( 1, audio );
@@ -51,8 +51,8 @@ TEST( StreamTest, open_audio_decoder ) {
     int audio=0, other=0;
 
     for( auto& __codec : _format ) {
-        if(__codec->codec_type() == CODEC_TYPE::AUDIO ) {
-            EXPECT_EQ( CODEC::FLAC, __codec->codec() );
+        if(__codec->codec_type() == Codec::TYPE::AUDIO ) {
+            EXPECT_EQ( Codec::FLAC, __codec->codec() );
             ++audio;
         } else ++other;
     }

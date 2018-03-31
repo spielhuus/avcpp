@@ -21,7 +21,7 @@ int main(int argc, char* argv[]) {
     }
 
     std::error_code errc;
-    av::Codec _codec( av::CODEC::MP2, av::SAMPLE_FMT_S16, av::Options( { { "ar", 44100 }, {"ac", 2}, {"ab", 64000} } ) );
+    av::Codec _codec( av::Codec::MP2, av::SampleFormat::SAMPLE_FMT_S16, av::Options( { { "ar", 44100 }, {"ac", 2}, {"ab", 64000} } ) );
     if( !!_codec ) {
         std::cout << _codec.errc().message() << std::endl;
         return 1;

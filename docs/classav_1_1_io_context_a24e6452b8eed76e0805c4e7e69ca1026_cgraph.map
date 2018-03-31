@@ -1,8 +1,6 @@
 <map id="av::IoContext::IoContext" name="av::IoContext::IoContext">
-<area shape="rect" id="node2" href="$classav_1_1_io_context.html#a589c6ed33e725a44925641c20e4fff50" title="av::IoContext::operator=" alt="" coords="236,5,419,32"/>
-<area shape="rect" id="node3" href="$classav_1_1_io_context.html#a00dc4003b82b3a07a5a55d8bbadd3faf" title="av::IoContext::~IoContext" alt="" coords="232,56,423,83"/>
-<area shape="rect" id="node4" href="$classav_1_1_io_context.html#a029866eac4ae9e1ca27672715bf47b4a" title="av::IoContext::init\l_input_format_context" alt="" coords="243,173,412,214"/>
-<area shape="rect" id="node7" href="$classav_1_1_io_context.html#a44a97b1f71e037c14fb1acbd617f0d46" title="av::IoContext::init\l_output_format_context" alt="" coords="238,107,417,149"/>
-<area shape="rect" id="node5" href="$namespaceav.html#ae139ad8f84a0e087aa4d3c9c9e763cec" title="av::write_callback" alt="" coords="481,123,619,149"/>
-<area shape="rect" id="node6" href="$namespaceav.html#a24e72910ad0405124d9e96adfad3b792" title="av::make_error_code" alt="" coords="471,180,629,207"/>
+<area shape="rect" id="node2" href="$classav_1_1_io_context.html#a589c6ed33e725a44925641c20e4fff50" title="av::IoContext::operator=" alt="" coords="225,5,389,32"/>
+<area shape="rect" id="node3" href="$classav_1_1_io_context.html#a00dc4003b82b3a07a5a55d8bbadd3faf" title="av::IoContext::~IoContext" alt="" coords="220,56,395,83"/>
+<area shape="rect" id="node4" href="$classav_1_1_io_context.html#a029866eac4ae9e1ca27672715bf47b4a" title="av::IoContext::init\l_input_format_context" alt="" coords="232,107,383,149"/>
+<area shape="rect" id="node5" href="$classav_1_1_io_context.html#a44a97b1f71e037c14fb1acbd617f0d46" title="av::IoContext::init\l_output_format_context" alt="" coords="228,173,387,214"/>
 </map>

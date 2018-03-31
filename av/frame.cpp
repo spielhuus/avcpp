@@ -22,15 +22,15 @@ extern "C" {
 #include "averrc.h"
 
 namespace av {
-Frame::Frame ( int frame_size, int sample_fmt, uint64_t channel_layout, int  sample_rate ) {
-    frame_ = av_frame_alloc();
+Frame::Frame ( int nb_samples, SampleFormat sample_fmt, ChannelLayout::Enum channel_layout, int  sample_rate ) {
 
+    frame_ = av_frame_alloc();
     if ( ! frame_ )
     {throw make_error_code( ENOMEM );}
 
-    frame_->nb_samples     = frame_size;
+    frame_->nb_samples     = nb_samples;
     frame_->format         = sample_fmt;
-    frame_->channel_layout = channel_layout;
+    frame_->channel_layout = ChannelLayout::get( channel_layout );
     frame_->sample_rate    = sample_rate;
 
     /* allocate the data buffers */

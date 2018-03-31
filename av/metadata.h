@@ -26,7 +26,10 @@
 namespace av {
 
 /**
- * @brief The Metadata struct
+ * @brief The Metadata information.
+ *
+ * The av::Metadata class provides access to a subset of the metadata information.
+ * The provided tags are listen in av::Metadata::Enum.
  *
  * <p>Media tag description and comparison table from http://age.hobba.nl/audio/tag_frame_reference.html</p>
  *
@@ -41,15 +44,15 @@ public:
     };
     /** @brief set metadata with value by key. */
     void set (
-        const char* name /** @param name the metadata key */,
-        const char* value /** @param value the value for the metadata */
+        /** The metadata key */ const char* name,
+        /** The value for the metadata */ const char* value
     );
     /** @brief get the metadata key type as string.
         @return the ffmpeg key as string. */
-    static std::string name ( Enum tag /** @param tag the key to get as string. */ );
+    static std::string name ( /** The key to get as string. */ Enum tag );
     /** @brief get the metadata value by key.
         @return the value referenced by key. */
-    std::string& get ( const Enum& key /** @param key the key for the metadata element. */ );
+    std::string& get ( /** The key for the metadata element. */ const Enum& key );
     /** @brief get keys of valid metadata elments.
         @return the keys of the defined metadata elements */
     std::vector< Enum > tag_names ();
@@ -61,6 +64,9 @@ public:
 
         return stream;
     }
+
+    size_t size() { return tags.size(); }
+
 private:
     std::map< Enum, std::string > tags;
 };

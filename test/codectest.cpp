@@ -96,9 +96,9 @@ TEST(CodecTest, iterator) {
 
     int audio_= 0; int image_= 0; int other_ = 0;
     for( auto& _codec : _format ) {
-        if( (*_codec).codec_type() == CODEC_TYPE::AUDIO ) {
+        if( (*_codec).codec_type() == Codec::TYPE::AUDIO ) {
             audio_+=1;
-        } else if( (*_codec).codec_type() == CODEC_TYPE::VIDEO ) {
+        } else if( (*_codec).codec_type() == Codec::TYPE::VIDEO ) {
             image_+=1;
         } else other_+=1;
     }
@@ -124,13 +124,20 @@ TEST(CodecTest, const_iterator_codec_str) {
 
     auto codec_ = std::find_if( _format.begin(), _format.end(), is_audio );
     _ss << *(*codec_);
-    EXPECT_EQ( "AUDIO:flac (0 kb/s, 44100 hz, 2 channel(s), 16 bps, 0x0 px)", _ss.str() );
+    EXPECT_EQ( "AUDIO:flac (0 kb/s, 44100 hz, 2 channel(s), s16le, 16 bps, 0x0 px)", _ss.str() );
 }
 TEST(CodecTest, OpenCodecNotFound ) {
     Format format_( FILE_FLAC );
     EXPECT_TRUE( !format_ );
     auto codec = std::find_if( format_.begin(), format_.end(), is_data );
     EXPECT_EQ( codec, format_.end() );
+}
+TEST(CodecTest, count_types ) {
+    Format format_( FILE_FLAC );
+    EXPECT_TRUE( !format_ );
+
+    EXPECT_EQ(1, std::count_if( format_.begin(), format_.end(), is_audio ) );
+    EXPECT_EQ(5, std::count_if( format_.begin(), format_.end(), is_video ) );
 }
 TEST(CodecTest, OpenCodecs) {
     Format format_( FILE_FLAC );
@@ -139,11 +146,11 @@ TEST(CodecTest, OpenCodecs) {
     for( auto& codec : format_ ) {
         EXPECT_EQ( std::error_code().message(), (*codec).errc().message() );
         if( count == 0 ) {
-            EXPECT_EQ( CODEC_TYPE::AUDIO, (*codec).codec_type() );
-            EXPECT_EQ( CODEC::FLAC, (*codec).codec() );
+            EXPECT_EQ( Codec::TYPE::AUDIO, (*codec).codec_type() );
+            EXPECT_EQ( Codec::FLAC, (*codec).codec() );
         } else {
-            EXPECT_EQ( CODEC_TYPE::VIDEO, (*codec).codec_type() );
-            EXPECT_EQ( CODEC::MJPEGB, (*codec).codec() );
+            EXPECT_EQ( Codec::TYPE::VIDEO, (*codec).codec_type() );
+            EXPECT_EQ( Codec::MJPEGB, (*codec).codec() );
         }
         ++count;
     }
@@ -156,8 +163,8 @@ TEST(CodecTest, OpenAudioCodecFlac) {
     auto codec = std::find_if( format_.begin(), format_.end(), is_audio );
     EXPECT_EQ( std::error_code().message(), (*codec)->errc().message() );
 
-    EXPECT_EQ( CODEC_TYPE::AUDIO, (*codec)->codec_type() );
-    EXPECT_EQ( CODEC::FLAC, (*codec)->codec() );
+    EXPECT_EQ( Codec::TYPE::AUDIO, (*codec)->codec_type() );
+    EXPECT_EQ( Codec::FLAC, (*codec)->codec() );
     //get codec information
     EXPECT_EQ ( 0, (*codec)->bitrate() );
     EXPECT_EQ ( 44100, (*codec)->sample_rate() );
@@ -172,8 +179,8 @@ TEST(CodecTest, OpenAudioCodecMp3) {
     auto codec = std::find_if( format_.begin(), format_.end(), is_audio );
     EXPECT_EQ( std::error_code().message(), (*codec)->errc().message() );
 
-    EXPECT_EQ( CODEC_TYPE::AUDIO, (*codec)->codec_type() );
-    EXPECT_EQ( CODEC::MP3, (*codec)->codec() );
+    EXPECT_EQ( Codec::TYPE::AUDIO, (*codec)->codec_type() );
+    EXPECT_EQ( Codec::MP3, (*codec)->codec() );
     //get codec information
     EXPECT_EQ ( 64075, (*codec)->bitrate() );
     EXPECT_EQ ( 44100, (*codec)->sample_rate() );
@@ -196,9 +203,9 @@ TEST( CodecTest, ParseFlacSample) {
 }
 
 TEST(CodecTest, mp3_encoder) {
-    av::Codec _target_codec( av::CODEC::MP3, av::SAMPLE_FMT_FLTP, Options( { { "ar", 8000 }, {"ac", 2}, {"b", 128000} } ) );
+    av::Codec _target_codec( av::Codec::MP3, av::SampleFormat::SAMPLE_FMT_FLTP, Options( { { "ar", 8000 }, {"ac", 2}, {"b", 128000} } ) );
     EXPECT_EQ( "Success", _target_codec.errc().message() );
-    EXPECT_EQ( av::CODEC::MP3, _target_codec.codec() );
+    EXPECT_EQ( av::Codec::MP3, _target_codec.codec() );
     EXPECT_EQ( 128000, _target_codec.bitrate() );
     EXPECT_EQ( 2, _target_codec.channels() );
     EXPECT_EQ( 0, _target_codec.bits_per_sample() );
@@ -206,9 +213,9 @@ TEST(CodecTest, mp3_encoder) {
 }
 
 TEST(CodecTest, flac_encoder) {
-    av::Codec _target_codec( av::CODEC::FLAC, av::SAMPLE_FMT_S32, Options( { {"ac", "2"}, {"ar", "96000" }, {"bits_per_raw_sample", "24"} } ) );
+    av::Codec _target_codec( Codec::FLAC, av::SampleFormat::SAMPLE_FMT_S32, Options( { {"ac", "2"}, {"ar", "96000" }, {"bits_per_raw_sample", "24"} } ) );
     EXPECT_TRUE( !_target_codec );
-        EXPECT_EQ( av::CODEC::FLAC, _target_codec.codec() );
+        EXPECT_EQ( Codec::FLAC, _target_codec.codec() );
     EXPECT_EQ( 2, _target_codec.channels() );
     EXPECT_EQ( 24, _target_codec.bits_per_sample() );
     EXPECT_EQ( 96000, _target_codec.sample_rate() );

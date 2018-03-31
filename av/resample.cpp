@@ -27,22 +27,20 @@ extern "C" {
 
 namespace av {
 
-/** \internal */
 static int add_samples_to_fifo ( AVAudioFifo *fifo,
-                                 uint8_t **converted_input_samples,
-                                 const int frame_size ) {
+                                 uint8_t **samples,
+                                 const int nb_samples ) {
     int error;
 
-    if ( ( error = av_audio_fifo_realloc ( fifo, av_audio_fifo_size ( fifo ) + frame_size ) ) < 0 )
+    if ( ( error = av_audio_fifo_realloc ( fifo, av_audio_fifo_size ( fifo ) + nb_samples ) ) < 0 )
     {return error;}
 
     /* Store the new samples in the FIFO buffer. */
-    if ( av_audio_fifo_write ( fifo, ( void ** ) converted_input_samples,
-                               frame_size ) < frame_size )
+    if ( av_audio_fifo_write ( fifo, ( void ** ) samples,
+                               nb_samples ) < nb_samples )
     {return AVERROR_EXIT;}
     return 0;
 }
-/** \endinternal */
 
 Resample::Resample ( ChannelLayout::Enum source_channels, SampleFormat source_sample_fmt, int source_sample_rate,
                      ChannelLayout::Enum target_channels, SampleFormat target_sample_fmt, int target_sample_rate ) :
@@ -94,44 +92,54 @@ Resample::~Resample() {
 std::error_code Resample::resample ( Frame& frame, int frame_size, std::function< void ( Frame& ) > callback ) {
 
     int _size = frame.linesize ( 0 );
-    return resample ( (const uint8_t**) frame.frame_->extended_data, &frame_size, [&] ( uint8_t** data, const int size ) {
-
-        std::cout << "resampled, size: " << size << std::endl;
+    return resample ( (const uint8_t**) frame.frame_->extended_data, &frame_size, [&] ( uint8_t** data, const int nb_samples, const int /*size*/ ) {
 
         int ret;
 
-        if ( ( ret = add_samples_to_fifo ( fifo_, data, frame.nb_samples() ) ) < 0 )
+        if ( ( ret = add_samples_to_fifo ( fifo_, data, nb_samples ) ) < 0 )
         { return make_error_code ( ret ); }
 
-        const int _frame_size = FFMIN ( av_audio_fifo_size ( fifo_ ), size );
+        const int _frame_size = FFMIN ( av_audio_fifo_size ( fifo_ ), frame_size/*size*/ );
+
+        if (av_audio_fifo_size(fifo_) >= _frame_size) {
+
         av::Frame output_frame ( _frame_size, target_sample_format_, target_channels_, target_sample_rate_ );
 
-        if ( av_audio_fifo_read ( fifo_, ( void ** ) output_frame.frame_->data, _frame_size ) < _frame_size )
-        {return make_error_code ( AVERROR_EXIT );}
+        if ( ( ret = av_audio_fifo_read ( fifo_, ( void ** ) output_frame.frame_->data, _frame_size ) ) < _frame_size )
+        {
+            std::cout << "Error in Fifo read:" << make_error_code(ret).message() << std::endl;
+            return make_error_code ( AVERROR_EXIT );
 
-        callback ( output_frame );
+        }
+
+callback ( output_frame );
+        }
         return std::error_code();
     } );
 }
 
-std::error_code Resample::resample ( const uint8_t **src_data, int* src_nb_samples, std::function< void ( uint8_t**, const int ) > fn ) {
+std::error_code Resample::resample ( const uint8_t **src_data, int* src_nb_samples,
+                                     std::function< void ( uint8_t**, const int, const int ) > fn ) {
 
     int ret;
 
     //grow buffer when needed
-    dst_nb_samples = av_rescale_rnd ( swr_get_delay ( resample_context_, source_sample_rate_ ) +
+    int64_t dst_nb_samples = av_rescale_rnd ( swr_get_delay ( resample_context_, source_sample_rate_ ) +
                                       *src_nb_samples, target_sample_rate_, source_sample_rate_, AV_ROUND_UP );
 
     if ( dst_nb_samples > max_dst_nb_samples ) {
         if ( dst_data == nullptr ) {
+            max_dst_nb_samples = dst_nb_samples =
+                av_rescale_rnd( *src_nb_samples, target_sample_rate_, source_sample_rate_, AV_ROUND_UP );
+
             dst_nb_channels = av_get_channel_layout_nb_channels ( ChannelLayout::get ( target_channels_ ) );
             ret = av_samples_alloc_array_and_samples ( &dst_data, &dst_linesize, dst_nb_channels,
-                    dst_nb_samples, static_cast< AVSampleFormat > ( target_sample_format_ ), 0 );
+                    static_cast< int >( dst_nb_samples ), static_cast< AVSampleFormat > ( target_sample_format_ ), 0 );
 
         } else {
             av_freep ( &dst_data[0] );
-            ret = av_samples_alloc ( dst_data, &dst_linesize, dst_nb_channels,
-                                     dst_nb_samples, static_cast< AVSampleFormat > ( target_sample_format_ ), 1 );
+            ret = av_samples_alloc ( dst_data, &dst_linesize, dst_nb_channels, static_cast< int >( dst_nb_samples ),
+                                     static_cast< AVSampleFormat > ( target_sample_format_ ), 1 );
         }
 
         if ( ret < 0 )
@@ -141,11 +149,11 @@ std::error_code Resample::resample ( const uint8_t **src_data, int* src_nb_sampl
     }
 
     //convert to destination format
-    if ( ( ret = swr_convert ( resample_context_, dst_data, dst_nb_samples, ( const uint8_t** ) src_data, *src_nb_samples )  ) < 0 )
+    if ( ( ret = swr_convert ( resample_context_, dst_data, dst_nb_samples, src_data, *src_nb_samples )  ) < 0 )
     { return make_error_code ( ret ); }
 
     //calculate dstestination buffer size
-    dst_bufsize_ = av_samples_get_buffer_size (
+    int dst_bufsize_ = av_samples_get_buffer_size (
                        &dst_linesize, dst_nb_channels,
                        ret, static_cast< AVSampleFormat > ( target_sample_format_ ), 1 );
 
@@ -153,7 +161,7 @@ std::error_code Resample::resample ( const uint8_t **src_data, int* src_nb_sampl
         return make_error_code ( dst_bufsize_ );
     }
 
-    fn ( dst_data, dst_bufsize_ );
+    fn ( dst_data, dst_nb_samples, dst_bufsize_ );
     return std::error_code();
 }
 

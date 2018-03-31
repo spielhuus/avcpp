@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['_5f_5fav_5finit',['__av_init',['../structav_1_1____av__init.html',1,'av']]]
+  ['channellayout',['ChannelLayout',['../structav_1_1_channel_layout.html',1,'av']]],
+  ['codec',['Codec',['../classav_1_1_codec.html',1,'av']]]
 ];

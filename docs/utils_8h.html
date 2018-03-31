@@ -64,51 +64,327 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
+<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">utils.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="constant_8h_source.html">constant.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;memory&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for utils.h:</div>
 <div class="dyncontent">
-<div class="center"><img src="utils_8h__incl.png" border="0" usemap="#_2home_2etienne_2_projects_2avcpp_2av_2utils_8h" alt=""/></div>
-<map name="_2home_2etienne_2_projects_2avcpp_2av_2utils_8h" id="_2home_2etienne_2_projects_2avcpp_2av_2utils_8h">
-<area shape="rect" id="node2" href="constant_8h.html" title="constant.h" alt="" coords="88,95,179,121"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="utils_8h__incl.svg" width="167" height="127"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><img src="utils_8h__dep__incl.png" border="0" usemap="#_2home_2etienne_2_projects_2avcpp_2av_2utils_8hdep" alt=""/></div>
-<map name="_2home_2etienne_2_projects_2avcpp_2av_2utils_8hdep" id="_2home_2etienne_2_projects_2avcpp_2av_2utils_8hdep">
-<area shape="rect" id="node2" href="codec_8cpp.html" title="/home/etienne/Projects\l/avcpp/av/codec.cpp" alt="" coords="5,95,177,136"/>
-<area shape="rect" id="node3" href="utils_8cpp.html" title="/home/etienne/Projects\l/avcpp/av/utils.cpp" alt="" coords="201,95,373,136"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="utils_8h__dep__incl.svg" width="372" height="410"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="utils_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structav_1_1_channel_layout.html">av::ChannelLayout</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Channel Layout enum.  <a href="structav_1_1_channel_layout.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespaceav"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceav.html">av</a></td></tr>
 <tr class="memdesc:namespaceav"><td class="mdescLeft">&#160;</td><td class="mdescRight">av namespace <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:a2bfba3b34ce13b5d44f97492550827e5"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceav.html#a2bfba3b34ce13b5d44f97492550827e5">av::LOG_LEVEL</a> { <br />
+&#160;&#160;<a class="el" href="namespaceav.html#a2bfba3b34ce13b5d44f97492550827e5a1b4462755110ae77a3bb7e319f6544fa">av::LOG_LEVEL::QUIET</a> =-8, 
+<a class="el" href="namespaceav.html#a2bfba3b34ce13b5d44f97492550827e5a98a11b6a207bf1c64618790847ab8055">av::LOG_LEVEL::PANIC</a> =0, 
+<a class="el" href="namespaceav.html#a2bfba3b34ce13b5d44f97492550827e5a19da7170bea36556dde582519795f3fc">av::LOG_LEVEL::FATAL</a> =8, 
+<a class="el" href="namespaceav.html#a2bfba3b34ce13b5d44f97492550827e5abb1ca97ec761fc37101737ba0aa2e7c5">av::LOG_LEVEL::ERROR</a> =16, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#a2bfba3b34ce13b5d44f97492550827e5a059e9861e0400dfbe05c98a841f3f96b">av::LOG_LEVEL::WARNING</a> =24, 
+<a class="el" href="namespaceav.html#a2bfba3b34ce13b5d44f97492550827e5a551b723eafd6a31d444fcb2f5920fbd3">av::LOG_LEVEL::INFO</a> =32, 
+<a class="el" href="namespaceav.html#a2bfba3b34ce13b5d44f97492550827e5aec1f06e9fb39c4ef0729b3c7c9c8e8cc">av::LOG_LEVEL::VERBOSE</a> =40, 
+<a class="el" href="namespaceav.html#a2bfba3b34ce13b5d44f97492550827e5a6e0d2a351777f8e1349133544e885f8a">av::LOG_LEVEL::DEBUGGING</a> =48, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#a2bfba3b34ce13b5d44f97492550827e5a2d3e4144aa384b18849ab9a8abad74d6">av::LOG_LEVEL::TRACE</a> =56
+<br />
+ }<tr class="memdesc:a2bfba3b34ce13b5d44f97492550827e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The loglevel enum.  <a href="namespaceav.html#a2bfba3b34ce13b5d44f97492550827e5">More...</a><br /></td></tr>
+</td></tr>
+<tr class="separator:a2bfba3b34ce13b5d44f97492550827e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af85b09738c8c19633a36897151c331ae"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331ae">av::PixelFormat</a> { <br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea3475d41e0fedfbe450c1436942deeb4a">av::NONE</a> = -1, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea73d5520c347a6de838321616220b5d3b">av::YUV420P</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeab035906e3cb1429449a3fe07e79e4853">av::YUYV422</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeac029b69e7f2f48a4514d54d083b1ad92">av::RGB24</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea990663fe5b937b3690b5b7cd6f39d976">av::BGR24</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea0577e2187b7bb1ccfe8e4bf88dbae2ee">av::YUV422P</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeaa33b45f0ca04a6aaf807270c60de8537">av::YUV444P</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea2badb4f747ab58684fda733e62f206aa">av::YUV410P</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea8ec09f1c77f99b520895f174a28459ea">av::YUV411P</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea4146438a625d16b9a4634a1452fc3fd6">av::GRAY8</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea2bb136e0de324d779221b64de3081e16">av::MONOWHITE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea437471746d3ff857c938e0774dc29687">av::MONOBLACK</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aead43e50cac3a236686cf3c43ed917ae61">av::PAL8</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea6ef11bb876f7aca76f5ba54e55d812ee">av::YUVJ420P</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeabb40a70c1e5441a50648280446356bf6">av::YUVJ422P</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea8653b0afc7393bf127b74322b01aff32">av::YUVJ444P</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeaadb807ad03a55fb1091bb690bbf781b7">av::UYVY422</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea9de0244a70372efcb64709164c1423ca">av::UYYVYY411</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea2f4adcdafef07be8b93a5213a6ce492a">av::BGR8</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea7d36e68618619b16af2953edb77e8291">av::BGR4</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea6d35ea4e6faf7fa6e08231da9475fe13">av::BGR4_BYTE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea720fb595d256e4ac12c34c06b490912f">av::RGB8</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea858fe784cbc0cf44d1ecd03cca9278ea">av::RGB4</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aead6f14b3fff129365b5c3fbad7482bc0d">av::RGB4_BYTE</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea639e49561dc14fef099f76208f037140">av::NV12</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea622fb3e0176062f997035475c32d550d">av::NV21</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea6bf556555ea006408cbfb41a764da634">av::ARGB</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea07b4d0b11865559d96c127fac2dc1de1">av::RGBA</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea853dfd2078baa5702fc53e3d6daa2064">av::ABGR</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeaa6f0f31a08cad2f448478d077ed6f62b">av::BGRA</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea919183b81f04b1cd2b8ab32d3c348a52">av::GRAY16BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea0465f7cba6c2a61433deb29d2c05b964">av::GRAY16LE</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea1459c35377ae18988376f4969400fa50">av::YUV440P</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aead174ffe1708134c17bae39f98c264a3f">av::YUVJ440P</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea996eec2178e041f5f067fd4f1febecdd">av::YUVA420P</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeabd57a3955be54587a42142f3ab5377d4">av::RGB48BE</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea9b7f332fe87e12e19497637992dab96d">av::RGB48LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea869d0316098f377e151992a9778b9fe2">av::RGB565BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeae9fd15662fab45fed7d8c43228145ee3">av::RGB565LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea81a97c53f17a3b81b09427936e1a3567">av::RGB555BE</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea7310b713f0de9fb09db7ea855f97cb69">av::RGB555LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeaddecba1452c7ee98e0648ba55b01a8a3">av::BGR565BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea33f9863bb091c6baace18291972c12f0">av::BGR565LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea854a04ed23efedc42bcbf7c268d9268e">av::BGR555BE</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea01992a379d399114d57a74afbe72714c">av::BGR555LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea872d643a1bdb9f410005066d949b0ba6">av::VAAPI</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeab1b014fb9a8a6cfedcffb60cf9bda3a0">av::YUV420P16LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea734bff2c336e37b1a7416226f7a926e4">av::YUV420P16BE</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea088ffd41970e4cc0baff88ca7f6ebf04">av::YUV422P16LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea54047e8691a85dd60b8a29bb3787cde3">av::YUV422P16BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea745084059f851c15d14ee75eeae7b59c">av::YUV444P16LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeabddfb85adc69d0e2e1d4893dc1204c19">av::YUV444P16BE</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea1e68d16ee99817430a916652d97e5cf9">av::DXVA2_VLD</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea67ee8565a08b9ccba4a964ff541636d1">av::RGB444LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeae0830c6b8eb925a62913d9d484d8756a">av::RGB444BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea9fd4e26efe93d6e244f1eb832130d7be">av::BGR444LE</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeaa22810b1656dd3c86b4164368ae2d832">av::BGR444BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea0cca47b52341a4e2ebde3f5660d56c65">av::YA8</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea6f5537294e91dbc2bea78ade7a7d811c">av::Y400A</a> = YA8, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeaafa75c6627ece55d984951bc9c6afc83">av::GRAY8A</a> = YA8, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea9c4c70202ab9a7aa6be1fb4aa156b10b">av::BGR48BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea2cb7fbbdf12ea872193021269b088b53">av::BGR48LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea6b9b3d833bbb21b09080be2fa721e255">av::YUV420P9BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea88dc1c3103872e864cba80513d3fb675">av::YUV420P9LE</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea235ea4f9c0581c7861e6da3030eb97e3">av::YUV420P10BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea649e932df1f28ea51de09de9351d3024">av::YUV420P10LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea22fcde4df06d6098cdb35b8465e79d69">av::YUV422P10BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea3f8ac17239838ecb7af32000aae5c477">av::YUV422P10LE</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeae1f6479fe8287f786259b104ae104d4b">av::YUV444P9BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea41faae935488c2599da3c6b2f1e95f0b">av::YUV444P9LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea55cf8adf44eb2715db8f1178f1e7034d">av::YUV444P10BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea2fe841fc20e314a57303eb8bf2ad1b04">av::YUV444P10LE</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeae6cce0bc88f22c2dac201bb2283b795a">av::YUV422P9BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeac6155c0825d856471a7609e50f5e54b6">av::YUV422P9LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea4787ebbb0e07d8da81bcb38214da00e7">av::GBRP</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea4cab06729466c6ed520a69aee208309f">av::GBR24P</a> = GBRP, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea0d641eb2692ac28a457075947249bbe6">av::GBRP9BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea089a249ea458c89f96be4f40916f6f79">av::GBRP9LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea228e5de6d1d8ab6301d72335b7438a9a">av::GBRP10BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea542252febbc00b6b998943c6c7bec1c5">av::GBRP10LE</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea6556367545ff6de62f0cbc630e1e936f">av::GBRP16BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeaccf2d48691967c7d1d0c5056ecd1627b">av::GBRP16LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea6df5d96b9528e2ad1aa5f9b2f8ecdbdc">av::YUVA422P</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea3c9884382cf64b290802ef0a181060c3">av::YUVA444P</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea39235ba2782842a6e928b74a7cb29c1d">av::YUVA420P9BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeae49013bf0008cc7a9089d713e941c170">av::YUVA420P9LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeaaa733a87b42552a7373ffd735578ee22">av::YUVA422P9BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aead0fdf3bbab9f5f9472ba1d4ac31e4d61">av::YUVA422P9LE</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea1684582aa4d995a4abbb9c55e471886c">av::YUVA444P9BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea3381e085df5d906343228152b44806f7">av::YUVA444P9LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeac835c3e26c99764780d063b5dd7ce8bd">av::YUVA420P10BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea0a4311c11a13c94e8ad7c59bbc89eeea">av::YUVA420P10LE</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeafb83cf4c671db072bf1489ee056a1906">av::YUVA422P10BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea6f8e6c1f0d827865e6d7528a25ce9455">av::YUVA422P10LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea5a81c7581289aa8854177840efe5be91">av::YUVA444P10BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeac46fd0c9266b31800938fb216ead8d47">av::YUVA444P10LE</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea9a21d086d1b55eb635f60dd46e824e1f">av::YUVA420P16BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea0f198bf7f72c339a42236b18fb127273">av::YUVA420P16LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea8ece00571ab94be9820763c59b435fee">av::YUVA422P16BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea176254cbe952a9b3f2dbf32815c197c1">av::YUVA422P16LE</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea94b75e70ce2077d10f47902173bdb9de">av::YUVA444P16BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea1ec9be7ddaf20b02bebfc6e845ecf226">av::YUVA444P16LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea7f7cbcd577ce5bd0903f8ab29012da57">av::VDPAU</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeabf05c661e4f6f669308f48c60a7b56c0">av::XYZ12LE</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea276086a91c883cefe908909abcdba6c0">av::XYZ12BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeaeac6a561d8b7080fef7f414104904978">av::NV16</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeaa2dff902fd1d52920114b70c4eb7d236">av::NV20LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea6b0d4523a5e7d896d14fba38c165b03d">av::NV20BE</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea624c24f01a30847bd30f7291e8f3e385">av::RGBA64BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea4be710a58fbbec8ee5b3454641aeaaf3">av::RGBA64LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeaeaa0bcbba14075d99d0e72a75b089ea0">av::BGRA64BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea53cd189f682c5fba8607b5f99c4e899f">av::BGRA64LE</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea08eaf9098dbbe4b7565a4e5f5b403e00">av::YVYU422</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea12a9cdad580dc753033a4faddb981153">av::YA16BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea382a39fac53b9162987bee8ddfc90b80">av::YA16LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea257d99f26ccc21aa36506bd74565eb74">av::GBRAP</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea917e74db758ca59cc7874f9c50c46ebc">av::GBRAP16BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea4420db2d2cb0a00090e323f9001007ee">av::GBRAP16LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea44274ac28db271510aec7d6331c1eecc">av::QSV</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeaba103ebface454f98ee9463067ed2740">av::MMAL</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeae8ee024434e9929997455cde0ba7b404">av::D3D11VA_VLD</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea0863dc584c54bc8d431574d3a55e2591">av::CUDA</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeafaca50301b7bce556a3b0c95f214d097">av::_0RGB</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea71b0e0dcb23962307bff2a103f249bab">av::RGB0</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeaccd451e98233dced6ef4099e3819f3ad">av::_0BGR</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea65e8146d5a60ca2ff2c4723435546589">av::BGR0</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea69c08ebe06b8ca3fd4f5f51a19716f9b">av::YUV420P12BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea12d8b7d4d3b8744a126c8018053fbda6">av::YUV420P12LE</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeac063287098e5e0819366057b718bdaec">av::YUV420P14BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea3408db177398c0895fd2f321975f8078">av::YUV420P14LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea9671ca002762a484ee8d10c204291529">av::YUV422P12BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeade9da57943e0ccdf5a5e7a9b8fde57b4">av::YUV422P12LE</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea5bfefdfc86d8ec769dd9c62421929b39">av::YUV422P14BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea8979eb44a24babe6f1687393a4235ff1">av::YUV422P14LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea4a426a112c926ec5a3db601617da8d67">av::YUV444P12BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeab4de98a7c5f01e7490a5c47a25af8d57">av::YUV444P12LE</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea021019c835fc148574790cce834285c6">av::YUV444P14BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea60c5d9971e8a947cc8d7995e96b7a861">av::YUV444P14LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeaf74e54b114896c4fcff7d6bae2b75c18">av::GBRP12BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea7e791b8b968486e923f0a4f6eccaf5e3">av::GBRP12LE</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea34671746d7a90255cf03f20c85873c87">av::GBRP14BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeaf46ba87d4fd4a266eff93fbb73414a74">av::GBRP14LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea59a8a47944b1fb0784e25ba019f55ada">av::YUVJ411P</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeae6f26e1d43b3b58bbebc9937664e217f">av::BAYER_BGGR8</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeaac813df03111de2581ee2bbe7bf66b15">av::BAYER_RGGB8</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea7a1db565f0a08ff70ac58471589cce47">av::BAYER_GBRG8</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea15cba2da9204b156a04726d1ddcd64ba">av::BAYER_GRBG8</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea842444372449780ffb0672aa88d47d9b">av::BAYER_BGGR16LE</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea9e38e1484a5916d18d114094f1504540">av::BAYER_BGGR16BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea2b4af0c21d3acfde1303131f4f1fc6fa">av::BAYER_RGGB16LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeaa3714ddd483a7a0835087d624b9a09eb">av::BAYER_RGGB16BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea930dead9a89ef6aad63445aa0e3e2de0">av::BAYER_GBRG16LE</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea15dfdf07e89d978553aeea7a71267030">av::BAYER_GBRG16BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea6279c49eb800acceae59751de4dd1f2b">av::BAYER_GRBG16LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeac3fda9173216092121d3b0d7d5f3ac27">av::BAYER_GRBG16BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea62d7856ad1cf04c21cba23fc230d18bb">av::XVMC</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea921054371519c1c6a8792e4b3a078202">av::YUV440P10LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea6b14d8530fda9972019411fe024fb43f">av::YUV440P10BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea5e1568428b755a0b0c30ae940fd8b4ad">av::YUV440P12LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aead18f622814e448243cf3816cdd117875">av::YUV440P12BE</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeab7bece15362897da73d78c1d9dc85eee">av::AYUV64LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea619b196557b24c331d5b9bfdfc0e488e">av::AYUV64BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea23662e521101aa449132e555ac3bc603">av::VIDEOTOOLBOX</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea40e4cb718efa181ecf33f10f5af65ce1">av::P010LE</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea34a786026640da397beb897e90f80912">av::P010BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea52e78b4cfc320481a30705de89d06105">av::GBRAP12BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeabb947ba336128bf2bd8c7041f8bad32a">av::GBRAP12LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea026f1cac5a96dce9c20b8754417d9d55">av::GBRAP10BE</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeaac1962040a0db658434409eb2449ece6">av::GBRAP10LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea76abc477df0051ee1a7cb6c34681ee47">av::MEDIACODEC</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea65297f1bff0eef4a5328ce851f8fdc22">av::GRAY12BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea372d28e5e0665bd26b8c970ea574e301">av::GRAY12LE</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aead14c9903f7196908a46f12f1d4d4e32a">av::GRAY10BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea7a7934854e49226bff3b881829930590">av::GRAY10LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea752a11f63e960efdbe6f4ec414120f4d">av::P016LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aead148e3a6af5adf7391298b7deba1fd10">av::P016BE</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea95ace234fb5ad18622a251a923840aa3">av::D3D11</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeabce8fd7e8388871a8c253b03a06ac85a">av::GRAY9BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea6401cb2d0006b85365a075979ba3545c">av::GRAY9LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeac7ba75d304fc2eef1d0e2d6feb91dc85">av::GBRPF32BE</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aead00314254b4c28ef9bbde60eab8147b3">av::GBRPF32LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea99ca524a2c1f1cb65a7b9e6cbbfe2e8e">av::GBRAPF32BE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea9c0f43480eb0be6d2852bb9518963d7e">av::GBRAPF32LE</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aeac9beca0becb752d9cbc8c14ea2857ea8">av::DRM_PRIME</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea094a8077e860eafa0c34ede4148ea27a">av::OPENCL</a>, 
+<a class="el" href="namespaceav.html#af85b09738c8c19633a36897151c331aea75dd41793fa5cdf8a872ae78e4377e0d">av::NB</a>
+<br />
+ }<tr class="memdesc:af85b09738c8c19633a36897151c331ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pixel format.  <a href="namespaceav.html#af85b09738c8c19633a36897151c331ae">More...</a><br /></td></tr>
+</td></tr>
+<tr class="separator:af85b09738c8c19633a36897151c331ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae593d8406e0f3102fcbfd5ee8931d6c1"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceav.html#ae593d8406e0f3102fcbfd5ee8931d6c1">av::SampleFormat</a> { <br />
+&#160;&#160;<a class="el" href="namespaceav.html#ae593d8406e0f3102fcbfd5ee8931d6c1a13d82809ac6762f4a4e50e61d8098196">av::SAMPLE_FMT_NONE</a> = -1, 
+<a class="el" href="namespaceav.html#ae593d8406e0f3102fcbfd5ee8931d6c1ad7f3d03b1498bd5b3ba6b16c3da999b8">av::SAMPLE_FMT_U8</a>, 
+<a class="el" href="namespaceav.html#ae593d8406e0f3102fcbfd5ee8931d6c1ab516e355285f9141db2a9000a289ae73">av::SAMPLE_FMT_S16</a>, 
+<a class="el" href="namespaceav.html#ae593d8406e0f3102fcbfd5ee8931d6c1ae5735d02adb81b170f478ac791dded8b">av::SAMPLE_FMT_S32</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#ae593d8406e0f3102fcbfd5ee8931d6c1a6355568c419d28a3ce60b1915200f5c3">av::SAMPLE_FMT_FLT</a>, 
+<a class="el" href="namespaceav.html#ae593d8406e0f3102fcbfd5ee8931d6c1a991202db7764979b20646bcd74756071">av::SAMPLE_FMT_DBL</a>, 
+<a class="el" href="namespaceav.html#ae593d8406e0f3102fcbfd5ee8931d6c1aad4d7d70c25568c3dfafe86253cb7edd">av::SAMPLE_FMT_U8P</a>, 
+<a class="el" href="namespaceav.html#ae593d8406e0f3102fcbfd5ee8931d6c1a7b367f2c6f5c40d237fc0cb250caa3c3">av::SAMPLE_FMT_S16P</a>, 
+<br />
+&#160;&#160;<a class="el" href="namespaceav.html#ae593d8406e0f3102fcbfd5ee8931d6c1aec816c4bbb39540eb57fff31a25f8981">av::SAMPLE_FMT_S32P</a>, 
+<a class="el" href="namespaceav.html#ae593d8406e0f3102fcbfd5ee8931d6c1a98ff3f1ca76b08e104c36d48e16f525a">av::SAMPLE_FMT_FLTP</a>, 
+<a class="el" href="namespaceav.html#ae593d8406e0f3102fcbfd5ee8931d6c1ad33894561f45e7f0f3861c6b7849a3b6">av::SAMPLE_FMT_DBLP</a>, 
+<a class="el" href="namespaceav.html#ae593d8406e0f3102fcbfd5ee8931d6c1a1f41b726ca2dbab4c8d705f7e5243dad">av::SAMPLE_FMT_NB</a>
+<br />
+ }<tr class="memdesc:ae593d8406e0f3102fcbfd5ee8931d6c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sampleformat enum.  <a href="namespaceav.html#ae593d8406e0f3102fcbfd5ee8931d6c1">More...</a><br /></td></tr>
+</td></tr>
+<tr class="separator:ae593d8406e0f3102fcbfd5ee8931d6c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a8af8bc6a4ff6560e22bd4adae8957990"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceav.html#a8af8bc6a4ff6560e22bd4adae8957990">av::init</a> ()</td></tr>
-<tr class="separator:a8af8bc6a4ff6560e22bd4adae8957990"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a90507a7eb5f1d7c4946187fa7caa41"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceav.html#a0a90507a7eb5f1d7c4946187fa7caa41">av::get_bytes_per_sample</a> ( SampleFormat sample_format)</td></tr>
-<tr class="memdesc:a0a90507a7eb5f1d7c4946187fa7caa41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of bytes per sample.  <a href="namespaceav.html#a0a90507a7eb5f1d7c4946187fa7caa41">More...</a><br /></td></tr>
-<tr class="separator:a0a90507a7eb5f1d7c4946187fa7caa41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a081d5d6050765210d5ca708d37031a8b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceav.html#a081d5d6050765210d5ca708d37031a8b">av::get_bytes_per_sample</a> (SampleFormat sample_format)</td></tr>
+<tr class="memdesc:a081d5d6050765210d5ca708d37031a8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of bytes per sample.  <a href="namespaceav.html#a081d5d6050765210d5ca708d37031a8b">More...</a><br /></td></tr>
+<tr class="separator:a081d5d6050765210d5ca708d37031a8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2073fde2257dd10c12bfa086c96fa995"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; uint8_t *&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceav.html#a2073fde2257dd10c12bfa086c96fa995">av::make_sample_buffer</a> (ChannelLayout::Enum channel_layout, int nb_samples, SampleFormat sample_format, int *dst_linesize)</td></tr>
+<tr class="separator:a2073fde2257dd10c12bfa086c96fa995"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 24 2018 12:04:43 for avcpp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Mar 31 2018 15:34:03 for avcpp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

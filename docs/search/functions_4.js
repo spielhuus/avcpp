@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['data',['data',['../classav_1_1_frame.html#a647bd08078d7c7b53d40a92f00cf9b88',1,'av::Frame::data(int index)'],['../classav_1_1_frame.html#a166d368ae67735190d6d137dfff912cf',1,'av::Frame::data()'],['../structav_1_1_packet.html#a877c7299b7d6408f37ac6c8bffd9713c',1,'av::Packet::data()']]],
-  ['decode',['decode',['../classav_1_1_codec.html#a6d17a40bdb4d10883b4e76e441cf01c0',1,'av::Codec']]],
-  ['dst_5fbuffer_5fsize',['dst_buffer_size',['../classav_1_1_resample.html#a5397a7f80d80a863b04183fd09a07ae5',1,'av::Resample']]],
-  ['dts',['dts',['../structav_1_1_packet.html#ac3b9e11c573dc2d00ee5bf5ef2edde5c',1,'av::Packet']]],
-  ['dynamicrange',['DynamicRange',['../classav_1_1_dynamic_range.html#aa8fe33e60c78e35cde93ee08a59eac36',1,'av::DynamicRange']]]
+  ['encode',['encode',['../classav_1_1_codec.html#ae36a8537b14bba607550872aa22b046d',1,'av::Codec::encode(Frame &amp;frame, std::function&lt; void(Packet &amp;) &gt; fn)'],['../classav_1_1_codec.html#a0d8a7d46f6b0b9181454bffb3230fde5',1,'av::Codec::encode(std::function&lt; void(Packet &amp;) &gt; fn)']]],
+  ['end',['end',['../classav_1_1_format.html#ad66c53307fc2f03bac49d1d96be2a9ef',1,'av::Format']]],
+  ['eof',['eof',['../classav_1_1_codec.html#ad99e5003d2eb898c670bbff9779aea2c',1,'av::Codec::eof()'],['../classav_1_1_format.html#ac890ee6222c8692bc4ed1bb22573f37b',1,'av::Format::eof()'],['../classav_1_1_resample.html#a19f8fc886e4efe30d76dcaab2dc7bba1',1,'av::Resample::eof()']]],
+  ['errc',['errc',['../classav_1_1_codec.html#a06aed3c03e6b4e762fac2e2bb4bf98e2',1,'av::Codec::errc()'],['../classav_1_1_format.html#ac734912e18b0ade74cdbd92f0f6298fe',1,'av::Format::errc()'],['../classav_1_1_resample.html#af47c04ef5d597c606a9f1fad317c37c0',1,'av::Resample::errc()']]],
+  ['extended_5fdata',['extended_data',['../classav_1_1_frame.html#a18bb63c366095d58a5394bf7e9d7d179',1,'av::Frame']]]
 ];

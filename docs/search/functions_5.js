@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['encode',['encode',['../classav_1_1_codec.html#ae36a8537b14bba607550872aa22b046d',1,'av::Codec::encode(Frame &amp;frame, std::function&lt; void(Packet &amp;) &gt; fn)'],['../classav_1_1_codec.html#a0d8a7d46f6b0b9181454bffb3230fde5',1,'av::Codec::encode(std::function&lt; void(Packet &amp;) &gt; fn)']]],
-  ['end',['end',['../classav_1_1_format.html#acda6b05e1ff8874177ec55517986f5d0',1,'av::Format']]],
-  ['eof',['eof',['../classav_1_1_codec.html#ad99e5003d2eb898c670bbff9779aea2c',1,'av::Codec::eof()'],['../classav_1_1_format.html#ac890ee6222c8692bc4ed1bb22573f37b',1,'av::Format::eof()'],['../classav_1_1_resample.html#a19f8fc886e4efe30d76dcaab2dc7bba1',1,'av::Resample::eof()']]],
-  ['errc',['errc',['../classav_1_1_codec.html#a06aed3c03e6b4e762fac2e2bb4bf98e2',1,'av::Codec::errc()'],['../classav_1_1_format.html#ac734912e18b0ade74cdbd92f0f6298fe',1,'av::Format::errc()'],['../classav_1_1_resample.html#af47c04ef5d597c606a9f1fad317c37c0',1,'av::Resample::errc()']]],
-  ['extended_5fdata',['extended_data',['../classav_1_1_frame.html#af54a6607356a9ba17edc6db2eb15d7bd',1,'av::Frame']]]
+  ['fail',['fail',['../classav_1_1_codec.html#a1be74061ce9570a4efb5f77b60e34849',1,'av::Codec::fail()'],['../classav_1_1_format.html#adc3edad9a4dccf3b40b46ae6e9a85821',1,'av::Format::fail()'],['../classav_1_1_resample.html#ad2de817b55483aa0354d90c82c8131ca',1,'av::Resample::fail()']]],
+  ['flags',['flags',['../structav_1_1_packet.html#a155f9d10b8f1d8e3ad30b01255990d64',1,'av::Packet']]],
+  ['format',['Format',['../classav_1_1_format.html#a29e0451a877c9b547a0b7d4c9fd7d258',1,'av::Format::Format(const std::string &amp;filename, Mode mode=READ, Options options=Options())'],['../classav_1_1_format.html#a590e6addeafb1f1f65b7e3fa4d3376e6',1,'av::Format::Format(std::iostream *s, Mode mode=READ, Options options=Options())'],['../classav_1_1_format.html#a10ac940e6f26a70d1c2da78233401fad',1,'av::Format::Format(const Format &amp;)=delete'],['../classav_1_1_format.html#aa30818a89ac3b25c3814a0c942b0a462',1,'av::Format::Format(Format &amp;&amp;)=delete']]],
+  ['frame',['Frame',['../classav_1_1_frame.html#a17a1f4450ef4868153e4c3b0dbad7dab',1,'av::Frame::Frame()'],['../classav_1_1_frame.html#a4f97664ea80af8fd1fb6b560d09e83d2',1,'av::Frame::Frame(int frame_size, SampleFormat sample_fmt, ChannelLayout::Enum channel_layout, int sample_rate)'],['../classav_1_1_frame.html#a46318a5d3662571c422d2a280a4c797f',1,'av::Frame::Frame(const Frame &amp;)=delete'],['../classav_1_1_frame.html#a6792c4db188204ab597115045eaa2e84',1,'av::Frame::Frame(Frame &amp;&amp;)=delete']]],
+  ['frame_5fsize',['frame_size',['../classav_1_1_codec.html#adaeb42bade50785b5f8331d06b404971',1,'av::Codec']]]
 ];

@@ -17,9 +17,7 @@
 #include <fstream>
 #include <map>
 
-#include "../av/codec.h"
-#include "../av/format.h"
-#include "../av/metadata.h"
+#include "../av/av.h"
 
 #include <gtest/gtest.h>
 
@@ -36,9 +34,9 @@ TEST( MetadataTest, metadata ) {
     EXPECT_EQ( "", _metadata.get( av::Metadata::TITLE ) );
 }
 TEST( MetadataTest, time_to_string ) {
-    EXPECT_EQ( "00:00:01.000", time_to_string( 1000 ) );
-    EXPECT_EQ( "01:00:00.000", time_to_string( 3600000 ) );
-    EXPECT_EQ( "02:02:28.015", time_to_string( 7348015 ) );
+    EXPECT_EQ( "00:00:01.000", av::utils::time_to_string( 1000 ) );
+    EXPECT_EQ( "01:00:00.000", av::utils::time_to_string( 3600000 ) );
+    EXPECT_EQ( "02:02:28.015", av::utils::time_to_string( 7348015 ) );
 }
 TEST( MetadataTest, ParseMpegLayer2Mpthreetest) {
 
@@ -157,8 +155,8 @@ TEST( MetadataTest, open_audio_file_metadata_file_flac ) {
     EXPECT_EQ ( 205, _format.playtime() );
 
     auto _audio_codec = std::find_if( _format.begin(), _format.end(), is_audio );
-    EXPECT_EQ ( av::CODEC_TYPE::AUDIO, (*_audio_codec)->codec_type() );
-    EXPECT_EQ ( av::CODEC::FLAC, (*_audio_codec)->codec() );
+    EXPECT_EQ ( av::Codec::TYPE::AUDIO, (*_audio_codec)->codec_type() );
+    EXPECT_EQ ( av::Codec::FLAC, (*_audio_codec)->codec() );
     EXPECT_EQ ( 0, (*_audio_codec)->bitrate() );
     EXPECT_EQ ( 44100, (*_audio_codec)->sample_rate() );
     EXPECT_EQ ( 2, (*_audio_codec)->channels() );
@@ -187,8 +185,8 @@ TEST( MetadataTest, open_audio_file_metadata_file_flac_hd ) {
 
     auto _audio_codec = std::find_if( _format.begin(), _format.end(), is_audio );
 
-    EXPECT_EQ ( av::CODEC_TYPE::AUDIO, (*_audio_codec)->codec_type() );
-    EXPECT_EQ ( av::CODEC::FLAC, (*_audio_codec)->codec() );
+    EXPECT_EQ ( av::Codec::TYPE::AUDIO, (*_audio_codec)->codec_type() );
+    EXPECT_EQ ( av::Codec::FLAC, (*_audio_codec)->codec() );
     EXPECT_EQ ( 0, (*_audio_codec)->bitrate() );
     EXPECT_EQ ( 44100, (*_audio_codec)->sample_rate() );
     EXPECT_EQ ( 2, (*_audio_codec)->channels() );
@@ -218,8 +216,8 @@ TEST( MetadataTest, open_audio_stream_metadata_file_flac_hd ) {
     EXPECT_EQ ( 205, _format.playtime() );
 
     auto _audio_codec = std::find_if( _format.begin(), _format.end(), is_audio );
-    EXPECT_EQ ( av::CODEC_TYPE::AUDIO, (*_audio_codec)->codec_type() );
-    EXPECT_EQ ( av::CODEC::FLAC, (*_audio_codec)->codec() );
+    EXPECT_EQ ( av::Codec::TYPE::AUDIO, (*_audio_codec)->codec_type() );
+    EXPECT_EQ ( av::Codec::FLAC, (*_audio_codec)->codec() );
     EXPECT_EQ ( 0, (*_audio_codec)->bitrate() );
     EXPECT_EQ ( 44100, (*_audio_codec)->sample_rate() );
     EXPECT_EQ ( 2, (*_audio_codec)->channels() );

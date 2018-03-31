@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>av namespace  
+<p>This structure describes decoded (raw) audio or video data.  
  <a href="classav_1_1_frame.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="frame_8h_source.html">frame.h</a>&gt;</code></p>
@@ -80,36 +80,37 @@ $(function() {
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a17a1f4450ef4868153e4c3b0dbad7dab"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_frame.html#a17a1f4450ef4868153e4c3b0dbad7dab">Frame</a> ()</td></tr>
 <tr class="separator:a17a1f4450ef4868153e4c3b0dbad7dab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a185732338e5589a1726be365856c5d18"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_frame.html#a185732338e5589a1726be365856c5d18">Frame</a> (int frame_size, int sample_fmt, uint64_t channel_layout, int sample_rate)</td></tr>
-<tr class="separator:a185732338e5589a1726be365856c5d18"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad9a4951ae1ab73e3f2ddeece49fb0415"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_frame.html#ad9a4951ae1ab73e3f2ddeece49fb0415">~Frame</a> ()</td></tr>
-<tr class="separator:ad9a4951ae1ab73e3f2ddeece49fb0415"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f97664ea80af8fd1fb6b560d09e83d2"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_frame.html#a4f97664ea80af8fd1fb6b560d09e83d2">Frame</a> (int frame_size, <a class="el" href="namespaceav.html#ae593d8406e0f3102fcbfd5ee8931d6c1">SampleFormat</a> sample_fmt, <a class="el" href="structav_1_1_channel_layout.html#a95975507b611b5f117c22b93d4a91316">ChannelLayout::Enum</a> channel_layout, int sample_rate)</td></tr>
+<tr class="separator:a4f97664ea80af8fd1fb6b560d09e83d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46318a5d3662571c422d2a280a4c797f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_frame.html#a46318a5d3662571c422d2a280a4c797f">Frame</a> (const <a class="el" href="classav_1_1_frame.html">Frame</a> &amp;)=delete</td></tr>
 <tr class="separator:a46318a5d3662571c422d2a280a4c797f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab6b790ce90bf86ad810ec416ea9840c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classav_1_1_frame.html">Frame</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_frame.html#aab6b790ce90bf86ad810ec416ea9840c">operator=</a> (const <a class="el" href="classav_1_1_frame.html">Frame</a> &amp;)=delete</td></tr>
-<tr class="separator:aab6b790ce90bf86ad810ec416ea9840c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6792c4db188204ab597115045eaa2e84"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_frame.html#a6792c4db188204ab597115045eaa2e84">Frame</a> (<a class="el" href="classav_1_1_frame.html">Frame</a> &amp;&amp;)=delete</td></tr>
 <tr class="separator:a6792c4db188204ab597115045eaa2e84"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d4df7d0d746247b516cb06e5c532a9f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classav_1_1_frame.html">Frame</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_frame.html#a3d4df7d0d746247b516cb06e5c532a9f">operator=</a> (<a class="el" href="classav_1_1_frame.html">Frame</a> &amp;&amp;)=delete</td></tr>
-<tr class="separator:a3d4df7d0d746247b516cb06e5c532a9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9a4951ae1ab73e3f2ddeece49fb0415"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_frame.html#ad9a4951ae1ab73e3f2ddeece49fb0415">~Frame</a> ()</td></tr>
+<tr class="separator:ad9a4951ae1ab73e3f2ddeece49fb0415"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab68a86b5f540741b123bdf42342c096b"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_frame.html#ab68a86b5f540741b123bdf42342c096b">data</a> (int index)</td></tr>
+<tr class="memdesc:ab68a86b5f540741b123bdf42342c096b"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to the picture/channel planes.  <a href="#ab68a86b5f540741b123bdf42342c096b">More...</a><br /></td></tr>
+<tr class="separator:ab68a86b5f540741b123bdf42342c096b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88b3c5f5846557ecf6445b7048fe1e8e"><td class="memItemLeft" align="right" valign="top">uint8_t **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_frame.html#a88b3c5f5846557ecf6445b7048fe1e8e">data</a> ()</td></tr>
+<tr class="separator:a88b3c5f5846557ecf6445b7048fe1e8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18bb63c366095d58a5394bf7e9d7d179"><td class="memItemLeft" align="right" valign="top">uint8_t **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_frame.html#a18bb63c366095d58a5394bf7e9d7d179">extended_data</a> ()</td></tr>
+<tr class="separator:a18bb63c366095d58a5394bf7e9d7d179"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a623ab5cfb9babe5cf566af3fe174e439"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_frame.html#a623ab5cfb9babe5cf566af3fe174e439">linesize</a> (int index)</td></tr>
+<tr class="separator:a623ab5cfb9babe5cf566af3fe174e439"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2a83133bffc6dbdf4a7b13318ce4fe0a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_frame.html#a2a83133bffc6dbdf4a7b13318ce4fe0a">nb_samples</a> () const</td></tr>
 <tr class="memdesc:a2a83133bffc6dbdf4a7b13318ce4fe0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">number of audio samples (per channel) described by this frame.  <a href="#a2a83133bffc6dbdf4a7b13318ce4fe0a">More...</a><br /></td></tr>
 <tr class="separator:a2a83133bffc6dbdf4a7b13318ce4fe0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a647bd08078d7c7b53d40a92f00cf9b88"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_frame.html#a647bd08078d7c7b53d40a92f00cf9b88">data</a> (int index)</td></tr>
-<tr class="memdesc:a647bd08078d7c7b53d40a92f00cf9b88"><td class="mdescLeft">&#160;</td><td class="mdescRight">pointer to the picture/channel planes.  <a href="#a647bd08078d7c7b53d40a92f00cf9b88">More...</a><br /></td></tr>
-<tr class="separator:a647bd08078d7c7b53d40a92f00cf9b88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a166d368ae67735190d6d137dfff912cf"><td class="memItemLeft" align="right" valign="top">uint8_t **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_frame.html#a166d368ae67735190d6d137dfff912cf">data</a> ()</td></tr>
-<tr class="separator:a166d368ae67735190d6d137dfff912cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af54a6607356a9ba17edc6db2eb15d7bd"><td class="memItemLeft" align="right" valign="top">uint8_t **&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_frame.html#af54a6607356a9ba17edc6db2eb15d7bd">extended_data</a> ()</td></tr>
-<tr class="separator:af54a6607356a9ba17edc6db2eb15d7bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a623ab5cfb9babe5cf566af3fe174e439"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_frame.html#a623ab5cfb9babe5cf566af3fe174e439">linesize</a> (int index)</td></tr>
-<tr class="separator:a623ab5cfb9babe5cf566af3fe174e439"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab6b790ce90bf86ad810ec416ea9840c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classav_1_1_frame.html">Frame</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_frame.html#aab6b790ce90bf86ad810ec416ea9840c">operator=</a> (const <a class="el" href="classav_1_1_frame.html">Frame</a> &amp;)=delete</td></tr>
+<tr class="separator:aab6b790ce90bf86ad810ec416ea9840c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d4df7d0d746247b516cb06e5c532a9f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classav_1_1_frame.html">Frame</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_frame.html#a3d4df7d0d746247b516cb06e5c532a9f">operator=</a> (<a class="el" href="classav_1_1_frame.html">Frame</a> &amp;&amp;)=delete</td></tr>
+<tr class="separator:a3d4df7d0d746247b516cb06e5c532a9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a84568abc84ab700b8c60acb7d182624f"><td class="memItemLeft" align="right" valign="top">std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_frame.html#a84568abc84ab700b8c60acb7d182624f">writeable</a> ()</td></tr>
 <tr class="separator:a84568abc84ab700b8c60acb7d182624f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>av namespace </p>
-</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<div class="textblock"><p>This structure describes decoded (raw) audio or video data. </p>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="decode_8cpp-example.html#_a5">decode.cpp</a>, <a class="el" href="metadata_8cpp-example.html#_a8">metadata.cpp</a>, and <a class="el" href="play_ao_8cpp-example.html#_a8">play_ao.cpp</a>.</dd>
+</dl></div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a17a1f4450ef4868153e4c3b0dbad7dab"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a17a1f4450ef4868153e4c3b0dbad7dab">&#9670;&nbsp;</a></span>Frame() <span class="overload">[1/4]</span></h2>
 
@@ -135,23 +136,13 @@ Public Member Functions</h2></td></tr>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classav_1_1_frame_a17a1f4450ef4868153e4c3b0dbad7dab_cgraph.png" border="0" usemap="#classav_1_1_frame_a17a1f4450ef4868153e4c3b0dbad7dab_cgraph" alt=""/></div>
-<map name="classav_1_1_frame_a17a1f4450ef4868153e4c3b0dbad7dab_cgraph" id="classav_1_1_frame_a17a1f4450ef4868153e4c3b0dbad7dab_cgraph">
-<area shape="rect" id="node2" href="classav_1_1_frame.html#ad9a4951ae1ab73e3f2ddeece49fb0415" title="av::Frame::~Frame" alt="" coords="210,5,354,32"/>
-<area shape="rect" id="node3" href="classav_1_1_frame.html#aab6b790ce90bf86ad810ec416ea9840c" title="av::Frame::operator=" alt="" coords="203,56,361,83"/>
-<area shape="rect" id="node4" href="classav_1_1_frame.html#a2a83133bffc6dbdf4a7b13318ce4fe0a" title="number of audio samples (per channel) described by this frame. " alt="" coords="197,107,367,133"/>
-<area shape="rect" id="node5" href="classav_1_1_frame.html#a166d368ae67735190d6d137dfff912cf" title="av::Frame::data" alt="" coords="221,157,343,184"/>
-<area shape="rect" id="node6" href="classav_1_1_frame.html#af54a6607356a9ba17edc6db2eb15d7bd" title="av::Frame::extended_data" alt="" coords="187,208,377,235"/>
-<area shape="rect" id="node7" href="classav_1_1_frame.html#a623ab5cfb9babe5cf566af3fe174e439" title="av::Frame::linesize" alt="" coords="211,259,353,285"/>
-<area shape="rect" id="node8" href="classav_1_1_frame.html#a84568abc84ab700b8c60acb7d182624f" title="av::Frame::writeable" alt="" coords="205,309,359,336"/>
-<area shape="rect" id="node9" href="namespaceav.html#a24e72910ad0405124d9e96adfad3b792" title="av::make_error_code" alt="" coords="425,309,584,336"/>
-</map>
+<div class="center"><iframe scrolling="no" frameborder="0" src="classav_1_1_frame_a17a1f4450ef4868153e4c3b0dbad7dab_cgraph.svg" width="360" height="342"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 
 </div>
 </div>
-<a id="a185732338e5589a1726be365856c5d18"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a185732338e5589a1726be365856c5d18">&#9670;&nbsp;</a></span>Frame() <span class="overload">[2/4]</span></h2>
+<a id="a4f97664ea80af8fd1fb6b560d09e83d2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4f97664ea80af8fd1fb6b560d09e83d2">&#9670;&nbsp;</a></span>Frame() <span class="overload">[2/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -165,13 +156,13 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype"><a class="el" href="namespaceav.html#ae593d8406e0f3102fcbfd5ee8931d6c1">SampleFormat</a>&#160;</td>
           <td class="paramname"><em>sample_fmt</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramtype"><a class="el" href="structav_1_1_channel_layout.html#a95975507b611b5f117c22b93d4a91316">ChannelLayout::Enum</a>&#160;</td>
           <td class="paramname"><em>channel_layout</em>, </td>
         </tr>
         <tr>
@@ -187,14 +178,6 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classav_1_1_frame_a185732338e5589a1726be365856c5d18_cgraph.png" border="0" usemap="#classav_1_1_frame_a185732338e5589a1726be365856c5d18_cgraph" alt=""/></div>
-<map name="classav_1_1_frame_a185732338e5589a1726be365856c5d18_cgraph" id="classav_1_1_frame_a185732338e5589a1726be365856c5d18_cgraph">
-<area shape="rect" id="node2" href="namespaceav.html#a24e72910ad0405124d9e96adfad3b792" title="av::make_error_code" alt="" coords="187,5,345,32"/>
-</map>
-</div>
 
 </div>
 </div>
@@ -268,14 +251,14 @@ Here is the call graph for this function:</div>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a647bd08078d7c7b53d40a92f00cf9b88"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a647bd08078d7c7b53d40a92f00cf9b88">&#9670;&nbsp;</a></span>data() <span class="overload">[1/2]</span></h2>
+<a id="ab68a86b5f540741b123bdf42342c096b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab68a86b5f540741b123bdf42342c096b">&#9670;&nbsp;</a></span>data() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t * av::Frame::data </td>
+          <td class="memname">uint8_t* av::Frame::data </td>
           <td>(</td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>index</em></td><td>)</td>
@@ -288,14 +271,14 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="a166d368ae67735190d6d137dfff912cf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a166d368ae67735190d6d137dfff912cf">&#9670;&nbsp;</a></span>data() <span class="overload">[2/2]</span></h2>
+<a id="a88b3c5f5846557ecf6445b7048fe1e8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88b3c5f5846557ecf6445b7048fe1e8e">&#9670;&nbsp;</a></span>data() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t ** av::Frame::data </td>
+          <td class="memname">uint8_t** av::Frame::data </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -305,21 +288,22 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
-<a id="af54a6607356a9ba17edc6db2eb15d7bd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af54a6607356a9ba17edc6db2eb15d7bd">&#9670;&nbsp;</a></span>extended_data()</h2>
+<a id="a18bb63c366095d58a5394bf7e9d7d179"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18bb63c366095d58a5394bf7e9d7d179">&#9670;&nbsp;</a></span>extended_data()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t ** av::Frame::extended_data </td>
+          <td class="memname">uint8_t** av::Frame::extended_data </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="play_ao_8cpp-example.html#a9">play_ao.cpp</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="a623ab5cfb9babe5cf566af3fe174e439"></a>
@@ -337,7 +321,8 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="play_ao_8cpp-example.html#a10">play_ao.cpp</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="a2a83133bffc6dbdf4a7b13318ce4fe0a"></a>
@@ -425,25 +410,16 @@ Here is the call graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="classav_1_1_frame_a84568abc84ab700b8c60acb7d182624f_cgraph.png" border="0" usemap="#classav_1_1_frame_a84568abc84ab700b8c60acb7d182624f_cgraph" alt=""/></div>
-<map name="classav_1_1_frame_a84568abc84ab700b8c60acb7d182624f_cgraph" id="classav_1_1_frame_a84568abc84ab700b8c60acb7d182624f_cgraph">
-<area shape="rect" id="node2" href="namespaceav.html#a24e72910ad0405124d9e96adfad3b792" title="av::make_error_code" alt="" coords="208,5,367,32"/>
-</map>
-</div>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/etienne/Projects/avcpp/av/<a class="el" href="frame_8h_source.html">frame.h</a></li>
-<li>/home/etienne/Projects/avcpp/av/<a class="el" href="frame_8cpp.html">frame.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 24 2018 12:04:43 for avcpp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Mar 31 2018 15:34:03 for avcpp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

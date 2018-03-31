@@ -20,10 +20,7 @@
 #include <fstream>
 #include <map>
 
-#include "../av/averrc.h"
-#include "../av/format.h"
-#include "../av/codec.h"
-#include "../av/utils.h"
+#include "../av/av.h"
 
 #include <gtest/gtest.h>
 
@@ -52,29 +49,26 @@ int compareDecodeFile(FILE* f1, FILE* f2) {
 }
 
 TEST(CodecTest, decode_audio) {
-    av::Format format( TESTFILES "01 Eleven.mp2" );
+
+    //open format
+    av::Format format ( TESTFILES "01 Eleven.mp2" );
     ASSERT_TRUE( !format );
 
+    //open output file
     std::ofstream outfile ( FILE_DECODE_RESULT );
 
-    auto _audio_codec = std::find_if( format.begin(), format.end(), av::is_audio );
-    const int _data_size = av::get_bytes_per_sample( (*_audio_codec)->sample_fmt() );
-
-    std::error_code errc = format.read( [&]( av::Packet& package ) {
-        if( package.stream_index() == (*_audio_codec)->index() ) {
-            (*_audio_codec)->decode( package, [&]( av::Frame& frame ) {
+    std::error_code errc;
+    errc = format.read ( [&] ( av::Packet& package ) {
+        auto codec = format.at( static_cast< size_t >( package.stream_index() ) );
+        if( av::is_audio( codec ) ) {
+            errc = codec->decode ( package, [&] ( av::Frame& frame ) {
                 //write to out file
-                if( (*_audio_codec)->is_planar() ) {
-                    for( int i = 0; i < frame.nb_samples(); i++ )
-                        for( int ch = 0; ch < (*_audio_codec)->channels(); ch++ )
-                            outfile.write( reinterpret_cast< char* >(frame.data(ch) + _data_size * i ), _data_size );
-                } else {
-                    outfile.write( reinterpret_cast< char* >( frame.extended_data()[0] ), frame.linesize(0) );
-                }
+                av::utils::write_audio( outfile, codec, frame );
             });
+            ASSERT_TRUE( !errc || errc.value() == av::AV_EOF || errc.value() == EAGAIN );
         }
-    });
-    ASSERT_EQ( errc.value(), AV_EOF );
+    } );
+    ASSERT_TRUE( errc.value() == av::AV_EOF );
     outfile.close();
 
     //compare files

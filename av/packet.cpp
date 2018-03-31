@@ -25,8 +25,6 @@ namespace av {
 
 Packet::Packet()
 {packet_ = av_packet_alloc();}
-Packet::Packet ( Format* format ) : format_ ( format->format_context_ )
-{packet_ = av_packet_alloc();}
 Packet::~Packet()
 {av_packet_free ( &packet_ );}
 

@@ -51,7 +51,7 @@ TEST(CodecTest, encode_audio) {
     std::ofstream outfile ( "/tmp/encode_audio.mp2" );
 
     std::error_code errc;
-    av::Codec _codec( av::CODEC::MP2, av::SAMPLE_FMT_S16, Options( { { "ar", 44100 }, {"ac", 2}, {"ab", 64000} } ) );
+    av::Codec _codec( av::Codec::MP2, av::SampleFormat::SAMPLE_FMT_S16, Options( { { "ar", 44100 }, {"ac", 2}, {"ab", 64000} } ) );
 
     av::Frame _frame( _codec.frame_size(), _codec.sample_fmt(), _codec.channel_layout(), _codec.sample_rate() );
 

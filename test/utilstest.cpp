@@ -18,11 +18,37 @@
 #include <fstream>
 #include <map>
 
+extern "C" {
+#include "libavutil/samplefmt.h"
+#include "libavformat/avformat.h"
+}
+
 #include "../av/utils.h"
 
 #include <gtest/gtest.h>
 
 namespace av {
+TEST( UtilsTest, sample_fmt ) {
+    SampleFormat flt = SampleFormat::SAMPLE_FMT_FLT;
+    SampleFormat s16 = SampleFormat::SAMPLE_FMT_S16;
+    SampleFormat s16p = SampleFormat::SAMPLE_FMT_S16P;
+
+    EXPECT_EQ( SampleFormat::SAMPLE_FMT_FLT, flt );
+    EXPECT_EQ( SampleFormat::SAMPLE_FMT_S16, s16 );
+    EXPECT_EQ( SampleFormat::SAMPLE_FMT_S16P, s16p );
+    EXPECT_NE( SampleFormat::SAMPLE_FMT_FLT, s16 );
+
+    EXPECT_EQ( "fltle", str( flt ) );
+    EXPECT_EQ( "s16le", str( s16 ) );
+    EXPECT_EQ( "s16ple", str( s16p ) );
+    EXPECT_NE( "fltle", str( s16 ) );
+
+    EXPECT_EQ( AV_SAMPLE_FMT_FLT, static_cast< AVSampleFormat >( flt ) );
+    EXPECT_EQ( AV_SAMPLE_FMT_S16, static_cast< AVSampleFormat >( s16 ) );
+    EXPECT_EQ( AV_SAMPLE_FMT_S16P, static_cast< AVSampleFormat >( s16p ) );
+    EXPECT_NE( AV_SAMPLE_FMT_FLT, static_cast< AVSampleFormat >( s16 ) );
+}
+
 TEST( UtilsTest, shared_sampler_buffer ) {
     {
         int src_linesize = 0;

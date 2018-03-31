@@ -1,14 +1,17 @@
 var searchData=
 [
-  ['xan_5fdpcm',['XAN_DPCM',['../structav_1_1_c_o_d_e_c.html#a83ac43dd91958b0392000e37fe2a8377a5bfba2c17ae87e2121b02abda632fd74',1,'av::CODEC']]],
-  ['xan_5fwc3',['XAN_WC3',['../structav_1_1_c_o_d_e_c.html#a83ac43dd91958b0392000e37fe2a8377ab0c12c89e4562b6b03bbd2b52a6226ae',1,'av::CODEC']]],
-  ['xan_5fwc4',['XAN_WC4',['../structav_1_1_c_o_d_e_c.html#a83ac43dd91958b0392000e37fe2a8377a3978ff14addd1d0172d159d2d419df08',1,'av::CODEC']]],
-  ['xbin',['XBIN',['../structav_1_1_c_o_d_e_c.html#a83ac43dd91958b0392000e37fe2a8377a80c73c8477913c1917044b00bd387b2a',1,'av::CODEC']]],
-  ['xbm',['XBM',['../structav_1_1_c_o_d_e_c.html#a83ac43dd91958b0392000e37fe2a8377a7111af025c5f2332f0042b90f4db89a2',1,'av::CODEC']]],
-  ['xface',['XFACE',['../structav_1_1_c_o_d_e_c.html#a83ac43dd91958b0392000e37fe2a8377a99337f6498a5e32fc524b6a75845d65c',1,'av::CODEC']]],
-  ['xma1',['XMA1',['../structav_1_1_c_o_d_e_c.html#a83ac43dd91958b0392000e37fe2a8377ad8a28f03b5ad974410740f03741d32b8',1,'av::CODEC']]],
-  ['xma2',['XMA2',['../structav_1_1_c_o_d_e_c.html#a83ac43dd91958b0392000e37fe2a8377a046096daab9fddc0fc825d45f978d1bf',1,'av::CODEC']]],
-  ['xpm',['XPM',['../structav_1_1_c_o_d_e_c.html#a83ac43dd91958b0392000e37fe2a8377a4c14bebc9888e35f0bac861cd33f2903',1,'av::CODEC']]],
-  ['xsub',['XSUB',['../structav_1_1_c_o_d_e_c.html#a83ac43dd91958b0392000e37fe2a8377a3ed7bc8aaee0178f2da5d744026f47bd',1,'av::CODEC']]],
-  ['xwd',['XWD',['../structav_1_1_c_o_d_e_c.html#a83ac43dd91958b0392000e37fe2a8377aca9f5d17d978b3f9da0b8b04e0f3ab52',1,'av::CODEC']]]
+  ['xan_5fdpcm',['XAN_DPCM',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930abd0205945df38091383ae92701aef396',1,'av::Codec']]],
+  ['xan_5fwc3',['XAN_WC3',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930acba3876823a5735a8bd975a312bbb256',1,'av::Codec']]],
+  ['xan_5fwc4',['XAN_WC4',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a295e375ce23f903a7e5dac7c456cae18',1,'av::Codec']]],
+  ['xbin',['XBIN',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a0d6c4654f36d23a68155c93db1510a9d',1,'av::Codec']]],
+  ['xbm',['XBM',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a7d77518d4eba6a1aa0f27d2bc4012f63',1,'av::Codec']]],
+  ['xface',['XFACE',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930aac356b533bc97c036984a3a5444340c8',1,'av::Codec']]],
+  ['xma1',['XMA1',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930ad62e53255028976ba90acdc729657683',1,'av::Codec']]],
+  ['xma2',['XMA2',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930ac85a0e2aaf345a4c69be6f480f2ec0da',1,'av::Codec']]],
+  ['xpm',['XPM',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a9acff13c9a83e49bd60ab5280a0a3542',1,'av::Codec']]],
+  ['xsub',['XSUB',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a173e29bc18b55bd3fe4cb64e33dc4348',1,'av::Codec']]],
+  ['xvmc',['XVMC',['../namespaceav.html#af85b09738c8c19633a36897151c331aea62d7856ad1cf04c21cba23fc230d18bb',1,'av']]],
+  ['xwd',['XWD',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930ae7382d6f33e1c8ed1b8d5a06fec44f73',1,'av::Codec']]],
+  ['xyz12be',['XYZ12BE',['../namespaceav.html#af85b09738c8c19633a36897151c331aea276086a91c883cefe908909abcdba6c0',1,'av']]],
+  ['xyz12le',['XYZ12LE',['../namespaceav.html#af85b09738c8c19633a36897151c331aeabf05c661e4f6f669308f48c60a7b56c0',1,'av']]]
 ];

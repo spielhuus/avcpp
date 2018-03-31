@@ -41,7 +41,7 @@ public:
                ChannelLayout::Enum target_channels, SampleFormat target_sample_fmt, int target_sample_rate );
     ~Resample();
 
-    std::error_code resample ( const uint8_t **src_data, int* src_linesize, std::function< void ( uint8_t**, const int ) > fn );
+    std::error_code resample ( const uint8_t **src_data, int* src_linesize, std::function< void ( uint8_t**, const int, const int ) > fn );
     std::error_code resample ( Frame& frame, int frame_size, std::function< void ( Frame& ) > fn );
 
     int dst_buffer_size();
@@ -77,9 +77,9 @@ private:
     SwrContext* resample_context_ = nullptr;
     AVAudioFifo* fifo_ = nullptr;
 
-    int src_nb_samples_ = 1024; //TODO
-    int dst_nb_samples = 0, max_dst_nb_samples = 0;
-    int dst_bufsize_ = 0;
+//TODO    int src_nb_samples_ = 1024; //TODO
+    /*int dst_nb_samples = 0,*/ int64_t max_dst_nb_samples = 0;
+    //TODO int dst_bufsize_ = 0;
     int dst_nb_channels = 0;
 
     int dst_linesize = 0;

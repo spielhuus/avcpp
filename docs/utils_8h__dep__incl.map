@@ -1,4 +1,7 @@
 <map id="/home/etienne/Projects/avcpp/av/utils.h" name="/home/etienne/Projects/avcpp/av/utils.h">
-<area shape="rect" id="node2" href="$codec_8cpp.html" title="/home/etienne/Projects\l/avcpp/av/codec.cpp" alt="" coords="5,95,177,136"/>
-<area shape="rect" id="node3" href="$utils_8cpp.html" title="/home/etienne/Projects\l/avcpp/av/utils.cpp" alt="" coords="201,95,373,136"/>
+<area shape="rect" id="node2" href="$frame_8h.html" title="/home/etienne/Projects\l/avcpp/av/frame.h" alt="" coords="211,95,367,136"/>
+<area shape="rect" id="node3" href="$codec_8h.html" title="/home/etienne/Projects\l/avcpp/av/codec.h" alt="" coords="95,184,251,225"/>
+<area shape="rect" id="node4" href="$av_8h.html" title="/home/etienne/Projects\l/avcpp/av/av.h" alt="" coords="185,363,341,404"/>
+<area shape="rect" id="node5" href="$format_8h.html" title="/home/etienne/Projects\l/avcpp/av/format.h" alt="" coords="44,273,200,315"/>
+<area shape="rect" id="node6" href="$resample_8h.html" title="/home/etienne/Projects\l/avcpp/av/resample.h" alt="" coords="5,363,161,404"/>
 </map>

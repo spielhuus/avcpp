@@ -1,11 +1,8 @@
 var searchData=
 [
-  ['c_5fint',['c_int',['../classav_1_1_option.html#a75a03be23fc17fbacc37954734a9b0c9',1,'av::Option']]],
-  ['c_5fstr',['c_str',['../classav_1_1_option.html#a38f7767b514d27ee6f2802a8fc46896b',1,'av::Option']]],
-  ['channel_5flayout',['channel_layout',['../classav_1_1_codec.html#a38d2e8e98a352465ecff550f1536920a',1,'av::Codec']]],
-  ['channels',['channels',['../classav_1_1_codec.html#a83be833a6fa68899c25c6815021436ab',1,'av::Codec']]],
-  ['codec',['Codec',['../classav_1_1_codec.html#a02c52369be582abd265d48f4e0e4cc2f',1,'av::Codec::Codec(CODEC::Enum codec, SampleFormat sample_format, Options options=Options())'],['../classav_1_1_codec.html#af945663012563756ba8b4949b1a94fd5',1,'av::Codec::Codec(const Codec &amp;)=delete'],['../classav_1_1_codec.html#af48c531c88288924b689de2f824dab58',1,'av::Codec::Codec(Codec &amp;&amp;codec)=delete'],['../classav_1_1_codec.html#a65a2d57a68f6038294b55fdddae385a1',1,'av::Codec::codec() const']]],
-  ['codec_5ftype',['codec_type',['../classav_1_1_codec.html#ad993841aa8eb0d2e4cdda58572527983',1,'av::Codec']]],
-  ['contains',['contains',['../classav_1_1_options.html#ad7c9fdff2cd99841f241c7aa3dde7697',1,'av::Options']]],
-  ['copy_5fimage',['copy_image',['../classav_1_1_codec.html#a374d7f22b5b8ca7fee7d42b805355ee2',1,'av::Codec']]]
+  ['data',['data',['../classav_1_1_frame.html#ab68a86b5f540741b123bdf42342c096b',1,'av::Frame::data(int index)'],['../classav_1_1_frame.html#a88b3c5f5846557ecf6445b7048fe1e8e',1,'av::Frame::data()'],['../structav_1_1_packet.html#afff5371a0d2d4e59c6a0ed1e933e2901',1,'av::Packet::data()']]],
+  ['decode',['decode',['../classav_1_1_codec.html#a6d17a40bdb4d10883b4e76e441cf01c0',1,'av::Codec']]],
+  ['dst_5fbuffer_5fsize',['dst_buffer_size',['../classav_1_1_resample.html#a5397a7f80d80a863b04183fd09a07ae5',1,'av::Resample']]],
+  ['dts',['dts',['../structav_1_1_packet.html#ac3b9e11c573dc2d00ee5bf5ef2edde5c',1,'av::Packet']]],
+  ['dynamicrange',['DynamicRange',['../classav_1_1_dynamic_range.html#aa8fe33e60c78e35cde93ee08a59eac36',1,'av::DynamicRange']]]
 ];
