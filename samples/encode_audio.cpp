@@ -1,32 +1,44 @@
-#include <iostream>
+/*
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 2.1 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+*/
+#include <fstream>
 
 #include <cmath>
 
-#include "../av/format.h"
-#include "../av/frame.h"
-#include "../av/packet.h"
-#include "../av/utils.h"
+#include "../av/av.h"
 
 int main(int argc, char* argv[]) {
 
-    if (argc <= 1) {
-        fprintf(stderr, "Usage: %s <output file>\n", argv[0]);
-        exit(0);
+    if ( argc <= 1 ) {
+        std::cout << "Usage: " << argv[0] << "<output file>\n";
+        return ( 0 );
     }
 
-    FILE* outfile;
-    outfile = fopen( argv[1], "wb" );
-    if (!outfile) {
-        exit(1);
-    }
-
-    std::error_code errc;
+    //create encoder
     av::Codec _codec( av::Codec::MP2, av::SampleFormat::SAMPLE_FMT_S16, av::Options( { { "ar", 44100 }, {"ac", 2}, {"ab", 64000} } ) );
     if( !!_codec ) {
         std::cout << _codec.errc().message() << std::endl;
         return 1;
     }
-    std::cout << "Encode: " << _codec << std::endl;
+    std::cout << "Encodeer: " << _codec << std::endl;
+
+    //open output file
+    std::ofstream outfile ( argv[1] );
+
+    //generate audio data and encode with codec
+    std::error_code errc;
 
     av::Frame _frame( _codec.frame_size(), _codec.sample_fmt(), _codec.channel_layout(), _codec.sample_rate() );
 
@@ -51,17 +63,33 @@ int main(int argc, char* argv[]) {
                 samples[2*j + k] = samples[2*j];
             t += tincr;
         }
+
+        //encode the frame
         errc = _codec.encode( _frame, [&](av::Packet& _package ) {
-            fwrite(_package.data(), 1, _package.size(), outfile);
+            outfile.write( reinterpret_cast< char* > ( _package.data() ), _package.size() );
             _package.unref();
-        });
+        } );
+
+        //check for error
+        if( !!errc && ( errc.value() != EAGAIN ) ) {
+            std::cout << "Error: " << errc.message() << std::endl;
+            return errc.value();
+        }
     }
+
     /* flush the encoder */
-    errc = _codec.encode( [&](av::Packet& _package ) {
-        fwrite(_package.data(), 1, _package.size(), outfile);
+    if( ( errc = _codec.encode( [&](av::Packet& _package ) {
+        outfile.write( reinterpret_cast< char* > ( _package.data() ), _package.size() );
         _package.unref();
-    });
-    std::cout << errc.message() << std::endl;
-    fclose(outfile);
+
+    //check that whole codec buffer got written.
+    } ) ).value() != av::AV_EOF ) {
+        std::cout << "Error: " << errc.message() << std::endl;
+        return errc.value();
+    }
+
+    //output information how to play the result
+    std::cout << "Play the output audio file with the command:\n" <<
+              "ffplay '" << argv[1] << "'" << std::endl;
     return 0;
 }

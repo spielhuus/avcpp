@@ -161,7 +161,7 @@ Friends</h2></td></tr>
 <div class="textblock"><p>Media Input/Output <a class="el" href="classav_1_1_format.html" title="Media Input/Output Format. ">Format</a>. </p>
 <p>To open a media file the <a class="el" href="classav_1_1_format.html" title="Media Input/Output Format. ">av::Format</a> is created with a filename as std::string or with std::iostream. The write flag indicates the i/o mode of the <a class="el" href="classav_1_1_format.html" title="Media Input/Output Format. ">av::Format</a>. Default is READ.</p>
 <p>The <a class="el" href="classav_1_1_options.html" title="av option list. ">av::Options</a> parameter contains default options for the format or codec to load. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="decode_8cpp-example.html#_a0">decode.cpp</a>, <a class="el" href="decode_audio_8cpp-example.html#_a0">decode_audio.cpp</a>, <a class="el" href="metadata_8cpp-example.html#_a0">metadata.cpp</a>, and <a class="el" href="play_ao_8cpp-example.html#_a0">play_ao.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="decode_8cpp-example.html#_a0">decode.cpp</a>, <a class="el" href="decode_audio_8cpp-example.html#_a0">decode_audio.cpp</a>, <a class="el" href="metadata_8cpp-example.html#_a0">metadata.cpp</a>, <a class="el" href="play_ao_8cpp-example.html#_a0">play_ao.cpp</a>, and <a class="el" href="transcode_aac_8cpp-example.html#_a0">transcode_aac.cpp</a>.</dd>
 </dl></div><h2 class="groupheader">Member Typedef Documentation</h2>
 <a id="ab2bb68ee25b49d5a66580f2344254f84"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab2bb68ee25b49d5a66580f2344254f84">&#9670;&nbsp;</a></span>codec_list</h2>
@@ -441,7 +441,7 @@ mime_type if non-NULL checks if mime_type matches with the MIME type of the regi
 </div><div class="memdoc">
 
 <p>Returns an iterator to the first codec of the format. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="decode_audio_8cpp-example.html#a2">decode_audio.cpp</a>, <a class="el" href="metadata_8cpp-example.html#a3">metadata.cpp</a>, and <a class="el" href="play_ao_8cpp-example.html#a2">play_ao.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="decode_audio_8cpp-example.html#a2">decode_audio.cpp</a>, <a class="el" href="metadata_8cpp-example.html#a3">metadata.cpp</a>, <a class="el" href="play_ao_8cpp-example.html#a2">play_ao.cpp</a>, and <a class="el" href="transcode_aac_8cpp-example.html#a3">transcode_aac.cpp</a>.</dd>
 </dl>
 </div>
 </div>
@@ -461,7 +461,7 @@ mime_type if non-NULL checks if mime_type matches with the MIME type of the regi
 </div><div class="memdoc">
 
 <p>Returns an iterator to the last codec of the format. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="decode_audio_8cpp-example.html#a3">decode_audio.cpp</a>, <a class="el" href="metadata_8cpp-example.html#a4">metadata.cpp</a>, and <a class="el" href="play_ao_8cpp-example.html#a3">play_ao.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="decode_audio_8cpp-example.html#a3">decode_audio.cpp</a>, <a class="el" href="metadata_8cpp-example.html#a4">metadata.cpp</a>, <a class="el" href="play_ao_8cpp-example.html#a3">play_ao.cpp</a>, and <a class="el" href="transcode_aac_8cpp-example.html#a4">transcode_aac.cpp</a>.</dd>
 </dl>
 </div>
 </div>
@@ -560,7 +560,7 @@ mime_type if non-NULL checks if mime_type matches with the MIME type of the regi
 </div><div class="memdoc">
 
 <p>Returns the metadata of the associated format context. </p>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="metadata_8cpp-example.html#a2">metadata.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="metadata_8cpp-example.html#a2">metadata.cpp</a>, and <a class="el" href="transcode_aac_8cpp-example.html#a1">transcode_aac.cpp</a>.</dd>
 </dl>
 </div>
 </div>
@@ -653,7 +653,8 @@ mime_type if non-NULL checks if mime_type matches with the MIME type of the regi
 
 <p>play length of this media format in milliseconds. </p>
 <dl class="section return"><dt>Returns</dt><dd>play length in milliseconds. </dd></dl>
-
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="transcode_aac_8cpp-example.html#a2">transcode_aac.cpp</a>.</dd>
+</dl>
 </div>
 </div>
 <a id="a868c2f2408deab4d0fc0c4fab0e74c22"></a>
@@ -679,7 +680,7 @@ mime_type if non-NULL checks if mime_type matches with the MIME type of the regi
   </table>
   </dd>
 </dl>
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="metadata_8cpp-example.html#a6">metadata.cpp</a>, and <a class="el" href="play_ao_8cpp-example.html#a6">play_ao.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="metadata_8cpp-example.html#a6">metadata.cpp</a>, <a class="el" href="play_ao_8cpp-example.html#a6">play_ao.cpp</a>, and <a class="el" href="transcode_aac_8cpp-example.html#a14">transcode_aac.cpp</a>.</dd>
 </dl>
 </div>
 </div>
@@ -781,7 +782,7 @@ mime_type if non-NULL checks if mime_type matches with the MIME type of the regi
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 31 2018 15:34:03 for avcpp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Mar 31 2018 23:34:38 for avcpp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

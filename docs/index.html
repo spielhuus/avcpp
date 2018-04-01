@@ -68,14 +68,20 @@ $(function() {
 <p>avcpp can be used as a conan package. the library need to be linked against the ffmpeg shared or static libraries.</p>
 <h3>include Include the conan package</h3>
 <h4>conanSetup Basic setup</h4>
-<p>''' $ conan install avcpp/0.1.1@conan-cpp/latest ''' </p><h4>projectSetup Project setup</h4>
-<p>If you handle multiple dependencies in your project is better to add a <em>conanfile.txt</em> ''' [requires] avcpp/0.1.1@conan-cpp/latest</p>
+<p>''' $ conan install avcpp/0.1.1@conan-cpp/latest '''</p>
+<h4>projectSetup Project setup</h4>
+<p>If you handle multiple dependencies in your project is better to add a <em>conanfile.txt</em></p>
+<p>''' [requires] avcpp/0.1.1@conan-cpp/latest</p>
 <p>[options] avcpp:shared=[True, False]</p>
-<p>[generators] cmake ''' Complete the installation of requirements for your project running: ''' $ mkdir build &amp;&amp; cd build &amp;&amp; conan install .. ''' Note: It is recommended that you run conan install from a build directory and not the root of the project directory. This is because conan generates <em>conanbuildinfo</em> files specific to a single build configuration which by default comes from an autodetected default profile located in ~/.conan/profiles/default . If you pass different build configuration options to conan install, it will generate different <em>conanbuildinfo</em> files. Thus, they should not be added to the root of the project, nor committed to git. </p><h3>source Build from source</h3>
+<p>[generators] cmake '''</p>
+<p>Complete the installation of requirements for your project running:</p>
+<p>''' $ mkdir build &amp;&amp; cd build &amp;&amp; conan install .. '''</p>
+<p>Note: It is recommended that you run conan install from a build directory and not the root of the project directory. This is because conan generates <em>conanbuildinfo</em> files specific to a single build configuration which by default comes from an autodetected default profile located in ~/.conan/profiles/default . If you pass different build configuration options to conan install, it will generate different <em>conanbuildinfo</em> files. Thus, they should not be added to the root of the project, nor committed to git. </p><h3>source Build from source</h3>
 <p>The cmake build process relies on conan for finding the ffmpeg libraries. If you buld it from source you will have to include the source files in the build process and link the appliation with the ffmpeg libraries.</p>
 <h1>Use library.</h1>
 <h2>format Read or write multimedia data from/to file or stream</h2>
-<p>'''cpp enum Format::Mode { READ, WRITE }; <a class="el" href="classav_1_1_format.html" title="Media Input/Output Format. ">av::Format</a> ( const std::string&amp; filename, // The path to the file to open <a class="el" href="classav_1_1_format.html#aa2b5fe128c6490b54ffe74425160c06a" title="The i/o mode. ">av::Format::Mode</a> mode = READ, // Set the format i/o mode to READ or WRITE. Options options = Options() // Set the AV option for the format. ); ''' To open a media file the <a class="el" href="classav_1_1_format.html" title="Media Input/Output Format. ">av::Format</a> is created with a filename as std::string or with std::iostream. The write flag indicates the i/o mode of the <a class="el" href="classav_1_1_format.html" title="Media Input/Output Format. ">av::Format</a>. Default is READ.</p>
+<p>'''cpp enum Format::Mode { READ, WRITE }; <a class="el" href="classav_1_1_format.html" title="Media Input/Output Format. ">av::Format</a> ( const std::string&amp; filename, // The path to the file to open <a class="el" href="classav_1_1_format.html#aa2b5fe128c6490b54ffe74425160c06a" title="The i/o mode. ">av::Format::Mode</a> mode = READ, // Set the format i/o mode to READ or WRITE. Options options = Options() // Set the AV option for the format. ); '''</p>
+<p>To open a media file the <a class="el" href="classav_1_1_format.html" title="Media Input/Output Format. ">av::Format</a> is created with a filename as std::string or with std::iostream. The write flag indicates the i/o mode of the <a class="el" href="classav_1_1_format.html" title="Media Input/Output Format. ">av::Format</a>. Default is READ.</p>
 <p>The <a class="el" href="classav_1_1_options.html" title="av option list. ">av::Options</a> parameter contains default options for the format or codec to load.</p>
 <h3>metadata Get metadata</h3>
 <p>The <a class="el" href="structav_1_1_metadata.html" title="The Metadata information. ">av::Metadata</a> class provides access to a subset of the metadata information. The provided tags are listen in <a class="el" href="structav_1_1_metadata.html#a1a3594060777cde3558ce7dbbe149d2a" title="enum with metadata elements for read and write access. ">av::Metadata::Enum</a>. </p><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="format_8h.html">format.h</a>&quot;</span></div><div class="line"></div><div class="line"><a class="code" href="classav_1_1_format.html">av::Format</a> format_( <span class="stringliteral">&quot;&lt;path to mediafile&gt;&quot;</span> );</div><div class="line"><span class="keywordflow">if</span>( !format_ ) {</div><div class="line">    <span class="keyword">auto</span> metadata_ = format.metadata();</div><div class="line"></div><div class="line">    ... or</div><div class="line">    <a class="code" href="structav_1_1_metadata.html">av::Metadata</a> metadata = _format.metadata();</div><div class="line">    std::string title = metadata.<a class="code" href="structav_1_1_metadata.html#a021b590bbfcaeccc224b26a9b99094da">get</a>( <a class="code" href="structav_1_1_metadata.html#a1a3594060777cde3558ce7dbbe149d2aa4ee64be87af855dc1fffa1d9bf7f51b2">av::Metadata::TITLE</a> ) );</div><div class="line"></div><div class="line">} <span class="keywordflow">else</span> srd::cerr &lt;&lt; format.errc().message();</div></div><!-- fragment --><h2>error Error handling</h2>
@@ -87,7 +93,7 @@ audiofile example.</h1>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 31 2018 15:34:03 for avcpp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Mar 31 2018 23:34:38 for avcpp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

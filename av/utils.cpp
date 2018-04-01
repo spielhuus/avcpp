@@ -27,7 +27,10 @@ extern "C" {
 #include <libavutil/imgutils.h>
 #include <libavutil/samplefmt.h>
 #include "libavformat/avformat.h"
+#include <libavutil/parseutils.h>
 }
+
+#include "averrc.h"
 
 namespace av {
 
@@ -67,6 +70,9 @@ std::string str(SampleFormat format) {
 int get_bytes_per_sample( SampleFormat sample_format )
 {return av_get_bytes_per_sample( static_cast< AVSampleFormat >( sample_format ) );}
 
+std::error_code parse_video_size ( int* width_ptr, int* height_ptr, const char* str ) {
+    return make_error_code( av_parse_video_size( width_ptr, height_ptr, str ) );
+}
 
 std::shared_ptr< uint8_t* > make_sample_buffer ( ChannelLayout::Enum channel_layout, int nb_samples, SampleFormat sample_format, int* dst_linesize ) {
 
@@ -85,6 +91,19 @@ std::shared_ptr< uint8_t* > make_sample_buffer ( ChannelLayout::Enum channel_lay
     });
     return ptr;
 }
+
+ImageData::ImageData( int width, int heigt, PixelFormat pix_fmt ) {
+    if ((data_size = av_image_alloc(src_data, src_linesize,
+                              width, heigt, static_cast< AVPixelFormat >( pix_fmt ), 16)) < 0) {
+        fprintf(stderr, "Could not allocate source image\n");
+    }
+}
+ImageData::~ImageData() {
+    av_freep(&src_data[0]);
+}
+
+
+
 ChannelLayout::Enum ChannelLayout::get ( uint64_t format ) {
     switch ( format ) {
     case AV_CH_FRONT_CENTER:

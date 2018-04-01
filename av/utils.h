@@ -17,6 +17,7 @@
 #define AVCPP_UTILS_H
 
 #include <memory>
+#include <system_error>
 
 /** @brief av namespace */
 namespace av {
@@ -74,6 +75,12 @@ std::shared_ptr< uint8_t* > make_sample_buffer (
 /** @brief Number of bytes per sample.
     @return number of bytes per sample or zero if unknown for the given sample format */
 int get_bytes_per_sample( /** the sample format */ SampleFormat sample_format );
+
+/** @brief Parse str and put in width_ptr and height_ptr the detected values. */
+std::error_code parse_video_size (
+        /* pointer to the variable which will contain the detected width value */ int* width_ptr,
+        /* pointer to the variable which will contain the detected height value */ int* height_ptr,
+        /* the string to parse: it has to be a string in the format width x height or a valid video size abbreviation. */ const char* str );
 
 /**
  * Pixel format.
@@ -378,5 +385,12 @@ enum PixelFormat {
 
 std::string str( PixelFormat format );
 
+struct ImageData {
+    ImageData(int width, int heigt, PixelFormat pix_fmt);
+    ~ImageData();
+    uint8_t* src_data[4];
+    int src_linesize[4];
+    int data_size = 0;
+};
 }//namespace av
 #endif // AVCPP_UTILS_H

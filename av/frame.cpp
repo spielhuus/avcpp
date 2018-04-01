@@ -59,6 +59,9 @@ uint8_t** Frame::extended_data () {
 int Frame::linesize ( int index ) {
     return frame_->linesize[index];
 }
+int* Frame::linesize ()
+{return frame_->linesize;}
+
 std::error_code Frame::writeable() {
     int ret = av_frame_make_writable ( frame_ );
 

@@ -46,6 +46,7 @@ public:
     uint8_t** data();
     uint8_t** extended_data();
     int linesize ( int index );
+    int* linesize ();
 
     std::error_code writeable();
 

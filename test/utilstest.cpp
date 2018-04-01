@@ -40,7 +40,7 @@ TEST( UtilsTest, sample_fmt ) {
 
     EXPECT_EQ( "fltle", str( flt ) );
     EXPECT_EQ( "s16le", str( s16 ) );
-    EXPECT_EQ( "s16ple", str( s16p ) );
+    EXPECT_EQ( "s16le", str( s16p ) );
     EXPECT_NE( "fltle", str( s16 ) );
 
     EXPECT_EQ( AV_SAMPLE_FMT_FLT, static_cast< AVSampleFormat >( flt ) );

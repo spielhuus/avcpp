@@ -16,8 +16,9 @@
 #include <fstream>
 #include <iostream>
 
-#include "../av/format.h"
+#include "../av/av.h"
 
+/** @brief open media file output meta information and save covers as oom */
 int main ( int argc, char* argv[] ) {
 
     if ( argc <= 1 ) {
@@ -25,33 +26,56 @@ int main ( int argc, char* argv[] ) {
         exit ( 0 );
     }
 
+    //read and output format
     av::Format format ( argv[1] );
     if ( !!format ) {
         std::cout << "Error: " << format.errc().message() << std::endl;
         exit ( 1 );
     }
+    std::cout << format << std::endl;
 
-    auto metadata_ = format.metadata();
-    std::cout << metadata_;
+    //get all images
+    std::map< int, std::pair< std::string, std::ofstream > > image_files;
+    for( auto _codec : format ) {
+        if( av::is_video( _codec ) ) {
+            std::string filename = "/tmp/cover-" + std::to_string( _codec->index() ) + ".ppm";
+            image_files[_codec->index()] = std::pair< std::string, std::ofstream >( filename, std::ofstream( filename ) );
+        }
+    }
 
-    auto video_codec  = std::find_if( format.begin(), format.end(), av::is_video );
-    if( video_codec != format.end() ) {
-        static uint8_t *video_dst_data[4] = {nullptr};
-        static int      video_dst_linesize[4];
-        static int img_buf_size = (*video_codec)->malloc_image( video_dst_data, video_dst_linesize );
+    //save the images as ppm
+    if( std::count_if( format.begin(), format.end(), av::is_video ) > 0 ) {
+        std::error_code errc;
+        if( ( errc = format.read( [&]( av::Packet& package ) {
+            auto codec = format.at( static_cast< size_t >( package.stream_index() ) );
+            if( av::is_video( codec ) ) {
+                codec->decode( package, [&]( av::Frame& frame ) {
 
-        std::ofstream outfile_cover ( "/tmp/cover.raw" );
+                    //scale raw image data
+                    av::Scale scale (codec->width(), codec->height(), codec->pix_fmt(),
+                                     codec->width(), codec->height(), av::PixelFormat::RGB24 );
 
-        auto err = format.read( [&]( av::Packet& package ) {
-            if( package.stream_index() == (*video_codec)->index() ) {
-                (*video_codec)->decode( package, [&]( av::Frame& frame ) {
-                    (*video_codec)->copy_image( frame, video_dst_data, video_dst_linesize );
-                    outfile_cover.write( reinterpret_cast< char* >( video_dst_data[0] ), img_buf_size );
+                    av::ImageData dst(codec->width(),codec->height(),av::PixelFormat::RGB24);
+                    scale.scale(frame.data(), frame.linesize(), 0, codec->height(), dst.src_data, dst.src_linesize );
+
+                    //save the ppm
+                    auto& outfile = image_files.at( package.stream_index() ).second;
+                    char header [100];
+                    int cx = snprintf ( header, 100, "P6\n%d %d\n255\n", codec->width(), codec->height() );
+                    outfile.write( header, cx );
+
+                    // Write pixel data
+                    for(int y=0; y<codec->height(); y++)
+                        outfile.write(
+                            reinterpret_cast< char* >( dst.src_data[0] )+y*dst.src_linesize[0], codec->width()*3 );
+
+                    std::cout << "raw image data written to: " << image_files.at( package.stream_index() ).first << "\n";
                 });
             }
-        });
-        std::cout << "raw image data written to /tmp/cover.raw";
+        } ) ).value() != av::AV_EOF ) { //check if complete file was read.
+            std::cout << errc.message() << std::endl;
+            return errc.value();
+        }
     }
-    std::cout << std::endl;
     return 0;
 }

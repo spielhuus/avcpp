@@ -27,6 +27,9 @@ target_link_libraries(encode_audio av ${CONAN_LIBS} -ldl)
 add_executable(resample resample.cpp)
 target_link_libraries(resample av ${CONAN_LIBS} -ldl)
 
+add_executable(scaling_video scaling_video.cpp)
+target_link_libraries(scaling_video av ${CONAN_LIBS} -ldl)
+
 add_executable(transcode_aac transcode_aac.cpp)
 target_link_libraries(transcode_aac av ${CONAN_LIBS} -ldl)
 
@@ -47,3 +50,9 @@ if( ${SDL_FOUND} )
     target_link_libraries(play av ${CONAN_LIBS} ${SDL_LIBRARY})
 endif()
 
+find_package(SDL2)
+if( ${SDL2_FOUND} )
+    include_directories(${ROOT} ${INCLUDES} ${SDL2_INCLUDE_DIR})
+    add_executable(play_sdl2 play_sdl2.cpp)
+    target_link_libraries(play_sdl2 av ${CONAN_LIBS} ${SDL2_LIBRARY})
+endif()

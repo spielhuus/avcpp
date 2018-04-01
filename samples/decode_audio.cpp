@@ -49,8 +49,8 @@ int main ( int argc, char* argv[] ) {
 
     if ( ( errc = format.read ( [&] ( av::Packet& package ) {
 
-    //decode if package contains audio data
-    auto codec = format.at ( static_cast< size_t > ( package.stream_index() ) );
+        //decode if package contains audio data
+        auto codec = format.at ( static_cast< size_t > ( package.stream_index() ) );
 
         if ( av::is_audio ( codec ) ) {
             errc = codec->decode ( package, [&] ( av::Frame& frame ) {
@@ -63,8 +63,7 @@ int main ( int argc, char* argv[] ) {
             { std::cout << errc.message() << std::endl; }
         }
 
-        //check if complete file was read.
-    } ) ).value() != av::AV_EOF ) {
+    } ) ).value() != av::AV_EOF ) { //check if complete file was read.
         std::cout << errc.message() << std::endl;
         return errc.value();
     }

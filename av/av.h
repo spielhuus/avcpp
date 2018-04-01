@@ -5,6 +5,8 @@
 #include "codec.h"
 #include "frame.h"
 #include "format.h"
+#include "scale.h"
+#include "utils.h"
 
 namespace av {namespace utils {
 template< class IO, class Codec, class Frame >
@@ -81,11 +83,15 @@ avcpp can be used as a conan package. the library need to be linked against the 
 ### include Include the conan package
 
 #### conanSetup Basic setup
+
 '''
 $ conan install avcpp/0.1.1\@conan-cpp/latest
 '''
+
 #### projectSetup Project setup
+
 If you handle multiple dependencies in your project is better to add a *conanfile.txt*
+
 '''
     [requires]
     avcpp/0.1.1\@conan-cpp/latest
@@ -96,17 +102,22 @@ If you handle multiple dependencies in your project is better to add a *conanfil
     [generators]
     cmake
 '''
+
 Complete the installation of requirements for your project running:
+
 '''
     $ mkdir build && cd build && conan install ..
 '''
+
 Note: It is recommended that you run conan install from a build directory and not the root of the project directory.  This is because conan generates *conanbuildinfo* files specific to a single build configuration which by default comes from an autodetected default profile located in ~/.conan/profiles/default .  If you pass different build configuration options to conan install, it will generate different *conanbuildinfo* files.  Thus, they should not be added to the root of the project, nor committed to git.
 ### source Build from source
 The cmake build process relies on conan for finding the ffmpeg libraries. If you buld it from source you will
 have to include the source files in the build process and link the appliation with the ffmpeg libraries.
 
 # Use library.
+
 ## format Read or write multimedia data from/to file or stream
+
 '''cpp
 enum Format::Mode { READ, WRITE };
 av::Format ( const std::string& filename,   // The path to the file to open
@@ -114,12 +125,14 @@ av::Format ( const std::string& filename,   // The path to the file to open
              Options options = Options()    // Set the AV option for the format.
 );
 '''
+
 To open a media file the av::Format is created with a filename as std::string or with std::iostream. The write flag
 indicates the i/o mode of the av::Format. Default is READ.
 
 The av::Options parameter contains default options for the format or codec to load.
 
 ### metadata Get metadata
+
 The av::Metadata class provides access to a subset of the metadata information.
 The provided tags are listen in av::Metadata::Enum.
 \code
@@ -184,13 +197,33 @@ if( !format_ ) {
  * <pre>Usage: decode &lt;input file&gt; &lt;video output file&gt; &lt;audio output file&gt;</pre>
 */
 
+/** @example encode_audio.cpp
+ * encode audio and write raw samples to file.
+ * <pre>Usage: encode_audio &lt;input file&gt; &lt;output file&gt;</pre>
+*/
+
+/** @example encode.cpp
+ * encode video and audio and write raw data to files.
+ * <pre>Usage: encode &lt;input file&gt; &lt;video output file&gt; &lt;audio output file&gt;</pre>
+*/
+
 /** @example resample.cpp
  * resamplel audio data and write raw result to file.
  * <pre>Usage: resample &lt;output file&gt;</pre>
 */
 
+/** @example transcode_aac.cpp
+ * transcode audio data and write aac result to file.
+ * <pre>Usage: transcode_aac &lt;input file&gt; &lt;output file&gt;</pre>
+*/
+
 /** @example play_ao.cpp
  * play audio file with libao.
  * <pre>Usage: play_ao &lt;input file&gt;</pre>
+*/
+
+/** @example play_sdl2.cpp
+ * play video file with libsdl2.
+ * <pre>Usage: play_sdl2 &lt;input file&gt;</pre>
 */
 #endif // AV_H

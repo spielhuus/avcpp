@@ -523,9 +523,9 @@ public:
 
     /** @brief Create new Encoder.
         Options contains all the <a href="https://ffmpeg.org/ffmpeg-codecs.html">codec options</a>. */
-    Codec ( /** The Codec id */             Codec::ID codec,
-                                            /** The Codec sample format */ SampleFormat sample_format,
-                                            /** Codec Options */           Options options = Options() );
+    Codec ( /** The Codec id */            Codec::ID codec,
+            /** The Codec sample format */ SampleFormat sample_format,
+            /** Codec Options */           Options options = Options() );
     ~Codec();
 
     Codec ( const Codec& ) = delete;
