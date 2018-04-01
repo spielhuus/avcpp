@@ -3,39 +3,48 @@
 
 #include <system_error>
 
+#include "utils.h"
+
 #define MAX_CHANNELS 32
-#define MAX_FRAGMENTS 32768 // more than 24h
-// The length of the window over which the RMS and peak are calculated.
-// Specified in milliseconds. Don't change this!
-#define FRAGMENT_LENGTH 3000
 
 namespace av {
-typedef double sample;
-
-struct dr_meter {
-    sample *rms_values[MAX_CHANNELS];
-    sample *peak_values[MAX_CHANNELS];
-
-    sample sum[MAX_CHANNELS];
-    sample peak[MAX_CHANNELS];
-
-    int channels;
-    int sample_rate;
-    int sample_fmt;
-    int sample_size;
-
-    size_t fragment; // The index of the current fragment
-    size_t fragment_size; // The size of a fragment in samples
-    size_t fragment_read; // The number of samples scanned so far
-    bool fragment_started;
-};
 
 class DynamicRange {
 public:
-    DynamicRange();
-    void meter_init ( struct dr_meter *self );
-    std::error_code meter_start ( struct dr_meter *self, int channels, int sample_rate, int sample_fmt );
+    DynamicRange( int channels, int sample_rate, SampleFormat sample_fmt );
 
+    int meter_feed( void *buf, size_t buf_size );
+    int meter_finish();
+    void meter_free();
+
+    struct dr_meter {
+        dr_meter() {
+            for (int ch = 0; ch < MAX_CHANNELS; ch++) {
+                    rms_values[ch] = nullptr;
+                    peak_values[ch] = nullptr;
+                    sum[ch] = 0;
+                    peak[ch] = 0;
+            }
+        }
+
+        double *rms_values[MAX_CHANNELS];
+        double *peak_values[MAX_CHANNELS];
+
+        double sum[MAX_CHANNELS];
+        double peak[MAX_CHANNELS];
+
+        int channels = 0;
+        int sample_rate = 0;
+        int sample_fmt = 0;
+        int sample_size = 0;
+
+        size_t fragment = 0; // The index of the current fragment
+        size_t fragment_size = 0; // The size of a fragment in samples
+        size_t fragment_read = 0; // The number of samples scanned so far
+        bool fragment_started = 0;
+    };
+private:
+    dr_meter meter_;
 };
 }//namespace av
 #endif // DYNAMICRANGE_H

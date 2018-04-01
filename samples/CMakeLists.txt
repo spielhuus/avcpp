@@ -33,8 +33,8 @@ target_link_libraries(scaling_video av ${CONAN_LIBS} -ldl)
 add_executable(transcode_aac transcode_aac.cpp)
 target_link_libraries(transcode_aac av ${CONAN_LIBS} -ldl)
 
-#add_executable(dr_range dr_range.cpp)
-#target_link_libraries(dr_range av ${CONAN_LIBS} -ldl)
+add_executable(dr_range dr_range.cpp)
+target_link_libraries(dr_range av ${CONAN_LIBS} -ldl)
 
 find_package(LibAO)
 if( ${LIBAO_FOUND} )
