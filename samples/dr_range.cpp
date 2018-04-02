@@ -50,7 +50,6 @@ int main (int argc, char **argv) {
         if( package.stream_index() == codec->index() ) {
             errc = codec->decode ( package, [&] ( av::Frame& frame ) {
                 //write to out file
-//                av::utils::write_audio( outfile, audio_codec, frame );
                 dr_range.meter_feed( frame.data()[0], frame.linesize(0) );
             });
             if( !!errc && errc.value() != av::AV_EOF && errc.value() != EAGAIN )

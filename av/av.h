@@ -7,6 +7,7 @@
 #include "format.h"
 #include "scale.h"
 #include "utils.h"
+#include "cuesheet.h"
 #include "dynamicrange.h"
 
 namespace av {namespace utils {
