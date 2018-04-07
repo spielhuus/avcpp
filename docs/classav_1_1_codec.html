@@ -73,7 +73,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Media <a class="el" href="classav_1_1_codec.html" title="Media Codec. ">Codec</a>.  
+<p>Create and manage the AVCodec and AVCodecContext.  
  <a href="classav_1_1_codec.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="codec_8h_source.html">codec.h</a>&gt;</code></p>
@@ -638,7 +638,8 @@ Public Types</h2></td></tr>
 <br />
 &#160;&#160;<a class="el" href="classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a39314edb2486206cc3941b06a725f68f">WRAPPED_AVFRAME</a> = 0x21001
 <br />
- }</td></tr>
+ }<tr class="memdesc:a394c5c0e7d38d9230ee2ae46e82ee930"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classav_1_1_codec.html" title="Create and manage the AVCodec and AVCodecContext. ">Codec</a> ID enum.  <a href="classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930">More...</a><br /></td></tr>
+</td></tr>
 <tr class="separator:a394c5c0e7d38d9230ee2ae46e82ee930"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50ee89fc40a5efb76134379174227012"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_codec.html#a50ee89fc40a5efb76134379174227012">TYPE</a> { <br />
 &#160;&#160;<a class="el" href="classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930ab50339a10e1de285ac99d4c3990b8693">NONE</a> = -1, 
@@ -650,7 +651,7 @@ Public Types</h2></td></tr>
 <a class="el" href="classav_1_1_codec.html#a50ee89fc40a5efb76134379174227012a357bd74edad7a5ca38986b70368e07b5">TYPE::ATTACHMENT</a> =4, 
 <a class="el" href="classav_1_1_codec.html#a50ee89fc40a5efb76134379174227012af0e830424544178301073a09bf236472">TYPE::NB</a> =5
 <br />
- }<tr class="memdesc:a50ee89fc40a5efb76134379174227012"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classav_1_1_codec.html" title="Media Codec. ">Codec</a> type enum.  <a href="classav_1_1_codec.html#a50ee89fc40a5efb76134379174227012">More...</a><br /></td></tr>
+ }<tr class="memdesc:a50ee89fc40a5efb76134379174227012"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="classav_1_1_codec.html" title="Create and manage the AVCodec and AVCodecContext. ">Codec</a> type enum.  <a href="classav_1_1_codec.html#a50ee89fc40a5efb76134379174227012">More...</a><br /></td></tr>
 </td></tr>
 <tr class="separator:a50ee89fc40a5efb76134379174227012"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -695,21 +696,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0d8a7d46f6b0b9181454bffb3230fde5"><td class="memItemLeft" align="right" valign="top">std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_codec.html#a0d8a7d46f6b0b9181454bffb3230fde5">encode</a> (std::function&lt; void(<a class="el" href="structav_1_1_packet.html">Packet</a> &amp;) &gt; fn)</td></tr>
 <tr class="memdesc:a0d8a7d46f6b0b9181454bffb3230fde5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flush the encoder and write Package.  <a href="#a0d8a7d46f6b0b9181454bffb3230fde5">More...</a><br /></td></tr>
 <tr class="separator:a0d8a7d46f6b0b9181454bffb3230fde5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad99e5003d2eb898c670bbff9779aea2c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_codec.html#ad99e5003d2eb898c670bbff9779aea2c">eof</a> ()</td></tr>
-<tr class="memdesc:ad99e5003d2eb898c670bbff9779aea2c"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks if end-of-file has been reached  <a href="#ad99e5003d2eb898c670bbff9779aea2c">More...</a><br /></td></tr>
-<tr class="separator:ad99e5003d2eb898c670bbff9779aea2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a06aed3c03e6b4e762fac2e2bb4bf98e2"><td class="memItemLeft" align="right" valign="top">std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_codec.html#a06aed3c03e6b4e762fac2e2bb4bf98e2">errc</a> ()</td></tr>
-<tr class="memdesc:a06aed3c03e6b4e762fac2e2bb4bf98e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">return the actual error state of the assiciated format context.  <a href="#a06aed3c03e6b4e762fac2e2bb4bf98e2">More...</a><br /></td></tr>
+<tr class="memdesc:a06aed3c03e6b4e762fac2e2bb4bf98e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks if no error has occurred i.e.  <a href="#a06aed3c03e6b4e762fac2e2bb4bf98e2">More...</a><br /></td></tr>
 <tr class="separator:a06aed3c03e6b4e762fac2e2bb4bf98e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1be74061ce9570a4efb5f77b60e34849"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_codec.html#a1be74061ce9570a4efb5f77b60e34849">fail</a> ()</td></tr>
-<tr class="memdesc:a1be74061ce9570a4efb5f77b60e34849"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks if an error has occurred  <a href="#a1be74061ce9570a4efb5f77b60e34849">More...</a><br /></td></tr>
-<tr class="separator:a1be74061ce9570a4efb5f77b60e34849"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adaeb42bade50785b5f8331d06b404971"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_codec.html#adaeb42bade50785b5f8331d06b404971">frame_size</a> ()</td></tr>
 <tr class="memdesc:adaeb42bade50785b5f8331d06b404971"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of samples per channel in an audio frame.  <a href="#adaeb42bade50785b5f8331d06b404971">More...</a><br /></td></tr>
 <tr class="separator:adaeb42bade50785b5f8331d06b404971"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a561860fa0fdebddc6719ce8963870f19"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_codec.html#a561860fa0fdebddc6719ce8963870f19">good</a> ()</td></tr>
-<tr class="memdesc:a561860fa0fdebddc6719ce8963870f19"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks if no error has occurred i.e.  <a href="#a561860fa0fdebddc6719ce8963870f19">More...</a><br /></td></tr>
-<tr class="separator:a561860fa0fdebddc6719ce8963870f19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade83fe53c5cedcad36b8fdd37f15a40c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_codec.html#ade83fe53c5cedcad36b8fdd37f15a40c">height</a> () const</td></tr>
 <tr class="memdesc:ade83fe53c5cedcad36b8fdd37f15a40c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Picture width / height.  <a href="#ade83fe53c5cedcad36b8fdd37f15a40c">More...</a><br /></td></tr>
 <tr class="separator:ade83fe53c5cedcad36b8fdd37f15a40c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -720,7 +712,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ad8ad03d7ba76d2858aaf473ce99a6ae7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the sample format is planar.  <a href="#ad8ad03d7ba76d2858aaf473ce99a6ae7">More...</a><br /></td></tr>
 <tr class="separator:ad8ad03d7ba76d2858aaf473ce99a6ae7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab9dfc57a843c19d9293ffed4a2f677a7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_codec.html#ab9dfc57a843c19d9293ffed4a2f677a7">malloc_image</a> (uint8_t **video_dst_data, int *video_dst_linesize)</td></tr>
-<tr class="memdesc:ab9dfc57a843c19d9293ffed4a2f677a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate memory for the image.  <a href="#ab9dfc57a843c19d9293ffed4a2f677a7">More...</a><br /></td></tr>
+<tr class="memdesc:ab9dfc57a843c19d9293ffed4a2f677a7"><td class="mdescLeft">&#160;</td><td class="mdescRight">TODO refactor to free method in utils.  <a href="#ab9dfc57a843c19d9293ffed4a2f677a7">More...</a><br /></td></tr>
 <tr class="separator:ab9dfc57a843c19d9293ffed4a2f677a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a60f4a343063a1e02a2c4b4a60f219cb9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_codec.html#a60f4a343063a1e02a2c4b4a60f219cb9">operator!</a> () const</td></tr>
 <tr class="memdesc:a60f4a343063a1e02a2c4b4a60f219cb9"><td class="mdescLeft">&#160;</td><td class="mdescRight">checks if an error has occurred.  <a href="#a60f4a343063a1e02a2c4b4a60f219cb9">More...</a><br /></td></tr>
@@ -755,7 +747,13 @@ Friends</h2></td></tr>
 <tr class="separator:aeae78ada8424c6130e2d0b79b1d36055"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Media <a class="el" href="classav_1_1_codec.html" title="Media Codec. ">Codec</a>. </p>
+<div class="textblock"><p>Create and manage the AVCodec and AVCodecContext. </p>
+<p>For decoders this object is created by <a class="el" href="classav_1_1_format.html" title="Media Input/Output Format. ">av::Format</a>. The parameters can be read using the accessors. Encoders are directly constructed with the <a class="el" href="classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930" title="Codec ID enum. ">Codec::ID</a> and the codec parameters. The AVCodecContext public and priate options can be set with the <a class="el" href="classav_1_1_option.html" title="av option ">av::Option</a> class passed to the consturctor. The options must contain the cli parameter names, the mapping to the function names is defined in the <a href="https://github.com/FFmpeg/FFmpeg/blob/master/libavcodec/options_table.h">&lt;options_table.h</a> of ffmpeg.</p>
+<p>create encoder:</p>
+<div class="fragment"><div class="line"><a class="code" href="classav_1_1_codec.html">av::Codec</a> _target_codec( <a class="code" href="classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a0b67a7f19660293f96181d169b7c71f7">Codec::FLAC</a>, Options( {</div><div class="line">    {<span class="stringliteral">&quot;ac&quot;</span>, <span class="stringliteral">&quot;2&quot;</span>}, {<span class="stringliteral">&quot;ar&quot;</span>, <span class="stringliteral">&quot;96000&quot;</span> }, { <span class="stringliteral">&quot;request_sample_fmt&quot;</span>, <span class="stringliteral">&quot;s32&quot;</span> }, {<span class="stringliteral">&quot;bits_per_raw_sample&quot;</span>, 24 }</div><div class="line">} ) );</div><div class="line"></div><div class="line">assert( !<a class="code" href="classav_1_1_codec.html#a399577b18f8f484e74fdec5d59849a85">codec</a> );</div><div class="line">std::cout &lt;&lt; <a class="code" href="classav_1_1_codec.html#a399577b18f8f484e74fdec5d59849a85">codec</a>.errc().message(); <span class="comment">//should contain &quot;Success&quot;</span></div></div><!-- fragment --><p>The CTOR creates both the AVCodec and AVCodecContext. Because of this all options have to be set at construction time and can not be set on an existing object. The std::errc of the created class contains the status of the created codec object.</p>
+<p>The <a class="el" href="classav_1_1_options.html" title="av option list. ">Options</a> key is not the parameter name, but the CLI parameter documented on the ffmpeg website. A mapping of the parameters is defined in <a href=""></a>.</p>
+<p>For encoding or deccoding the relevant methods are called with an <a class="el" href="structav_1_1_packet.html" title="This structure stores compressed data. ">av::Packet</a> or <a class="el" href="classav_1_1_frame.html" title="This structure describes decoded (raw) audio or video data. ">av::Frame</a> object and a function pointer. The methhod is called for successfull encoded or decoded data. The returned std::errc contains the status of the codec. Successfull termination is EOF.</p>
+<div class="fragment"><div class="line"><span class="comment">//decode</span></div><div class="line"><span class="keywordflow">while</span>( \&lt;<span class="keyword">get</span> or create packets\&gt; ( {</div><div class="line">    std::error_code = <a class="code" href="classav_1_1_codec.html#a06aed3c03e6b4e762fac2e2bb4bf98e2">errc</a> = <a class="code" href="classav_1_1_codec.html#a399577b18f8f484e74fdec5d59849a85">codec</a>-&gt;decode ( packet, [&amp;] ( <a class="code" href="classav_1_1_frame.html">av::Frame</a>&amp; frame ) {</div><div class="line">        <span class="comment">//do something with frame</span></div><div class="line">    } );</div><div class="line">}</div><div class="line"></div><div class="line"><span class="comment">//encode</span></div><div class="line"><span class="keywordflow">while</span>( &lt;<span class="keyword">get</span> or create frames&gt; ( {</div><div class="line">    std::error_code = _codec.encode( _frame, [&amp;](<a class="code" href="structav_1_1_packet.html">av::Packet</a>&amp; packet ) {</div><div class="line">            <span class="comment">//do something with packet</span></div><div class="line">    } );</div><div class="line">}</div></div><!-- fragment --><p>The format can be inserted to an I/O stream to dump the format and settings. </p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="encode_audio_8cpp-example.html#_a0">encode_audio.cpp</a>, and <a class="el" href="transcode_aac_8cpp-example.html#_a6">transcode_aac.cpp</a>.</dd>
 </dl></div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a id="a394c5c0e7d38d9230ee2ae46e82ee930"></a>
@@ -769,6 +767,8 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p><a class="el" href="classav_1_1_codec.html" title="Create and manage the AVCodec and AVCodecContext. ">Codec</a> ID enum. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a394c5c0e7d38d9230ee2ae46e82ee930ab5f1c01df98513c23fe01521537f6485"></a>NONE&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a394c5c0e7d38d9230ee2ae46e82ee930ab50339a10e1de285ac99d4c3990b8693"></a>NONE&#160;</td><td class="fielddoc"></td></tr>
@@ -1252,7 +1252,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p><a class="el" href="classav_1_1_codec.html" title="Media Codec. ">Codec</a> type enum. </p>
+<p><a class="el" href="classav_1_1_codec.html" title="Create and manage the AVCodec and AVCodecContext. ">Codec</a> type enum. </p>
 <table class="fieldtable">
 <tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a394c5c0e7d38d9230ee2ae46e82ee930ab50339a10e1de285ac99d4c3990b8693"></a>NONE&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a50ee89fc40a5efb76134379174227012ae60ae31f67ab883c746bb71c7a145c18"></a>VIDEO&#160;</td><td class="fielddoc"></td></tr>
@@ -1302,9 +1302,9 @@ Friends</h2></td></tr>
 <p><a class="el" href="classav_1_1_options.html" title="av option list. ">Options</a> contains all the <a href="https://ffmpeg.org/ffmpeg-codecs.html">codec options</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">codec</td><td>The <a class="el" href="classav_1_1_codec.html" title="Media Codec. ">Codec</a> id </td></tr>
-    <tr><td class="paramname">sample_format</td><td>The <a class="el" href="classav_1_1_codec.html" title="Media Codec. ">Codec</a> sample format </td></tr>
-    <tr><td class="paramname">options</td><td><a class="el" href="classav_1_1_codec.html" title="Media Codec. ">Codec</a> <a class="el" href="classav_1_1_options.html" title="av option list. ">Options</a> </td></tr>
+    <tr><td class="paramname">codec</td><td>The <a class="el" href="classav_1_1_codec.html" title="Create and manage the AVCodec and AVCodecContext. ">Codec</a> id </td></tr>
+    <tr><td class="paramname">sample_format</td><td>The <a class="el" href="classav_1_1_codec.html" title="Create and manage the AVCodec and AVCodecContext. ">Codec</a> sample format </td></tr>
+    <tr><td class="paramname">options</td><td><a class="el" href="classav_1_1_codec.html" title="Create and manage the AVCodec and AVCodecContext. ">Codec</a> <a class="el" href="classav_1_1_options.html" title="av option list. ">Options</a> </td></tr>
   </table>
   </dd>
 </dl>
@@ -1642,25 +1642,6 @@ Friends</h2></td></tr>
 
 </div>
 </div>
-<a id="ad99e5003d2eb898c670bbff9779aea2c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad99e5003d2eb898c670bbff9779aea2c">&#9670;&nbsp;</a></span>eof()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool av::Codec::eof </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>checks if end-of-file has been reached </p>
-
-</div>
-</div>
 <a id="a06aed3c03e6b4e762fac2e2bb4bf98e2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a06aed3c03e6b4e762fac2e2bb4bf98e2">&#9670;&nbsp;</a></span>errc()</h2>
 
@@ -1676,29 +1657,10 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>return the actual error state of the assiciated format context. </p>
-<dl class="section return"><dt>Returns</dt><dd>return the error state as std::error_code. </dd></dl>
+<p>checks if no error has occurred i.e. </p>
+<p>I/O operations are available checks if end-of-file has been reached checks if an error has occurred return the actual error state of the assiciated format context. </p><dl class="section return"><dt>Returns</dt><dd>return the error state as std::error_code. </dd></dl>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="encode_audio_8cpp-example.html#a4">encode_audio.cpp</a>.</dd>
 </dl>
-</div>
-</div>
-<a id="a1be74061ce9570a4efb5f77b60e34849"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1be74061ce9570a4efb5f77b60e34849">&#9670;&nbsp;</a></span>fail()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool av::Codec::fail </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>checks if an error has occurred </p>
-
 </div>
 </div>
 <a id="adaeb42bade50785b5f8331d06b404971"></a>
@@ -1719,26 +1681,6 @@ Friends</h2></td></tr>
 <p>Number of samples per channel in an audio frame. </p>
 <dl><dt><b>Examples: </b></dt><dd><a class="el" href="encode_audio_8cpp-example.html#a6">encode_audio.cpp</a>.</dd>
 </dl>
-</div>
-</div>
-<a id="a561860fa0fdebddc6719ce8963870f19"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a561860fa0fdebddc6719ce8963870f19">&#9670;&nbsp;</a></span>good()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool av::Codec::good </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>checks if no error has occurred i.e. </p>
-<p>I/O operations are available </p>
-
 </div>
 </div>
 <a id="ade83fe53c5cedcad36b8fdd37f15a40c"></a>
@@ -1824,7 +1766,8 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Allocate memory for the image. </p>
+<p>TODO refactor to free method in utils. </p>
+<p>Allocate memory for the image </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">video_dst_data</td><td>pointer to the buffer </td></tr>
@@ -2130,7 +2073,7 @@ Friends</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 31 2018 23:34:38 for avcpp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Apr 7 2018 23:06:09 for avcpp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

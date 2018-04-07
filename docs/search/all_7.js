@@ -31,7 +31,7 @@ var searchData=
   ['get',['get',['../structav_1_1_metadata.html#a021b590bbfcaeccc224b26a9b99094da',1,'av::Metadata::get()'],['../classav_1_1_options.html#a8c2cee9b0fa45451e07af83174cb464e',1,'av::Options::get()'],['../structav_1_1_channel_layout.html#a2c72959a965a3865520dd0dacaec5518',1,'av::ChannelLayout::get(ChannelLayout::Enum format)'],['../structav_1_1_channel_layout.html#a88c540a813e6ee12cb08b2c610b1019d',1,'av::ChannelLayout::get(uint64_t format)']]],
   ['get_5fbytes_5fper_5fsample',['get_bytes_per_sample',['../namespaceav.html#a081d5d6050765210d5ca708d37031a8b',1,'av']]],
   ['gif',['GIF',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a6d21c6cb59faff9b516ba215379157cb',1,'av::Codec']]],
-  ['good',['good',['../classav_1_1_codec.html#a561860fa0fdebddc6719ce8963870f19',1,'av::Codec::good()'],['../classav_1_1_format.html#af232947f322943477e6081169ea44f6a',1,'av::Format::good()'],['../classav_1_1_resample.html#a0ec960fa9317bbe577ea8637b2b71982',1,'av::Resample::good()']]],
+  ['good',['good',['../classav_1_1_format.html#af232947f322943477e6081169ea44f6a',1,'av::Format::good()'],['../classav_1_1_resample.html#a0ec960fa9317bbe577ea8637b2b71982',1,'av::Resample::good()']]],
   ['gray10be',['GRAY10BE',['../namespaceav.html#af85b09738c8c19633a36897151c331aead14c9903f7196908a46f12f1d4d4e32a',1,'av']]],
   ['gray10le',['GRAY10LE',['../namespaceav.html#af85b09738c8c19633a36897151c331aea7a7934854e49226bff3b881829930590',1,'av']]],
   ['gray12be',['GRAY12BE',['../namespaceav.html#af85b09738c8c19633a36897151c331aea65297f1bff0eef4a5328ce851f8fdc22',1,'av']]],

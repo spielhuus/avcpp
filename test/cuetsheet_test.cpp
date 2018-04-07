@@ -80,5 +80,4 @@ TEST( CuesheetTest, parse ) {
     EXPECT_EQ( "01", cue.tracks.at(7).start );
     EXPECT_EQ( "42:35:00", cue.tracks.at(7).index );
 }
-
 }//namespace av

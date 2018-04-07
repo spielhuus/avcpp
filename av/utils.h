@@ -52,6 +52,7 @@ enum SampleFormat {
     SAMPLE_FMT_S32P, SAMPLE_FMT_FLTP, SAMPLE_FMT_DBLP, SAMPLE_FMT_NB};
 
 std::string str(SampleFormat format);
+SampleFormat sfmt( const std::string& format);
 
 /** \brief Channel Layout enum. */
 struct ChannelLayout {

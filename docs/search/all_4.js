@@ -4,6 +4,7 @@ var searchData=
   ['d3d11va_5fvld',['D3D11VA_VLD',['../namespaceav.html#af85b09738c8c19633a36897151c331aeae8ee024434e9929997455cde0ba7b404',1,'av']]],
   ['daala',['DAALA',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a8b59616ffd32cc43ca433e45a430a1a6',1,'av::Codec']]],
   ['data',['data',['../classav_1_1_frame.html#ab68a86b5f540741b123bdf42342c096b',1,'av::Frame::data(int index)'],['../classav_1_1_frame.html#a88b3c5f5846557ecf6445b7048fe1e8e',1,'av::Frame::data()'],['../structav_1_1_packet.html#afff5371a0d2d4e59c6a0ed1e933e2901',1,'av::Packet::data()'],['../classav_1_1_codec.html#a50ee89fc40a5efb76134379174227012ae44f9e348e41cb272efa87387728571b',1,'av::Codec::DATA()']]],
+  ['data_5fsize',['data_size',['../structav_1_1_image_data.html#a9a90561b1a3235d1ed470ac4a602a0df',1,'av::ImageData']]],
   ['dds',['DDS',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930ad0dfa46cb423ac7f3a2b93fba33c6c93',1,'av::Codec']]],
   ['debugging',['DEBUGGING',['../namespaceav.html#a2bfba3b34ce13b5d44f97492550827e5a6e0d2a351777f8e1349133544e885f8a',1,'av']]],
   ['decode',['decode',['../classav_1_1_codec.html#a6d17a40bdb4d10883b4e76e441cf01c0',1,'av::Codec']]],
@@ -13,7 +14,7 @@ var searchData=
   ['dnxhd',['DNXHD',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930adb2058c796a5de01b70dd4bb503a4d81',1,'av::Codec']]],
   ['dolby_5fe',['DOLBY_E',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930af86ca8786aca16e100e92256eace6a03',1,'av::Codec']]],
   ['dpx',['DPX',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930acbfb577e0a404ab63588539f3b2b34af',1,'av::Codec']]],
-  ['dr_5fmeter',['dr_meter',['../structav_1_1dr__meter.html',1,'av']]],
+  ['dr_5fmeter',['dr_meter',['../structav_1_1_dynamic_range_1_1dr__meter.html',1,'av::DynamicRange::dr_meter'],['../structav_1_1_dynamic_range_1_1dr__meter.html#a7ae91ccb23d373085787e5ed62ac333b',1,'av::DynamicRange::dr_meter::dr_meter()']]],
   ['drm_5fprime',['DRM_PRIME',['../namespaceav.html#af85b09738c8c19633a36897151c331aeac9beca0becb752d9cbc8c14ea2857ea8',1,'av']]],
   ['dsd_5flsbf',['DSD_LSBF',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a41e5bc5ca4972c63f85740ceacee8a96',1,'av::Codec']]],
   ['dsd_5flsbf_5fplanar',['DSD_LSBF_PLANAR',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a546c0f8b2cae6d649a940fdeb8081314',1,'av::Codec']]],
@@ -35,6 +36,6 @@ var searchData=
   ['dxtory',['DXTORY',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a56c6e31eeadc682802fdcd425c100a74',1,'av::Codec']]],
   ['dxv',['DXV',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a907e686667f8e8da12452926d6b7b3d3',1,'av::Codec']]],
   ['dxva2_5fvld',['DXVA2_VLD',['../namespaceav.html#af85b09738c8c19633a36897151c331aea1e68d16ee99817430a916652d97e5cf9',1,'av']]],
-  ['dynamicrange',['DynamicRange',['../classav_1_1_dynamic_range.html',1,'av::DynamicRange'],['../classav_1_1_dynamic_range.html#aa8fe33e60c78e35cde93ee08a59eac36',1,'av::DynamicRange::DynamicRange()']]],
+  ['dynamicrange',['DynamicRange',['../classav_1_1_dynamic_range.html',1,'av::DynamicRange'],['../classav_1_1_dynamic_range.html#a9f563ace3a82de80eba42257a30a8885',1,'av::DynamicRange::DynamicRange()']]],
   ['dynamicrange_2eh',['dynamicrange.h',['../dynamicrange_8h.html',1,'']]]
 ];

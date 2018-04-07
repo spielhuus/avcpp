@@ -88,5 +88,6 @@ private:
     AVDictionary** av_options();
     void store_option( const Option& __option );
 };
+
 }//namespace av
 #endif // OPTION_H

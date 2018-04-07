@@ -66,6 +66,22 @@ std::string str(SampleFormat format) {
     _smp_fmt.append( AV_NE("be", "le" ) );
     return _smp_fmt;
 }
+SampleFormat sfmt( const std::string& format) {
+
+    if( format == "dbl" )
+    {return SampleFormat::SAMPLE_FMT_DBL;}
+    else if( format == "flt" )
+    {return SampleFormat::SAMPLE_FMT_FLT;}
+    else if( format == "nb" )
+    {return SampleFormat::SAMPLE_FMT_NB;}
+    else if( format == "s16" )
+    {return SampleFormat::SAMPLE_FMT_S16;}
+    else if( format == "s32" )
+    {return SampleFormat::SAMPLE_FMT_S32;}
+    else if( format == "u8" )
+    {return SampleFormat::SAMPLE_FMT_U8;}
+    else return SampleFormat::SAMPLE_FMT_NONE;
+}
 
 int get_bytes_per_sample( SampleFormat sample_format )
 {return av_get_bytes_per_sample( static_cast< AVSampleFormat >( sample_format ) );}

@@ -28,7 +28,7 @@ extern "C" {
 #include <gtest/gtest.h>
 
 namespace av {
-TEST( UtilsTest, sample_fmt ) {
+TEST( UtilsTest, sample_fmt_to_str ) {
     SampleFormat flt = SampleFormat::SAMPLE_FMT_FLT;
     SampleFormat s16 = SampleFormat::SAMPLE_FMT_S16;
     SampleFormat s16p = SampleFormat::SAMPLE_FMT_S16P;
@@ -47,6 +47,18 @@ TEST( UtilsTest, sample_fmt ) {
     EXPECT_EQ( AV_SAMPLE_FMT_S16, static_cast< AVSampleFormat >( s16 ) );
     EXPECT_EQ( AV_SAMPLE_FMT_S16P, static_cast< AVSampleFormat >( s16p ) );
     EXPECT_NE( AV_SAMPLE_FMT_FLT, static_cast< AVSampleFormat >( s16 ) );
+}
+
+TEST( UtilsTest, sample_fmt_from_str ) {
+
+    SampleFormat flt = sfmt( "flt" );
+    SampleFormat s16 = sfmt( "s16" );
+    SampleFormat s32 = sfmt( "s32" );
+
+    EXPECT_EQ( SampleFormat::SAMPLE_FMT_FLT, flt );
+    EXPECT_EQ( SampleFormat::SAMPLE_FMT_S16, s16 );
+    EXPECT_EQ( SampleFormat::SAMPLE_FMT_S32, s32 );
+    EXPECT_NE( SampleFormat::SAMPLE_FMT_FLT, s16 );
 }
 
 TEST( UtilsTest, shared_sampler_buffer ) {

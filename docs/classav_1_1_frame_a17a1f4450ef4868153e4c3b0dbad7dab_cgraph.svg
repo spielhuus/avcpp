@@ -81,7 +81,7 @@
 </g>
 <!-- Node6 -->
 <g id="node7" class="node"><title>Node6</title>
-<g id="a_node7"><a xlink:href="classav_1_1_frame.html#a623ab5cfb9babe5cf566af3fe174e439" target="_top" xlink:title="av::Frame::linesize">
+<g id="a_node7"><a xlink:href="classav_1_1_frame.html#a7a1e295aec63ae279e519f571f45fdbd" target="_top" xlink:title="av::Frame::linesize">
 <polygon fill="white" stroke="black" points="146.5,-38.5 146.5,-57.5 246.5,-57.5 246.5,-38.5 146.5,-38.5"/>
 <text text-anchor="middle" x="196.5" y="-45.5" font-family="Helvetica,sans-Serif" font-size="10.00">av::Frame::linesize</text>
 </a>

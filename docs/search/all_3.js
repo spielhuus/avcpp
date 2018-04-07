@@ -38,7 +38,7 @@ var searchData=
   ['ch_5flayout_5fsurround',['CH_LAYOUT_SURROUND',['../structav_1_1_channel_layout.html#a95975507b611b5f117c22b93d4a91316a1520d9cc7931b14632cd8929f7da6144',1,'av::ChannelLayout']]],
   ['channel_5flayout',['channel_layout',['../classav_1_1_codec.html#a38d2e8e98a352465ecff550f1536920a',1,'av::Codec']]],
   ['channellayout',['ChannelLayout',['../structav_1_1_channel_layout.html',1,'av']]],
-  ['channels',['channels',['../structav_1_1dr__meter.html#abc2f262520d7efcab300eee4fab2066c',1,'av::dr_meter::channels()'],['../classav_1_1_codec.html#a83be833a6fa68899c25c6815021436ab',1,'av::Codec::channels()']]],
+  ['channels',['channels',['../structav_1_1_dynamic_range_1_1dr__meter.html#a07537d5ddf8ce4ab0673ef0e70a6412f',1,'av::DynamicRange::dr_meter::channels()'],['../classav_1_1_codec.html#a83be833a6fa68899c25c6815021436ab',1,'av::Codec::channels()']]],
   ['cinepak',['CINEPAK',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930adacd419616d981f8ce523260ca2547dc',1,'av::Codec']]],
   ['clearvideo',['CLEARVIDEO',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930abd9f75fbcee0e4ed9ac33aee3bfb9687',1,'av::Codec']]],
   ['cljr',['CLJR',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a8ebe30fa0f16584858a0d2fba7cc8e2c',1,'av::Codec']]],
@@ -59,5 +59,8 @@ var searchData=
   ['cpia',['CPIA',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a311f8a02bed3d75c6f39a9bcddc05edd',1,'av::Codec']]],
   ['cscd',['CSCD',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a13b19f9cdd347ec08bf60e13005b3075',1,'av::Codec']]],
   ['cuda',['CUDA',['../namespaceav.html#af85b09738c8c19633a36897151c331aea0863dc584c54bc8d431574d3a55e2591',1,'av']]],
+  ['cuesheet',['Cuesheet',['../struct_cuesheet.html',1,'Cuesheet'],['../struct_cuesheet.html#a1c1b42b9538945e85041ba60587e590b',1,'Cuesheet::Cuesheet()']]],
+  ['cuesheet_2eh',['cuesheet.h',['../cuesheet_8h.html',1,'']]],
+  ['cuesheetitem',['CuesheetItem',['../struct_cuesheet_item.html',1,'CuesheetItem'],['../struct_cuesheet_item.html#ac2f73315b727dd8a91ce0c1115157b01',1,'CuesheetItem::CuesheetItem()']]],
   ['cyuv',['CYUV',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a983669f39563199bf67e88f6fcd2d248',1,'av::Codec']]]
 ];

@@ -22,6 +22,8 @@ extern "C" {
 #include "libavcodec/avcodec.h"
 #include "libavutil/frame.h"
 #include "libavutil/imgutils.h"
+#include "libavutil/opt.h"
+#include "libavutil/dict.h"
 }
 
 #include "averrc.h"
@@ -110,9 +112,8 @@ Codec::Codec ( AVFormatContext* format_context, const int index ) : index_ ( ind
 
 Codec::Codec ( Codec::ID codec, SampleFormat sample_format, Options options ) {
 
-    assert( options.contains ( "ac" ) );
-
     const AVCodec* _codec = avcodec_find_encoder ( __codec ( codec ) );
+    int ret;
 
     if ( !_codec ) {
         errc_ = make_error_code ( AV_ENCODER_NOT_FOUND );
@@ -126,12 +127,16 @@ Codec::Codec ( Codec::ID codec, SampleFormat sample_format, Options options ) {
         return;
     }
 
-    codec_context_->sample_fmt = static_cast< AVSampleFormat > ( sample_format ); //TODO get from output_codec->sample_fmts[0];
+    AVDictionaryEntry *t = nullptr;
+    if( ( t = av_dict_get(*options.av_options(), "sample_fmt", t, AV_DICT_IGNORE_SUFFIX ) ) ) {
+        codec_context_->sample_fmt = static_cast< AVSampleFormat >( sfmt( t->value ) );
+    } else codec_context_->sample_fmt = _codec->sample_fmts[0];
+
+    assert( options.contains ( "ac" ) );
     codec_context_->channel_layout =
             static_cast< uint64_t >( av_get_default_channel_layout ( options.get("ac").c_int() ) );
 
     //open it
-    int ret;
     if ( ( ret = avcodec_open2 ( codec_context_, _codec, options.av_options() ) ) < 0 ) {
         errc_ = make_error_code ( ret );
         return;
@@ -240,12 +245,12 @@ void Codec::copy_image ( Frame& frame, uint8_t* video_dst_data[4], int video_dst
 
 bool Codec::operator!() const
 { return !errc_; }
-bool Codec::good()
-{ return errc_.value() == 0; }
-bool Codec::eof()
-{ return errc_.value() == AV_EOF; }
-bool Codec::fail()
-{ return !errc_ && errc_.value() != AV_EOF; }
+//bool Codec::good()
+//{ return errc_.value() == 0; }
+//bool Codec::eof()
+//{ return errc_.value() == AV_EOF; }
+//bool Codec::fail()
+//{ return !errc_ && errc_.value() != AV_EOF; }
 std::error_code Codec::errc ()
 { return errc_; }
 }//namespace av

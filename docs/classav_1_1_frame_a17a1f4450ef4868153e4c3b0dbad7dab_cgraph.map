@@ -4,6 +4,6 @@
 <area shape="rect" id="node4" href="$classav_1_1_frame.html#a2a83133bffc6dbdf4a7b13318ce4fe0a" title="number of audio samples (per channel) described by this frame. " alt="" coords="188,107,347,133"/>
 <area shape="rect" id="node5" href="$classav_1_1_frame.html#a88b3c5f5846557ecf6445b7048fe1e8e" title="av::Frame::data" alt="" coords="210,157,325,184"/>
 <area shape="rect" id="node6" href="$classav_1_1_frame.html#a18bb63c366095d58a5394bf7e9d7d179" title="av::Frame::extended_data" alt="" coords="180,208,355,235"/>
-<area shape="rect" id="node7" href="$classav_1_1_frame.html#a623ab5cfb9babe5cf566af3fe174e439" title="av::Frame::linesize" alt="" coords="201,259,334,285"/>
+<area shape="rect" id="node7" href="$classav_1_1_frame.html#a7a1e295aec63ae279e519f571f45fdbd" title="av::Frame::linesize" alt="" coords="201,259,334,285"/>
 <area shape="rect" id="node8" href="$classav_1_1_frame.html#a84568abc84ab700b8c60acb7d182624f" title="av::Frame::writeable" alt="" coords="197,309,338,336"/>
 </map>

@@ -14,11 +14,12 @@ var searchData=
   ['tiff',['TIFF',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a3947c2cb8a9b05f595f466e1f16a415d',1,'av::Codec']]],
   ['time_5fto_5fstring',['time_to_string',['../namespaceav_1_1utils.html#a00fb34504b8279f927a8d22cc72c6966',1,'av::utils']]],
   ['timed_5fid3',['TIMED_ID3',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930aa279dfc624cdb9bc9b5cfdd724e0da06',1,'av::Codec']]],
-  ['title',['TITLE',['../structav_1_1_metadata.html#a1a3594060777cde3558ce7dbbe149d2aa4ee64be87af855dc1fffa1d9bf7f51b2',1,'av::Metadata']]],
+  ['title',['TITLE',['../structav_1_1_metadata.html#a1a3594060777cde3558ce7dbbe149d2aa4ee64be87af855dc1fffa1d9bf7f51b2',1,'av::Metadata::TITLE()'],['../struct_cuesheet_item.html#aeeaa002dc7ba117a58784c3affb9a28f',1,'CuesheetItem::title()'],['../struct_cuesheet.html#a0ec81439b188d4a38173e22cc063a19c',1,'Cuesheet::title()']]],
   ['tmv',['TMV',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a4aee886fecbcc52a6aed105d3370e886',1,'av::Codec']]],
   ['tqi',['TQI',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a1bd9415bddd00b862da0783c34976b16',1,'av::Codec']]],
   ['trace',['TRACE',['../namespaceav.html#a2bfba3b34ce13b5d44f97492550827e5a2d3e4144aa384b18849ab9a8abad74d6',1,'av']]],
-  ['track',['TRACK',['../structav_1_1_metadata.html#a1a3594060777cde3558ce7dbbe149d2aaef537264845621f4d901e4c5c8e19d46',1,'av::Metadata']]],
+  ['track',['track',['../struct_cuesheet_item.html#abe916049589573be9c3bcaed78d400db',1,'CuesheetItem::track()'],['../structav_1_1_metadata.html#a1a3594060777cde3558ce7dbbe149d2aaef537264845621f4d901e4c5c8e19d46',1,'av::Metadata::TRACK()']]],
+  ['tracks',['tracks',['../struct_cuesheet.html#abb1535c01b6bd9f269434e4ba3b7071f',1,'Cuesheet']]],
   ['truehd',['TRUEHD',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930aa3c4274ead2fe7c4c3ef73bfddc73983',1,'av::Codec']]],
   ['truemotion1',['TRUEMOTION1',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a542640f8c3bf478ce752058f24d0d4b9',1,'av::Codec']]],
   ['truemotion2',['TRUEMOTION2',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a2c8c4254d97d8b5517ad5df619823de4',1,'av::Codec']]],
@@ -30,5 +31,5 @@ var searchData=
   ['ttf',['TTF',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a690f306abb0ac22b9852eb12650bca4c',1,'av::Codec']]],
   ['twinvq',['TWINVQ',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a3e739a6bb4388721d0798e6318f05438',1,'av::Codec']]],
   ['txd',['TXD',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a5dfded4b899f29de5de2e791f70d2ea8',1,'av::Codec']]],
-  ['type',['type',['../classav_1_1_option.html#afcfe8b28c6aadaf6b7eb823213cab678',1,'av::Option::type()'],['../classav_1_1_codec.html#a50ee89fc40a5efb76134379174227012',1,'av::Codec::TYPE()'],['../classav_1_1_option.html#aa12c6950d355561f3e4a73975d8ad45c',1,'av::Option::TYPE()']]]
+  ['type',['type',['../struct_cuesheet_item.html#ad1dea8ce88520878c48bd8bcdf6b9ec6',1,'CuesheetItem::type()'],['../struct_cuesheet.html#aeaf38dc063b000e9ab53e461e7e8537a',1,'Cuesheet::type()'],['../classav_1_1_option.html#afcfe8b28c6aadaf6b7eb823213cab678',1,'av::Option::type()'],['../classav_1_1_codec.html#a50ee89fc40a5efb76134379174227012',1,'av::Codec::TYPE()'],['../classav_1_1_option.html#aa12c6950d355561f3e4a73975d8ad45c',1,'av::Option::TYPE()']]]
 ];

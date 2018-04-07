@@ -66,26 +66,33 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
 <a href="#namespaces">Namespaces</a> &#124;
-<a href="#define-members">Macros</a> &#124;
-<a href="#typedef-members">Typedefs</a>  </div>
+<a href="#define-members">Macros</a>  </div>
   <div class="headertitle">
 <div class="title">dynamicrange.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;system_error&gt;</code><br />
+<code>#include &quot;<a class="el" href="utils_8h_source.html">utils.h</a>&quot;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for dynamicrange.h:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="dynamicrange_8h__incl.svg" width="186" height="127"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="dynamicrange_8h__incl.svg" width="208" height="202"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+</div>
+</div><div class="textblock"><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
+  <img id="dynsection-1-trigger" src="closed.png" alt="+"/> This graph shows which files directly or indirectly include this file:</div>
+<div id="dynsection-1-summary" class="dynsummary" style="display:block;">
+</div>
+<div id="dynsection-1-content" class="dyncontent" style="display:none;">
+<div class="center"><iframe scrolling="no" frameborder="0" src="dynamicrange_8h__dep__incl.svg" width="186" height="142"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="dynamicrange_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structav_1_1dr__meter.html">av::dr_meter</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structav_1_1_dynamic_range_1_1dr__meter.html">av::DynamicRange::dr_meter</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_dynamic_range.html">av::DynamicRange</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -98,33 +105,10 @@ Namespaces</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a40533208e4108cd54133057dfd4c7b04"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dynamicrange_8h.html#a40533208e4108cd54133057dfd4c7b04">FRAGMENT_LENGTH</a>&#160;&#160;&#160;3000</td></tr>
-<tr class="separator:a40533208e4108cd54133057dfd4c7b04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac69ee46f4a51ed14f0d68628c2dec71d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dynamicrange_8h.html#ac69ee46f4a51ed14f0d68628c2dec71d">MAX_CHANNELS</a>&#160;&#160;&#160;32</td></tr>
 <tr class="separator:ac69ee46f4a51ed14f0d68628c2dec71d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e3558ae64440370a8d1eca6f4447a9c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dynamicrange_8h.html#a3e3558ae64440370a8d1eca6f4447a9c">MAX_FRAGMENTS</a>&#160;&#160;&#160;32768</td></tr>
-<tr class="separator:a3e3558ae64440370a8d1eca6f4447a9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:ab0edf72f5f302e4b7db8ae57fed15bbc"><td class="memItemLeft" align="right" valign="top">typedef double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceav.html#ab0edf72f5f302e4b7db8ae57fed15bbc">av::sample</a></td></tr>
-<tr class="separator:ab0edf72f5f302e4b7db8ae57fed15bbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a40533208e4108cd54133057dfd4c7b04"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a40533208e4108cd54133057dfd4c7b04">&#9670;&nbsp;</a></span>FRAGMENT_LENGTH</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define FRAGMENT_LENGTH&#160;&#160;&#160;3000</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="ac69ee46f4a51ed14f0d68628c2dec71d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac69ee46f4a51ed14f0d68628c2dec71d">&#9670;&nbsp;</a></span>MAX_CHANNELS</h2>
 
@@ -139,24 +123,10 @@ Typedefs</h2></td></tr>
 
 </div>
 </div>
-<a id="a3e3558ae64440370a8d1eca6f4447a9c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3e3558ae64440370a8d1eca6f4447a9c">&#9670;&nbsp;</a></span>MAX_FRAGMENTS</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MAX_FRAGMENTS&#160;&#160;&#160;32768</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 31 2018 23:34:38 for avcpp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Apr 7 2018 23:06:09 for avcpp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

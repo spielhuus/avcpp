@@ -64,6 +64,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="classav_1_1_dynamic_range-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -73,18 +74,25 @@ $(function() {
 
 <p><code>#include &lt;<a class="el" href="dynamicrange_8h_source.html">dynamicrange.h</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structav_1_1_dynamic_range_1_1dr__meter.html">dr_meter</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa8fe33e60c78e35cde93ee08a59eac36"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_dynamic_range.html#aa8fe33e60c78e35cde93ee08a59eac36">DynamicRange</a> ()</td></tr>
-<tr class="separator:aa8fe33e60c78e35cde93ee08a59eac36"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9cd9cefbbd2248b77390438741186330"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_dynamic_range.html#a9cd9cefbbd2248b77390438741186330">meter_init</a> (struct <a class="el" href="structav_1_1dr__meter.html">dr_meter</a> *self)</td></tr>
-<tr class="separator:a9cd9cefbbd2248b77390438741186330"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9549aa197d7379e6c7157653cd4357d"><td class="memItemLeft" align="right" valign="top">std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_dynamic_range.html#aa9549aa197d7379e6c7157653cd4357d">meter_start</a> (struct <a class="el" href="structav_1_1dr__meter.html">dr_meter</a> *self, int channels, int sample_rate, int sample_fmt)</td></tr>
-<tr class="separator:aa9549aa197d7379e6c7157653cd4357d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f563ace3a82de80eba42257a30a8885"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_dynamic_range.html#a9f563ace3a82de80eba42257a30a8885">DynamicRange</a> (int channels, int sample_rate, <a class="el" href="namespaceav.html#ae593d8406e0f3102fcbfd5ee8931d6c1">SampleFormat</a> sample_fmt)</td></tr>
+<tr class="separator:a9f563ace3a82de80eba42257a30a8885"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac65b75094e7ad104bee3df5754d991b6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_dynamic_range.html#ac65b75094e7ad104bee3df5754d991b6">meter_feed</a> (void *buf, size_t buf_size)</td></tr>
+<tr class="separator:ac65b75094e7ad104bee3df5754d991b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42660c99bb4e7992b340a32b67f813aa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_dynamic_range.html#a42660c99bb4e7992b340a32b67f813aa">meter_finish</a> ()</td></tr>
+<tr class="separator:a42660c99bb4e7992b340a32b67f813aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a955ae39f0f68d5c5d9d21d25251c1aa6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_dynamic_range.html#a955ae39f0f68d5c5d9d21d25251c1aa6">meter_free</a> ()</td></tr>
+<tr class="separator:a955ae39f0f68d5c5d9d21d25251c1aa6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="aa8fe33e60c78e35cde93ee08a59eac36"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa8fe33e60c78e35cde93ee08a59eac36">&#9670;&nbsp;</a></span>DynamicRange()</h2>
+<a id="a9f563ace3a82de80eba42257a30a8885"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9f563ace3a82de80eba42257a30a8885">&#9670;&nbsp;</a></span>DynamicRange()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -92,48 +100,6 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="memname">av::DynamicRange::DynamicRange </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a id="a9cd9cefbbd2248b77390438741186330"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9cd9cefbbd2248b77390438741186330">&#9670;&nbsp;</a></span>meter_init()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void av::DynamicRange::meter_init </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structav_1_1dr__meter.html">dr_meter</a> *&#160;</td>
-          <td class="paramname"><em>self</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aa9549aa197d7379e6c7157653cd4357d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa9549aa197d7379e6c7157653cd4357d">&#9670;&nbsp;</a></span>meter_start()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::error_code av::DynamicRange::meter_start </td>
-          <td>(</td>
-          <td class="paramtype">struct <a class="el" href="structav_1_1dr__meter.html">dr_meter</a> *&#160;</td>
-          <td class="paramname"><em>self</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>channels</em>, </td>
         </tr>
@@ -146,7 +112,7 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype"><a class="el" href="namespaceav.html#ae593d8406e0f3102fcbfd5ee8931d6c1">SampleFormat</a>&#160;</td>
           <td class="paramname"><em>sample_fmt</em>&#160;</td>
         </tr>
         <tr>
@@ -159,13 +125,76 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="ac65b75094e7ad104bee3df5754d991b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac65b75094e7ad104bee3df5754d991b6">&#9670;&nbsp;</a></span>meter_feed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int av::DynamicRange::meter_feed </td>
+          <td>(</td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>buf_size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a42660c99bb4e7992b340a32b67f813aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42660c99bb4e7992b340a32b67f813aa">&#9670;&nbsp;</a></span>meter_finish()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int av::DynamicRange::meter_finish </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a955ae39f0f68d5c5d9d21d25251c1aa6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a955ae39f0f68d5c5d9d21d25251c1aa6">&#9670;&nbsp;</a></span>meter_free()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void av::DynamicRange::meter_free </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/etienne/Projects/avcpp/av/<a class="el" href="dynamicrange_8h_source.html">dynamicrange.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 31 2018 23:34:38 for avcpp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Apr 7 2018 23:06:09 for avcpp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

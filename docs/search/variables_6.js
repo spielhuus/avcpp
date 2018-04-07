@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['rms_5fvalues',['rms_values',['../structav_1_1dr__meter.html#a062e0fb224b4f616f46aa4649b671623',1,'av::dr_meter']]]
+  ['rms_5fvalues',['rms_values',['../structav_1_1_dynamic_range_1_1dr__meter.html#a7fa7083dc03bdf4edf9f7ae8e24728ae',1,'av::DynamicRange::dr_meter']]]
 ];

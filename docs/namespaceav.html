@@ -87,9 +87,7 @@ Classes</h2></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Channel Layout enum.  <a href="structav_1_1_channel_layout.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_codec.html">Codec</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Media <a class="el" href="classav_1_1_codec.html" title="Media Codec. ">Codec</a>.  <a href="classav_1_1_codec.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structav_1_1dr__meter.html">dr_meter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create and manage the AVCodec and AVCodecContext.  <a href="classav_1_1_codec.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_dynamic_range.html">DynamicRange</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -98,6 +96,8 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_frame.html">Frame</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">This structure describes decoded (raw) audio or video data.  <a href="classav_1_1_frame.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structav_1_1_image_data.html">ImageData</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><b>IoContext</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -115,14 +115,14 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_resample.html">Resample</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classav_1_1_scale.html">Scale</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a858ac495e455018b6a32969b3e25a51b"><td class="memItemLeft" align="right" valign="top">typedef std::shared_ptr&lt; <a class="el" href="classav_1_1_codec.html">Codec</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceav.html#a858ac495e455018b6a32969b3e25a51b">codec_ptr</a></td></tr>
-<tr class="memdesc:a858ac495e455018b6a32969b3e25a51b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the loaded <a class="el" href="classav_1_1_codec.html" title="Media Codec. ">av::Codec</a>.  <a href="#a858ac495e455018b6a32969b3e25a51b">More...</a><br /></td></tr>
+<tr class="memdesc:a858ac495e455018b6a32969b3e25a51b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the loaded <a class="el" href="classav_1_1_codec.html" title="Create and manage the AVCodec and AVCodecContext. ">av::Codec</a>.  <a href="#a858ac495e455018b6a32969b3e25a51b">More...</a><br /></td></tr>
 <tr class="separator:a858ac495e455018b6a32969b3e25a51b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0edf72f5f302e4b7db8ae57fed15bbc"><td class="memItemLeft" align="right" valign="top">typedef double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceav.html#ab0edf72f5f302e4b7db8ae57fed15bbc">sample</a></td></tr>
-<tr class="separator:ab0edf72f5f302e4b7db8ae57fed15bbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
@@ -456,6 +456,11 @@ Functions</h2></td></tr>
 <tr class="separator:a5033e4ac56a59344be3a763a4f4fb105"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2073fde2257dd10c12bfa086c96fa995"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; uint8_t *&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceav.html#a2073fde2257dd10c12bfa086c96fa995">make_sample_buffer</a> (<a class="el" href="structav_1_1_channel_layout.html#a95975507b611b5f117c22b93d4a91316">ChannelLayout::Enum</a> channel_layout, int nb_samples, <a class="el" href="namespaceav.html#ae593d8406e0f3102fcbfd5ee8931d6c1">SampleFormat</a> sample_format, int *dst_linesize)</td></tr>
 <tr class="separator:a2073fde2257dd10c12bfa086c96fa995"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ee24124869f0b6c8b519f8edf15d0d7"><td class="memItemLeft" align="right" valign="top">std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceav.html#a0ee24124869f0b6c8b519f8edf15d0d7">parse_video_size</a> (int *width_ptr, int *height_ptr, const char *str)</td></tr>
+<tr class="memdesc:a0ee24124869f0b6c8b519f8edf15d0d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse str and put in width_ptr and height_ptr the detected values.  <a href="#a0ee24124869f0b6c8b519f8edf15d0d7">More...</a><br /></td></tr>
+<tr class="separator:a0ee24124869f0b6c8b519f8edf15d0d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbde951000b9d691bcf9d6e6489cbecb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceav.html#ae593d8406e0f3102fcbfd5ee8931d6c1">SampleFormat</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceav.html#adbde951000b9d691bcf9d6e6489cbecb">sfmt</a> (const std::string &amp;format)</td></tr>
+<tr class="separator:adbde951000b9d691bcf9d6e6489cbecb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -477,21 +482,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Pointer to the loaded <a class="el" href="classav_1_1_codec.html" title="Media Codec. ">av::Codec</a>. </p>
-
-</div>
-</div>
-<a id="ab0edf72f5f302e4b7db8ae57fed15bbc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab0edf72f5f302e4b7db8ae57fed15bbc">&#9670;&nbsp;</a></span>sample</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef double <a class="el" href="namespaceav.html#ab0edf72f5f302e4b7db8ae57fed15bbc">av::sample</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>Pointer to the loaded <a class="el" href="classav_1_1_codec.html" title="Create and manage the AVCodec and AVCodecContext. ">av::Codec</a>. </p>
 
 </div>
 </div>
@@ -1218,7 +1209,7 @@ Variables</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<dl><dt><b>Examples: </b></dt><dd><a class="el" href="decode_8cpp-example.html#a2">decode.cpp</a>, and <a class="el" href="metadata_8cpp-example.html#a5">metadata.cpp</a>.</dd>
+<dl><dt><b>Examples: </b></dt><dd><a class="el" href="decode_8cpp-example.html#a2">decode.cpp</a>, and <a class="el" href="metadata_8cpp-example.html#a2">metadata.cpp</a>.</dd>
 </dl>
 </div>
 </div>
@@ -1263,6 +1254,60 @@ Variables</h2></td></tr>
 </dl>
 </div>
 </div>
+<a id="a0ee24124869f0b6c8b519f8edf15d0d7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ee24124869f0b6c8b519f8edf15d0d7">&#9670;&nbsp;</a></span>parse_video_size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::error_code av::parse_video_size </td>
+          <td>(</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>width_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>height_ptr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>str</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Parse str and put in width_ptr and height_ptr the detected values. </p>
+
+</div>
+</div>
+<a id="adbde951000b9d691bcf9d6e6489cbecb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbde951000b9d691bcf9d6e6489cbecb">&#9670;&nbsp;</a></span>sfmt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceav.html#ae593d8406e0f3102fcbfd5ee8931d6c1">SampleFormat</a> av::sfmt </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>format</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Variable Documentation</h2>
 <a id="aa1bfc6295d2b3e857c7d69bd8a3f3c50"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa1bfc6295d2b3e857c7d69bd8a3f3c50">&#9670;&nbsp;</a></span>av_category</h2>
@@ -1281,7 +1326,7 @@ Variables</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 31 2018 23:34:38 for avcpp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Apr 7 2018 23:06:09 for avcpp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

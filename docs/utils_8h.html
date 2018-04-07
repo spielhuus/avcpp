@@ -73,19 +73,20 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;memory&gt;</code><br />
+<code>#include &lt;system_error&gt;</code><br />
 </div><div class="textblock"><div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Include dependency graph for utils.h:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="utils_8h__incl.svg" width="167" height="127"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="utils_8h__incl.svg" width="203" height="127"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> This graph shows which files directly or indirectly include this file:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="utils_8h__dep__incl.svg" width="372" height="410"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="utils_8h__dep__incl.svg" width="611" height="410"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="utils_8h_source.html">Go to the source code of this file.</a></p>
@@ -94,6 +95,8 @@ $(function() {
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structav_1_1_channel_layout.html">av::ChannelLayout</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Channel Layout enum.  <a href="structav_1_1_channel_layout.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structav_1_1_image_data.html">av::ImageData</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
@@ -384,11 +387,16 @@ Functions</h2></td></tr>
 <tr class="separator:a081d5d6050765210d5ca708d37031a8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2073fde2257dd10c12bfa086c96fa995"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; uint8_t *&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceav.html#a2073fde2257dd10c12bfa086c96fa995">av::make_sample_buffer</a> (ChannelLayout::Enum channel_layout, int nb_samples, SampleFormat sample_format, int *dst_linesize)</td></tr>
 <tr class="separator:a2073fde2257dd10c12bfa086c96fa995"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ee24124869f0b6c8b519f8edf15d0d7"><td class="memItemLeft" align="right" valign="top">std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceav.html#a0ee24124869f0b6c8b519f8edf15d0d7">av::parse_video_size</a> (int *width_ptr, int *height_ptr, const char *str)</td></tr>
+<tr class="memdesc:a0ee24124869f0b6c8b519f8edf15d0d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse str and put in width_ptr and height_ptr the detected values.  <a href="namespaceav.html#a0ee24124869f0b6c8b519f8edf15d0d7">More...</a><br /></td></tr>
+<tr class="separator:a0ee24124869f0b6c8b519f8edf15d0d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbde951000b9d691bcf9d6e6489cbecb"><td class="memItemLeft" align="right" valign="top">SampleFormat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceav.html#adbde951000b9d691bcf9d6e6489cbecb">av::sfmt</a> (const std::string &amp;format)</td></tr>
+<tr class="separator:adbde951000b9d691bcf9d6e6489cbecb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 31 2018 23:34:38 for avcpp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Apr 7 2018 23:06:09 for avcpp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

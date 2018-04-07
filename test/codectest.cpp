@@ -213,8 +213,9 @@ TEST(CodecTest, mp3_encoder) {
 }
 
 TEST(CodecTest, flac_encoder) {
-    av::Codec _target_codec( Codec::FLAC, av::SampleFormat::SAMPLE_FMT_S32, Options( { {"ac", "2"}, {"ar", "96000" }, {"bits_per_raw_sample", "24"} } ) );
-    EXPECT_TRUE( !_target_codec );
+    av::Codec _target_codec( Codec::FLAC, av::SampleFormat::SAMPLE_FMT_S32, Options(
+        { {"ac", "2"}, {"ar", "96000" }, { "sample_fmt", "s32" }, {"bits_per_raw_sample", 24 } } ) );
+    EXPECT_EQ( "Success", _target_codec.errc().message() );
         EXPECT_EQ( Codec::FLAC, _target_codec.codec() );
     EXPECT_EQ( 2, _target_codec.channels() );
     EXPECT_EQ( 24, _target_codec.bits_per_sample() );
