@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['base64_2eh',['base64.h',['../base64_8h.html',1,'']]],
   ['bayer_5fbggr16be',['BAYER_BGGR16BE',['../namespaceav.html#af85b09738c8c19633a36897151c331aea9e38e1484a5916d18d114094f1504540',1,'av']]],
   ['bayer_5fbggr16le',['BAYER_BGGR16LE',['../namespaceav.html#af85b09738c8c19633a36897151c331aea842444372449780ffb0672aa88d47d9b',1,'av']]],
   ['bayer_5fbggr8',['BAYER_BGGR8',['../namespaceav.html#af85b09738c8c19633a36897151c331aeae6f26e1d43b3b58bbebc9937664e217f',1,'av']]],
@@ -12,7 +13,7 @@ var searchData=
   ['bayer_5frggb16be',['BAYER_RGGB16BE',['../namespaceav.html#af85b09738c8c19633a36897151c331aeaa3714ddd483a7a0835087d624b9a09eb',1,'av']]],
   ['bayer_5frggb16le',['BAYER_RGGB16LE',['../namespaceav.html#af85b09738c8c19633a36897151c331aea2b4af0c21d3acfde1303131f4f1fc6fa',1,'av']]],
   ['bayer_5frggb8',['BAYER_RGGB8',['../namespaceav.html#af85b09738c8c19633a36897151c331aeaac813df03111de2581ee2bbe7bf66b15',1,'av']]],
-  ['begin',['begin',['../classav_1_1_format.html#adf8c18475c1f5d048e74421c5e7873d9',1,'av::Format']]],
+  ['begin',['begin',['../classav_1_1_format.html#adf8c18475c1f5d048e74421c5e7873d9',1,'av::Format::begin()'],['../structav_1_1_metadata.html#a5db615b59e0fcf7ea6a1c8f2d23f8534',1,'av::Metadata::begin()']]],
   ['bethsoftvid',['BETHSOFTVID',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a02b94b6ad6a4b1d41707345371d05dce',1,'av::Codec']]],
   ['bfi',['BFI',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a72c6f3b943b1c0d3284383376cc456c3',1,'av::Codec']]],
   ['bgr0',['BGR0',['../namespaceav.html#af85b09738c8c19633a36897151c331aea65e8146d5a60ca2ff2c4723435546589',1,'av']]],

@@ -33,126 +33,130 @@ extern "C" {
 
 namespace av {
 
-TEST( OptionsTest, add_options ) {
+TEST ( OptionsTest, add_options ) {
 
     Options option;
-    option.set( Option( "option1", "value1" ) );
-    option.set( Option( "option2", "value2" ) );
-    option.set( Option( "option3", "value3" ) );
+    option.set ( Option ( "option1", "value1" ) );
+    option.set ( Option ( "option2", "value2" ) );
+    option.set ( Option ( "option3", "value3" ) );
 
-    std::string str1 = option.get( "option1" ).c_str();
-    EXPECT_EQ( "value1", str1 );
+    std::string str1 = option.get ( "option1" ).c_str();
+    EXPECT_EQ ( "value1", str1 );
 
-    std::string str2 = option.get( "option2").c_str();
-    EXPECT_EQ( "value2", str2 );
+    std::string str2 = option.get ( "option2" ).c_str();
+    EXPECT_EQ ( "value2", str2 );
 
-    std::string str3 = option.get( "option3").c_str();
-    EXPECT_EQ( "value3", str3 );
+    std::string str3 = option.get ( "option3" ).c_str();
+    EXPECT_EQ ( "value3", str3 );
 }
-TEST( OptionsTest, construct_with_options ) {
+TEST ( OptionsTest, construct_with_options ) {
 
-    Options option( { { "option1", "value1" }, {"option2", "value2"}, {"option3", "value3" } } );
+    Options option ( { { "option1", "value1" }, {"option2", "value2"}, {"option3", "value3" } } );
 
-    std::string str1 = option.get( "option1").c_str();
-    EXPECT_EQ( "value1", str1 );
+    std::string str1 = option.get ( "option1" ).c_str();
+    EXPECT_EQ ( "value1", str1 );
 
-    std::string str2 = option.get( "option2").c_str();
-    EXPECT_EQ( "value2", str2 );
+    std::string str2 = option.get ( "option2" ).c_str();
+    EXPECT_EQ ( "value2", str2 );
 
-    std::string str3 = option.get( "option3").c_str();
-    EXPECT_EQ( "value3", str3 );
+    std::string str3 = option.get ( "option3" ).c_str();
+    EXPECT_EQ ( "value3", str3 );
 }
-TEST( OptionsTest, cast_type ) {
+TEST ( OptionsTest, cast_type ) {
 
-    Options option( { { "option1", 1 }, {"option2", 2}, {"option3", "3" } } );
+    Options option ( { { "option1", 1 }, {"option2", 2}, {"option3", "3" } } );
 
-    auto str1 = option.get( "option1").c_int();
-    EXPECT_EQ( 1, str1 );
+    auto str1 = option.get ( "option1" ).c_int();
+    EXPECT_EQ ( 1, str1 );
 
-    std::string str2 = option.get( "option2").c_str();
-    EXPECT_EQ( "2", str2 );
+    std::string str2 = option.get ( "option2" ).c_str();
+    EXPECT_EQ ( "2", str2 );
 
-    auto str3 = option.get( "option3").c_int();
-    EXPECT_EQ( 3, str3 );
+    auto str3 = option.get ( "option3" ).c_int();
+    EXPECT_EQ ( 3, str3 );
 }
 
-TEST( OptionsTest, av_class_option_bitrate ) {
+TEST ( OptionsTest, av_class_option_bitrate ) {
 
     av_register_all();
 
     const AVCodec* _codec = avcodec_find_encoder ( AV_CODEC_ID_H264 );
-    ASSERT_TRUE( _codec );
+    ASSERT_TRUE ( _codec );
     AVCodecContext* codec_context_ = avcodec_alloc_context3 ( _codec );
-    ASSERT_TRUE( codec_context_ );
+    ASSERT_TRUE ( codec_context_ );
 
-    EXPECT_STREQ( "AVCodecContext", codec_context_->av_class->class_name );
+    EXPECT_STREQ ( "AVCodecContext", codec_context_->av_class->class_name );
 
-    EXPECT_EQ( 2000000, codec_context_->bit_rate );
-    int ret = av_opt_set_int( codec_context_, "b", (int64_t)96000, 0 );
-    ASSERT_EQ( "Success", make_error_code( ret ).message() );
-    EXPECT_EQ( 96000, codec_context_->bit_rate );
+    EXPECT_EQ ( 2000000, codec_context_->bit_rate );
+    int ret = av_opt_set_int ( codec_context_, "b", ( int64_t ) 96000, 0 );
+    ASSERT_EQ ( "Success", make_error_code ( ret ).message() );
+    EXPECT_EQ ( 96000, codec_context_->bit_rate );
 }
 
-TEST( OptionsTest, av_class_option_sample_format ) {
+TEST ( OptionsTest, av_class_option_sample_format ) {
 
     av_register_all();
 
     const AVCodec* _codec = avcodec_find_encoder ( AV_CODEC_ID_H264 );
-    ASSERT_TRUE( _codec );
+    ASSERT_TRUE ( _codec );
     AVCodecContext* codec_context_ = avcodec_alloc_context3 ( _codec );
-    ASSERT_TRUE( codec_context_ );
+    ASSERT_TRUE ( codec_context_ );
 
-    EXPECT_STREQ( "AVCodecContext", codec_context_->av_class->class_name );
+    EXPECT_STREQ ( "AVCodecContext", codec_context_->av_class->class_name );
 
-    EXPECT_EQ( -1, codec_context_->sample_fmt );
-    int ret = av_opt_set_sample_fmt( codec_context_, "request_sample_fmt", AV_SAMPLE_FMT_S32, 0 );
-    ASSERT_EQ( "Success", make_error_code( ret ).message() );
-    EXPECT_EQ( AV_SAMPLE_FMT_S32, codec_context_->request_sample_fmt );
+    EXPECT_EQ ( -1, codec_context_->sample_fmt );
+    int ret = av_opt_set_sample_fmt ( codec_context_, "request_sample_fmt", AV_SAMPLE_FMT_S32, 0 );
+    ASSERT_EQ ( "Success", make_error_code ( ret ).message() );
+    EXPECT_EQ ( AV_SAMPLE_FMT_S32, codec_context_->request_sample_fmt );
 }
 
-TEST( OptionsTest, av_class_options_video_encoder ) {
-
+TEST ( OptionsTest, av_class_options_video_encoder ) {
+//TODO
 
 }
 
-TEST( OptionsTest, list_option ) {
+TEST ( OptionsTest, list_option ) {
 
     const AVCodec* _codec = avcodec_find_encoder ( AV_CODEC_ID_AAC );
-    ASSERT_TRUE( _codec );
+    ASSERT_TRUE ( _codec );
     AVCodecContext* codec_context_ = avcodec_alloc_context3 ( _codec );
-    ASSERT_TRUE( codec_context_ );
+    ASSERT_TRUE ( codec_context_ );
 
-printf("Output some option info about object:\n");
+    printf ( "Output some option info about object:\n" );
 
-const AVOption* opt_ = nullptr;
-while( ( opt_ = av_opt_next 	( &codec_context_->av_class, opt_ ) ) ) {
-    std::cout << opt_->name << "=";
-    char* _buffer;
-    av_opt_get 	( 	codec_context_,
-           opt_->name,
-           0,
-           (uint8_t**)&_buffer
-       );
-    std::cout << _buffer << std::endl;
-}
+    const AVOption* opt_ = nullptr;
 
-printf("Output some option info about object:\n");
+    while ( ( opt_ = av_opt_next 	( &codec_context_->av_class, opt_ ) ) ) {
+        std::cout << opt_->name << "=";
+        char* _buffer;
+        av_opt_get 	( 	codec_context_,
+                        opt_->name,
+                        0,
+                        ( uint8_t** ) &_buffer
+                    );
+        std::cout << _buffer << std::endl;
+    }
+
+    printf ( "Output some option info about object:\n" );
 
     void* obj = nullptr;
-    while( ( obj = av_opt_child_next( codec_context_, obj ) ) ) {
+
+    while ( ( obj = av_opt_child_next ( codec_context_, obj ) ) ) {
         std::cout << "cls: " << std::endl;
         const AVOption* opt_ = nullptr;
-        while( ( opt_ = av_opt_next 	( obj, opt_ ) ) ) {
+
+        while ( ( opt_ = av_opt_next 	( obj, opt_ ) ) ) {
             std::cout << opt_->name << "=";
             char* _buffer;
             av_opt_get 	( 	obj,
-                   opt_->name,
-                   0,
-                   (uint8_t**)&_buffer
-               );
+                            opt_->name,
+                            0,
+                            ( uint8_t** ) &_buffer
+                        );
             std::cout << _buffer << std::endl;
         }
     }
+
     std::cout << "----------------" << std::endl;
 
 //    printf("Object name:%s\n",(*(AVClass **) codec_context_)->class_name);

@@ -9,7 +9,7 @@ class AvcppConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     generators = "cmake"
     description = "C++ wrapper for ffmpeg libraries"
-    requires = "ffmpeg/3.4.1@conan-cpp/latest", "bzip2/1.0.6@conan/stable", "lzma/5.2.3@bincrafters/stable", "zlib/1.2.11@conan/stable", "gtest/1.8.0@bincrafters/stable"
+    requires = "ffmpeg/3.4.1@conan-cpp/latest", "chromaprint/1.4.3@conan-cpp/latest", "OpenSSL/1.0.2o@conan/stable", "gtest/1.8.0@bincrafters/stable"
     options = { "shared": [True, False], "build_tests":  [True, False], "build_samples": [True, False]}
     default_options = "shared=False", "*:shared=False", "build_tests=False", "build_samples=False"
     exports_sources = "*", "av/"

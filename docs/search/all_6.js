@@ -7,7 +7,6 @@ var searchData=
   ['ffvhuff',['FFVHUFF',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930aab8085e2cc1eda31c386de68825452ed',1,'av::Codec']]],
   ['ffwavesynth',['FFWAVESYNTH',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930ad15dce9476228b74a85b94b60c32057b',1,'av::Codec']]],
   ['fic',['FIC',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a451d78ebb117e64dbb1048bd939f8023',1,'av::Codec']]],
-  ['file',['file',['../struct_cuesheet.html#a28758cd28798896b4170d73b1c2ad1c0',1,'Cuesheet']]],
   ['first_5faudio',['FIRST_AUDIO',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a078c4cf04b92a0b7031993123e24e4dc',1,'av::Codec']]],
   ['first_5fsubtitle',['FIRST_SUBTITLE',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a6610b121c3a8c352c9bee828a8b7a9cd',1,'av::Codec']]],
   ['first_5funknown',['FIRST_UNKNOWN',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930adaf27b16c6a88332fd4c8be1af0a3b7a',1,'av::Codec']]],
@@ -28,6 +27,7 @@ var searchData=
   ['frame',['Frame',['../classav_1_1_frame.html',1,'av::Frame'],['../classav_1_1_frame.html#a17a1f4450ef4868153e4c3b0dbad7dab',1,'av::Frame::Frame()'],['../classav_1_1_frame.html#a4f97664ea80af8fd1fb6b560d09e83d2',1,'av::Frame::Frame(int frame_size, SampleFormat sample_fmt, ChannelLayout::Enum channel_layout, int sample_rate)'],['../classav_1_1_frame.html#a46318a5d3662571c422d2a280a4c797f',1,'av::Frame::Frame(const Frame &amp;)=delete'],['../classav_1_1_frame.html#a6792c4db188204ab597115045eaa2e84',1,'av::Frame::Frame(Frame &amp;&amp;)=delete']]],
   ['frame_2eh',['frame.h',['../frame_8h.html',1,'']]],
   ['frame_5fsize',['frame_size',['../classav_1_1_codec.html#adaeb42bade50785b5f8331d06b404971',1,'av::Codec']]],
+  ['frames',['frames',['../structdiscid_1_1time.html#a2b60f514d685223058fa37babb4f25fa',1,'discid::time']]],
   ['fraps',['FRAPS',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930abed4a7d033880e4365a6b8d89327dac6',1,'av::Codec']]],
   ['frwu',['FRWU',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930ae8b8045af1a1d8268310b9cbda59c028',1,'av::Codec']]]
 ];

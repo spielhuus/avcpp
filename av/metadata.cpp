@@ -20,42 +20,43 @@
 
 namespace av {
 
-const static char* _TITLE = "title";
-const static char* _ALBUM = "album";
-const static char* _ARTIST = "artist";
-const static char* _COMPOSER = "composer";
-const static char* _PERFORMER = "performer";
-const static char* _COMMENT = "comment";
-const static char* _YEAR = "year";
-const static char* _TRACK = "track";
-const static char* _DISC = "disc";
-const static char* _GENRE = "genre";
-const static char* _PUBLISHER = "publisher";
+const std::string Metadata::_TITLE = "title";
+const std::string Metadata::_ALBUM = "album";
+const std::string Metadata::_ARTIST = "artist";
+const std::string Metadata::_COMPOSER = "composer";
+const std::string Metadata::_PERFORMER = "performer";
+const std::string Metadata::_COMMENT = "comment";
+const std::string Metadata::_YEAR = "year";
+const std::string Metadata::_TRACK = "track";
+const std::string Metadata::_DISC = "disc";
+const std::string Metadata::_GENRE = "genre";
+const std::string Metadata::_PUBLISHER = "publisher";
 
-static std::array< std::string, 11 > _tag_names {
+const std::array< std::string, 11 > Metadata::_tag_names {
     { _TITLE, _ALBUM, _ARTIST, _COMPOSER, _PERFORMER, _COMMENT, _YEAR, _TRACK, _DISC, _GENRE, _PUBLISHER }
 };
-void Metadata::set ( const char* name, const char* value ) {
+void Metadata::set ( const std::string& name, const std::string& value ) {
 
-    if ( strcasecmp ( _TITLE, name ) == 0 )
-    { tags[ TITLE ] = value; }
+    if ( strcasecmp ( _TITLE.c_str(), name.c_str() ) == 0 )
+    { tags[ _TITLE ] = value; }
 
-    else if ( strcasecmp ( _ALBUM, name ) == 0 )
-    { tags[ ALBUM ] = value; }
+    else if ( strcasecmp ( _ALBUM.c_str(), name.c_str() ) == 0 )
+    { tags[ _ALBUM ] = value; }
 
-    else if ( strcasecmp ( _ARTIST, name ) == 0 )
-    { tags[ ARTIST ] = value; }
+    else if ( strcasecmp ( _ARTIST.c_str(), name.c_str() ) == 0 )
+    { tags[ _ARTIST ] = value; }
 
-    else if ( strcasecmp ( _COMPOSER, name ) == 0 )
-    { tags[ COMPOSER ] = value; }
+    else if ( strcasecmp ( _COMPOSER.c_str(), name.c_str() ) == 0 )
+    { tags[ _COMPOSER ] = value; }
 
-    else if ( strcasecmp ( _PERFORMER, name ) == 0 )
-    { tags[ PERFORMER ] = value; }
+    else if ( strcasecmp ( _PERFORMER.c_str(), name.c_str() ) == 0 )
+    { tags[ _PERFORMER ] = value; }
 
-    else if ( strcasecmp ( _COMMENT, name ) == 0 )
-    { tags[ COMMENT ] = value; }
+    else if ( strcasecmp ( _COMMENT.c_str(), name.c_str() ) == 0 )
+    { tags[ _COMMENT ] = value; }
 
-    else if ( strcasecmp ( _YEAR, name ) == 0 ) {
+    else if ( strcasecmp ( _YEAR.c_str(), name.c_str() ) == 0  ||
+              strcasecmp ( "date", name.c_str() ) == 0 ) {
         std::string _year = value;
 
         if ( _year.size() > 4 ) {
@@ -65,35 +66,35 @@ void Metadata::set ( const char* name, const char* value ) {
             } else { std::cout << "unknown date format: " << _year << std::endl; }
         }
 
-        tags[ YEAR ] = _year;
+        tags[ _YEAR ] = _year.c_str();
     }
 
-    else if ( strcasecmp ( _TRACK, name ) == 0 )
-    { tags[ TRACK ] = value; }
+    else if ( strcasecmp ( _TRACK.c_str(), name.c_str() ) == 0 )
+    { tags[ _TRACK ] = value.c_str(); }
 
-    else if ( strcasecmp ( _DISC, name ) == 0 )
-    { tags[ DISC ] = value; }
+    else if ( strcasecmp ( _DISC.c_str(), name.c_str() ) == 0 )
+    { tags[ _DISC ] = value.c_str(); }
 
-    else if ( strcasecmp ( _GENRE, name ) == 0 )
-    { tags[ GENRE ] = value; }
+    else if ( strcasecmp ( _GENRE.c_str(), name.c_str() ) == 0 )
+    { tags[ _GENRE ] = value.c_str(); }
 
-    else if ( strcasecmp ( _PUBLISHER, name ) == 0 )
-    { tags[ PUBLISHER ] = value; }
+    else if ( strcasecmp ( _PUBLISHER.c_str(), name.c_str() ) == 0 )
+    { tags[ _PUBLISHER ] = value.c_str(); }
 
-    //extra values are skipped
+    //extra values are skippe.c_str()d
 }
-std::string& Metadata::get ( const Metadata::Enum& key ) {
+std::string& Metadata::get ( const std::string& key ) {
     return tags[ key ];
 }
-std::vector< Metadata::Enum > Metadata::tag_names () {
-    std::vector< Enum > _keys;
+std::vector< std::string > Metadata::tag_names () {
+    std::vector< std::string > _keys;
 
     for ( auto const& k: tags )
     { _keys.push_back ( k.first ); }
 
     return _keys;
 }
-std::string Metadata::name ( Enum tag ) {
+std::string Metadata::name ( const Enum& tag ) {
     return _tag_names[ static_cast< unsigned int > ( tag )];
 }
 }//namespace libav

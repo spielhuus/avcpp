@@ -641,12 +641,7 @@ public:
      * @return true if an error has occurred, false otherwise.
      */
     bool operator!() const;
-//    /** @brief checks if no error has occurred i.e. I/O operations are available */
-//    bool good();
-//    /** @brief checks if end-of-file has been reached */
-//    bool eof();
-//    /** @brief checks if an error has occurred */
-//    bool fail();
+
     /**
      * @brief return the actual error state of the assiciated format context.
      * @return return the error state as std::error_code.

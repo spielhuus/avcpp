@@ -1,13 +1,12 @@
 <map id="/home/etienne/Projects/avcpp/av/av.h" name="/home/etienne/Projects/avcpp/av/av.h">
-<area shape="rect" id="node2" href="$averrc_8h.html" title="averrc.h" alt="" coords="1459,95,1528,121"/>
-<area shape="rect" id="node4" href="$codec_8h.html" title="codec.h" alt="" coords="438,169,506,196"/>
-<area shape="rect" id="node9" href="$frame_8h.html" title="frame.h" alt="" coords="77,244,144,271"/>
-<area shape="rect" id="node10" href="$utils_8h.html" title="utils.h" alt="" coords="153,319,210,345"/>
-<area shape="rect" id="node18" href="$format_8h.html" title="format.h" alt="" coords="818,95,889,121"/>
-<area shape="rect" id="node24" href="$scale_8h.html" title="scale.h" alt="" coords="219,244,283,271"/>
-<area shape="rect" id="node25" href="$cuesheet_8h.html" title="cuesheet.h" alt="" coords="1379,244,1466,271"/>
-<area shape="rect" id="node27" href="$dynamicrange_8h.html" title="dynamicrange.h" alt="" coords="632,244,747,271"/>
-<area shape="rect" id="node11" href="$packet_8h.html" title="packet.h" alt="" coords="536,244,608,271"/>
-<area shape="rect" id="node14" href="$option_8h.html" title="option.h" alt="" coords="771,244,839,271"/>
-<area shape="rect" id="node21" href="$metadata_8h.html" title="metadata.h" alt="" coords="978,169,1065,196"/>
+<area shape="rect" id="node2" href="$averrc_8h.html" title="averrc.h" alt="" coords="5,95,80,121"/>
+<area shape="rect" id="node4" href="$codec_8h.html" title="codec.h" alt="" coords="667,169,739,196"/>
+<area shape="rect" id="node9" href="$frame_8h.html" title="frame.h" alt="" coords="359,244,433,271"/>
+<area shape="rect" id="node10" href="$utils_8h.html" title="utils.h" alt="" coords="410,319,473,345"/>
+<area shape="rect" id="node18" href="$format_8h.html" title="format.h" alt="" coords="1029,95,1107,121"/>
+<area shape="rect" id="node24" href="$scale_8h.html" title="scale.h" alt="" coords="65,244,133,271"/>
+<area shape="rect" id="node25" href="$dynamicrange_8h.html" title="dynamicrange.h" alt="" coords="157,244,283,271"/>
+<area shape="rect" id="node11" href="$packet_8h.html" title="packet.h" alt="" coords="741,244,819,271"/>
+<area shape="rect" id="node14" href="$option_8h.html" title="option.h" alt="" coords="844,244,919,271"/>
+<area shape="rect" id="node21" href="$metadata_8h.html" title="metadata.h" alt="" coords="1269,169,1366,196"/>
 </map>

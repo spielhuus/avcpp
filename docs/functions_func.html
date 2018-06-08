@@ -1,3 +1,4 @@
+<!-- HTML header for doxygen 1.8.13-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -12,7 +13,7 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
-<link href="doxygen.css" rel="stylesheet" type="text/css" />
+<link href="customdoxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -74,6 +75,7 @@ $(function() {
 <h3><a id="index_b"></a>- b -</h3><ul>
 <li>begin()
 : <a class="el" href="classav_1_1_format.html#adf8c18475c1f5d048e74421c5e7873d9">av::Format</a>
+, <a class="el" href="structav_1_1_metadata.html#a5db615b59e0fcf7ea6a1c8f2d23f8534">av::Metadata</a>
 </li>
 <li>bitrate()
 : <a class="el" href="classav_1_1_codec.html#a6b243e8a32d0790d4279053bd7123fe6">av::Codec</a>
@@ -91,6 +93,9 @@ $(function() {
 <li>c_str()
 : <a class="el" href="classav_1_1_option.html#a38f7767b514d27ee6f2802a8fc46896b">av::Option</a>
 </li>
+<li>cddb()
+: <a class="el" href="classdiscid_1_1_disc_i_d.html#a4d4034732db4e2ba9c07be1d22e3fc81">discid::DiscID</a>
+</li>
 <li>channel_layout()
 : <a class="el" href="classav_1_1_codec.html#a38d2e8e98a352465ecff550f1536920a">av::Codec</a>
 </li>
@@ -103,9 +108,6 @@ $(function() {
 <li>codec()
 : <a class="el" href="classav_1_1_codec.html#a399577b18f8f484e74fdec5d59849a85">av::Codec</a>
 </li>
-<li>Codec()
-: <a class="el" href="classav_1_1_codec.html#acc50bdf3eff1fb934ab94c3bd4dc1835">av::Codec</a>
-</li>
 <li>codec_type()
 : <a class="el" href="classav_1_1_codec.html#ad6bccfd2599ee5f811785764ecdea4ad">av::Codec</a>
 </li>
@@ -114,12 +116,6 @@ $(function() {
 </li>
 <li>copy_image()
 : <a class="el" href="classav_1_1_codec.html#a374d7f22b5b8ca7fee7d42b805355ee2">av::Codec</a>
-</li>
-<li>Cuesheet()
-: <a class="el" href="struct_cuesheet.html#a1c1b42b9538945e85041ba60587e590b">Cuesheet</a>
-</li>
-<li>CuesheetItem()
-: <a class="el" href="struct_cuesheet_item.html#ac2f73315b727dd8a91ce0c1115157b01">CuesheetItem</a>
 </li>
 </ul>
 
@@ -153,6 +149,7 @@ $(function() {
 </li>
 <li>end()
 : <a class="el" href="classav_1_1_format.html#ad66c53307fc2f03bac49d1d96be2a9ef">av::Format</a>
+, <a class="el" href="structav_1_1_metadata.html#adfe63d10977a6104805944bf1946ebb5">av::Metadata</a>
 </li>
 <li>eof()
 : <a class="el" href="classav_1_1_format.html#ac890ee6222c8692bc4ed1bb22573f37b">av::Format</a>
@@ -193,7 +190,7 @@ $(function() {
 <h3><a id="index_g"></a>- g -</h3><ul>
 <li>get()
 : <a class="el" href="structav_1_1_channel_layout.html#a2c72959a965a3865520dd0dacaec5518">av::ChannelLayout</a>
-, <a class="el" href="structav_1_1_metadata.html#a021b590bbfcaeccc224b26a9b99094da">av::Metadata</a>
+, <a class="el" href="structav_1_1_metadata.html#a1ad029615db633aa72f0fb52156e6306">av::Metadata</a>
 , <a class="el" href="classav_1_1_options.html#a8c2cee9b0fa45451e07af83174cb464e">av::Options</a>
 </li>
 <li>good()
@@ -241,8 +238,14 @@ $(function() {
 <li>malloc_image()
 : <a class="el" href="classav_1_1_codec.html#ab9dfc57a843c19d9293ffed4a2f677a7">av::Codec</a>
 </li>
+<li>mb()
+: <a class="el" href="classdiscid_1_1_disc_i_d.html#a4ca0bd5963a1c9d003fc0296f2ffc326">discid::DiscID</a>
+</li>
 <li>metadata()
 : <a class="el" href="classav_1_1_format.html#a78b9612b0b7d961674a6848da01bae3b">av::Format</a>
+</li>
+<li>Metadata()
+: <a class="el" href="structav_1_1_metadata.html#ac5b52d5e671a87da03e9f550dfaa6b78">av::Metadata</a>
 </li>
 <li>meter_feed()
 : <a class="el" href="classav_1_1_dynamic_range.html#ac65b75094e7ad104bee3df5754d991b6">av::DynamicRange</a>
@@ -258,7 +261,7 @@ $(function() {
 
 <h3><a id="index_n"></a>- n -</h3><ul>
 <li>name()
-: <a class="el" href="structav_1_1_metadata.html#a5627e93c83c8a02578266c18565a19ed">av::Metadata</a>
+: <a class="el" href="structav_1_1_metadata.html#a3dadcc64a2b69b2c26c628b1c3c71bc3">av::Metadata</a>
 </li>
 <li>nb_samples()
 : <a class="el" href="classav_1_1_frame.html#a2a83133bffc6dbdf4a7b13318ce4fe0a">av::Frame</a>
@@ -273,17 +276,26 @@ $(function() {
 , <a class="el" href="classav_1_1_resample.html#a0158171e6710a8f5733661c688ba6fce">av::Resample</a>
 , <a class="el" href="classav_1_1_scale.html#ae609e9ee1c6260032537b9e95ab50445">av::Scale</a>
 </li>
+<li>operator+()
+: <a class="el" href="structdiscid_1_1time.html#a306df81f9905e52a941c91d97dfd8b0e">discid::time</a>
+</li>
+<li>operator-()
+: <a class="el" href="structdiscid_1_1time.html#a8de67775b47f9664c8223fe8e47663b9">discid::time</a>
+</li>
 <li>operator=()
-: <a class="el" href="classav_1_1_codec.html#a1ea7e1b0ce776f3c4776254ce7364611">av::Codec</a>
-, <a class="el" href="classav_1_1_format.html#aba67bcebd8983e2e0e2bab825ac9c074">av::Format</a>
+: <a class="el" href="classav_1_1_codec.html#aa3a7519996cfa5c8a394178715fe9708">av::Codec</a>
+, <a class="el" href="classav_1_1_format.html#a9056f2bb8e0641fd5720fac3b1a4cf77">av::Format</a>
 , <a class="el" href="classav_1_1_frame.html#aab6b790ce90bf86ad810ec416ea9840c">av::Frame</a>
 , <a class="el" href="structav_1_1_packet.html#ad9b2d282b6e23348767deafb6c042c7c">av::Packet</a>
+</li>
+<li>operator==()
+: <a class="el" href="structdiscid_1_1time.html#af9267e6642571b10b4fe0581175b8027">discid::time</a>
 </li>
 <li>Option()
 : <a class="el" href="classav_1_1_option.html#a24aaa0401f876e948ac1fd0160d4532d">av::Option</a>
 </li>
 <li>Options()
-: <a class="el" href="classav_1_1_options.html#a0815e3f4cac82e04857cca8f8e1e0ff8">av::Options</a>
+: <a class="el" href="classav_1_1_options.html#af0364e55fa39c1f8e8000ccd12d573d5">av::Options</a>
 </li>
 </ul>
 
@@ -291,9 +303,6 @@ $(function() {
 <h3><a id="index_p"></a>- p -</h3><ul>
 <li>Packet()
 : <a class="el" href="structav_1_1_packet.html#abccce49cb6e60a878077d4739e8c0a02">av::Packet</a>
-</li>
-<li>parse()
-: <a class="el" href="struct_cuesheet.html#a517ded7c2f8782e9bf7e3488bc59dc5d">Cuesheet</a>
 </li>
 <li>pix_fmt()
 : <a class="el" href="classav_1_1_codec.html#a9a307f0ece88535a0abff55f8ee1114a">av::Codec</a>
@@ -311,11 +320,11 @@ $(function() {
 <li>read()
 : <a class="el" href="classav_1_1_format.html#a868c2f2408deab4d0fc0c4fab0e74c22">av::Format</a>
 </li>
-<li>Resample()
-: <a class="el" href="classav_1_1_resample.html#ac4487b2f16951f80be3212899675b58d">av::Resample</a>
-</li>
 <li>resample()
 : <a class="el" href="classav_1_1_resample.html#ae81fc3046215492854b51936cae139fc">av::Resample</a>
+</li>
+<li>Resample()
+: <a class="el" href="classav_1_1_resample.html#ac4487b2f16951f80be3212899675b58d">av::Resample</a>
 </li>
 </ul>
 
@@ -334,7 +343,7 @@ $(function() {
 : <a class="el" href="classav_1_1_scale.html#a3489969b7d8e22be22502f204f100e89">av::Scale</a>
 </li>
 <li>set()
-: <a class="el" href="structav_1_1_metadata.html#a13b1f7c8353f88cf63487f8305c434f0">av::Metadata</a>
+: <a class="el" href="structav_1_1_metadata.html#ac2221851db8445a0b06b16d513d79da6">av::Metadata</a>
 , <a class="el" href="classav_1_1_options.html#a258a2addc5f7de0b54cb30b2a767d251">av::Options</a>
 </li>
 <li>size()
@@ -347,7 +356,16 @@ $(function() {
 
 <h3><a id="index_t"></a>- t -</h3><ul>
 <li>tag_names()
-: <a class="el" href="structav_1_1_metadata.html#a4f10085f1df94996fa8501e32f806d62">av::Metadata</a>
+: <a class="el" href="structav_1_1_metadata.html#a4c77c0ebe8c218cdeb119527bebc524a">av::Metadata</a>
+</li>
+<li>tagname()
+: <a class="el" href="structav_1_1_metadata.html#aeb06b78338d106e311a4cf38864fb033">av::Metadata</a>
+</li>
+<li>time()
+: <a class="el" href="structdiscid_1_1time.html#a0510c51b411cb0b325c656fbf79d21ba">discid::time</a>
+</li>
+<li>toc()
+: <a class="el" href="structdiscid_1_1toc.html#a89aca7c5062d5872c51233cb55b20f11">discid::toc</a>
 </li>
 <li>type()
 : <a class="el" href="classav_1_1_option.html#afcfe8b28c6aadaf6b7eb823213cab678">av::Option</a>
@@ -388,6 +406,9 @@ $(function() {
 <li>~ImageData()
 : <a class="el" href="structav_1_1_image_data.html#a68b239c2174c1edf51022eaddba2fbdf">av::ImageData</a>
 </li>
+<li>~Metadata()
+: <a class="el" href="structav_1_1_metadata.html#af5a6e45fb117df589a246893d842edd6">av::Metadata</a>
+</li>
 <li>~Options()
 : <a class="el" href="classav_1_1_options.html#a7733bbeb7bd6a1e98e46c3930dae219b">av::Options</a>
 </li>
@@ -399,9 +420,10 @@ $(function() {
 </li>
 </ul>
 </div><!-- contents -->
+<!-- HTML footer for doxygen 1.8.13-->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Apr 7 2018 23:06:09 for avcpp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Jun 9 2018 00:22:06 for avcpp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

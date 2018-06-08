@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.3)
 
 project(avcpp)
 
+SET(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
+
 SET(MAJOR_VERSION "0")
 SET(MINOR_VERSION "1")
 SET(PATCH_VERSION "1" CACHE PATCH_VERSION "The package build number." )
@@ -11,6 +13,8 @@ SET(PATCH_VERSION "1" CACHE PATCH_VERSION "The package build number." )
 option(build_tests "Build all unit tests." OFF)
 option(build_samples "Build samples." OFF)
 option(build_documentation "Build the project documentation." OFF)
+option(BUILD_SHARED_LIBS "Build shared linked library." OFF)
+option(BUILD_WITH_CONAN "Use Conan package mangager." ON)
 
 SET(DOCFILES "${CMAKE_CURRENT_SOURCE_DIR}/docs/" CACHE PATH "The path to the documentation files.")
 SET(TESTFILES "/testfiles" CACHE TESTFILES "The path to the testfiles.")
@@ -26,7 +30,7 @@ find_package (Threads REQUIRED)
 if(!BUILD_SHARED_LIBS)
     SET(CMAKE_FIND_LIBRARY_SUFFIXES ".a")
     SET(CMAKE_EXE_LINKER_FLAGS "-static")
-endif(BUILD_SHARED_LIBS)
+endif(!BUILD_SHARED_LIBS)
 
 find_program(CCACHE_FOUND ccache)
 if(CCACHE_FOUND)
@@ -37,8 +41,21 @@ endif(CCACHE_FOUND)
 add_definitions(-DTESTFILES="${TESTFILES}/")
 
 # ---------------------   External Dependencies       ---------------------
-include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
-conan_basic_setup()
+
+if( ${BUILD_WITH_CONAN} )
+    message( "conan packages" )
+    include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
+    conan_basic_setup()
+    SET(LIBRARIES ${LIBRARIES} ${CONAN_LIBS})
+else( ${BUILD_WITH_CONAN} )
+    #find_package(OpenSSL REQUIRED)
+    message( "load packages" )
+    find_package(GTest REQUIRED)
+    find_package(FFmpeg REQUIRED AVFORMAT AVUTIL AVCODEC AVFILTER AVUTIL POSTPROC SWSCALE)
+
+    SET(INCLUDES ${INCLUDES} ${FFMPEG_INCLUDE_DIRS} ${GTEST_INCLUDE_DIRS} )
+    SET(LIBRARIES ${LIBRARIES} ${FFMPEG_LIBRARIES} ${GTEST_BOTH_LIBRARIES} Threads::Threads)
+endif( ${BUILD_WITH_CONAN} )
 
 add_subdirectory ( av )
 if( build_samples )
@@ -69,3 +86,36 @@ if (build_documentation)
         )
     endif(DOXYGEN_FOUND)
 endif(build_documentation)
+
+# -------------------------------------------------------------------------
+# -----------------------   Generate Package        -----------------------
+# -------------------------------------------------------------------------
+IF(EXISTS "${CMAKE_ROOT}/Modules/CPack.cmake")
+INCLUDE(InstallRequiredSystemLibraries)
+
+SET(CPACK_PACKAGING_INSTALL_PREFIX "/usr/local")
+SET(CPACK_GENERATOR "TGZ")
+SET(CPACK_COMPONENTS_ALL_IN_ONE_PACKAGE 1)
+SET(CPACK_INCLUDE_TOPLEVEL_DIRECTORY 0)
+
+#if(CDS_TAG_VERSION MATCHES "^([0-9]+)[.]([0-9]+)[.]([0-9]+)$" )
+#    string(REPLACE "." ";" CDS_TAG_VERSION_STRING ${CDS_TAG_VERSION})
+#    list(GET CDS_TAG_VERSION_STRING 0 MAJOR_VERSION)
+#    list(GET CDS_TAG_VERSION_STRING 1 MINOR_VERSION)
+#    list(GET CDS_TAG_VERSION_STRING 2 PATCH_VERSION)
+#else()
+#    SET(MAJOR_VERSION "0")
+#    SET(MINOR_VERSION "0")
+#    SET(PATCH_VERSION "0")
+#endif()
+
+SET(CPACK_PACKAGE_VERSION_MAJOR "${MAJOR_VERSION}")
+SET(CPACK_PACKAGE_VERSION_MINOR "${MINOR_VERSION}")
+SET(CPACK_PACKAGE_VERSION_PATCH "${PATCH_VERSION}")
+
+SET(CPACK_PACKAGE_FILE_NAME "${CMAKE_PROJECT_NAME}_${MAJOR_VERSION}.${MINOR_VERSION}.${PATCH_VERSION}")
+SET(CPACK_SOURCE_PACKAGE_FILE_NAME "${CMAKE_PROJECT_NAME}_${MAJOR_VERSION}.${MINOR_VERSION}.${PATCH_VERSION}")
+
+INCLUDE(CPack)
+
+ENDIF(EXISTS "${CMAKE_ROOT}/Modules/CPack.cmake")

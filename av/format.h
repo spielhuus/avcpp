@@ -51,8 +51,8 @@ public:
 
     /** @brief Open mediafile with a file by path */
     Format ( /** The path to the file to open */                const std::string& filename,
-             /** Set the format i/o mode to READ or WRITE. */   Mode mode = READ,
-             /** Set the AV option for the format. */           Options options = Options()
+            /** Set the format i/o mode to READ or WRITE. */   Mode mode = READ,
+            /** Set the AV option for the format. */           Options options = Options()
            );
     /** @brief Open mediafile from stream
         Options:
@@ -62,8 +62,8 @@ public:
             <li>mime_type	if non-NULL checks if mime_type matches with the MIME type of the registered formats</li>
         </ul>*/
     Format ( /** The stream to open */                          std::iostream* s,
-             /** Set the format i/o mode to READ or WRITE. */   Mode mode = READ,
-             /** Set the AV option for the format. */           Options options = Options()
+            /** Set the format i/o mode to READ or WRITE. */   Mode mode = READ,
+            /** Set the AV option for the format. */           Options options = Options()
            );
 
     /** @brief Free all ressources. */
@@ -92,7 +92,7 @@ public:
     /** @brief Returns the metadata of the associated format context. */
     av::Metadata metadata() const ;
 
-    std::error_code add_encoder( Codec& codec );
+    std::error_code add_encoder ( Codec& codec );
 
     /** @brief Read packet from input. */
     std::error_code read ( /** callback. */ std::function< void ( Packet& ) > callback  );
@@ -120,7 +120,7 @@ public:
     /** @brief write the format information to the output stream.
         @return reference to output stream */
     friend std::ostream& operator<< ( /** The target output stream. */  std::ostream& stream,
-                                      /** The format to print */        Format& format );
+            /** The format to print */        Format& format );
 
 private:
     friend struct Packet;

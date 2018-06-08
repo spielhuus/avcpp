@@ -1,10 +1,10 @@
 <map id="av::utils::write_audio" name="av::utils::write_audio">
-<area shape="rect" id="node2" href="$classav_1_1_codec.html#ad8ad03d7ba76d2858aaf473ce99a6ae7" title="Check if the sample format is planar. " alt="" coords="212,5,355,32"/>
-<area shape="rect" id="node3" href="$classav_1_1_frame.html#a2a83133bffc6dbdf4a7b13318ce4fe0a" title="number of audio samples (per channel) described by this frame. " alt="" coords="204,56,363,83"/>
-<area shape="rect" id="node4" href="$classav_1_1_codec.html#a83be833a6fa68899c25c6815021436ab" title="Number of audio channels. " alt="" coords="212,107,355,133"/>
-<area shape="rect" id="node5" href="$classav_1_1_frame.html#ab68a86b5f540741b123bdf42342c096b" title="pointer to the picture/channel planes. " alt="" coords="226,157,341,184"/>
-<area shape="rect" id="node6" href="$namespaceav.html#a081d5d6050765210d5ca708d37031a8b" title="Number of bytes per sample. " alt="" coords="196,208,371,235"/>
-<area shape="rect" id="node7" href="$classav_1_1_codec.html#afb04f2ba584a81de4bd0c9669d9477cf" title="Audio sample format. " alt="" coords="204,259,363,285"/>
-<area shape="rect" id="node8" href="$classav_1_1_frame.html#a18bb63c366095d58a5394bf7e9d7d179" title="av::Frame::extended_data" alt="" coords="196,309,371,336"/>
-<area shape="rect" id="node9" href="$classav_1_1_frame.html#a623ab5cfb9babe5cf566af3fe174e439" title="av::Frame::linesize" alt="" coords="217,360,350,387"/>
+<area shape="rect" id="node2" href="$classav_1_1_codec.html#ad8ad03d7ba76d2858aaf473ce99a6ae7" title="Check if the sample format is planar. " alt="" coords="231,5,383,32"/>
+<area shape="rect" id="node3" href="$classav_1_1_frame.html#a2a83133bffc6dbdf4a7b13318ce4fe0a" title="number of audio samples (per channel) described by this frame. " alt="" coords="221,56,392,83"/>
+<area shape="rect" id="node4" href="$classav_1_1_codec.html#a83be833a6fa68899c25c6815021436ab" title="Number of audio channels. " alt="" coords="231,107,382,133"/>
+<area shape="rect" id="node5" href="$classav_1_1_frame.html#ab68a86b5f540741b123bdf42342c096b" title="pointer to the picture/channel planes. " alt="" coords="245,157,368,184"/>
+<area shape="rect" id="node6" href="$namespaceav.html#a081d5d6050765210d5ca708d37031a8b" title="Number of bytes per sample. " alt="" coords="211,208,403,235"/>
+<area shape="rect" id="node7" href="$classav_1_1_codec.html#afb04f2ba584a81de4bd0c9669d9477cf" title="Audio sample format. " alt="" coords="221,259,392,285"/>
+<area shape="rect" id="node8" href="$classav_1_1_frame.html#a18bb63c366095d58a5394bf7e9d7d179" title="av::Frame::extended_data" alt="" coords="211,309,402,336"/>
+<area shape="rect" id="node9" href="$classav_1_1_frame.html#a623ab5cfb9babe5cf566af3fe174e439" title="av::Frame::linesize" alt="" coords="235,360,378,387"/>
 </map>

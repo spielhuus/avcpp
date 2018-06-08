@@ -7,18 +7,19 @@
 #include "format.h"
 #include "scale.h"
 #include "utils.h"
-#include "cuesheet.h"
 #include "dynamicrange.h"
 
-namespace av {namespace utils {
+namespace av {
+namespace utils {
 template< class IO, class Codec, class Frame >
-inline void write_audio( IO& stream, Codec codec, Frame& frame ) {
+inline void write_audio ( IO& stream, Codec codec, Frame& frame ) {
     //write to out file
     if ( codec->is_planar() ) {
         for ( int i = 0; i < frame.nb_samples(); i++ )
             for ( int ch = 0; ch < codec->channels(); ch++ )
-            { stream.write ( reinterpret_cast< char* > ( frame.data ( ch ) + av::get_bytes_per_sample( codec->sample_fmt() ) *i ),
-                              av::get_bytes_per_sample( codec->sample_fmt() ) ); }
+            {   stream.write ( reinterpret_cast< char* > ( frame.data ( ch ) + av::get_bytes_per_sample ( codec->sample_fmt() ) *i ),
+                               av::get_bytes_per_sample ( codec->sample_fmt() ) );
+            }
 
     } else {
         stream.write ( reinterpret_cast< char* > ( frame.extended_data() [0] ), frame.linesize ( 0 ) );

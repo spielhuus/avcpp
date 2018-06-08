@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['max_5fchannels',['MAX_CHANNELS',['../dynamicrange_8h.html#ac69ee46f4a51ed14f0d68628c2dec71d',1,'dynamicrange.h']]],
-  ['max_5ffragments',['MAX_FRAGMENTS',['../dynamicrange_8h.html#a3e3558ae64440370a8d1eca6f4447a9c',1,'dynamicrange.h']]]
+  ['libdiscid_5fapi',['LIBDISCID_API',['../base64_8h.html#a3febad6285be3ab22c9f65e6d68236ae',1,'base64.h']]],
+  ['libdiscid_5fdeprecated',['LIBDISCID_DEPRECATED',['../base64_8h.html#a73e09333ed2d7a60b65115110c532e84',1,'base64.h']]],
+  ['libdiscid_5finternal',['LIBDISCID_INTERNAL',['../base64_8h.html#ae74679160ace07380f95a899d21f660c',1,'base64.h']]]
 ];

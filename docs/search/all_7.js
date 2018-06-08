@@ -28,7 +28,7 @@ var searchData=
   ['gbrpf32le',['GBRPF32LE',['../namespaceav.html#af85b09738c8c19633a36897151c331aead00314254b4c28ef9bbde60eab8147b3',1,'av']]],
   ['gdv',['GDV',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930aff24cdf5f05e97dd2dc8fa2a33f3ed72',1,'av::Codec']]],
   ['genre',['GENRE',['../structav_1_1_metadata.html#a1a3594060777cde3558ce7dbbe149d2aa80c52f6f9a5fac8ddb4eb979266ef992',1,'av::Metadata']]],
-  ['get',['get',['../structav_1_1_metadata.html#a021b590bbfcaeccc224b26a9b99094da',1,'av::Metadata::get()'],['../classav_1_1_options.html#a8c2cee9b0fa45451e07af83174cb464e',1,'av::Options::get()'],['../structav_1_1_channel_layout.html#a2c72959a965a3865520dd0dacaec5518',1,'av::ChannelLayout::get(ChannelLayout::Enum format)'],['../structav_1_1_channel_layout.html#a88c540a813e6ee12cb08b2c610b1019d',1,'av::ChannelLayout::get(uint64_t format)']]],
+  ['get',['get',['../structav_1_1_metadata.html#a1ad029615db633aa72f0fb52156e6306',1,'av::Metadata::get()'],['../classav_1_1_options.html#a8c2cee9b0fa45451e07af83174cb464e',1,'av::Options::get()'],['../structav_1_1_channel_layout.html#a2c72959a965a3865520dd0dacaec5518',1,'av::ChannelLayout::get(ChannelLayout::Enum format)'],['../structav_1_1_channel_layout.html#a88c540a813e6ee12cb08b2c610b1019d',1,'av::ChannelLayout::get(uint64_t format)']]],
   ['get_5fbytes_5fper_5fsample',['get_bytes_per_sample',['../namespaceav.html#a081d5d6050765210d5ca708d37031a8b',1,'av']]],
   ['gif',['GIF',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a6d21c6cb59faff9b516ba215379157cb',1,'av::Codec']]],
   ['good',['good',['../classav_1_1_format.html#af232947f322943477e6081169ea44f6a',1,'av::Format::good()'],['../classav_1_1_resample.html#a0ec960fa9317bbe577ea8637b2b71982',1,'av::Resample::good()']]],

@@ -12,3 +12,4 @@ CMakeLists.txt.user
 *.bak
 *.orig
 .build
+CMakeLists.txt.user.*

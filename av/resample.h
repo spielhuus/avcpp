@@ -28,12 +28,6 @@ struct AVAudioFifo;
 
 namespace av {
 
-//uint8_t** make_sample_buffer ( ChannelLayout::Enum channel_layout, int nb_samples, SampleFormat sample_format, int* linesize );
-
-//static int init_converted_samples(uint8_t ***converted_input_samples,
-//                                  AVCodecContext *output_codec_context,
-//                                  int frame_size);
-
 class Resample {
 public:
 
@@ -77,9 +71,7 @@ private:
     SwrContext* resample_context_ = nullptr;
     AVAudioFifo* fifo_ = nullptr;
 
-//TODO    int src_nb_samples_ = 1024; //TODO
-    /*int dst_nb_samples = 0,*/ int64_t max_dst_nb_samples = 0;
-    //TODO int dst_bufsize_ = 0;
+    int64_t max_dst_nb_samples = 0;
     int dst_nb_channels = 0;
 
     int dst_linesize = 0;

@@ -20,19 +20,15 @@
 #include <stdint.h>
 #include <system_error>
 
-///@cond DOC_INTERNAL
 extern "C" {
     class AVPacket;
     class AVFormatContext;
 }
-///@endcond DOC_INTERNAL
 
 /** @brief av namespace */
 namespace av {
 
-///@cond DOC_INTERNAL
 class Format;
-///@endcond DOC_INTERNAL
 
 /** @brief This structure stores compressed data.
 <p>It is typically exported by demuxers and then passed as input to decoders,

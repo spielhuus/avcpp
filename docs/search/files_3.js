@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['dynamicrange_2eh',['dynamicrange.h',['../dynamicrange_8h.html',1,'']]]
+  ['codec_2eh',['codec.h',['../codec_8h.html',1,'']]]
 ];

@@ -33,13 +33,13 @@ extern "C" {
 namespace av {
 
 inline Codec::ID __codec ( AVCodecID codec_id )
-{return static_cast<Codec::ID>( codec_id ); }
+{return static_cast<Codec::ID> ( codec_id ); }
 
 inline AVCodecID __codec ( Codec::ID codec )
-{return static_cast< AVCodecID >( codec );}
+{return static_cast< AVCodecID > ( codec );}
 
 std::string Codec::name ( Codec::ID codec )
-{return avcodec_get_name(static_cast<AVCodecID>( codec ) );}
+{return avcodec_get_name ( static_cast<AVCodecID> ( codec ) );}
 
 inline Codec::TYPE __codec ( AVMediaType codec_type ) {
     switch ( codec_type ) {
@@ -128,13 +128,15 @@ Codec::Codec ( Codec::ID codec, SampleFormat sample_format, Options options ) {
     }
 
     AVDictionaryEntry *t = nullptr;
-    if( ( t = av_dict_get(*options.av_options(), "sample_fmt", t, AV_DICT_IGNORE_SUFFIX ) ) ) {
-        codec_context_->sample_fmt = static_cast< AVSampleFormat >( sfmt( t->value ) );
-    } else codec_context_->sample_fmt = _codec->sample_fmts[0];
 
-    assert( options.contains ( "ac" ) );
+    if ( ( t = av_dict_get ( *options.av_options(), "sample_fmt", t, AV_DICT_IGNORE_SUFFIX ) ) ) {
+        codec_context_->sample_fmt = static_cast< AVSampleFormat > ( sfmt ( t->value ) );
+
+    } else { codec_context_->sample_fmt = _codec->sample_fmts[0]; }
+
+    assert ( options.contains ( "ac" ) );
     codec_context_->channel_layout =
-            static_cast< uint64_t >( av_get_default_channel_layout ( options.get("ac").c_int() ) );
+        static_cast< uint64_t > ( av_get_default_channel_layout ( options.get ( "ac" ).c_int() ) );
 
     //open it
     if ( ( ret = avcodec_open2 ( codec_context_, _codec, options.av_options() ) ) < 0 ) {
@@ -166,7 +168,7 @@ PixelFormat Codec::pix_fmt() const
 int Codec::channels() const
 { return codec_context_->channels; }
 ChannelLayout::Enum Codec::channel_layout() const
-{ return ChannelLayout::get( codec_context_->channel_layout ); }
+{ return ChannelLayout::get ( codec_context_->channel_layout ); }
 int Codec::bits_per_sample() const
 { return codec_context_->bits_per_raw_sample; }
 int Codec::width() const
@@ -199,7 +201,8 @@ std::error_code Codec::decode ( Packet& package, std::function< void ( Frame& ) 
 
         callback ( frame_ );
     }
-    av_frame_unref( frame_.frame_ );
+
+    av_frame_unref ( frame_.frame_ );
     return make_error_code ( ret );
 }
 

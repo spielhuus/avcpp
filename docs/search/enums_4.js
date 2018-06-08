@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mode',['Mode',['../classav_1_1_format.html#aa2b5fe128c6490b54ffe74425160c06a',1,'av::Format']]]
+  ['log_5flevel',['LOG_LEVEL',['../namespaceav.html#a2bfba3b34ce13b5d44f97492550827e5',1,'av']]]
 ];

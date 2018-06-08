@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['scale_2eh',['scale.h',['../scale_8h.html',1,'']]]
+  ['resample_2eh',['resample.h',['../resample_8h.html',1,'']]]
 ];

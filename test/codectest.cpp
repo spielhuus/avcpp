@@ -199,7 +199,7 @@ TEST( CodecTest, ParseFlacSample) {
     EXPECT_EQ( 1, (*codec)->channels() );
     EXPECT_EQ( 16, (*codec)->bits_per_sample() );
     EXPECT_EQ( 8000, (*codec)->sample_rate() );
-    EXPECT_EQ( 4, _format.playtime() ); //playlength.
+    EXPECT_EQ( 4404, _format.playtime() ); //playlength.
 }
 
 TEST(CodecTest, mp3_encoder) {
@@ -231,6 +231,6 @@ TEST(CodecTest, ParseAviSample) {
     EXPECT_EQ( 256, (*codec)->width() );
     EXPECT_EQ( 240, (*codec)->height() );
 
-    EXPECT_EQ( 6, _format.playtime() );
+    EXPECT_EQ( 6071, _format.playtime() );
 }
 }//namespace av

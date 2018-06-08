@@ -30,16 +30,21 @@ namespace av {
 
 std::ostream& operator<< ( std::ostream& stream, Format& format ) {
     stream << "File: '" << format.format_context_->filename << "' (" << format.playtime() << ")\n";
-    for( auto __codec : format )
-        stream << *__codec << "\n";
+
+    for ( auto __codec : format )
+    { stream << *__codec << "\n"; }
+
     auto _meta = format.metadata();
-    if( _meta.size() == 0 )
-        stream << "(no metadata)\n";
-    else stream << format.metadata() << "\n";
+
+    if ( _meta.size() == 0 )
+    { stream << "(no metadata)\n"; }
+
+    else { stream << format.metadata() << "\n"; }
+
     return stream;
 }
 
-Format::Format ( const std::string& filename, Mode mode, Options ) : mode_( mode ) {
+Format::Format ( const std::string& filename, Mode mode, Options ) : mode_ ( mode ) {
 
     if ( mode == Mode::WRITE ) {
         //open file for writing
@@ -93,7 +98,7 @@ Format::Format ( const std::string& filename, Mode mode, Options ) : mode_( mode
         }
     }
 }
-Format::Format ( std::iostream* stream, Mode mode, Options options ) : mode_( mode ), io_context_ ( std::make_unique< IoContext >() ) {
+Format::Format ( std::iostream* stream, Mode mode, Options options ) : mode_ ( mode ), io_context_ ( std::make_unique< IoContext >() ) {
 
     if ( mode == Mode::WRITE ) {
 
@@ -102,9 +107,9 @@ Format::Format ( std::iostream* stream, Mode mode, Options options ) : mode_( mo
         format_context_->pb = io_context_->av_io_context_;
         format_context_->flags |= AVFMT_FLAG_CUSTOM_IO;
 
-        AVOutputFormat* of = av_guess_format ( options.get("short_name").c_str(),
-                                               options.get("filename").c_str(),
-                                               options.get("mime_Type").c_str() );
+        AVOutputFormat* of = av_guess_format ( options.get ( "short_name" ).c_str(),
+                                               options.get ( "filename" ).c_str(),
+                                               options.get ( "mime_Type" ).c_str() );
 
         if ( of == nullptr )
         { errc_ = make_error_code ( AV_ENCODER_NOT_FOUND ); return; }
@@ -131,6 +136,7 @@ Format::Format ( std::iostream* stream, Mode mode, Options options ) : mode_( mo
 
         //load the codecs
         codecs_.clear();
+
         for ( unsigned short i=0; i<format_context_->nb_streams; ++i ) {
             auto _codec = codec_ptr ( new Codec ( format_context_, i ) );
 
@@ -144,25 +150,30 @@ Format::Format ( std::iostream* stream, Mode mode, Options options ) : mode_( mo
 
 Format::~Format() {
     //free ressources
-    if( format_context_ != nullptr ) {
-        if( io_context_ == nullptr ) avio_closep(&format_context_->pb);
-        avformat_free_context(format_context_);
+    if ( format_context_ != nullptr ) {
+//        if ( io_context_ != nullptr )
+//        { avio_closep ( &format_context_->pb ); }
+
+        avformat_free_context ( format_context_ );
         format_context_ = nullptr;
     }
 }
 
-std::error_code Format::add_encoder( Codec& codec ) {
+std::error_code Format::add_encoder ( Codec& codec ) {
 
     AVStream *stream = nullptr;
     int error;
+
     /** Create a new audio stream in the output file container. */
-    if( ! ( stream = avformat_new_stream( format_context_, nullptr ) ) ) {
-        fprintf(stderr, "Could not create new stream\n");
-        return( make_error_code( ENOMEM ) );
+    if ( ! ( stream = avformat_new_stream ( format_context_, nullptr ) ) ) {
+        fprintf ( stderr, "Could not create new stream\n" );
+        return ( make_error_code ( ENOMEM ) );
     }
-    error = avcodec_parameters_from_context(stream->codecpar, codec.codec_context_ );
-    if (error < 0) {
-        return( make_error_code( error ) );
+
+    error = avcodec_parameters_from_context ( stream->codecpar, codec.codec_context_ );
+
+    if ( error < 0 ) {
+        return ( make_error_code ( error ) );
     }
 
     return std::error_code();
@@ -181,53 +192,9 @@ av::Metadata Format::metadata() const {
     av::Metadata _metadata;
     AVDictionaryEntry *tag = nullptr;
 
-    tag = av_dict_get ( format_context_->metadata, "title", nullptr, AV_DICT_IGNORE_SUFFIX );
-
-    if ( tag ) { _metadata.set ( tag->key, tag->value ); }
-
-    tag = av_dict_get ( format_context_->metadata, "album", nullptr, AV_DICT_IGNORE_SUFFIX );
-
-    if ( tag ) { _metadata.set ( tag->key, tag->value ); }
-
-    tag = av_dict_get ( format_context_->metadata, "artist", nullptr, AV_DICT_IGNORE_SUFFIX );
-
-    if ( tag ) { _metadata.set ( tag->key, tag->value ); }
-
-    tag = av_dict_get ( format_context_->metadata, "track", nullptr, AV_DICT_IGNORE_SUFFIX );
-
-    if ( tag ) { _metadata.set ( tag->key, tag->value ); }
-
-    tag = av_dict_get ( format_context_->metadata, "composer", nullptr, AV_DICT_IGNORE_SUFFIX );
-
-    if ( tag ) { _metadata.set ( tag->key, tag->value ); }
-
-    tag = av_dict_get ( format_context_->metadata, "performer", nullptr, AV_DICT_IGNORE_SUFFIX );
-
-    if ( tag ) { _metadata.set ( tag->key, tag->value ); }
-
-    tag = av_dict_get ( format_context_->metadata, "comment", nullptr, AV_DICT_IGNORE_SUFFIX );
-
-    if ( tag ) { _metadata.set ( tag->key, tag->value ); }
-
-    tag = av_dict_get ( format_context_->metadata, "date", nullptr, AV_DICT_IGNORE_SUFFIX );
-
-    if ( tag ) { _metadata.set ( "year", tag->value ); }
-
-    tag = av_dict_get ( format_context_->metadata, "year", nullptr, AV_DICT_IGNORE_SUFFIX );
-
-    if ( tag ) { _metadata.set ( tag->key, tag->value ); }
-
-    tag = av_dict_get ( format_context_->metadata, "disc", nullptr, AV_DICT_IGNORE_SUFFIX );
-
-    if ( tag ) { _metadata.set ( tag->key, tag->value ); }
-
-    tag = av_dict_get ( format_context_->metadata, "genre", nullptr, AV_DICT_IGNORE_SUFFIX );
-
-    if ( tag ) { _metadata.set ( tag->key, tag->value ); }
-
-    tag = av_dict_get ( format_context_->metadata, "publisher", nullptr, AV_DICT_IGNORE_SUFFIX );
-
-    if ( tag ) { _metadata.set ( tag->key, tag->value ); }
+    while ( ( tag = av_dict_get ( format_context_->metadata, "", tag, AV_DICT_IGNORE_SUFFIX ) ) ) {
+        _metadata.set ( tag->key, tag->value );
+    }
 
     return _metadata;
 }
@@ -237,24 +204,26 @@ long Format::playtime() const {
 
     if ( format_context_->duration != AV_NOPTS_VALUE ) {
         long duration = format_context_->duration +
-                            ( format_context_->duration <= INT64_MAX - 5000 ? 5000 : 0 );
-        _millis = duration / AV_TIME_BASE;
+                        ( format_context_->duration <= INT64_MAX - 5000 ? 5000 : 0 );
+        _millis = duration / ( AV_TIME_BASE / 1000 );
     }
 
     return _millis;
 }
 
 std::error_code Format::read ( std::function< void ( Packet& ) > callback ) {
-    assert( mode_ == READ );
+    assert ( mode_ == READ );
 
     Packet _package;
     int _ret = 0;
 
     while ( true ) { //read packages until end of file.
         if ( ( _ret  = av_read_frame ( format_context_, _package.packet_ ) ) < 0 ) {
-            if( _ret == AV_EOF ) break;
-            else return make_error_code ( _ret );
+            if ( _ret == AV_EOF ) { break; }
+
+            else { return make_error_code ( _ret ); }
         }
+
         callback ( _package );
     }
 
@@ -267,18 +236,21 @@ std::error_code Format::read ( std::function< void ( Packet& ) > callback ) {
 }
 
 std::error_code Format::write ( Packet& packet ) {
-    assert( mode_ == WRITE );
+    assert ( mode_ == WRITE );
 
-    if( !_header_written ) {
+    if ( !_header_written ) {
         _header_written = true;
         int error;
-        if( ( error = avformat_write_header( format_context_, nullptr ) ) < 0 )
-        {return make_error_code( error );}
+
+        if ( ( error = avformat_write_header ( format_context_, nullptr ) ) < 0 )
+        {return make_error_code ( error );}
     }
+
     int error;
 
     if ( ( error = av_write_frame ( format_context_, packet.packet_ ) ) < 0 )
     { return make_error_code ( error ); }
+
     av_packet_unref ( packet.packet_ );
 
     return std::error_code();
