@@ -89,6 +89,7 @@ private:
 
     FRIEND_TEST ( DiscIdTest, calculate_cue );
     FRIEND_TEST ( DiscIdTest, mbid );
+    FRIEND_TEST ( DiscIdTest, mbid_file );
     static std::vector< toc_time_t > mb_offsets ( const toc_t& discinfo );
 };
 }//namespace discid

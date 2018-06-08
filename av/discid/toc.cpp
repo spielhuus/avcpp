@@ -281,19 +281,19 @@ toc_t parse_file ( const std::string& path, const std::vector< std::string > fil
 
         const toc_time_t _playtime = static_cast< toc_time_t > ( _format.playtime() );
 
-        if ( it == files.begin() ) {
-            //TODO write test
+        if ( it == files.begin() ) { //the first item (00:00:00)
+
             const discid::time _starttime ( 0, 0, 0 );
             const discid::time _endtime ( _playtime * 75 / 1000 );
-            _toc.push_back ( toc ( static_cast< toc_track_t > ( std::stoi ( _format.metadata().get ( "track" ) ) ),
+            _toc.push_back ( toc ( static_cast< toc_track_t > ( std::distance ( files.begin(), it ) + 1 ),
                                    _starttime, _endtime, 0, ( _playtime * 75 / 1000 ) - 1 ) );
             _toc.back().metadata = _format.metadata();
 
-        }  else {
+        }  else { //following items
 
             const discid::time _starttime ( _toc.back().start + _toc.back().end  );
             const discid::time _endtime ( _playtime * 75 / 1000 );
-            _toc.push_back ( toc ( static_cast< toc_track_t > ( std::stoi ( _format.metadata().get ( "track" ) ) ), _starttime, _endtime,
+            _toc.push_back ( toc ( static_cast< toc_track_t > ( std::distance ( files.begin(), it ) + 1 ), _starttime, _endtime,
                                    _toc.back().end_sector + 1, ( _toc.back().end_sector + ( _playtime * 75 / 1000 ) ) ) );
             _toc.back().metadata = _format.metadata();
         }
@@ -328,7 +328,7 @@ std::ostream &operator<< ( std::ostream &stream, std::vector<toc> &t ) {
            std::setw ( 8 ) << std::setfill ( ' ' ) << "end" << " | " <<
            std::setw ( 14 ) << std::setfill ( ' ' ) << "start_sector" << " | " <<
            std::setw ( 14 ) << std::setfill ( ' ' ) << "end_sector" << " |\n";
-//TODO    std::cout << std::string ( 2 + 2*8 + 2*14 + 4*3 + 2*2, '-' ) << "\n";
+    stream << std::string ( 2 + 2*8 + 2*14 + 4*3 + 2*2, '-' ) << "\n";
 
     for ( toc _t : t )
     { stream << _t << "\n"; }

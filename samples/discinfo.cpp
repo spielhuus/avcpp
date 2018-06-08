@@ -84,17 +84,23 @@ int main ( int argc, char **argv ) {
     for ( auto& __logfile : _logfiles ) {
         std::ifstream _if ( argv[2] + __logfile );
         auto _toc = discid::parse_logfile ( _if );
-        std::cout << _toc << std::endl;
-        std::cout << "LOG: ";
-        get_uri ( argv[1], _toc );
+
+        if ( !_toc.empty() ) {
+            std::cout << _toc << std::endl;
+            std::cout << "LOG: ";
+            get_uri ( argv[1], _toc );
+        }
     }
 
     for ( auto& __cuesheet : _cuesheets ) {
         std::ifstream _if ( argv[2] + __cuesheet );
         auto _toc = discid::parse_cuesheet ( _if, argv[2], _filenames );
-        std::cout << _toc << std::endl;
-        std::cout << "CUE: ";
-        get_uri ( argv[1], _toc );
+
+        if ( !_toc.empty() ) {
+            std::cout << _toc << std::endl;
+            std::cout << "CUE: ";
+            get_uri ( argv[1], _toc );
+        }
     }
 
     auto _toc = discid::parse_file ( argv[2], _filenames );

@@ -57,7 +57,15 @@ TEST ( DiscIdTest, mbid ) {
     auto _toc = discid::parse_cuesheet ( _cue_sheet_stream, "/srv/testfiles/Nils Petter Molvaer - Solid Ether (2000)/", {} );
     auto _offsets = discid::DiscID::mb_offsets ( _toc );
     std::string _id = discid::DiscID::mb_discid ( 1, _toc.size(), _offsets );
-    EXPECT_EQ ( "U1caBYKqOUNzUjjOr7izrMdebDo-", _id ); //correct value: TODO
+    EXPECT_EQ ( "U1caBYKqOUNzUjjOr7izrMdebDo-", _id );
+}
+
+TEST ( DiscIdTest, mbid_file ) {
+    std::ifstream _cue_sheet_stream ( TESTFILES "/Nils Petter Molvaer - Solid Ether (2000)/CDImage.cue" );
+    auto _toc = discid::parse_cuesheet ( _cue_sheet_stream, "/srv/testfiles/Nils Petter Molvaer - Solid Ether (2000)/", {} );
+    auto _offsets = discid::DiscID::mb_offsets ( _toc );
+    std::string _id = discid::DiscID::mb_discid ( 1, _toc.size(), _offsets );
+    EXPECT_EQ ( "U1caBYKqOUNzUjjOr7izrMdebDo-", _id );
 }
 
 TEST ( DiscIdTest, mbid_from_logfile ) {
@@ -104,7 +112,7 @@ TEST ( DiscIdTest, freedb_nsecs ) {
 TEST ( DiscIdTest, freedb_query ) {
     auto _discinfo = toc_t ( {toc{1, time{0, 01, 71}, time{5,42,0}, 146, 25650 }} );
     std::string _res = discid::DiscID::cddb ( _discinfo );
-    EXPECT_EQ ( "http://192.168.0.1:8888/cddb.cgi?cmd=cddb+query+03015501+1+296+344", _res );
+    EXPECT_EQ ( "http://192.168.0.1:8888/cddb.cgi?cmd=cddb+query+03015501+1+296+344&hello=anonymous+spielhuus.org+discid+0.1&proto=5", _res );
 }
 
 //TEST( DiscIdTest, chromaprint ) {

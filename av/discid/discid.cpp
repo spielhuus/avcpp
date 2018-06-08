@@ -114,7 +114,6 @@ std::string DiscID::mb_discid ( unsigned int start, unsigned int end, std::vecto
         sha_update ( &sha, reinterpret_cast<unsigned char *> ( tmp.data() ), strlen ( tmp.data() ) );
     }
 
-    //TODO
     unsigned char	digest[20], *base64;
     unsigned long	size;
 
