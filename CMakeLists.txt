@@ -6,7 +6,7 @@ SET(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
 
 SET(MAJOR_VERSION "0")
 SET(MINOR_VERSION "2")
-SET(PATCH_VERSION "3" CACHE PATCH_VERSION "The package build number." )
+SET(PATCH_VERSION "3")
 
 # -----------------------   Options and Parameters  -----------------------
 
@@ -39,6 +39,8 @@ if(CCACHE_FOUND)
 endif(CCACHE_FOUND)
 
 add_definitions(-DTESTFILES="${TESTFILES}/")
+
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/conanfile.py.in ${CMAKE_CURRENT_SOURCE_DIR}/conanfile.py @ONLY)
 
 # ---------------------   External Dependencies       ---------------------
 

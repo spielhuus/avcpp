@@ -3,7 +3,7 @@
 set -e
 set -x
 
-IMAGE=spielhuus/toolchain:1.0.1
+IMAGE=spielhuus/toolchain:2.0.0
 PID=$(sudo docker run -itd -v $(pwd):/repo -v $(pwd)/.build:/.build $IMAGE /bin/sh)
 
 echo "build avcpp version: $2"
