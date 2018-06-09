@@ -41,6 +41,7 @@ endif(CCACHE_FOUND)
 add_definitions(-DTESTFILES="${TESTFILES}/")
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/conanfile.py.in ${CMAKE_CURRENT_SOURCE_DIR}/conanfile.py @ONLY)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.travis.yml.in ${CMAKE_CURRENT_SOURCE_DIR}/.travis.yml @ONLY)
 
 # ---------------------   External Dependencies       ---------------------
 
