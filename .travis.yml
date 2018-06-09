@@ -6,10 +6,10 @@ env:
   global:
   - secure: "rGjGVOV6VHida4lJI11qbC9BGgrYa5peX2wLIfeXQg+AwIHETEbCmF/lW+8iQ7WE3mteETyiVheawSReh1bHH60gTxd6kPSBx2EXkVv71mFEluHwvEtdqSZoJmOADoP51a7v+gucu7BM+lIXaiJm/UJwzm+6Rov7Rt1pjN6p5gsHDAYhJkcXKIo2ei8z1GdGFLmln8qVHPF2Rn6ns5sC4rOBKKLgjypJLqjApQdAX9mGR5hgq0GRbdJj6zrTF5KVOxjB5muSM5A6k+UUFXOnLCVGBnve2k9XLG0rvo0pdkmfWD8i08WXJSbojU6zMuRqhHMRs97g3HevOg/WsEY45QRv+pUTAW/s53pupxsSoFtY7bEG6xPGSsEF+COb5bEf6dkppeuLukMBU3W8kEGN2hlMevUfh5IM9b9M2cFcKU/bvfykD1KeBt4sJ5NWFM5fym+dNNV4OPjuCGgxOLioUFdE+qJ5XNy0oznky/MpQn7zcl6fIIlQivatKoWjjXZKNLuKge3ur6EA0z5qa4IX1hIC8wWflhLdOnCKQSZ/s5e9LbOKKnhtMJAynt7ua5OYXmjZq94wGFcOhPCq6vk/hTzB66nypQwuBoui1m9HuvQ1awCPe5FPRxM/QA2m7q+aIB3CJGUx0n5pT0zE1KR3Fl+YvjNflM78NRwMBBx3qpA=" #BINTRAY_KEY
 before_install:
- - sudo git clone https://github.com/squawkcpp/avcpp.git /avcpp
+ - sudo git clone https://github.com/squawkcpp/avcpp.git
 script:
  - export IMAGE=spielhuus/toolchain:2.0.0
- - sudo docker run -itd --name build_avcpp -v /avcpp:/repo -v $(pwd)/.build:/.build $IMAGE /bin/sh
+ - sudo docker run -itd --name build_avcpp -v $(pwd)/avcpp:/repo -v $(pwd)/.build:/.build $IMAGE /bin/sh
  - export DOCKER_EXEC="sudo docker exec build_avcpp /bin/sh -c "
  - $DOCKER_EXEC "conan user -p $BINTRAY_KEY -r conan-cpp squawkcpp"
  - $DOCKER_EXEC "cd /repo && conan export . conan-cpp/latest && conan install avcpp/0.2.3@conan-cpp/latest --build=missing && conan upload avcpp/0.2.3@conan-cpp/latest --all -r=conan-cpp"
