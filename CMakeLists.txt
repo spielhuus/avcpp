@@ -5,8 +5,8 @@ project(avcpp)
 SET(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
 
 SET(MAJOR_VERSION "0")
-SET(MINOR_VERSION "1")
-SET(PATCH_VERSION "1" CACHE PATCH_VERSION "The package build number." )
+SET(MINOR_VERSION "2")
+SET(PATCH_VERSION "3" CACHE PATCH_VERSION "The package build number." )
 
 # -----------------------   Options and Parameters  -----------------------
 
