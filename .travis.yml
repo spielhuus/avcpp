@@ -9,7 +9,7 @@ before_install:
  - sudo git clone https://github.com/squawkcpp/avcpp.git /avcpp
 script:
  - export IMAGE=spielhuus/toolchain:2.0.0
- - sudo docker run -itd --name build_avcpp-v $(pwd):/repo -v $(pwd)/.build:/.build $IMAGE /bin/sh
+ - sudo docker run -itd --name build_avcpp -v $(pwd):/repo -v $(pwd)/.build:/.build $IMAGE /bin/sh
  - export DOCKER_EXEC="sudo docker exec build_avcpp /bin/sh -c "
  - $DOCKER_EXEC "conan user -p $BINTRAY_KEY -r conan-cpp squawkcpp"
  - $DOCKER_EXEC "cd /repo && \
