@@ -8,6 +8,7 @@ env:
 before_install:
 - sudo git clone https://github.com/squawkcpp/avcpp.git /avcpp
 script:
+- echo "build version $TRAVIS_BRANCH"
 - sudo /bin/bash -c "cd /avcpp && /bin/bash build.sh $BINTRAY_KEY $TRAVIS_BRANCH"
 deploy:
   provider: releases
