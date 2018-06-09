@@ -8,8 +8,15 @@ env:
 before_install:
 - sudo git clone https://github.com/squawkcpp/avcpp.git /avcpp
 script:
-- echo "build version $TRAVIS_BRANCH"
-- sudo /bin/bash -c "cd /avcpp && /bin/bash build.sh $BINTRAY_KEY $TRAVIS_BRANCH"
+ - export IMAGE=spielhuus/toolchain:2.0.0
+ - export PID=$(sudo docker run -itd -v $(pwd):/repo -v $(pwd)/.build:/.build $IMAGE /bin/sh)
+ - export DOCKER_EXEC="sudo docker exec $PID /bin/sh -c "
+ - $DOCKER_EXEC "conan user -p $1 -r conan-cpp squawkcpp"
+ - $DOCKER_EXEC "cd /repo && \
+    conan export . conan-cpp/latest && \
+    conan install avcpp/0.2.3@conan-cpp/latest --build=missing && \
+    conan upload avcpp/0.2.3@conan-cpp/latest --all -r=conan-cpp"
+
 deploy:
   provider: releases
   api_key:
