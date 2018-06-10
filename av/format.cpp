@@ -151,7 +151,7 @@ Format::Format ( std::iostream* stream, Mode mode, Options options ) : mode_ ( m
 Format::~Format() {
     //free ressources
     if ( format_context_ != nullptr ) {
-//        if ( io_context_ != nullptr )
+//TODO        if ( io_context_ != nullptr )
 //        { avio_closep ( &format_context_->pb ); }
 
         avformat_free_context ( format_context_ );
