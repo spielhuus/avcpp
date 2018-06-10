@@ -6,7 +6,7 @@ SET(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
 
 SET(MAJOR_VERSION "0")
 SET(MINOR_VERSION "2")
-SET(PATCH_VERSION "3")
+SET(PATCH_VERSION "4")
 
 # -----------------------   Options and Parameters  -----------------------
 
