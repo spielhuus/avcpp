@@ -10,7 +10,7 @@ before_install:
 script:
  - export IMAGE=spielhuus/toolchain:2.0.0
  - sudo docker run -itd --name build_avcpp -v $(pwd)/avcpp:/repo -v $(pwd)/.build:/.build $IMAGE /bin/sh
- - sudo docker exec build_avcpp /bin/bash -c "cd /repo && ls . && conan user -p $BINTRAY_KEY -r conan-cpp squawkcpp &&  conan create . conan-cpp/latest && conan upload avcpp/0.2.4@conan-cpp/latest --all -r=conan-cpp"
+ - sudo docker exec build_avcpp /bin/bash -c "cd /repo && ls . && conan user -p $BINTRAY_KEY -r conan-cpp squawkcpp &&  ls . && cat conanfile.py && conan create . conan-cpp/latest && conan upload avcpp/0.2.4@conan-cpp/latest --all -r=conan-cpp"
 
 deploy:
   provider: releases
