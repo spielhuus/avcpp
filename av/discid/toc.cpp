@@ -38,7 +38,7 @@ static int String_GetEncoding ( char *string ) {
            ( ( flags & 4 ) != 0 ) + ( ( flags & 8 ) != 0 );
 }
 
-void convert ( std::string& file, std::stringstream& _ss ) {
+void convert ( const std::string& file, std::stringstream& _ss ) {
 
     std::array< char, 16 > _buffer;
 
@@ -47,7 +47,7 @@ void convert ( std::string& file, std::stringstream& _ss ) {
     int encoding = String_GetEncoding ( _buffer.data() );
     _istream.close ();
 
-    if ( encoding == 1 ) {
+    if ( encoding == 1 || encoding == 4 ) {
         std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>, wchar_t> converter;
         std::wifstream is16 ( file, std::ios::binary );
 

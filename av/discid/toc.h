@@ -27,7 +27,7 @@ namespace discid {
 typedef unsigned int toc_track_t;
 typedef unsigned long toc_time_t;
 
-void convert ( std::string& file, std::stringstream& _ss );
+void convert ( const std::string& file, std::stringstream& _ss );
 
 /** Time structure for disk table of contents. */
 struct time {
