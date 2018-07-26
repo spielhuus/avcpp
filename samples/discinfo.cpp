@@ -82,14 +82,20 @@ int main ( int argc, char **argv ) {
     std::sort ( _filenames.begin(), _filenames.end() );
 
     for ( auto& __logfile : _logfiles ) {
-        std::ifstream _if ( argv[2] + __logfile );
+        std::stringstream _if;
+        std::string _filename;
+        _filename.append ( argv[2] ).append ( "/" ).append ( __logfile );
+        discid::convert ( _filename, _if );
+
+        _if.seekg ( 0 );
         auto _toc = discid::parse_logfile ( _if );
 
         if ( !_toc.empty() ) {
             std::cout << _toc << std::endl;
             std::cout << "LOG: ";
             get_uri ( argv[1], _toc );
-        }
+
+        } else { std::cout << "unable to parse logfile: " << __logfile << std::endl; }
     }
 
     for ( auto& __cuesheet : _cuesheets ) {

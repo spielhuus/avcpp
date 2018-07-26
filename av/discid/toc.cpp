@@ -26,22 +26,53 @@
 
 namespace discid {
 
-//std::string convert ( const std::string& filename ) {
-//    std::stringstream _ss;
-//    std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>, wchar_t> converter;
+static int String_GetEncoding ( char *string ) {
+    unsigned c, i = 0, flags = 0;
 
-//    std::wifstream is16 ( filename );
-//    is16.imbue ( std::locale ( is16.getloc(), new std::codecvt_utf16<wchar_t, 0x10ffff, std::little_endian>() ) );
-//    std::wstring wline;
-//    std::string u8line;
+    while ( string[i] | string[i + 1] | string[i + 2] | string[i + 3] )
+        flags = ( c = string[i++] ) ? flags | ( ( ! ( flags % 4 ) &&
+                                                c > 0x7F ) << 3 ) : flags | 1 | ( ! ( i & 1 ) << 1 )
+                | ( ( string[i] == 0 ) << 2 );
 
-//    while ( getline ( is16, wline ) ) {
-//        u8line = converter.to_bytes ( wline );
-//        _ss << u8line << "\n";
-//    }
+    return ( flags & 1 ) + ( ( flags & 2 ) != 0 ) +
+           ( ( flags & 4 ) != 0 ) + ( ( flags & 8 ) != 0 );
+}
 
-//    return _ss.str();
-//}
+void convert ( std::string& file, std::stringstream& _ss ) {
+
+    std::array< char, 16 > _buffer;
+
+    std::ifstream _istream ( file );
+    _istream.read ( _buffer.data(), 16 );
+    int encoding = String_GetEncoding ( _buffer.data() );
+    _istream.close ();
+
+    if ( encoding == 1 ) {
+        std::wstring_convert<std::codecvt_utf8_utf16<wchar_t>, wchar_t> converter;
+        std::wifstream is16 ( file, std::ios::binary );
+
+        if ( is16.is_open() ) {
+            is16.imbue ( std::locale ( is16.getloc(), new std::codecvt_utf16<wchar_t, 0x10ffff, std::little_endian>() ) );
+            std::wstring wline;
+            std::string u8line;
+
+            while ( std::getline ( is16, wline ) ) {
+                u8line = converter.to_bytes ( wline );
+                _ss << u8line << "\n";
+                std::cout << "line: " << u8line << std::endl;
+            }
+
+        } else {std::cout << "can not open file: " << file << std::endl; }
+
+    } else {
+        std::string _line;
+        std::ifstream _istream ( file, std::ios::binary );
+
+        while ( std::getline ( _istream, _line ) ) {
+            _ss << _line << "\n";
+        }
+    }
+}
 
 time::time ( const toc_time_t f ) {
     const toc_time_t _total_seconds = f / 75;
