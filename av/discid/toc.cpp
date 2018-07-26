@@ -59,7 +59,6 @@ void convert ( const std::string& file, std::stringstream& _ss ) {
             while ( std::getline ( is16, wline ) ) {
                 u8line = converter.to_bytes ( wline );
                 _ss << u8line << "\n";
-                std::cout << "line: " << u8line << std::endl;
             }
 
         } else {std::cout << "can not open file: " << file << std::endl; }
