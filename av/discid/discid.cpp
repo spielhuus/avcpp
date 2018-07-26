@@ -162,12 +162,14 @@ std::string DiscID::mb ( const toc_t& discinfo ) {
     std::string _discid = discid::DiscID::mb_discid ( 1, static_cast< unsigned int > ( discinfo.size() ), _offsets );
 
     std::string _url = "http://musicbrainz.org/ws/2/discid/" + _discid + "?toc=" +
-                       "1" + "+" + std::to_string ( discinfo.size() ) + "&fmt=json";
+                       "1" + "+" + std::to_string ( discinfo.size() );
 
     for ( auto& __offset : _offsets )  {
         _url.append ( "+" );
         _url.append ( std::to_string ( __offset ) );
     }
+
+    _url.append ( "&fmt=json" );
 
     return _url;
 }
