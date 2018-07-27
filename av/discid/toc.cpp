@@ -288,11 +288,12 @@ toc_t parse_cuesheet (
 
         av::Format format ( _filename );
 
-        if ( !format )
-        { _playtime = static_cast< toc_time_t > ( format.playtime() ); }
+        if ( !format ) {
+            _playtime = static_cast< toc_time_t > ( format.playtime() );
 
-        _toclist.back().end_sector = _playtime * 75 / 1000 - 1;
-        _toclist.back().end = time ( _toclist.back().end_sector ) - _toclist.back().start;
+            _toclist.back().end_sector = _playtime * 75 / 1000 - 1;
+            _toclist.back().end = time ( _toclist.back().end_sector ) - _toclist.back().start;
+        }
 
     } else if ( !files.empty() && exists ( path + files.back() ) ) {
 
