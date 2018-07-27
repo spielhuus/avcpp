@@ -593,4 +593,102 @@ TEST ( TocTest, parse_files ) {
         EXPECT_EQ ( 199881, _toc.at ( 8 ).end_sector );
     }
 }
+
+TEST ( TocTest, parse_cue_sankt_gerold ) {
+    const static char* filename = TESTFILES "/Sankt Gerold Variations.cue";
+    std::ifstream _ss ( filename );
+    ASSERT_TRUE ( _ss.good() );
+    auto _toc = discid::parse_cuesheet ( _ss, TESTFILES "Carlos Barretto Lokomotiv - Labirintos (2010) CF179/",
+    {   "01 - Carlos Barretto - Salada 2.flac", "02 - Ponto e Virgula 2.flac", "03 - Carlos Barretto - Triklo Five.flac",
+        "04 - Carlos Barretto - Não Sei Porquê (Canção para Susette).flac", "05 - Carlos Barretto - Labirintos.flac",
+        "06 - Carlos Barretto - Asterion 5.flac", "07 - Carlos Barretto - Tutti per Capita.flac",
+        "08 - Carlos Barretto - Makambira.flac", "09 - Carlos Barretto - Terra de Ninguém.flac"
+    } );
+    EXPECT_EQ ( 12, _toc.size() );
+
+    //TODO indexes are wrong
+//    std::cout << _toc << std::endl;
+
+//    {
+//        EXPECT_EQ ( 1, _toc.at ( 0 ).track );
+//        auto _start_time1 = discid::time{0,0,0};
+//        EXPECT_EQ ( _start_time1, _toc.at ( 0 ).start );
+//        auto _end_time1 = discid::time{4,49,40};
+//        EXPECT_EQ ( _end_time1, _toc.at ( 0 ).end );
+//        EXPECT_EQ ( 0, _toc.at ( 0 ).start_sector );
+//        EXPECT_EQ ( 21714, _toc.at ( 0 ).end_sector );
+//    }
+//    {
+//        EXPECT_EQ ( 2, _toc.at ( 1 ).track );
+//        auto _start_time1 = discid::time{4,49,40};
+//        EXPECT_EQ ( _start_time1, _toc.at ( 1 ).start );
+//        auto _end_time1 = discid::time{2,54,01};
+//        EXPECT_EQ ( _end_time1, _toc.at ( 1 ).end );
+//        EXPECT_EQ ( 21715, _toc.at ( 1 ).start_sector );
+//        EXPECT_EQ ( 34765, _toc.at ( 1 ).end_sector );
+//    }
+//    {
+//        EXPECT_EQ ( 3, _toc.at ( 2 ).track );
+//        auto _start_time1 = discid::time{7,43,41};
+//        EXPECT_EQ ( _start_time1, _toc.at ( 2 ).start );
+//        auto _end_time1 = discid::time{7,12,30};
+//        EXPECT_EQ ( _end_time1, _toc.at ( 2 ).end );
+//        EXPECT_EQ ( 34766, _toc.at ( 2 ).start_sector );
+//        EXPECT_EQ ( 67195, _toc.at ( 2 ).end_sector );
+//    }
+//    {
+//        EXPECT_EQ ( 4, _toc.at ( 3 ).track );
+//        auto _start_time1 = discid::time{14,55,71};
+//        EXPECT_EQ ( _start_time1, _toc.at ( 3 ).start );
+//        auto _end_time1 = discid::time{5,52,32};
+//        EXPECT_EQ ( _end_time1, _toc.at ( 3 ).end );
+//        EXPECT_EQ ( 67196, _toc.at ( 3 ).start_sector );
+//        EXPECT_EQ ( 93627, _toc.at ( 3 ).end_sector );
+//    }
+//    {
+//        EXPECT_EQ ( 5, _toc.at ( 4 ).track );
+//        auto _start_time1 = discid::time{20,48,28};
+//        EXPECT_EQ ( _start_time1, _toc.at ( 4 ).start );
+//        auto _end_time1 = discid::time{3,52,54};
+//        EXPECT_EQ ( _end_time1, _toc.at ( 4 ).end );
+//        EXPECT_EQ ( 93628, _toc.at ( 4 ).start_sector );
+//        EXPECT_EQ ( 111081, _toc.at ( 4 ).end_sector );
+//    }
+//    {
+//        EXPECT_EQ ( 6, _toc.at ( 5 ).track );
+//        auto _start_time1 = discid::time{24,41,07};
+//        EXPECT_EQ ( _start_time1, _toc.at ( 5 ).start );
+//        auto _end_time1 = discid::time{2,16,38};
+//        EXPECT_EQ ( _end_time1, _toc.at ( 5 ).end );
+//        EXPECT_EQ ( 111082, _toc.at ( 5 ).start_sector );
+//        EXPECT_EQ ( 121319, _toc.at ( 5 ).end_sector );
+//    }
+//    {
+//        EXPECT_EQ ( 7, _toc.at ( 6 ).track );
+//        auto _start_time1 = discid::time{26,57,45};
+//        EXPECT_EQ ( _start_time1, _toc.at ( 6 ).start );
+//        auto _end_time1 = discid::time{3,10,50};
+//        EXPECT_EQ ( _end_time1, _toc.at ( 6 ).end );
+//        EXPECT_EQ ( 121320, _toc.at ( 6 ).start_sector );
+//        EXPECT_EQ ( 135619, _toc.at ( 6 ).end_sector );
+//    }
+//    {
+//        EXPECT_EQ ( 8, _toc.at ( 7 ).track );
+//        auto _start_time1 = discid::time{30,8,20};
+//        EXPECT_EQ ( _start_time1, _toc.at ( 7 ).start );
+//        auto _end_time1 = discid::time{6,30,57};
+//        EXPECT_EQ ( _end_time1, _toc.at ( 7 ).end );
+//        EXPECT_EQ ( 135620, _toc.at ( 7 ).start_sector );
+//        EXPECT_EQ ( 164926, _toc.at ( 7 ).end_sector );
+//    }
+//    {
+//        EXPECT_EQ ( 9, _toc.at ( 8 ).track );
+//        auto _start_time1 = discid::time{36,39,2};
+//        EXPECT_EQ ( _start_time1, _toc.at ( 8 ).start );
+//        auto _end_time1 = discid::time{7,46,04};//this is one off, should be: 7:46.05
+//        EXPECT_EQ ( _end_time1, _toc.at ( 8 ).end );
+//        EXPECT_EQ ( 164927, _toc.at ( 8 ).start_sector );
+//        EXPECT_EQ ( 199881, _toc.at ( 8 ).end_sector );
+//    }
+}
 }//namespace av

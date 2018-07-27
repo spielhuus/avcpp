@@ -83,7 +83,7 @@ TEST ( DiscIdTest, mb_from_logfile ) {
     std::stringstream _cue_sheet_stream ( radioaxiom_log );
     auto songs = parse_logfile ( _cue_sheet_stream );
     std::string _id = discid::DiscID::mb ( songs );
-    EXPECT_EQ ( "http://musicbrainz.org/ws/2/discid/TF.N7lzmF9xt8908GnsWuqQ2t7E-?toc=1+7+233910+150+34377+60502+96980+132312+164557+195270", _id );
+    EXPECT_EQ ( "http://musicbrainz.org/ws/2/discid/TF.N7lzmF9xt8908GnsWuqQ2t7E-?toc=1+7+233910+150+34377+60502+96980+132312+164557+195270&fmt=json", _id );
 }
 
 TEST ( DiscIdTest, freedb_discid ) {
