@@ -100,11 +100,17 @@ std::error_code parse_discid ( const std::string& body, discid::release_t& targe
 }
 std::error_code parse_release ( const std::string& body, discid::toc_t& target ) {
 
-    static std::regex rgx_status ( "^([0-9]*) (.*)\\r?$" );
-    static std::regex rgx_release ( "^([0-9|A-Z|a-z]*) ([0-9|A-Z|a-z]*) (.*)\\r?$" );
+    static std::regex rgx_status ( "^([0-9]{3}) ([a-z]+) ([0-9a-z]+) (.*)\\r?$" );
+    static std::regex rgx_discid ( "^DISCID=(.*)\\r?$" );
+    static std::regex rgx_title ( "^DTITLE=(.*)\\r?$" );
+    static std::regex rgx_year ( "^DYEAR=(.*)\\r?$" );
+    static std::regex rgx_genre ( "^DGENRE=(.*)\\r?$" );
+    static std::regex rgx_song_title ( "^TTITLE([0-9]+)=(.*)\\r?$" );
 
     int _status = 0;
+    std::string _status_genre;
     std::string _status_message;
+    std::string _discid, _title, _year, _genre;
 
     std::stringstream _in ( body ); //TODO pass istream
     std::string result;
@@ -114,10 +120,32 @@ std::error_code parse_release ( const std::string& body, discid::toc_t& target )
 
         if ( std::regex_search ( result, matches, rgx_status ) ) { //...
             _status =  std::stoi ( matches[1].str() );
-            _status_message =  matches[2].str();
+            _status_genre =  matches[2].str();
+            _status_message =  matches[3].str();
 
-        } else if ( std::regex_search ( result, matches, rgx_release ) ) {
-//           target.push_back ( { matches[2].str(), matches[3].str(), matches[1].str() } );
+        } else if ( std::regex_search ( result, matches, rgx_discid ) ) {
+            _discid =  matches[1].str();
+
+        } else if ( std::regex_search ( result, matches, rgx_title ) ) {
+            _title =  matches[1].str();
+
+        } else if ( std::regex_search ( result, matches, rgx_year ) ) {
+            _year =  matches[1].str();
+
+        } else if ( std::regex_search ( result, matches, rgx_genre ) ) {
+            _genre =  matches[1].str();
+
+        } else if ( std::regex_search ( result, matches, rgx_song_title ) ) {
+
+            discid::toc _toc;
+            _toc.track = std::stoi ( matches[1].str() ) + 1;
+            _toc.metadata.set ( av::Metadata::TRACK, std::to_string ( _toc.track ) );
+            _toc.metadata.set ( av::Metadata::TITLE, matches[2].str() );
+            _toc.metadata.set ( av::Metadata::ALBUM, _title );
+            _toc.metadata.set ( av::Metadata::YEAR, _year );
+            _toc.metadata.set ( av::Metadata::GENRE, _genre );
+            _toc.metadata.set ( "cddb", _discid );
+            target.push_back ( _toc );
         }
     }
 
