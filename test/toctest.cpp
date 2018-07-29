@@ -152,19 +152,19 @@ TEST ( TocTest, parse_cue ) {
     EXPECT_EQ ( 7, _toc.at ( 6 ).track );
     EXPECT_EQ ( 8, _toc.at ( 7 ).track );
 
-    EXPECT_EQ ( "01", _toc.at ( 0 ).metadata.get ( "track" ) );
-    EXPECT_EQ ( "Faithless", _toc.at ( 0 ).metadata.get ( "artist" ) );
-    EXPECT_EQ ( "Reverence", _toc.at ( 0 ).metadata.get ( "title" ) );
-    EXPECT_EQ ( "Live in Berlin", _toc.at ( 0 ).metadata.get ( "album" ) );
+    EXPECT_EQ ( "01", _toc.at ( 0 ).metadata.get ( "TRACK" ) );
+    EXPECT_EQ ( "Faithless", _toc.at ( 0 ).metadata.get ( "ARTIST" ) );
+    EXPECT_EQ ( "Reverence", _toc.at ( 0 ).metadata.get ( "TITLE" ) );
+    EXPECT_EQ ( "Live in Berlin", _toc.at ( 0 ).metadata.get ( "ALBUM" ) );
 //    EXPECT_EQ ( "Live in Berlin", cue.title );
 //    EXPECT_EQ ( "Faithless - Live in Berlin.mp3", cue.file );
 //    EXPECT_EQ ( "MP3", cue.type );
 
     EXPECT_EQ ( 8U, _toc.size() );
-    EXPECT_EQ ( "08", _toc.at ( 7 ).metadata.get ( "track" ) );
-    EXPECT_EQ ( "Faithless", _toc.at ( 7 ).metadata.get ( "artist" ) );
-    EXPECT_EQ ( "God Is a DJ", _toc.at ( 7 ).metadata.get ( "title" ) );
-    EXPECT_EQ ( "Live in Berlin", _toc.at ( 7 ).metadata.get ( "album" ) );
+    EXPECT_EQ ( "08", _toc.at ( 7 ).metadata.get ( "TRACK" ) );
+    EXPECT_EQ ( "Faithless", _toc.at ( 7 ).metadata.get ( "ARTIST" ) );
+    EXPECT_EQ ( "God Is a DJ", _toc.at ( 7 ).metadata.get ( "TITLE" ) );
+    EXPECT_EQ ( "Live in Berlin", _toc.at ( 7 ).metadata.get ( "ALBUM" ) );
 //    EXPECT_EQ ( "AUDIO", cue.tracks.at ( 7 ).type );
     EXPECT_EQ ( discid::time ( 42, 35, 0 ), _toc.at ( 7 ).start );
 }

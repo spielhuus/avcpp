@@ -6,7 +6,7 @@ SET(CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake ${CMAKE_MODULE_PATH})
 
 SET(MAJOR_VERSION "0")
 SET(MINOR_VERSION "2")
-SET(PATCH_VERSION "4")
+SET(PATCH_VERSION "6")
 
 # -----------------------   Options and Parameters  -----------------------
 
@@ -15,6 +15,10 @@ option(build_samples "Build samples." OFF)
 option(build_documentation "Build the project documentation." OFF)
 option(BUILD_SHARED_LIBS "Build shared linked library." OFF)
 option(BUILD_WITH_CONAN "Use Conan package mangager." ON)
+
+SET(HTTP_BUFFER_SIZE "8192" CACHE STRING "The HTTP character buffer size.")
+SET(HTTP_CLIENT_TIMEOUT "3" CACHE STRING "The HTTP connection timeout in seconds.")
+SET(HTTP_SERVER_THREAD_POOL_SIZE "10" CACHE STRING "The number of threads created on the ASIO service.")
 
 SET(DOCFILES "${CMAKE_CURRENT_SOURCE_DIR}/docs/" CACHE PATH "The path to the documentation files.")
 SET(TESTFILES "/testfiles" CACHE TESTFILES "The path to the testfiles.")
@@ -38,7 +42,10 @@ if(CCACHE_FOUND)
     set_property(GLOBAL PROPERTY RULE_LAUNCH_LINK ccache)
 endif(CCACHE_FOUND)
 
-add_definitions(-DTESTFILES="${TESTFILES}/")
+add_definitions( -DHTTP_BUFFER_SIZE=${HTTP_BUFFER_SIZE} -DHTTP_CLIENT_TIMEOUT=${HTTP_CLIENT_TIMEOUT}
+                 -DHTTP_SERVER_THREAD_POOL_SIZE=${HTTP_SERVER_THREAD_POOL_SIZE}
+                 -DTESTFILES="${TESTFILES}/" -DDOCFILES="${DOCFILES}/"
+                 -DASIO_STANDALONE -DHTTP_CPP_RELEASE="${MAJOR_VERSION}.${MINOR_VERSION}.${PATCH_VERSION}" )
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/conanfile.py.in ${CMAKE_CURRENT_SOURCE_DIR}/conanfile.py @ONLY)
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/.travis.yml.in ${CMAKE_CURRENT_SOURCE_DIR}/.travis.yml @ONLY)

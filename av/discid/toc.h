@@ -56,6 +56,18 @@ struct time {
         /** The time to print */          time& t );
 };
 
+struct artist {
+    std::string id;
+    std::string name;
+    std::string sort_name;
+
+    /** @brief write the time to the output stream.
+        @return reference to output stream */
+    friend std::ostream& operator<< (
+        /** The target output stream. */  std::ostream& stream,
+        /** The time to print */          artist& a );
+};
+
 /** @brief Disc Table of contents */
 struct toc {
 public:
@@ -75,6 +87,7 @@ public:
     toc_time_t end_sector; /** End Sector */
 
     av::Metadata metadata; /** Track Metadata */
+    std::vector< artist > artists;
 
     /** @brief write the toc to the output stream.
         @return reference to output stream */
@@ -92,9 +105,6 @@ std::ostream& operator<< (
     /** The toc vector to print */           toc_t& t );
 
 toc_time_t calculate_frames ( const time& _time );
-
-/** @brief Read and convert UTF-16 file to string. */
-//std::string convert ( const std::string& filename );
 
 /** @brief Parse cdripper logfile. */
 toc_t parse_logfile ( /** Input Stream */ std::istream& in );

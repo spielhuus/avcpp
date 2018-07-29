@@ -22,37 +22,17 @@
 #include "../av/discid/discid.h"
 #include "dirent.h"
 
+static void search_for_files (
+    const std::string& path,
+    std::vector< std::string >& _filenames,
+    std::vector< std::string >& _logfiles,
+    std::vector< std::string >& _cuesheets ) {
 
-void get_uri ( const std::string& method, discid::toc_t& toc ) {
-    std::string _uri = "";
-
-    if ( method == "mb" ) {
-        _uri = discid::DiscID::mb ( toc );
-
-    } else {
-        _uri = discid::DiscID::cddb ( toc );
-
-    }
-
-    std::cout << _uri << std::endl;
-}
-int main ( int argc, char **argv ) {
-
-    if ( argc != 3 ) {
-        std::cout << "Usage: " << argv[0] << "[mb|freedb] <path of the album>\n" <<
-                  "API example program to show how to get album information for musicbrainz or freedb.\n";
-        exit ( 1 );
-    }
-
-    discid::toc toc;
-    std::vector< std::string > _filenames;
-    std::vector< std::string > _logfiles;
-    std::vector< std::string > _cuesheets;
 
     DIR *dir;
     struct dirent *ent;
 
-    if ( ( dir = opendir ( argv[2] ) ) != nullptr ) {
+    if ( ( dir = opendir ( path.c_str() ) ) != nullptr ) {
         /* print all the files and directories within directory */
         while ( ( ent = readdir ( dir ) ) != nullptr ) {
             const std::string _name = ent->d_name;
@@ -74,43 +54,111 @@ int main ( int argc, char **argv ) {
         closedir ( dir );
 
     } else {
-        /* could not open directory */
-        perror ( "" );
-        return EXIT_FAILURE;
+        perror ( "could not open directory" );
+        return;
+    }
+}
+
+
+int main ( int argc, char **argv ) {
+
+    if ( argc != 4 ) {
+        std::cout << "Usage: " << argv[0] << "[mb|freedb] [log|cue|files] <path of the album>\n" <<
+                  "API example program to show how to get album information for musicbrainz or freedb.\n";
+        exit ( 1 );
     }
 
+    const std::string& _database = argv[1];
+    const std::string& _mode = argv[2];
+    const std::string& _path = argv[3];
+
+    std::vector< std::string > _filenames;
+    std::vector< std::string > _logfiles;
+    std::vector< std::string > _cuesheets;
+
+    search_for_files ( _path, _filenames, _logfiles, _cuesheets );
     std::sort ( _filenames.begin(), _filenames.end() );
 
-    for ( auto& __logfile : _logfiles ) {
-        std::stringstream _if;
-        std::string _filename;
-        _filename.append ( argv[2] ).append ( "/" ).append ( __logfile );
-        discid::convert ( _filename, _if );
+    std::cout << "------------------------------------------------------------------" << std::endl;
+    auto _toc = discid::parse_file ( _path, _filenames );
 
-        _if.seekg ( 0 );
-        auto _toc = discid::parse_logfile ( _if );
+    std::error_code _errc;
+    discid::toc_t _parsed_toc;
 
-        if ( !_toc.empty() ) {
-            std::cout << _toc << std::endl;
-            std::cout << "LOG: ";
-            get_uri ( argv[1], _toc );
+    if ( _mode == "log" && !_logfiles.empty() ) {
 
-        } else { std::cout << "unable to parse logfile: " << __logfile << std::endl; }
+        std::cout << "------------------------------------------------------------------" << std::endl;
+        std::cout << "Get from log -----------------------------------------------------" << std::endl;
+        std::cout << "------------------------------------------------------------------" << std::endl;
+
+        for ( auto& __logfile : _logfiles ) {
+
+            std::stringstream _slogfile;
+            discid::convert ( _path + "/" + __logfile, _slogfile );
+            _parsed_toc  = discid::parse_logfile ( _slogfile );
+        }
+
+    } else if ( _mode == "cue" && !_cuesheets.empty() ) {
+
+        std::cout << "------------------------------------------------------------------" << std::endl;
+        std::cout << "Get from cue -----------------------------------------------------" << std::endl;
+        std::cout << "------------------------------------------------------------------" << std::endl;
+
+        for ( auto& __cuesheet : _cuesheets ) {
+            discid::release_t _result_toc;
+
+            std::ifstream _slcuesheet ( _path + "/" + __cuesheet, std::ifstream::binary );
+            _parsed_toc = discid::parse_cuesheet ( _slcuesheet, _path, _filenames );
+        }
+
+    } else {
+
+        std::cout << "------------------------------------------------------------------" << std::endl;
+        std::cout << "Get from Files ---------------------------------------------------" << std::endl;
+        std::cout << "------------------------------------------------------------------" << std::endl;
+
+        _parsed_toc = _toc;
+
     }
 
-    for ( auto& __cuesheet : _cuesheets ) {
-        std::ifstream _if ( argv[2] + __cuesheet );
-        auto _toc = discid::parse_cuesheet ( _if, argv[2], _filenames );
+    if ( !_parsed_toc.empty() ) {
+        discid::release_t _release_toc;
 
-        if ( !_toc.empty() ) {
-            std::cout << _toc << std::endl;
-            std::cout << "CUE: ";
-            get_uri ( argv[1], _toc );
+        if ( _database == "mb" ) {
+
+            if ( ! ( _errc = discid::DiscID::mb ( _parsed_toc, _release_toc ) ) ) {
+                if ( ! _release_toc.empty() ) {
+                    std::cout << _release_toc << std::endl;
+
+                    discid::toc_t _result;
+                    auto _toc_selected = _release_toc.front();
+
+                    if ( ! ( _errc = discid::DiscID::mb ( _toc_selected.mbid, _result ) ) ) {
+                        std::cout << _result << std::endl;
+
+                    } else { std::cout << _errc.message() << std::endl; }
+
+                } else { std::cout << "No results from mb musicbrainz." << std::endl; }
+
+            } else { std::cout << _errc.message() << std::endl; }
+
+        } else {//load from freedb
+            if ( ! ( _errc = discid::DiscID::cddb ( _parsed_toc, _release_toc ) ) ) {
+                if ( ! _release_toc.empty() ) {
+                    std::cout << "CDDB:" << _release_toc << std::endl;
+
+                    discid::toc_t _result;
+                    auto _toc_selected = _release_toc.front();
+
+                    if ( ! ( _errc = discid::DiscID::cddb ( _toc_selected.category, _toc_selected.mbid, _result ) ) ) {
+                        std::cout << _result << std::endl;
+
+                    } else { std::cout << _errc.message() << std::endl; }
+
+
+                } else { std::cout << "No results from mb freedb." << std::endl; }
+
+            } else { std::cout << "toc can not be parsed from input." << std::endl;  }
         }
     }
-
-    auto _toc = discid::parse_file ( argv[2], _filenames );
-    std::cout << _toc << std::endl;
-    std::cout << "FILES: ";
-    get_uri ( argv[1], _toc );
 }

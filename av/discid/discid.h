@@ -49,8 +49,33 @@ Create the query string.
 */
 namespace discid {
 
+struct release {
+    std::string mbid;
+    std::string title;
+    std::string category;
+
+    /** @brief write the releasee to the output stream.
+        @return reference to output stream */
+    friend std::ostream& operator<< (
+        /** The target output stream. */  std::ostream& stream,
+        /** The release to print */       release& r );
+};
+
+typedef std::vector< release > release_t;
+
+/** @brief write the releasee to the output stream.
+    @return reference to output stream */
+std::ostream& operator<< (
+    /** The target output stream. */  std::ostream& stream,
+    /** The release to print */       release_t& r );
+
+/** @brief get the content from the webserver */
+std::error_code get (
+    /** complete uri of the request */ const std::string& uri,
+    /** buffer to store the body */ std::stringstream& ss );
+
 /** @brief lookup the metadata with information from the files.*/
-class DiscID {
+class DiscID { //TODO remove class
 public:
 
     /** @brief busicbrainz url from cdripper logfile.
@@ -60,37 +85,27 @@ public:
      * @param discinfo album table of content.
      * @return metabrainz url for discid lookup.
      */
-    static std::string mb ( const toc_t& discinfo );
+    static std::error_code mb ( const toc_t& discinfo, release_t& target );
+
+    /** @brief busicbrainz url from cdripper logfile.
+        <a href="https://musicbrainz.org/doc/Development/XML_Web_Service/Version_2#discid">
+            metabrainz lookup with discid.
+        </a>
+     * @param mbid musicbrainz release id.
+     * @return metabrainz url for discid lookup.
+     */
+    static std::error_code mb ( const std::string& mbid, toc_t& target );
 
     /** @brief freedb url from table of content.
         @return freedb url for discid lookup. */
-    static std::string cddb ( /** Album table of content */ const toc_t& discinfo );
+    static std::error_code cddb ( const toc_t& discinfo, release_t& target );
+
+    /** @brief freedb url from table of content.
+        @return freedb url for discid lookup. */
+    static std::error_code cddb ( const std::string& category, const std::string& id, discid::toc_t& discinfo );
 
 private:
     DiscID() {}
-
-    FRIEND_TEST ( DiscIdTest, freedb_discid );
-    FRIEND_TEST ( DiscIdTest, freedb_discid_cue );
-    FRIEND_TEST ( DiscIdTest, freedb_offsets );
-    FRIEND_TEST ( DiscIdTest, freedb_nsecs );
-    static std::string cddb_id ( const toc_t& discinfo );
-    static std::string cddb_offsets ( const toc_t& discinfo );
-    static std::string cddb_nsecs ( const toc_t& discinfo );
-
-    FRIEND_TEST ( DiscIdTest, calculate_1 );
-    FRIEND_TEST ( DiscIdTest, calculate_2 );
-    FRIEND_TEST ( DiscIdTest, mbid_from_logfile );
-    /** @brief calculate the musicbrainz discid.
-        <a href="https://musicbrainz.org/doc/Disc_ID_Calculation">Musicbrainz: Disc ID calculation.</a> */
-    static std::string mb_discid ( /** First track number (normally one): 1 byte */  unsigned int start,
-            /** Last track number: 1 byte  */                 unsigned int end,
-            /** Lead-out track offset: 4 bytes and
-                99 frame offsets: 4 bytes for each track */   std::vector< toc_time_t > );
-
-    FRIEND_TEST ( DiscIdTest, calculate_cue );
-    FRIEND_TEST ( DiscIdTest, mbid );
-    FRIEND_TEST ( DiscIdTest, mbid_file );
-    static std::vector< toc_time_t > mb_offsets ( const toc_t& discinfo );
 };
 }//namespace discid
 #endif //DISCID_H

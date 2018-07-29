@@ -52,6 +52,11 @@ public:
 
     /** @brief set metadata with value by key. */
     void set (
+        /** The metadata key */ const Enum& tag,
+        /** The value for the metadata */ const std::string& value
+    );
+    /** @brief set metadata with value by key. */
+    void set (
         /** The metadata key */ const std::string& name,
         /** The value for the metadata */ const std::string& value
     );
@@ -63,6 +68,10 @@ public:
     std::string& get ( /** The key for the metadata element. */ const std::string& key );
     /** @brief get keys of valid metadata elments.
         @return the keys of the defined metadata elements */
+    std::string& get ( /** The key for the metadata element. */ const Enum& key );
+    /** @brief get keys of valid metadata elments.
+        @return the keys of the defined metadata elements */
+
     std::vector< std::string > tag_names ();
 
     friend std::ostream& operator<< ( std::ostream& stream, const Metadata& meta_data ) {

@@ -26,28 +26,9 @@
 
 namespace discid {
 
-/**
- * @brief Get string encoding
- * @param string
- * @return 0  = UTF-8
-1  = UTF-16BE
-2  = UTF-16LE
-3  = UTF-32BE
-4  = UTF-32LE
- */
-static bool String_GetEncoding ( unsigned char* string ) {
+inline bool get_encoding ( unsigned char* string ) {
     return ( ( string[0] == 0xFF && string[1] == 0xFE ) ||
              ( string[0] == 0xFE && string[1] == 0xFF ) );
-
-//    unsigned c, i = 0, flags = 0;
-
-//    while ( string[i] | string[i + 1] | string[i + 2] | string[i + 3] )
-//        flags = ( c = string[i++] ) ? flags | ( ( ! ( flags % 4 ) &&
-//                                                c > 0x7F ) << 3 ) : flags | 1 | ( ! ( i & 1 ) << 1 )
-//                | ( ( string[i] == 0 ) << 2 );
-
-//    return ( flags & 1 ) + ( ( flags & 2 ) != 0 ) +
-//           ( ( flags & 4 ) != 0 ) + ( ( flags & 8 ) != 0 );
 }
 
 void convert ( const std::string& file, std::stringstream& _ss ) {
@@ -56,7 +37,7 @@ void convert ( const std::string& file, std::stringstream& _ss ) {
 
     std::ifstream _istream ( file );
     _istream.read ( _buffer.data(), 16 );
-    bool encoding = String_GetEncoding ( reinterpret_cast< unsigned char* > ( _buffer.data() ) );
+    bool encoding = get_encoding ( reinterpret_cast< unsigned char* > ( _buffer.data() ) );
     _istream.close ();
 
     if ( encoding ) {
@@ -346,6 +327,11 @@ toc_t parse_file ( const std::string& path, const std::vector< std::string > fil
     return _toc;
 }
 
+std::ostream& operator<< ( std::ostream &stream, artist& a ) {
+    stream << a.id << ":" << a.name << " (" << a.sort_name << ")";
+    return stream;
+}
+
 std::ostream& operator<< ( std::ostream &stream, time &t ) {
     stream <<
            std::setw ( 2 ) << std::setfill ( '0' ) << t.minutes << ":" <<
@@ -379,9 +365,22 @@ std::ostream &operator<< ( std::ostream &stream, std::vector<toc> &t ) {
     for ( toc _t : t ) {
         stream << _t.track << ") ";
 
-        for ( auto _meta : _t.metadata ) {
-            stream << _meta.first << "=" << _meta.second << "\n";
+        for ( auto& _meta : _t.metadata ) {
+            stream << _meta.first << "=" << _meta.second << ", ";
         }
+
+        stream << " artists=";
+        bool _is_first = true;
+
+        for ( auto& __artist : _t.artists ) {
+            if ( _is_first ) { _is_first = false; }
+
+            else { stream << ", "; }
+
+            stream << __artist.name;
+        }
+
+        stream << "\n";
     }
 
     return stream;
