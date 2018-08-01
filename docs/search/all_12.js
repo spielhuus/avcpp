@@ -8,6 +8,8 @@ var searchData=
   ['rawvideo',['RAWVIDEO',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a7024f13504c79b2c2460f767033a8e69',1,'av::Codec']]],
   ['read',['READ',['../classav_1_1_format.html#aa2b5fe128c6490b54ffe74425160c06aaf0069a4dddcf4901baea1a76e198a3ed',1,'av::Format::READ()'],['../classav_1_1_format.html#a868c2f2408deab4d0fc0c4fab0e74c22',1,'av::Format::read(std::function&lt; void(Packet &amp;) &gt; callback)']]],
   ['realtext',['REALTEXT',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a2d5c9d59c99199baa3a30be481d26142',1,'av::Codec']]],
+  ['release',['release',['../structdiscid_1_1release.html',1,'discid']]],
+  ['release_5ft',['release_t',['../namespacediscid.html#a3424750d9bba7b22139ccf94b80478ef',1,'discid']]],
   ['resample',['Resample',['../classav_1_1_resample.html',1,'av::Resample'],['../classav_1_1_resample.html#ac4487b2f16951f80be3212899675b58d',1,'av::Resample::Resample(ChannelLayout::Enum source_channels, SampleFormat source_sample_fmt, int source_sample_rate, ChannelLayout::Enum target_channels, SampleFormat target_sample_fmt, int target_sample_rate)'],['../classav_1_1_resample.html#a388f2aaae2364fea877b51cdb2a53d76',1,'av::Resample::resample(const uint8_t **src_data, int *src_linesize, std::function&lt; void(uint8_t **, const int, const int) &gt; fn)'],['../classav_1_1_resample.html#ae81fc3046215492854b51936cae139fc',1,'av::Resample::resample(Frame &amp;frame, int frame_size, std::function&lt; void(Frame &amp;) &gt; fn)']]],
   ['resample_2eh',['resample.h',['../resample_8h.html',1,'']]],
   ['rfc822_5fbinary',['rfc822_binary',['../base64_8h.html#a0b87bfda7c7c1a13fe84c96050d0aa60',1,'base64.h']]],

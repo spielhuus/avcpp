@@ -16,7 +16,7 @@ var searchData=
   ['time',['time',['../structdiscid_1_1time.html',1,'discid::time'],['../structdiscid_1_1time.html#a0510c51b411cb0b325c656fbf79d21ba',1,'discid::time::time()'],['../structdiscid_1_1time.html#ab3fdbabe22a14be1ebea4ddb6eed04a0',1,'discid::time::time(toc_time_t minutes, toc_time_t seconds, toc_time_t frames)'],['../structdiscid_1_1time.html#ae54479e73261a93f6c8635d765bdcd54',1,'discid::time::time(toc_time_t frames)']]],
   ['time_5fto_5fstring',['time_to_string',['../namespaceav_1_1utils.html#a00fb34504b8279f927a8d22cc72c6966',1,'av::utils']]],
   ['timed_5fid3',['TIMED_ID3',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930aa279dfc624cdb9bc9b5cfdd724e0da06',1,'av::Codec']]],
-  ['title',['TITLE',['../structav_1_1_metadata.html#a1a3594060777cde3558ce7dbbe149d2aa4ee64be87af855dc1fffa1d9bf7f51b2',1,'av::Metadata']]],
+  ['title',['TITLE',['../structav_1_1_metadata.html#a1a3594060777cde3558ce7dbbe149d2aa4ee64be87af855dc1fffa1d9bf7f51b2',1,'av::Metadata::TITLE()'],['../structdiscid_1_1release.html#ac6f82071646bfdc6c8a362ece0693b5e',1,'discid::release::title()']]],
   ['tmv',['TMV',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a4aee886fecbcc52a6aed105d3370e886',1,'av::Codec']]],
   ['toc',['toc',['../structdiscid_1_1toc.html',1,'discid::toc'],['../structdiscid_1_1toc.html#a89aca7c5062d5872c51233cb55b20f11',1,'discid::toc::toc()'],['../structdiscid_1_1toc.html#ad5b6d35247da6eea8ea65ef3c57586c5',1,'discid::toc::toc(toc_track_t track, time start, time end, toc_time_t start_sector, toc_time_t end_sector)']]],
   ['toc_2eh',['toc.h',['../toc_8h.html',1,'']]],

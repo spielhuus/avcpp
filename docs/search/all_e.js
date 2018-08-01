@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['name',['name',['../structav_1_1_metadata.html#a3dadcc64a2b69b2c26c628b1c3c71bc3',1,'av::Metadata']]],
+  ['name',['name',['../structdiscid_1_1artist.html#a7fb18d1f1377c678777bdae7da726c85',1,'discid::artist::name()'],['../structav_1_1_metadata.html#a3dadcc64a2b69b2c26c628b1c3c71bc3',1,'av::Metadata::name()']]],
   ['nb',['NB',['../classav_1_1_codec.html#a50ee89fc40a5efb76134379174227012af0e830424544178301073a09bf236472',1,'av::Codec::NB()'],['../namespaceav.html#af85b09738c8c19633a36897151c331aea75dd41793fa5cdf8a872ae78e4377e0d',1,'av::NB()']]],
   ['nb_5fsamples',['nb_samples',['../classav_1_1_frame.html#a2a83133bffc6dbdf4a7b13318ce4fe0a',1,'av::Frame']]],
   ['nellymoser',['NELLYMOSER',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a9417a1a1c0fec33599ec146035a27c84',1,'av::Codec']]],

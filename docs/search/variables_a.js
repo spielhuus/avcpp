@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['track',['track',['../structdiscid_1_1toc.html#a5bc9a9e568391603318930a316241a81',1,'discid::toc']]]
+  ['rms_5fvalues',['rms_values',['../structav_1_1_dynamic_range_1_1dr__meter.html#a7fa7083dc03bdf4edf9f7ae8e24728ae',1,'av::DynamicRange::dr_meter']]]
 ];

@@ -126,14 +126,14 @@ int main ( int argc, char **argv ) {
 
         if ( _database == "mb" ) {
 
-            if ( ! ( _errc = discid::DiscID::mb ( _parsed_toc, _release_toc ) ) ) {
+            if ( ! ( _errc = discid::mb ( _parsed_toc, _release_toc ) ) ) {
                 if ( ! _release_toc.empty() ) {
                     std::cout << _release_toc << std::endl;
 
                     discid::toc_t _result;
                     auto _toc_selected = _release_toc.front();
 
-                    if ( ! ( _errc = discid::DiscID::mb ( _toc_selected.mbid, _result ) ) ) {
+                    if ( ! ( _errc = discid::mb ( _toc_selected.mbid, _result ) ) ) {
                         std::cout << _result << std::endl;
 
                     } else { std::cout << _errc.message() << std::endl; }
@@ -143,14 +143,14 @@ int main ( int argc, char **argv ) {
             } else { std::cout << _errc.message() << std::endl; }
 
         } else {//load from freedb
-            if ( ! ( _errc = discid::DiscID::cddb ( _parsed_toc, _release_toc ) ) ) {
+            if ( ! ( _errc = discid::cddb ( _parsed_toc, _release_toc ) ) ) {
                 if ( ! _release_toc.empty() ) {
                     std::cout << "CDDB:" << _release_toc << std::endl;
 
                     discid::toc_t _result;
                     auto _toc_selected = _release_toc.front();
 
-                    if ( ! ( _errc = discid::DiscID::cddb ( _toc_selected.category, _toc_selected.mbid, _result ) ) ) {
+                    if ( ! ( _errc = discid::cddb ( _toc_selected.category, _toc_selected.mbid, _result ) ) ) {
                         std::cout << _result << std::endl;
 
                     } else { std::cout << _errc.message() << std::endl; }

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['channellayout',['ChannelLayout',['../structav_1_1_channel_layout.html',1,'av']]],
-  ['codec',['Codec',['../classav_1_1_codec.html',1,'av']]]
+  ['artist',['artist',['../structdiscid_1_1artist.html',1,'discid']]]
 ];

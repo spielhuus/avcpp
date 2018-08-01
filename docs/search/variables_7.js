@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['peak',['peak',['../structav_1_1_dynamic_range_1_1dr__meter.html#ab9d9223e1f1cc00af8356a3831a95ca1',1,'av::DynamicRange::dr_meter']]],
-  ['peak_5fvalues',['peak_values',['../structav_1_1_dynamic_range_1_1dr__meter.html#abb44e874da396a097a8a1ec559425cac',1,'av::DynamicRange::dr_meter']]]
+  ['mbid',['mbid',['../structdiscid_1_1release.html#a9d9b1597f36d88fa009cf04db3bbf3b0',1,'discid::release']]],
+  ['metadata',['metadata',['../structdiscid_1_1toc.html#ae82b24fb80e46ce039b67d50022b92c2',1,'discid::toc']]],
+  ['minutes',['minutes',['../structdiscid_1_1time.html#af814a0ac91a786eb3b1d24e0ccdd9226',1,'discid::time']]]
 ];

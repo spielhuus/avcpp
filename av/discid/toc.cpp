@@ -31,7 +31,7 @@ inline bool get_encoding ( unsigned char* string ) {
              ( string[0] == 0xFE && string[1] == 0xFF ) );
 }
 
-void convert ( const std::string& file, std::stringstream& _ss ) {
+std::error_code convert ( const std::string& file, std::stringstream& _ss ) {
 
     std::array< char, 16 > _buffer;
 
@@ -54,16 +54,23 @@ void convert ( const std::string& file, std::stringstream& _ss ) {
                 _ss << u8line << "\n";
             }
 
-        } else {std::cout << "can not open file: " << file << std::endl; }
+        } else
+        { return av::make_error_code ( errno ); }
 
     } else {
         std::string _line;
         std::ifstream _istream ( file, std::ios::binary );
 
-        while ( std::getline ( _istream, _line ) ) {
-            _ss << _line << "\n";
-        }
+        if ( _istream.is_open() ) {
+            while ( std::getline ( _istream, _line ) ) {
+                _ss << _line << "\n";
+            }
+
+        } else
+        { return av::make_error_code ( errno ); }
     }
+
+    return std::error_code();
 }
 
 time::time ( const toc_time_t f ) {
@@ -72,6 +79,7 @@ time::time ( const toc_time_t f ) {
     seconds = _total_seconds - minutes * 60;
     frames = f - ( minutes * 60 + seconds ) * 75;
 }
+
 TEST ( TocTest, time_frames_ctor ) {
     time _time ( 4653 );
     EXPECT_EQ ( 1U, _time.minutes );
@@ -102,7 +110,12 @@ time split_time ( const std::string& time_string ) {
         _time.seconds = std::stoul ( matches[2].str() );
         _time.frames = std::stoul ( matches[3].str() );
 
-    } else { std::cout << "can not parse time string:" << time_string << std::endl; }
+#ifdef DEBUG
+
+    } else {
+        std::cout << "can not parse time string:" << time_string << std::endl;
+#endif
+    }
 
     return _time;
 }
@@ -203,8 +216,11 @@ toc_t parse_cuesheet (
                 _file =  matches[1].str();
                 _state = FILE;
 
+#ifdef DEBUG
+
             } else {
                 std::cout << "Unknown line in BEGIN: '" << result << "'" << std::endl;
+#endif
             }
 
             break;
@@ -214,7 +230,12 @@ toc_t parse_cuesheet (
                 _track = matches[1].str();
                 _state = TRACK;
 
-            } else { std::cout << "Unknown line in FILE: " << result << std::endl; }
+#ifdef DEBUG
+
+            } else {
+                std::cout << "Unknown line in FILE: " << result << std::endl;
+#endif
+            }
 
             break;
 
@@ -252,13 +273,23 @@ toc_t parse_cuesheet (
                         _toclist.at ( _toclist.size() - 2 ).end_sector = calculate_frames ( _starttime ) - 1;
                     }
 
-                } else { std::cout << "Other index number: " << result << std::endl; }
+#ifdef DEBUG
+
+                } else {
+                    std::cout << "Other index number: " << result << std::endl;
+#endif
+                }
 
             } else if ( std::regex_search ( result, matches, rgx_track ) ) {
                 _track = matches[1].str();
                 _state = TRACK;
 
-            } else { std::cout << "Unknown line in TRACK: " << result << std::endl; }
+#ifdef DEBUG
+
+            } else {
+                std::cout << "Unknown line in TRACK: " << result << std::endl;
+#endif
+            }
         }
     }
 
@@ -288,7 +319,12 @@ toc_t parse_cuesheet (
 
         } else { throw "file not found"; }
 
-    } else { std::cout << "no file for last track can be found" << std::endl; }
+#ifdef DEBUG
+
+    } else {
+        std::cout << "no file for last track can be found" << std::endl;
+#endif
+    }
 
     return _toclist;
 }

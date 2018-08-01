@@ -1,4 +1,3 @@
-<!-- HTML header for doxygen 1.8.13-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -13,7 +12,7 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
-<link href="customdoxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -23,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">avcpp
-   &#160;<span id="projectnumber">0.1.1</span>
+   &#160;<span id="projectnumber">0.2.6</span>
    </div>
   </td>
  </tr>
@@ -69,23 +68,27 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Utilities to get metadata from the internet.  
+<p>calculate discid and read information from databases.  
 <a href="#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdiscid_1_1_disc_i_d.html">DiscID</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">lookup the metadata with information from the files.  <a href="classdiscid_1_1_disc_i_d.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdiscid_1_1artist.html">artist</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Time artist for disk table of contents.  <a href="structdiscid_1_1artist.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdiscid_1_1release.html">release</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdiscid_1_1time.html">time</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Time structure for disk table of contents.  <a href="structdiscid_1_1time.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdiscid_1_1toc.html">toc</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disc Table of contents.  <a href="structdiscid_1_1toc.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disc Table of contents file entry.  <a href="structdiscid_1_1toc.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
+<tr class="memitem:a3424750d9bba7b22139ccf94b80478ef"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; <a class="el" href="structdiscid_1_1release.html">release</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacediscid.html#a3424750d9bba7b22139ccf94b80478ef">release_t</a></td></tr>
+<tr class="separator:a3424750d9bba7b22139ccf94b80478ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64b5fe84638b5fdf2f1bb6b85c56d61f"><td class="memItemLeft" align="right" valign="top">typedef std::vector&lt; <a class="el" href="structdiscid_1_1toc.html">toc</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacediscid.html#a64b5fe84638b5fdf2f1bb6b85c56d61f">toc_t</a></td></tr>
 <tr class="separator:a64b5fe84638b5fdf2f1bb6b85c56d61f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a006fe93a99f52df29b3a1581a794dbbb"><td class="memItemLeft" align="right" valign="top">typedef unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacediscid.html#a006fe93a99f52df29b3a1581a794dbbb">toc_time_t</a></td></tr>
@@ -95,8 +98,27 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a69e7c7f4e932261291b2885a3b644a0d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacediscid.html#a006fe93a99f52df29b3a1581a794dbbb">toc_time_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacediscid.html#a69e7c7f4e932261291b2885a3b644a0d">calculate_frames</a> (const <a class="el" href="structdiscid_1_1time.html">time</a> &amp;_time)</td></tr>
-<tr class="separator:a69e7c7f4e932261291b2885a3b644a0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ef1872a0b19ac0fdd0aa2b60e88a293"><td class="memItemLeft" align="right" valign="top">std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacediscid.html#a0ef1872a0b19ac0fdd0aa2b60e88a293">cddb</a> (const <a class="el" href="namespacediscid.html#a64b5fe84638b5fdf2f1bb6b85c56d61f">toc_t</a> &amp;discinfo, <a class="el" href="namespacediscid.html#a3424750d9bba7b22139ccf94b80478ef">release_t</a> &amp;target)</td></tr>
+<tr class="memdesc:a0ef1872a0b19ac0fdd0aa2b60e88a293"><td class="mdescLeft">&#160;</td><td class="mdescRight">freedb url from table of content.  <a href="#a0ef1872a0b19ac0fdd0aa2b60e88a293">More...</a><br /></td></tr>
+<tr class="separator:a0ef1872a0b19ac0fdd0aa2b60e88a293"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1b3b3acc14711ae865c61937abf50e4"><td class="memItemLeft" align="right" valign="top">std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacediscid.html#ac1b3b3acc14711ae865c61937abf50e4">cddb</a> (const std::string &amp;category, const std::string &amp;id, <a class="el" href="namespacediscid.html#a64b5fe84638b5fdf2f1bb6b85c56d61f">discid::toc_t</a> &amp;discinfo)</td></tr>
+<tr class="memdesc:ac1b3b3acc14711ae865c61937abf50e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">freedb url from table of content.  <a href="#ac1b3b3acc14711ae865c61937abf50e4">More...</a><br /></td></tr>
+<tr class="separator:ac1b3b3acc14711ae865c61937abf50e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b8f8bd6847b6b3cc11f8ffc1bee8504"><td class="memItemLeft" align="right" valign="top">std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacediscid.html#a5b8f8bd6847b6b3cc11f8ffc1bee8504">convert</a> (const std::string &amp;file, std::stringstream &amp;_ss)</td></tr>
+<tr class="memdesc:a5b8f8bd6847b6b3cc11f8ffc1bee8504"><td class="mdescLeft">&#160;</td><td class="mdescRight">read and convert text file to buffer  <a href="#a5b8f8bd6847b6b3cc11f8ffc1bee8504">More...</a><br /></td></tr>
+<tr class="separator:a5b8f8bd6847b6b3cc11f8ffc1bee8504"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae46138bf458b10d57542e699ebc0a7dc"><td class="memItemLeft" align="right" valign="top">std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacediscid.html#ae46138bf458b10d57542e699ebc0a7dc">get</a> (const std::string &amp;uri, std::stringstream &amp;ss)</td></tr>
+<tr class="memdesc:ae46138bf458b10d57542e699ebc0a7dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the content from the webserver  <a href="#ae46138bf458b10d57542e699ebc0a7dc">More...</a><br /></td></tr>
+<tr class="separator:ae46138bf458b10d57542e699ebc0a7dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fc1528e55b24ffda3cb781ab3a22578"><td class="memItemLeft" align="right" valign="top">std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacediscid.html#a5fc1528e55b24ffda3cb781ab3a22578">mb</a> (const <a class="el" href="namespacediscid.html#a64b5fe84638b5fdf2f1bb6b85c56d61f">toc_t</a> &amp;discinfo, <a class="el" href="namespacediscid.html#a3424750d9bba7b22139ccf94b80478ef">release_t</a> &amp;target)</td></tr>
+<tr class="memdesc:a5fc1528e55b24ffda3cb781ab3a22578"><td class="mdescLeft">&#160;</td><td class="mdescRight">busicbrainz url from cdripper logfile.  <a href="#a5fc1528e55b24ffda3cb781ab3a22578">More...</a><br /></td></tr>
+<tr class="separator:a5fc1528e55b24ffda3cb781ab3a22578"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0636c952e59c06354ef66f6daac986f0"><td class="memItemLeft" align="right" valign="top">std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacediscid.html#a0636c952e59c06354ef66f6daac986f0">mb</a> (const std::string &amp;mbid, <a class="el" href="namespacediscid.html#a64b5fe84638b5fdf2f1bb6b85c56d61f">toc_t</a> &amp;target)</td></tr>
+<tr class="memdesc:a0636c952e59c06354ef66f6daac986f0"><td class="mdescLeft">&#160;</td><td class="mdescRight">busicbrainz url from cdripper logfile.  <a href="#a0636c952e59c06354ef66f6daac986f0">More...</a><br /></td></tr>
+<tr class="separator:a0636c952e59c06354ef66f6daac986f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1601a3953b8075d06cb6049a0f84be25"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacediscid.html#a1601a3953b8075d06cb6049a0f84be25">operator&lt;&lt;</a> (std::ostream &amp;stream, <a class="el" href="namespacediscid.html#a3424750d9bba7b22139ccf94b80478ef">release_t</a> &amp;r)</td></tr>
+<tr class="memdesc:a1601a3953b8075d06cb6049a0f84be25"><td class="mdescLeft">&#160;</td><td class="mdescRight">write the releasee to the output stream.  <a href="#a1601a3953b8075d06cb6049a0f84be25">More...</a><br /></td></tr>
+<tr class="separator:a1601a3953b8075d06cb6049a0f84be25"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2fca133d3895bc74be738756684e74f"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacediscid.html#aa2fca133d3895bc74be738756684e74f">operator&lt;&lt;</a> (std::ostream &amp;stream, <a class="el" href="namespacediscid.html#a64b5fe84638b5fdf2f1bb6b85c56d61f">toc_t</a> &amp;t)</td></tr>
 <tr class="memdesc:aa2fca133d3895bc74be738756684e74f"><td class="mdescLeft">&#160;</td><td class="mdescRight">write the complete toc to the output stream.  <a href="#aa2fca133d3895bc74be738756684e74f">More...</a><br /></td></tr>
 <tr class="separator:aa2fca133d3895bc74be738756684e74f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -107,14 +129,33 @@ Functions</h2></td></tr>
 <tr class="memdesc:ab6c8ef5ead0f5c0f6036fb6c2fb6f849"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse from playlenths.  <a href="#ab6c8ef5ead0f5c0f6036fb6c2fb6f849">More...</a><br /></td></tr>
 <tr class="separator:ab6c8ef5ead0f5c0f6036fb6c2fb6f849"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa78e6bf5456f4a651788d965eb02bdbe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespacediscid.html#a64b5fe84638b5fdf2f1bb6b85c56d61f">toc_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacediscid.html#aa78e6bf5456f4a651788d965eb02bdbe">parse_logfile</a> (std::istream &amp;in)</td></tr>
-<tr class="memdesc:aa78e6bf5456f4a651788d965eb02bdbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read and convert UTF-16 file to string.  <a href="#aa78e6bf5456f4a651788d965eb02bdbe">More...</a><br /></td></tr>
+<tr class="memdesc:aa78e6bf5456f4a651788d965eb02bdbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse cdripper logfile.  <a href="#aa78e6bf5456f4a651788d965eb02bdbe">More...</a><br /></td></tr>
 <tr class="separator:aa78e6bf5456f4a651788d965eb02bdbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Utilities to get metadata from the internet. </p>
-<p>Create a table of contents from your album using one of the functions:</p>
-<div class="fragment"><div class="line">std::sstream _ss = std::stringstream(<span class="stringliteral">&quot;DATA&quot;</span>);</div><div class="line"></div><div class="line"><a class="code" href="namespacediscid.html">discid</a>:toc _toc = <a class="code" href="namespacediscid.html#aa78e6bf5456f4a651788d965eb02bdbe">discid::parse_logfile</a>( _ss );</div><div class="line"><a class="code" href="namespacediscid.html">discid</a>:toc _toc = <a class="code" href="namespacediscid.html#a65ae233e3c7537ef1e538b1f6d777189">discid::parse_cuesheet</a>( _ss, <span class="stringliteral">&quot;PATH&quot;</span>, {<span class="stringliteral">&quot;FILE1.flac&quot;</span>, <span class="stringliteral">&quot;FILE2.flac&quot;</span> } );</div><div class="line"><a class="code" href="namespacediscid.html">discid</a>:toc _toc = <a class="code" href="namespacediscid.html#ab6c8ef5ead0f5c0f6036fb6c2fb6f849">discid::parse_file</a>( <span class="stringliteral">&quot;PATH&quot;</span>, {<span class="stringliteral">&quot;FILE1.flac&quot;</span>, <span class="stringliteral">&quot;FILE2.flac&quot;</span> } );</div></div><!-- fragment --><p>Create the query string.</p>
-<div class="fragment"><div class="line"><span class="keyword">const</span> std::string _mb_url = discid::mb( _toc );</div><div class="line"><span class="keyword">const</span> std::string _cddb_url = discid::cddb( _toc );</div></div><!-- fragment --> </div><h2 class="groupheader">Typedef Documentation</h2>
+<div class="textblock"><p>calculate discid and read information from databases. </p>
+<h3>calculate disc table of contents (toc) from different sources.</h3>
+<p>The result is stored in a list of toc objects containing the track information. When the input can not be parsed as toc the list will be empty.</p>
+<p>Getting a table of contents:</p>
+<div class="fragment"><div class="line">std::sstream _ss = std::stringstream(<span class="stringliteral">&quot;PATH TO LOGFILE&quot;</span>);</div><div class="line"><a class="code" href="namespacediscid.html">discid</a>:<a class="code" href="namespacediscid.html#a64b5fe84638b5fdf2f1bb6b85c56d61f">toc_t</a> toc = <a class="code" href="namespacediscid.html#aa78e6bf5456f4a651788d965eb02bdbe">discid::parse_logfile</a>( _ss );</div></div><!-- fragment --><p>The logfiles are sometimes in UTF-16 format. With the convert function the file can be converted.</p>
+<h3>lookup the data</h3>
+<p>Data lookup is done in two steps. First read the matching content using the discid. Second read the content using the key from the matching results.</p>
+<div class="fragment"><div class="line"><a class="code" href="namespacediscid.html#a3424750d9bba7b22139ccf94b80478ef">discid::release_t</a> release_toc;</div><div class="line">std::error_code errc = <a class="code" href="namespacediscid.html#a5fc1528e55b24ffda3cb781ab3a22578">discid::mb</a> ( toc, release_toc );</div><div class="line"></div><div class="line"><a class="code" href="namespacediscid.html#a64b5fe84638b5fdf2f1bb6b85c56d61f">discid::toc_t</a> result;</div><div class="line">errc = <a class="code" href="namespacediscid.html#a5fc1528e55b24ffda3cb781ab3a22578">discid::mb</a> ( _toc_selected.mbid, result ) ) ) {</div></div><!-- fragment --><h3>read toc from logfile and lookup on musicbrainz</h3>
+<div class="fragment"><div class="line">std::sstream _ss = std::stringstream(<span class="stringliteral">&quot;PATH TO LOGFILE&quot;</span>);</div><div class="line"><span class="keyword">auto</span> _toc = <a class="code" href="namespacediscid.html#ab6c8ef5ead0f5c0f6036fb6c2fb6f849">discid::parse_file</a>( <span class="stringliteral">&quot;PATH&quot;</span>, _ss );</div><div class="line"><span class="keywordflow">if</span>( ! _toc.empty() ) {</div><div class="line"></div><div class="line">  <a class="code" href="namespacediscid.html#a3424750d9bba7b22139ccf94b80478ef">discid::release_t</a> release_toc;</div><div class="line">  std::error_code errc;</div><div class="line">  <span class="keywordflow">if</span>( ! ( errc = <a class="code" href="namespacediscid.html#a5fc1528e55b24ffda3cb781ab3a22578">discid::mb</a> ( _toc, release_toc ) ) {</div><div class="line">    <span class="comment">//select the result</span></div><div class="line">    <span class="keyword">auto</span> _toc_selected = _toc.front();</div><div class="line"></div><div class="line">    <a class="code" href="namespacediscid.html#a64b5fe84638b5fdf2f1bb6b85c56d61f">discid::toc_t</a> result;</div><div class="line">    <span class="keywordflow">if</span>( !( errc = <a class="code" href="namespacediscid.html#a5fc1528e55b24ffda3cb781ab3a22578">discid::mb</a> ( _toc_selected.mbid, result ) ) ) ) {</div><div class="line">      <span class="comment">//Success</span></div><div class="line">    }</div><div class="line">  }</div><div class="line">}</div></div><!-- fragment --> </div><h2 class="groupheader">Typedef Documentation</h2>
+<a id="a3424750d9bba7b22139ccf94b80478ef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3424750d9bba7b22139ccf94b80478ef">&#9670;&nbsp;</a></span>release_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef std::vector&lt; <a class="el" href="structdiscid_1_1release.html">release</a> &gt; <a class="el" href="namespacediscid.html#a3424750d9bba7b22139ccf94b80478ef">discid::release_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a64b5fe84638b5fdf2f1bb6b85c56d61f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a64b5fe84638b5fdf2f1bb6b85c56d61f">&#9670;&nbsp;</a></span>toc_t</h2>
 
@@ -158,26 +199,279 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a69e7c7f4e932261291b2885a3b644a0d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a69e7c7f4e932261291b2885a3b644a0d">&#9670;&nbsp;</a></span>calculate_frames()</h2>
+<a id="a0ef1872a0b19ac0fdd0aa2b60e88a293"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ef1872a0b19ac0fdd0aa2b60e88a293">&#9670;&nbsp;</a></span>cddb() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="namespacediscid.html#a006fe93a99f52df29b3a1581a794dbbb">toc_time_t</a> discid::calculate_frames </td>
+          <td class="memname">std::error_code discid::cddb </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="structdiscid_1_1time.html">time</a> &amp;&#160;</td>
-          <td class="paramname"><em>_time</em></td><td>)</td>
+          <td class="paramtype">const <a class="el" href="namespacediscid.html#a64b5fe84638b5fdf2f1bb6b85c56d61f">toc_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>discinfo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="namespacediscid.html#a3424750d9bba7b22139ccf94b80478ef">release_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>target</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
+<p>freedb url from table of content. </p>
+<dl class="section return"><dt>Returns</dt><dd>error code. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">discinfo</td><td>discinfo album table of content </td></tr>
+    <tr><td class="paramname">target</td><td>target release info </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac1b3b3acc14711ae865c61937abf50e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1b3b3acc14711ae865c61937abf50e4">&#9670;&nbsp;</a></span>cddb() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::error_code discid::cddb </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>category</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacediscid.html#a64b5fe84638b5fdf2f1bb6b85c56d61f">discid::toc_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>discinfo</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>freedb url from table of content. </p>
+<dl class="section return"><dt>Returns</dt><dd>error code. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">category</td><td>cddb category </td></tr>
+    <tr><td class="paramname">id</td><td>cddb id </td></tr>
+    <tr><td class="paramname">discinfo</td><td>target release info </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5b8f8bd6847b6b3cc11f8ffc1bee8504"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5b8f8bd6847b6b3cc11f8ffc1bee8504">&#9670;&nbsp;</a></span>convert()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::error_code discid::convert </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::stringstream &amp;&#160;</td>
+          <td class="paramname"><em>_ss</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>read and convert text file to buffer </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file</td><td>the filename </td></tr>
+    <tr><td class="paramname">_ss</td><td>reference to result buffer </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae46138bf458b10d57542e699ebc0a7dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae46138bf458b10d57542e699ebc0a7dc">&#9670;&nbsp;</a></span>get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::error_code discid::get </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>uri</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::stringstream &amp;&#160;</td>
+          <td class="paramname"><em>ss</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>get the content from the webserver </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">uri</td><td>complete uri of the request </td></tr>
+    <tr><td class="paramname">ss</td><td>buffer to store the body </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a5fc1528e55b24ffda3cb781ab3a22578"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fc1528e55b24ffda3cb781ab3a22578">&#9670;&nbsp;</a></span>mb() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::error_code discid::mb </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="namespacediscid.html#a64b5fe84638b5fdf2f1bb6b85c56d61f">toc_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>discinfo</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacediscid.html#a3424750d9bba7b22139ccf94b80478ef">release_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>target</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>busicbrainz url from cdripper logfile. </p>
+<p><a href="https://musicbrainz.org/doc/Development/XML_Web_Service/Version_2#discid">metabrainz lookup with discid. </a> </p><dl class="section return"><dt>Returns</dt><dd>error_code. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">discinfo</td><td>discinfo album table of content </td></tr>
+    <tr><td class="paramname">target</td><td>target release info </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a0636c952e59c06354ef66f6daac986f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0636c952e59c06354ef66f6daac986f0">&#9670;&nbsp;</a></span>mb() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::error_code discid::mb </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>mbid</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacediscid.html#a64b5fe84638b5fdf2f1bb6b85c56d61f">toc_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>target</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>busicbrainz url from cdripper logfile. </p>
+<p><a href="https://musicbrainz.org/doc/Development/XML_Web_Service/Version_2#discid">metabrainz lookup with discid. </a> </p><dl class="section return"><dt>Returns</dt><dd>error code. </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mbid</td><td>musicbrainz release id </td></tr>
+    <tr><td class="paramname">target</td><td>result toc </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1601a3953b8075d06cb6049a0f84be25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1601a3953b8075d06cb6049a0f84be25">&#9670;&nbsp;</a></span>operator<<() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; discid::operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>stream</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="namespacediscid.html#a3424750d9bba7b22139ccf94b80478ef">release_t</a> &amp;&#160;</td>
+          <td class="paramname"><em>r</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>write the releasee to the output stream. </p>
+<dl class="section return"><dt>Returns</dt><dd>reference to output stream </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stream</td><td>The target output stream. </td></tr>
+    <tr><td class="paramname">r</td><td>The release to print </td></tr>
+  </table>
+  </dd>
+</dl>
+
 </div>
 </div>
 <a id="aa2fca133d3895bc74be738756684e74f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa2fca133d3895bc74be738756684e74f">&#9670;&nbsp;</a></span>operator<<()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2fca133d3895bc74be738756684e74f">&#9670;&nbsp;</a></span>operator<<() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -311,7 +605,6 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Read and convert UTF-16 file to string. </p>
 <p>Parse cdripper logfile. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -323,10 +616,9 @@ Functions</h2></td></tr>
 </div>
 </div>
 </div><!-- contents -->
-<!-- HTML footer for doxygen 1.8.13-->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jun 9 2018 00:22:06 for avcpp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Aug 1 2018 14:10:02 for avcpp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

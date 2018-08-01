@@ -1,4 +1,3 @@
-<!-- HTML header for doxygen 1.8.13-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -13,7 +12,7 @@
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
-<link href="customdoxygen.css" rel="stylesheet" type="text/css" />
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -23,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">avcpp
-   &#160;<span id="projectnumber">0.1.1</span>
+   &#160;<span id="projectnumber">0.2.6</span>
    </div>
   </td>
  </tr>
@@ -81,33 +80,34 @@ $(function() {
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="toc_8h__incl.svg" width="492" height="202"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="toc_8h__incl.svg" width="492" height="202"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div><div class="textblock"><div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-1-trigger" src="closed.png" alt="+"/> This graph shows which files directly or indirectly include this file:</div>
 <div id="dynsection-1-summary" class="dynsummary" style="display:block;">
 </div>
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
-<div class="center"><iframe scrolling="no" frameborder="0" src="toc_8h__dep__incl.svg" width="192" height="142"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
+<div class="center"><iframe scrolling="no" frameborder="0" src="toc_8h__dep__incl.svg" width="432" height="231"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe></div>
 </div>
 </div>
 <p><a href="toc_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdiscid_1_1artist.html">discid::artist</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Time artist for disk table of contents.  <a href="structdiscid_1_1artist.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdiscid_1_1time.html">discid::time</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Time structure for disk table of contents.  <a href="structdiscid_1_1time.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdiscid_1_1toc.html">discid::toc</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disc Table of contents.  <a href="structdiscid_1_1toc.html#details">More...</a><br /></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disc Table of contents file entry.  <a href="structdiscid_1_1toc.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
 Namespaces</h2></td></tr>
 <tr class="memitem:namespacediscid"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacediscid.html">discid</a></td></tr>
-<tr class="memdesc:namespacediscid"><td class="mdescLeft">&#160;</td><td class="mdescRight">Utilities to get metadata from the internet. <br /></td></tr>
+<tr class="memdesc:namespacediscid"><td class="mdescLeft">&#160;</td><td class="mdescRight">calculate discid and read information from databases. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
@@ -121,8 +121,9 @@ Typedefs</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a69e7c7f4e932261291b2885a3b644a0d"><td class="memItemLeft" align="right" valign="top">toc_time_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacediscid.html#a69e7c7f4e932261291b2885a3b644a0d">discid::calculate_frames</a> (const time &amp;_time)</td></tr>
-<tr class="separator:a69e7c7f4e932261291b2885a3b644a0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5b8f8bd6847b6b3cc11f8ffc1bee8504"><td class="memItemLeft" align="right" valign="top">std::error_code&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacediscid.html#a5b8f8bd6847b6b3cc11f8ffc1bee8504">discid::convert</a> (const std::string &amp;file, std::stringstream &amp;_ss)</td></tr>
+<tr class="memdesc:a5b8f8bd6847b6b3cc11f8ffc1bee8504"><td class="mdescLeft">&#160;</td><td class="mdescRight">read and convert text file to buffer  <a href="namespacediscid.html#a5b8f8bd6847b6b3cc11f8ffc1bee8504">More...</a><br /></td></tr>
+<tr class="separator:a5b8f8bd6847b6b3cc11f8ffc1bee8504"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa2fca133d3895bc74be738756684e74f"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacediscid.html#aa2fca133d3895bc74be738756684e74f">discid::operator&lt;&lt;</a> (std::ostream &amp;stream, toc_t &amp;t)</td></tr>
 <tr class="memdesc:aa2fca133d3895bc74be738756684e74f"><td class="mdescLeft">&#160;</td><td class="mdescRight">write the complete toc to the output stream.  <a href="namespacediscid.html#aa2fca133d3895bc74be738756684e74f">More...</a><br /></td></tr>
 <tr class="separator:aa2fca133d3895bc74be738756684e74f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -133,14 +134,13 @@ Functions</h2></td></tr>
 <tr class="memdesc:ab6c8ef5ead0f5c0f6036fb6c2fb6f849"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse from playlenths.  <a href="namespacediscid.html#ab6c8ef5ead0f5c0f6036fb6c2fb6f849">More...</a><br /></td></tr>
 <tr class="separator:ab6c8ef5ead0f5c0f6036fb6c2fb6f849"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa78e6bf5456f4a651788d965eb02bdbe"><td class="memItemLeft" align="right" valign="top">toc_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacediscid.html#aa78e6bf5456f4a651788d965eb02bdbe">discid::parse_logfile</a> (std::istream &amp;in)</td></tr>
-<tr class="memdesc:aa78e6bf5456f4a651788d965eb02bdbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read and convert UTF-16 file to string.  <a href="namespacediscid.html#aa78e6bf5456f4a651788d965eb02bdbe">More...</a><br /></td></tr>
+<tr class="memdesc:aa78e6bf5456f4a651788d965eb02bdbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Parse cdripper logfile.  <a href="namespacediscid.html#aa78e6bf5456f4a651788d965eb02bdbe">More...</a><br /></td></tr>
 <tr class="separator:aa78e6bf5456f4a651788d965eb02bdbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
-<!-- HTML footer for doxygen 1.8.13-->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Jun 9 2018 00:22:06 for avcpp by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Aug 1 2018 14:10:02 for avcpp by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.13
 </small></address>

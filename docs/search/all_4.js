@@ -13,7 +13,7 @@ var searchData=
   ['digest',['digest',['../struct_s_h_a___i_n_f_o.html#a93582885af0e9c61435d70a81b26aff6',1,'SHA_INFO']]],
   ['dirac',['DIRAC',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930aef02469103bc4e8727bb1dabe21afbb2',1,'av::Codec']]],
   ['disc',['DISC',['../structav_1_1_metadata.html#a1a3594060777cde3558ce7dbbe149d2aae5a1f712cf9cd7791b04c8f138cdac74',1,'av::Metadata']]],
-  ['discid',['DiscID',['../classdiscid_1_1_disc_i_d.html',1,'discid::DiscID'],['../namespacediscid.html',1,'discid'],['../base64_8h.html#a18a0b8162c3f4f84e6d3bfd56dbd03cd',1,'DiscId():&#160;base64.h']]],
+  ['discid',['discid',['../namespacediscid.html',1,'discid'],['../base64_8h.html#a18a0b8162c3f4f84e6d3bfd56dbd03cd',1,'DiscId():&#160;base64.h']]],
   ['discid_2eh',['discid.h',['../discid_8h.html',1,'']]],
   ['discid_5ffeature',['discid_feature',['../base64_8h.html#a3846137f36bef0a30da8952236636840',1,'base64.h']]],
   ['discid_5ffeature_5fisrc',['DISCID_FEATURE_ISRC',['../base64_8h.html#a3846137f36bef0a30da8952236636840a30997ee786cd25cbe1a02f89bc2627fc',1,'base64.h']]],

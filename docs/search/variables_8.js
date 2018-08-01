@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['rms_5fvalues',['rms_values',['../structav_1_1_dynamic_range_1_1dr__meter.html#a7fa7083dc03bdf4edf9f7ae8e24728ae',1,'av::DynamicRange::dr_meter']]]
+  ['name',['name',['../structdiscid_1_1artist.html#a7fb18d1f1377c678777bdae7da726c85',1,'discid::artist']]]
 ];

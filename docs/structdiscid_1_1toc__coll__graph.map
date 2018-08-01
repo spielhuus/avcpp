@@ -1,4 +1,6 @@
 <map id="discid::toc" name="discid::toc">
-<area shape="rect" id="node2" href="$structdiscid_1_1time.html" title="Time structure for disk table of contents. " alt="" coords="5,5,104,32"/>
-<area shape="rect" id="node3" href="$structav_1_1_metadata.html" title="The Metadata information. " alt="" coords="128,5,235,32"/>
+<area shape="rect" id="node3" href="$structdiscid_1_1artist.html" title="Time artist for disk table of contents. " alt="" coords="26,215,129,241"/>
+<area shape="rect" id="node4" title="STL class. " alt="" coords="34,96,121,123"/>
+<area shape="rect" id="node6" href="$structdiscid_1_1time.html" title="Time structure for disk table of contents. " alt="" coords="173,311,272,338"/>
+<area shape="rect" id="node7" href="$structav_1_1_metadata.html" title="The Metadata information. " alt="" coords="296,311,403,338"/>
 </map>

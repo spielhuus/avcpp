@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['local',['local',['../struct_s_h_a___i_n_f_o.html#a21233e91a2793007fec69cc1438019d4',1,'SHA_INFO']]]
+  ['id',['id',['../structdiscid_1_1artist.html#ac01e0c7c0bb856ff939db99f12b9073a',1,'discid::artist']]]
 ];

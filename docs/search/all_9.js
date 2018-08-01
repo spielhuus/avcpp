@@ -1,7 +1,7 @@
 var searchData=
 [
   ['iac',['IAC',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a2b9dc9a4395a67ebf633b4a2784b811e',1,'av::Codec']]],
-  ['id',['ID',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930',1,'av::Codec']]],
+  ['id',['ID',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930',1,'av::Codec::ID()'],['../structdiscid_1_1artist.html#ac01e0c7c0bb856ff939db99f12b9073a',1,'discid::artist::id()']]],
   ['idcin',['IDCIN',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930abe21518fb1b5bfad1f094500893d1869',1,'av::Codec']]],
   ['idf',['IDF',['../classav_1_1_codec.html#a394c5c0e7d38d9230ee2ae46e82ee930a7b6060ed82d641e303a26ba6188e7232',1,'av::Codec']]],
   ['iff_5fbyterun1',['IFF_BYTERUN1',['../codec_8h.html#a756893d87b360cd9e4ba7e4c6495f3e7',1,'codec.h']]],

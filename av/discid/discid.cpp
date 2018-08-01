@@ -53,21 +53,19 @@ std::error_code get ( const std::string& uri, std::stringstream& ss ) {
     return std::error_code();
 }
 
-std::error_code DiscID::mb ( const toc_t& discinfo, release_t& target ) {
+std::error_code mb ( const toc_t& discinfo, release_t& target ) {
     std::error_code _errc;
 
     const std::string _discid_url = mb::url ( discinfo );
     std::stringstream _ss;
 
-    std::cout << _discid_url << std::endl;
-
     if ( ! ( _errc = get ( _discid_url, _ss ) ) )
-    { return mb::parse_discid ( _ss.str(), target ); }
+    { _errc = mb::parse_discid ( _ss.str(), target ); }
 
-    else { return _errc; }
+    return _errc;
 }
 
-std::error_code DiscID::mb ( const std::string& mbid, toc_t& target ) {
+std::error_code mb ( const std::string& mbid, toc_t& target ) {
 
     std::error_code _errc;
 
@@ -75,22 +73,19 @@ std::error_code DiscID::mb ( const std::string& mbid, toc_t& target ) {
     _url.append ( mbid );
     _url.append ( "?inc=artist-credits+labels+discids+recordings&fmt=json" );
 
-    std::cout << _url << std::endl;
-
     std::stringstream _ss;
 
     if ( ! ( _errc = get ( _url, _ss ) ) )
-    { return mb::parse_release ( _ss.str(), target ); }
+    { _errc = mb::parse_release ( _ss.str(), target ); }
 
     return _errc;
 }
 
-std::error_code DiscID::cddb ( const toc_t& discinfo, release_t& target ) {
+std::error_code cddb ( const toc_t& discinfo, release_t& target ) {
 
     std::error_code _errc;
 
     const std::string _uri = cddb::url ( discinfo );
-    std::cout <<  _uri << std::endl;
 
     std::stringstream _ss;
 
@@ -100,7 +95,7 @@ std::error_code DiscID::cddb ( const toc_t& discinfo, release_t& target ) {
     return _errc;
 }
 
-std::error_code DiscID::cddb ( const std::string& category, const std::string& id, discid::toc_t& discinfo ) {
+std::error_code cddb ( const std::string& category, const std::string& id, discid::toc_t& discinfo ) {
 
     std::error_code _errc;
 
@@ -111,12 +106,10 @@ std::error_code DiscID::cddb ( const std::string& category, const std::string& i
     _url.append ( id );
     _url.append ( "&hello=joe+my.host.com+xmcd+2.1&proto=5" );
 
-    std::cout << _url << std::endl;
-
     std::stringstream _ss;
 
     if ( ! ( _errc = get ( _url, _ss ) ) )
-    { return cddb::parse_release ( _ss.str(), discinfo ); }
+    { _errc = cddb::parse_release ( _ss.str(), discinfo ); }
 
     return _errc;
 }

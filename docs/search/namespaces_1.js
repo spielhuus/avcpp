@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['discid',['discid',['../namespacediscid.html',1,'']]]
+  ['cddb',['cddb',['../namespacecddb.html',1,'']]]
 ];

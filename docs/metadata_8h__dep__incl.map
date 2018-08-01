@@ -1,7 +1,9 @@
 <map id="/home/etienne/Projects/avcpp/av/metadata.h" name="/home/etienne/Projects/avcpp/av/metadata.h">
-<area shape="rect" id="node2" href="$format_8h.html" title="/home/etienne/Projects\l/avcpp/av/format.h" alt="" coords="201,95,373,136"/>
-<area shape="rect" id="node5" href="$toc_8h.html" title="/home/etienne/Projects\l/avcpp/av/discid/toc.h" alt="" coords="400,95,572,136"/>
+<area shape="rect" id="node2" href="$format_8h.html" title="/home/etienne/Projects\l/avcpp/av/format.h" alt="" coords="183,95,355,136"/>
+<area shape="rect" id="node5" href="$toc_8h.html" title="/home/etienne/Projects\l/avcpp/av/discid/toc.h" alt="" coords="379,95,551,136"/>
 <area shape="rect" id="node3" href="$av_8h.html" title="/home/etienne/Projects\l/avcpp/av/av.h" alt="" coords="5,184,177,225"/>
 <area shape="rect" id="node4" href="$resample_8h.html" title="/home/etienne/Projects\l/avcpp/av/resample.h" alt="" coords="201,184,373,225"/>
-<area shape="rect" id="node6" href="$discid_8h.html" title="/home/etienne/Projects\l/avcpp/av/discid/discid.h" alt="" coords="398,184,579,225"/>
+<area shape="rect" id="node6" href="$discid_8h.html" title="/home/etienne/Projects\l/avcpp/av/discid/discid.h" alt="" coords="485,184,666,225"/>
+<area shape="rect" id="node7" href="$cddb_8h.html" title="/home/etienne/Projects\l/avcpp/av/discid/cddb.h" alt="" coords="360,273,535,315"/>
+<area shape="rect" id="node8" href="$musicbrainz_8h.html" title="/home/etienne/Projects\l/avcpp/av/discid/musicbrainz.h" alt="" coords="559,273,781,315"/>
 </map>

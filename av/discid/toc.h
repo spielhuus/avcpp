@@ -21,15 +21,15 @@
 
 #include "../metadata.h"
 
-/** @brief Utilities to get metadata from the internet */
 namespace discid {
 
 typedef unsigned int toc_track_t;
 typedef unsigned long toc_time_t;
 
-void convert ( const std::string& file, std::stringstream& _ss );
+/** @brief read and convert text file to buffer */
+std::error_code convert ( /** the filename */ const std::string& file, /** reference to result buffer */ std::stringstream& _ss );
 
-/** Time structure for disk table of contents. */
+/** @brief Time structure for disk table of contents. */
 struct time {
     toc_time_t minutes = 0;
     toc_time_t seconds = 0;
@@ -56,6 +56,7 @@ struct time {
         /** The time to print */          time& t );
 };
 
+/** @brief Time artist for disk table of contents. */
 struct artist {
     std::string id;
     std::string name;
@@ -68,7 +69,7 @@ struct artist {
         /** The time to print */          artist& a );
 };
 
-/** @brief Disc Table of contents */
+/** @brief Disc Table of contents file entry */
 struct toc {
 public:
 
@@ -104,7 +105,10 @@ std::ostream& operator<< (
     /** The target output stream. */  std::ostream& stream,
     /** The toc vector to print */           toc_t& t );
 
+
+///@cond DOC_INTERNAL
 toc_time_t calculate_frames ( const time& _time );
+///@endcond
 
 /** @brief Parse cdripper logfile. */
 toc_t parse_logfile ( /** Input Stream */ std::istream& in );
