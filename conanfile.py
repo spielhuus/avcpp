@@ -3,7 +3,7 @@ import zipfile
 
 class AvcppConan(ConanFile):
     name = "avcpp"
-    version = "0.2.6"
+    version = "0.2.7"
     url = 'https://github.com/cppwrappers/LibAvCpp'
     license = 'LGPL'
     settings = "os", "compiler", "build_type", "arch"
