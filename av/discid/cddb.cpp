@@ -96,6 +96,9 @@ std::error_code parse_discid ( const std::string& body, discid::release_t& targe
         }
     }
 
+    if ( target.empty() )
+    {return av::make_error_code ( 404 );}
+
     return std::error_code();
 }
 std::error_code parse_release ( const std::string& body, discid::toc_t& target ) {
