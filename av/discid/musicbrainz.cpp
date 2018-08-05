@@ -117,7 +117,7 @@ std::error_code parse_discid ( const std::string& body, discid::release_t& targe
 
     auto _json = json::parse ( body );
 
-    if ( _json["releases"].is_array() )  {
+    if ( _json["releases"].is_array() && !_json["releases"].empty() )  {
         for ( auto& __release : _json["releases"] ) {
             parse_release ( __release, target );
         }

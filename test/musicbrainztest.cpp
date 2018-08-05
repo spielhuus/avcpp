@@ -17,6 +17,7 @@
 #include <fstream>
 #include <map>
 
+#include "../av/averrc.h"
 #include "../av/metadata.h"
 #include "../av/discid/musicbrainz.h"
 
@@ -34,6 +35,16 @@ TEST ( MusicbrainzTest, parse_discid ) {
 
     EXPECT_EQ ( "雷乃発声 Rai Sunawachi Koe Wo Hassu / Vernal Equinox", _result.front().title );
     EXPECT_EQ ( "4152809d-5074-49b2-94f3-5722c5815adf", _result.front().mbid );
+}
+
+TEST ( MusicbrainzTest, parse_discid_empty ) {
+
+    const std::string _response = R"json({"releases":[]})json";
+    discid::release_t _result;
+    auto _errc = mb::parse_discid ( _response, _result );
+
+    EXPECT_EQ ( av::make_error_code ( 404 ), _errc );
+    EXPECT_EQ ( 0U, _result.size() );
 }
 
 TEST ( MusicbrainzTest, parse_get ) {
