@@ -73,6 +73,7 @@ std::error_code get ( const std::string& uri, std::stringstream& ss ) {
 
     CURL *curl_handle;
     CURLcode res;
+    std::error_code _errc;
 
     struct MemoryStruct chunk;
 
@@ -100,23 +101,23 @@ std::error_code get ( const std::string& uri, std::stringstream& ss ) {
     /* get it! */
     res = curl_easy_perform ( curl_handle );
 
+
     /* check for errors */
     if ( res != CURLE_OK ) {
         fprintf ( stderr, "curl_easy_perform() failed: %s\n",
                   curl_easy_strerror ( res ) );
-    }
 
-    else {
-        /*
-         * Now, our chunk.memory points to a memory block that is chunk.size
-         * bytes big and contains the remote file.
-         *
-         * Do something nice with it!
-         */
+    } else {
+        long ct;
+        curl_easy_getinfo ( curl_handle, CURLINFO_RESPONSE_CODE, &ct );
 
-        printf ( "%lu bytes retrieved\n", ( unsigned long ) chunk.size );
-        std::cout << std::string ( chunk.memory, 0, chunk.size ) << std::endl;
-        ss << std::string ( chunk.memory, 0, chunk.size );
+        if ( ct == 200 || ct == 210 ) {
+
+            printf ( "%lu bytes retrieved\n", ( unsigned long ) chunk.size );
+            std::cout << std::string ( chunk.memory, 0, chunk.size ) << std::endl;
+            ss << std::string ( chunk.memory, 0, chunk.size );
+
+        } else { _errc = av::make_error_code ( 400 ); }
     }
 
     /* cleanup curl stuff */
@@ -137,7 +138,7 @@ std::error_code get ( const std::string& uri, std::stringstream& ss ) {
 //    if ( _response.status() != http::http_status::OK )
 //    { return av::make_error_code ( static_cast< int > ( _response.status() ) ); }
 
-    return std::error_code();
+    return _errc;
 }
 
 std::error_code mb ( const toc_t& discinfo, release_t& target ) {
