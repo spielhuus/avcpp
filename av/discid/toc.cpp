@@ -110,11 +110,11 @@ time split_time ( const std::string& time_string ) {
         _time.seconds = std::stoul ( matches[2].str() );
         _time.frames = std::stoul ( matches[3].str() );
 
-#ifdef DEBUG
+// # ifdef DEBUG
 
     } else {
         std::cout << "can not parse time string:" << time_string << std::endl;
-#endif
+// # endif
     }
 
     return _time;
@@ -216,11 +216,11 @@ toc_t parse_cuesheet (
                 _file =  matches[1].str();
                 _state = FILE;
 
-#ifdef DEBUG
+// # ifdef DEBUG
 
             } else {
                 std::cout << "Unknown line in BEGIN: '" << result << "'" << std::endl;
-#endif
+// # endif
             }
 
             break;
@@ -230,11 +230,11 @@ toc_t parse_cuesheet (
                 _track = matches[1].str();
                 _state = TRACK;
 
-#ifdef DEBUG
+// # ifdef DEBUG
 
             } else {
                 std::cout << "Unknown line in FILE: " << result << std::endl;
-#endif
+// # endif
             }
 
             break;
@@ -273,22 +273,22 @@ toc_t parse_cuesheet (
                         _toclist.at ( _toclist.size() - 2 ).end_sector = calculate_frames ( _starttime ) - 1;
                     }
 
-#ifdef DEBUG
+// # ifdef DEBUG
 
                 } else {
                     std::cout << "Other index number: " << result << std::endl;
-#endif
+// # endif
                 }
 
             } else if ( std::regex_search ( result, matches, rgx_track ) ) {
                 _track = matches[1].str();
                 _state = TRACK;
 
-#ifdef DEBUG
+// # ifdef DEBUG
 
             } else {
                 std::cout << "Unknown line in TRACK: " << result << std::endl;
-#endif
+// # endif
             }
         }
     }
@@ -319,11 +319,11 @@ toc_t parse_cuesheet (
 
         } else { throw "file not found"; }
 
-#ifdef DEBUG
+// # ifdef DEBUG
 
     } else {
         std::cout << "no file for last track can be found" << std::endl;
-#endif
+// # endif
     }
 
     return _toclist;

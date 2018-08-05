@@ -59,9 +59,9 @@ std::error_code mb ( const toc_t& discinfo, release_t& target ) {
     const std::string _discid_url = mb::url ( discinfo );
     std::stringstream _ss;
 
-#ifdef DEBUG
+// # ifdef DEBUG
     std::cout << _discid_url << std::endl;
-#endif
+// # endif
 
     if ( ! ( _errc = get ( _discid_url, _ss ) ) )
     { _errc = mb::parse_discid ( _ss.str(), target ); }
@@ -77,9 +77,9 @@ std::error_code mb ( const std::string& mbid, toc_t& target ) {
     _url.append ( mbid );
     _url.append ( "?inc=artist-credits+labels+discids+recordings&fmt=json" );
 
-#ifdef DEBUG
+// # ifdef DEBUG
     std::cout << _url << std::endl;
-#endif
+// # endif
 
     std::stringstream _ss;
 
@@ -118,9 +118,9 @@ std::error_code cddb ( const std::string& category, const std::string& id, disci
     _url.append ( id );
     _url.append ( "&hello=joe+my.host.com+xmcd+2.1&proto=5" );
 
-#ifdef DEBUG
+// # ifdef DEBUG
     std::cout << _url << std::endl;
-#endif
+// # endif
 
     std::stringstream _ss;
 
