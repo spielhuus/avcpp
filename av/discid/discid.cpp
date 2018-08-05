@@ -112,9 +112,6 @@ std::error_code get ( const std::string& uri, std::stringstream& ss ) {
         curl_easy_getinfo ( curl_handle, CURLINFO_RESPONSE_CODE, &ct );
 
         if ( ct == 200 || ct == 210 ) {
-
-            printf ( "%lu bytes retrieved\n", ( unsigned long ) chunk.size );
-            std::cout << std::string ( chunk.memory, 0, chunk.size ) << std::endl;
             ss << std::string ( chunk.memory, 0, chunk.size );
 
         } else { _errc = av::make_error_code ( 400 ); }
