@@ -23,6 +23,9 @@ namespace av {
 
 const char* av_category_t::name() const noexcept { return "av"; }
 std::error_condition av_category_t::default_error_condition ( int ev ) const noexcept {
+    if ( ev == static_cast< int > ( DISCID_RESULT_EMPTY ) )
+    { return std::error_condition ( DISCID_RESULT_EMPTY ); }
+
     if ( ev == static_cast< int > ( AV_BSF_NOT_FOUND ) )
     { return std::error_condition ( AV_BSF_NOT_FOUND ); }
 

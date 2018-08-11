@@ -27,6 +27,7 @@ namespace av {
 
 enum av_errc {
     UNKNOWN,
+    DISCID_RESULT_EMPTY,
     AV_BSF_NOT_FOUND       = AV_FFERRTAG ( 0xF8,'B','S','F' ), ///< Bitstream filter not found
     AV_BUG                 = AV_FFERRTAG ( 'B','U','G','!' ), ///< Internal bug, also see AVERROR_BUG2
     AV_BUFFER_TOO_SMALL    = AV_FFERRTAG ( 'B','U','F','S' ), ///< Buffer too small
@@ -77,6 +78,7 @@ inline std::error_condition make_error_condition ( av_errc e ) {
 inline std::error_code make_error_code ( int error ) {
     switch ( error ) {
     case UNKNOWN:
+    case DISCID_RESULT_EMPTY:
     case AV_BSF_NOT_FOUND:
     case AV_BUG:
     case AV_BUFFER_TOO_SMALL:

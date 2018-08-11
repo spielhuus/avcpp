@@ -43,7 +43,7 @@ TEST ( MusicbrainzTest, parse_discid_empty ) {
     discid::release_t _result;
     auto _errc = mb::parse_discid ( _response, _result );
 
-    EXPECT_EQ ( av::make_error_code ( 404 ), _errc );
+    EXPECT_EQ ( av::make_error_code ( av::DISCID_RESULT_EMPTY ), _errc );
     EXPECT_EQ ( 0U, _result.size() );
 }
 

@@ -123,9 +123,7 @@ std::error_code parse_discid ( const std::string& body, discid::release_t& targe
         }
 
     } else {
-        const std::string _type = _json["releases"].type_name();
-        std::cout << "releases is " <<  _type << std::endl;
-        return av::make_error_code ( 404 ); //TODO
+        return av::make_error_code ( av::DISCID_RESULT_EMPTY );
     }
 
     return std::error_code();
