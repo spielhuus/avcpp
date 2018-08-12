@@ -113,7 +113,7 @@ std::error_code get (
 std::error_code mb (
     /** discinfo album table of content */ const toc_t& discinfo,
     /** target release info */ release_t& target,
-    /** musicbrainz url */ const std::string& musicbrainz = "http://musicbrainz.org/ws/2/" );
+    /** musicbrainz url */ const std::string& musicbrainz = "http://musicbrainz.org/ws/2" );
 
 /** @brief busicbrainz url from cdripper logfile.
     <a href="https://musicbrainz.org/doc/Development/XML_Web_Service/Version_2#discid">
@@ -124,7 +124,7 @@ std::error_code mb (
 std::error_code mb (
     /** musicbrainz release id */ const std::string& mbid,
     /** result toc */ toc_t& target,
-    /** musicbrainz url */ const std::string& musicbrainz = "http://musicbrainz.org/ws/2/" );
+    /** musicbrainz url */ const std::string& musicbrainz = "http://musicbrainz.org/ws/2" );
 
 /** @brief freedb url from table of content.
     @return error code. */
