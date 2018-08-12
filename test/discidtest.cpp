@@ -74,7 +74,7 @@ TEST ( DiscIdTest, mb_from_logfile ) {
     //https://musicbrainz.org/cdtoc/TF.N7lzmF9xt8908GnsWuqQ2t7E-
     std::stringstream _cue_sheet_stream ( radioaxiom_log );
     auto songs = parse_logfile ( _cue_sheet_stream );
-    std::string _id = mb::url ( songs );
+    std::string _id = mb::url ( songs, "http://musicbrainz.org/ws/2" );
     EXPECT_EQ ( "http://musicbrainz.org/ws/2/discid/TF.N7lzmF9xt8908GnsWuqQ2t7E-?toc=1+7+233910+150+34377+60502+96980+132312+164557+195270&fmt=json", _id );
 }
 

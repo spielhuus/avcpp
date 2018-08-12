@@ -1,3 +1,18 @@
+/*
+    This library is free software; you can redistribute it and/or
+    modify it under the terms of the GNU Lesser General Public
+    License as published by the Free Software Foundation; either
+    version 2.1 of the License, or (at your option) any later version.
+
+    This library is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+    Lesser General Public License for more details.
+
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+*/
 #include "cddb.h"
 
 #include <regex>
@@ -60,8 +75,8 @@ std::string cddb_nsecs ( const discid::toc_t& discinfo ) {
     return std::to_string ( _delta_time );
 }
 
-std::string url ( const discid::toc_t& discinfo ) {
-    std::string _res = "http://freedb.freedb.org/~cddb/cddb.cgi"; //TODO host as parameter
+std::string url ( const discid::toc_t& discinfo, const std::string& freedb ) {
+    std::string _res = freedb;
     _res.append ( "?cmd=cddb+query+" );
     _res.append ( cddb_id ( discinfo ) );
     _res.append ( "+" );
@@ -96,8 +111,8 @@ std::error_code parse_discid ( const std::string& body, discid::release_t& targe
         }
     }
 
-    if ( target.empty() )
-    {return av::make_error_code ( 404 );}
+    if ( _status != 200 && _status != 211 )
+    {return av::make_error_code ( _status );}
 
     return std::error_code();
 }

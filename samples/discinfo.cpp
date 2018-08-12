@@ -158,7 +158,7 @@ int main ( int argc, char **argv ) {
 
                 } else { std::cout << "No results from mb freedb." << std::endl; }
 
-            } else { std::cout << "toc can not be parsed from input." << std::endl;  }
+            } else { std::cout << _errc << std::endl;  }
         }
     }
 }

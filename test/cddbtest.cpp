@@ -51,7 +51,7 @@ TEST ( CddbTest, freedb_nsecs ) {
 
 TEST ( CddbTest, freedb_query ) {
     auto _discinfo = discid::toc_t ( {discid::toc{1, discid::time{0, 01, 71}, discid::time{5,42,0}, 146, 25650 }} );
-    std::string _res = cddb::url ( _discinfo );
+    std::string _res = cddb::url ( _discinfo, "http://freedb.freedb.org/~cddb/cddb.cgi" );
     EXPECT_EQ ( "http://freedb.freedb.org/~cddb/cddb.cgi?cmd=cddb+query+03015501+1+296+344&hello=anonymous+spielhuus.org+discid+0.1&proto=5", _res );
 }
 

@@ -26,8 +26,14 @@ std::error_condition av_category_t::default_error_condition ( int ev ) const noe
     if ( ev == static_cast< int > ( DISCID_RESULT_EMPTY ) )
     { return std::error_condition ( DISCID_RESULT_EMPTY ); }
 
+    if ( ev == static_cast< int > ( NOT_FOUND ) )
+    { return std::error_condition ( NOT_FOUND ); }
+
     if ( ev == static_cast< int > ( AV_BSF_NOT_FOUND ) )
     { return std::error_condition ( AV_BSF_NOT_FOUND ); }
+
+    if ( ev == static_cast< int > ( CDDB_NO_MATCH ) )
+    { return std::error_condition ( CDDB_NO_MATCH ); }
 
     else if ( ev == static_cast< int > ( AV_BUG ) )
     { return std::error_condition ( AV_BUG ); }

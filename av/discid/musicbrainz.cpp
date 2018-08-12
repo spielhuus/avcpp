@@ -40,12 +40,13 @@ inline std::error_code parse_release ( json& __release, discid::release_t& targe
     return std::error_code();
 }
 
-std::string url ( const discid::toc_t& discinfo ) {
+std::string url ( const discid::toc_t& discinfo, const std::string& musicbrainz ) {
     std::vector< discid::toc_time_t > _offsets = mb::calculate_offsets ( discinfo );
     std::string _discid = calculate_discid ( 1, static_cast< unsigned int > ( discinfo.size() ), _offsets );
 
-    std::string _url = "http://musicbrainz.org/ws/2/discid/" + _discid + "?toc=" +
-                       "1" + "+" + std::to_string ( discinfo.size() );
+    std::string _url = musicbrainz;
+    _url.append ( "/discid/" + _discid + "?toc=" +
+                  "1" + "+" + std::to_string ( discinfo.size() ) );
 
     for ( auto& __offset : _offsets )  {
         _url.append ( "+" );

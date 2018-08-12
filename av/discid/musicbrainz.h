@@ -50,7 +50,7 @@ std::string calculate_discid ( /** First track number (normally one): 1 byte */ 
 //FRIEND_TEST ( DiscIdTest, mbid_file );
 std::vector< discid::toc_time_t > calculate_offsets ( const discid::toc_t& discinfo );
 
-std::string url ( const discid::toc_t& discinfo );
+std::string url ( const discid::toc_t& discinfo, const std::string& musicbrainz );
 
 }//namespace mb
 #endif // MUSICBRAINZ_H

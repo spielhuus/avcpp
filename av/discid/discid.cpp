@@ -138,10 +138,10 @@ std::error_code get ( const std::string& uri, std::stringstream& ss ) {
     return _errc;
 }
 
-std::error_code mb ( const toc_t& discinfo, release_t& target ) {
+std::error_code mb ( const toc_t& discinfo, release_t& target, const std::string& musicbrainz ) {
     std::error_code _errc;
 
-    const std::string _discid_url = mb::url ( discinfo );
+    const std::string _discid_url = mb::url ( discinfo, musicbrainz );
     std::stringstream _ss;
 
 // # ifdef DEBUG
@@ -154,11 +154,12 @@ std::error_code mb ( const toc_t& discinfo, release_t& target ) {
     return _errc;
 }
 
-std::error_code mb ( const std::string& mbid, toc_t& target ) {
+std::error_code mb ( const std::string& mbid, toc_t& target, const std::string& musicbrainz ) {
 
     std::error_code _errc;
 
-    std::string _url = "http://musicbrainz.org/ws/2/release/";
+    std::string _url = musicbrainz;
+    _url.append ( "/release/" );
     _url.append ( mbid );
     _url.append ( "?inc=artist-credits+labels+discids+recordings&fmt=json" );
 
@@ -174,11 +175,11 @@ std::error_code mb ( const std::string& mbid, toc_t& target ) {
     return _errc;
 }
 
-std::error_code cddb ( const toc_t& discinfo, release_t& target ) {
+std::error_code cddb ( const toc_t& discinfo, release_t& target, const std::string& freedb ) {
 
     std::error_code _errc;
 
-    const std::string _uri = cddb::url ( discinfo );
+    const std::string _uri = cddb::url ( discinfo, freedb );
 
 #ifdef DEBUG
     std::cout << _uri << std::endl;
@@ -192,12 +193,12 @@ std::error_code cddb ( const toc_t& discinfo, release_t& target ) {
     return _errc;
 }
 
-std::error_code cddb ( const std::string& category, const std::string& id, discid::toc_t& discinfo ) {
+std::error_code cddb ( const std::string& category, const std::string& id, discid::toc_t& discinfo, const std::string& freedb ) {
 
     std::error_code _errc;
 
-    std::string _url = "http://freedb.freedb.org/~cddb/cddb.cgi?";
-    _url .append ( "cmd=cddb+read+" );
+    std::string _url = freedb;
+    _url .append ( "?cmd=cddb+read+" );
     _url.append ( category );
     _url.append ( "+" );
     _url.append ( id );
