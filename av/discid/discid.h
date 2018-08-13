@@ -16,6 +16,7 @@
 #ifndef DISCID_H
 #define DISCID_H
 
+#include <functional>
 #include <string>
 #include <vector>
 #include <system_error>
@@ -99,10 +100,14 @@ std::ostream& operator<< (
     /** The target output stream. */  std::ostream& stream,
     /** The release to print */       release_t& r );
 
+
+bool match_album ( const std::string& album, const release& release );
+
 /** @brief get the content from the webserver */
 std::error_code get (
     /** complete uri of the request */ const std::string& uri,
     /** buffer to store the body */ std::stringstream& ss );
+
 
 /** @brief busicbrainz url from cdripper logfile.
     <a href="https://musicbrainz.org/doc/Development/XML_Web_Service/Version_2#discid">
@@ -111,9 +116,9 @@ std::error_code get (
  * @return error_code.
  */
 std::error_code mb (
-    /** discinfo album table of content */ const toc_t& discinfo,
-    /** target release info */ release_t& target,
-    /** musicbrainz url */ const std::string& musicbrainz = "http://musicbrainz.org/ws/2" );
+    /** discinfo album table of content */            const toc_t& discinfo,
+    /** target release info */                        release_t& target,
+    /** musicbrainz url */                            const std::string& musicbrainz = "http://musicbrainz.org/ws/2" );
 
 /** @brief busicbrainz url from cdripper logfile.
     <a href="https://musicbrainz.org/doc/Development/XML_Web_Service/Version_2#discid">
@@ -122,9 +127,17 @@ std::error_code mb (
  * @return error code.
  */
 std::error_code mb (
-    /** musicbrainz release id */ const std::string& mbid,
-    /** result toc */ toc_t& target,
-    /** musicbrainz url */ const std::string& musicbrainz = "http://musicbrainz.org/ws/2" );
+    /** musicbrainz release id */                     const std::string& mbid,
+    /** result toc */                                 toc_t& target,
+    /** musicbrainz url */                            const std::string& musicbrainz = "http://musicbrainz.org/ws/2" );
+
+/** @brief get the metadata from musicbrainz. */
+std::error_code mb (
+    /** discinfo album table of content */            const toc_t& discinfo,
+    /** target toc info */ toc_t& target,
+    /** comperator for the lookup result selection */ std::function< bool ( const release& ) > comperator,
+    /** musicbrainz url */                            const std::string& musicbrainz = "http://musicbrainz.org/ws/2" );
+
 
 /** @brief freedb url from table of content.
     @return error code. */
@@ -140,5 +153,12 @@ std::error_code cddb (
     /** cddb id */ const std::string& id,
     /** target release info */ discid::toc_t& discinfo,
     /** freedb url */ const std::string& freedb = "http://freedb.freedb.org/~cddb/cddb.cgi" );
+
+/** @brief get the metadata from musicbrainz. */
+std::error_code cddb (
+    /** discinfo album table of content */            const toc_t& discinfo,
+    /** target toc info */                            toc_t& target,
+    /** comperator for the lookup result selection */ std::function< bool ( const release& ) > comperator,
+    /** musicbrainz url */                            const std::string& freedb = "http://freedb.freedb.org/~cddb/cddb.cgi" );
 }//namespace discid
 #endif //DISCID_H

@@ -307,9 +307,9 @@ toc_t parse_cuesheet (
             _toclist.back().end = time ( _toclist.back().end_sector ) - _toclist.back().start;
         }
 
-    } else if ( !files.empty() && exists ( path + files.back() ) ) {
+    } else if ( !files.empty() && exists ( path + "/" + files.back() ) ) {
 
-        av::Format format ( path + files.back() );
+        av::Format format ( path + "/" + files.back() );
 
         if ( !format ) {
             _playtime = static_cast< toc_time_t > ( format.playtime() );

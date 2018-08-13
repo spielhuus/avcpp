@@ -76,20 +76,19 @@ int main ( int argc, char **argv ) {
     std::vector< std::string > _logfiles;
     std::vector< std::string > _cuesheets;
 
+    //get all the files
     search_for_files ( _path, _filenames, _logfiles, _cuesheets );
     std::sort ( _filenames.begin(), _filenames.end() );
+    auto _file_toc = discid::parse_file ( _path, _filenames );
 
+    std::cout << "TOC FROM FILES:---------------------------------------------------\n";
+    std::cout << _file_toc << "\n";
     std::cout << "------------------------------------------------------------------" << std::endl;
-    auto _toc = discid::parse_file ( _path, _filenames );
 
-    std::error_code _errc;
+    //get toc from logfile or cuesheet
     discid::toc_t _parsed_toc;
 
     if ( _mode == "log" && !_logfiles.empty() ) {
-
-        std::cout << "------------------------------------------------------------------" << std::endl;
-        std::cout << "Get from log -----------------------------------------------------" << std::endl;
-        std::cout << "------------------------------------------------------------------" << std::endl;
 
         for ( auto& __logfile : _logfiles ) {
 
@@ -98,11 +97,12 @@ int main ( int argc, char **argv ) {
             _parsed_toc  = discid::parse_logfile ( _slogfile );
         }
 
-    } else if ( _mode == "cue" && !_cuesheets.empty() ) {
+        std::cout << "TOC from LOG -----------------------------------------------------" << std::endl;
+        std::cout << _parsed_toc << "\n";
+        std::cout << "------------------------------------------------------------------" << std::endl;
 
-        std::cout << "------------------------------------------------------------------" << std::endl;
-        std::cout << "Get from cue -----------------------------------------------------" << std::endl;
-        std::cout << "------------------------------------------------------------------" << std::endl;
+
+    } else if ( _mode == "cue" && !_cuesheets.empty() ) {
 
         for ( auto& __cuesheet : _cuesheets ) {
             discid::release_t _result_toc;
@@ -111,54 +111,63 @@ int main ( int argc, char **argv ) {
             _parsed_toc = discid::parse_cuesheet ( _slcuesheet, _path, _filenames );
         }
 
-    } else {
-
+        std::cout << "TOC FROM CUE -----------------------------------------------------" << std::endl;
+        std::cout << _parsed_toc << "\n";
         std::cout << "------------------------------------------------------------------" << std::endl;
-        std::cout << "Get from Files ---------------------------------------------------" << std::endl;
-        std::cout << "------------------------------------------------------------------" << std::endl;
-
-        _parsed_toc = _toc;
-
     }
 
-    if ( !_parsed_toc.empty() ) {
-        discid::release_t _release_toc;
+    //get result
+    std::error_code _errc;
 
-        if ( _database == "mb" ) {
+    discid::toc_t _mb_toc;
 
-            if ( ! ( _errc = discid::mb ( _parsed_toc, _release_toc ) ) ) {
-                if ( ! _release_toc.empty() ) {
-                    std::cout << _release_toc << std::endl;
+    const std::string _title = _file_toc.front().metadata.get ( av::Metadata::ALBUM );
 
-                    discid::toc_t _result;
-                    auto _toc_selected = _release_toc.front();
+    //lookup from musicbrainz
 
-                    if ( ! ( _errc = discid::mb ( _toc_selected.mbid, _result ) ) ) {
-                        std::cout << _result << std::endl;
+    if ( ! ( _errc = discid::mb (
+                         _parsed_toc,
+                         _mb_toc,
+                         std::bind ( discid::match_album, _title, std::placeholders::_1 ) ) ) ) {
+        std::cout << "Musicbrainz result (cue|log): -----------------------------------------------------" << std::endl;
+        std::cout << _mb_toc << std::endl;
+        std::cout << "---------------------------------------------------------------------" << std::endl;
 
-                    } else { std::cout << _errc.message() << std::endl; }
+    } else { std::cout << _errc.message() << std::endl; }
 
-                } else { std::cout << "No results from mb musicbrainz." << std::endl; }
+    if ( ! ( _errc = discid::mb (
+                         _file_toc,
+                         _mb_toc,
+                         std::bind ( discid::match_album, _title, std::placeholders::_1 ) ) ) ) {
+        std::cout << "Musicbrainz result (file): -----------------------------------------------------" << std::endl;
+        std::cout << _mb_toc << std::endl;
+        std::cout << "---------------------------------------------------------------------" << std::endl;
 
-            } else { std::cout << _errc.message() << std::endl; }
+    } else { std::cout << _errc.message() << std::endl; }
 
-        } else {//load from freedb
-            if ( ! ( _errc = discid::cddb ( _parsed_toc, _release_toc ) ) ) {
-                if ( ! _release_toc.empty() ) {
-                    std::cout << "CDDB:" << _release_toc << std::endl;
+    //lookup from freedb
 
-                    discid::toc_t _result;
-                    auto _toc_selected = _release_toc.front();
+    discid::toc_t _cddb_toc;
 
-                    if ( ! ( _errc = discid::cddb ( _toc_selected.category, _toc_selected.mbid, _result ) ) ) {
-                        std::cout << _result << std::endl;
+    if ( ! ( _errc = discid::cddb (
+                         _parsed_toc,
+                         _cddb_toc,
+                         std::bind ( discid::match_album, _title, std::placeholders::_1 ) ) ) ) {
+        std::cout << "Freedb result (cue|log): -----------------------------------------------------" << std::endl;
+        std::cout << _cddb_toc << std::endl;
+        std::cout << "---------------------------------------------------------------------" << std::endl;
 
-                    } else { std::cout << _errc.message() << std::endl; }
+    } else { std::cout << _errc.message() << std::endl; }
 
+    if ( ! ( _errc = discid::cddb (
+                         _file_toc,
+                         _cddb_toc,
+                         std::bind ( discid::match_album, _title, std::placeholders::_1 ) ) ) ) {
+        std::cout << "Freedb result (file): -----------------------------------------------------" << std::endl;
+        std::cout << _cddb_toc << std::endl;
+        std::cout << "---------------------------------------------------------------------" << std::endl;
 
-                } else { std::cout << "No results from mb freedb." << std::endl; }
+    } else { std::cout << _errc.message() << std::endl; }
 
-            } else { std::cout << _errc << std::endl;  }
-        }
-    }
+    return _errc.value();
 }

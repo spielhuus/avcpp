@@ -138,20 +138,28 @@ std::error_code get ( const std::string& uri, std::stringstream& ss ) {
     return _errc;
 }
 
-std::error_code mb ( const toc_t& discinfo, release_t& target, const std::string& musicbrainz ) {
-    std::error_code _errc;
 
-    const std::string _discid_url = mb::url ( discinfo, musicbrainz );
-    std::stringstream _ss;
+bool match_album ( const std::string& album, const release& release ) {
 
-// # ifdef DEBUG
-    std::cout << _discid_url << std::endl;
-// # endif
+    auto _release_title = release.title;
+    std::transform ( _release_title.begin(), _release_title.end(), _release_title.begin(), ::tolower );
 
-    if ( ! ( _errc = get ( _discid_url, _ss ) ) )
-    { _errc = mb::parse_discid ( _ss.str(), target ); }
+    auto _album = album;
+    std::transform ( _album.begin(), _album.end(), _album.begin(), ::tolower );
 
-    return _errc;
+
+    if ( _album == _release_title )
+    { return true; }
+
+    if ( _release_title.size() >= _album.size() ) {
+        const auto _temp_title = _release_title.substr ( _release_title.size() - _album.size() );
+
+        if ( _temp_title == _album )
+        { return true; }
+
+    }
+
+    return false;
 }
 
 std::error_code mb ( const std::string& mbid, toc_t& target, const std::string& musicbrainz ) {
@@ -171,6 +179,43 @@ std::error_code mb ( const std::string& mbid, toc_t& target, const std::string& 
 
     if ( ! ( _errc = get ( _url, _ss ) ) )
     { _errc = mb::parse_release ( _ss.str(), target ); }
+
+    return _errc;
+}
+
+std::error_code mb ( const toc_t& discinfo, toc_t& target, std::function< bool ( const release& ) > comperator, const std::string& musicbrainz ) {
+    std::error_code _errc;
+    release_t _release_toc;
+
+    if ( ! ( _errc = mb ( discinfo, _release_toc, musicbrainz ) ) ) {
+        if ( ! _release_toc.empty() ) {
+            for ( auto& __release : _release_toc ) {
+                if ( comperator ( __release ) ) {
+                    _errc = discid::mb ( __release.mbid, target, musicbrainz );
+                    return _errc;
+                }
+            }
+
+            _errc = av::make_error_code ( av::MB_DISCID_NO_MATCH );
+
+        } else { _errc = av::make_error_code ( av::MB_DISCID_NOT_FOUND ); }
+    }
+
+    return _errc;
+}
+
+std::error_code mb ( const toc_t& discinfo, release_t& target, const std::string& musicbrainz ) {
+    std::error_code _errc;
+
+    const std::string _discid_url = mb::url ( discinfo, musicbrainz );
+    std::stringstream _ss;
+
+// # ifdef DEBUG
+    std::cout << _discid_url << std::endl;
+// # endif
+
+    if ( ! ( _errc = get ( _discid_url, _ss ) ) )
+    { _errc = mb::parse_discid ( _ss.str(), target ); }
 
     return _errc;
 }
@@ -216,4 +261,24 @@ std::error_code cddb ( const std::string& category, const std::string& id, disci
     return _errc;
 }
 
+std::error_code cddb ( const toc_t& discinfo, toc_t& target, std::function< bool ( const release& ) > comperator, const std::string& freedb ) {
+    std::error_code _errc;
+    release_t _release_toc;
+
+    if ( ! ( _errc = discid::cddb ( discinfo, _release_toc, freedb ) ) ) {
+        if ( ! _release_toc.empty() ) {
+            for ( auto& __release : _release_toc ) {
+                if ( comperator ( __release ) ) {
+                    _errc = discid::cddb ( __release.category, __release.mbid, target, freedb );
+                    return _errc;
+                }
+            }
+
+            _errc = av::make_error_code ( av::MB_DISCID_NO_MATCH );
+
+        } else { _errc = av::make_error_code ( av::CDDB_NO_MATCH ); }
+    }
+
+    return _errc;
+}
 }//namespace discid

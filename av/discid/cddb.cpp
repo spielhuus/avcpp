@@ -111,7 +111,7 @@ std::error_code parse_discid ( const std::string& body, discid::release_t& targe
         }
     }
 
-    if ( _status != 200 && _status != 211 )
+    if ( _status != 200 && _status != 200 && _status != 211 )
     {return av::make_error_code ( _status );}
 
     return std::error_code();

@@ -35,7 +35,7 @@ inline std::error_code parse_release ( json& __release, discid::release_t& targe
 
         target.push_back ( {_release_id, _release_title } );
 
-    } else { return av::make_error_code ( 404 ); }
+    } else { std::cout << "tag and/or title not set" << std::endl; }
 
     return std::error_code();
 }
@@ -101,15 +101,15 @@ std::error_code parse_release ( const std::string& body, discid::toc_t& target )
                             _toc.artists.push_back ( { _artist_id, _artist_name, _artist_sort } );
                         }
 
-                    } else { return av::make_error_code ( 404 ); } //TODO
+                    } else { std::cout << "no artists found" << std::endl; }
 
                     target.push_back ( _toc );
                 }
 
-            } else { return av::make_error_code ( 404 ); } //TODO
+            } else { std::cout << "no tracks found" << std::endl; }
         }
 
-    } else { return av::make_error_code ( 404 ); } //TODO
+    } else { std::cout << "no media found" << std::endl; }
 
     return _errc;
 }

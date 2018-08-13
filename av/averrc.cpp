@@ -23,6 +23,15 @@ namespace av {
 
 const char* av_category_t::name() const noexcept { return "av"; }
 std::error_condition av_category_t::default_error_condition ( int ev ) const noexcept {
+    if ( ev == static_cast< int > ( MB_DISCID_NO_MATCH ) )
+    { return std::error_condition ( MB_DISCID_NO_MATCH ); }
+
+    if ( ev == static_cast< int > ( MB_DISCID_NOT_FOUND ) )
+    { return std::error_condition ( MB_DISCID_NOT_FOUND ); }
+
+    if ( ev == static_cast< int > ( MB_INVALID_TOC ) )
+    { return std::error_condition ( MB_INVALID_TOC ); }
+
     if ( ev == static_cast< int > ( DISCID_RESULT_EMPTY ) )
     { return std::error_condition ( DISCID_RESULT_EMPTY ); }
 
@@ -114,6 +123,18 @@ bool av_category_t::equivalent ( const std::error_code& code, int condition ) co
            static_cast< int > ( default_error_condition ( code.value() ).value() ) == condition;
 }
 std::string av_category_t::message ( int ev ) const {
+    if ( ev == CDDB_NO_MATCH )
+    {return "No match found"; }
+
+    if ( ev == MB_DISCID_NOT_FOUND )
+    {return "discid can not be found in musicbrainz database."; }
+
+    if ( ev == MB_DISCID_NO_MATCH )
+    {return "no match in musicbrainz discid results."; }
+
+    if ( ev == MB_INVALID_TOC )
+    {return "musicbrainz error: incvalid toc."; }
+
     static char error_buffer[255];
     av_strerror ( ev, error_buffer, sizeof ( error_buffer ) );
     return error_buffer;
