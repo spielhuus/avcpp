@@ -95,6 +95,8 @@ public:
     friend std::ostream& operator<< (
         /** The target output stream. */  std::ostream& stream,
         /** The toc to print */           toc& t );
+
+    static bool valid ( const toc& t );
 };
 
 typedef std::vector< toc > toc_t;
@@ -121,6 +123,10 @@ toc_t parse_cuesheet (
 toc_t parse_file (
     /** the path of the album. */            const std::string& path,
     /** file playlengths in milliseconds. */ const std::vector< std::string > files );
+
+/** @brief check if the toc is valid.
+    checks the sector and time values. */
+bool valid ( const toc_t& toc ) ;
 
 }//namespace discid
 #endif // TOC_H

@@ -431,4 +431,23 @@ time time::operator+ ( const time& rhs ) const {
     const toc_time_t rhs_frames = calculate_frames ( rhs );
     return time ( this_frames + rhs_frames );
 }
+
+bool valid ( const toc_t& t ) {
+
+    toc_time_t _last_sector = 0;
+
+    for ( auto& __t : t ) {
+        //check the sectors
+        if ( _last_sector == 0 || __t.start_sector >= _last_sector ) {
+
+            if ( __t.end_sector >= __t.start_sector ) {
+                _last_sector = __t.end_sector;
+
+            } else { return false; }
+
+        } else { return false; }
+    }
+
+    return true;
+}
 }//namespace discid.

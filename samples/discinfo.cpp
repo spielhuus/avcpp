@@ -125,25 +125,31 @@ int main ( int argc, char **argv ) {
 
     //lookup from musicbrainz
 
-    if ( ! ( _errc = discid::mb (
-                         _parsed_toc,
-                         _mb_toc,
-                         std::bind ( discid::match_album, _title, std::placeholders::_1 ) ) ) ) {
-        std::cout << "Musicbrainz result (cue|log): -----------------------------------------------------" << std::endl;
-        std::cout << _mb_toc << std::endl;
-        std::cout << "---------------------------------------------------------------------" << std::endl;
+    if ( discid::valid ( _parsed_toc ) ) {
+        if ( ! ( _errc = discid::mb (
+                             _parsed_toc,
+                             _mb_toc,
+                             std::bind ( discid::match_album, _title, std::placeholders::_1 ) ) ) ) {
+            std::cout << "Musicbrainz result (cue|log): -----------------------------------------------------" << std::endl;
+            std::cout << _mb_toc << std::endl;
+            std::cout << "---------------------------------------------------------------------" << std::endl;
 
-    } else { std::cout << _errc.message() << std::endl; }
+        } else { std::cout << _errc.message() << std::endl; }
 
-    if ( ! ( _errc = discid::mb (
-                         _file_toc,
-                         _mb_toc,
-                         std::bind ( discid::match_album, _title, std::placeholders::_1 ) ) ) ) {
-        std::cout << "Musicbrainz result (file): -----------------------------------------------------" << std::endl;
-        std::cout << _mb_toc << std::endl;
-        std::cout << "---------------------------------------------------------------------" << std::endl;
+    } else { std::cout << "parsed toc is not not valid." << std::endl; }
 
-    } else { std::cout << _errc.message() << std::endl; }
+    if ( discid::valid ( _file_toc ) ) {
+        if ( ! ( _errc = discid::mb (
+                             _file_toc,
+                             _mb_toc,
+                             std::bind ( discid::match_album, _title, std::placeholders::_1 ) ) ) ) {
+            std::cout << "Musicbrainz result (file): -----------------------------------------------------" << std::endl;
+            std::cout << _mb_toc << std::endl;
+            std::cout << "---------------------------------------------------------------------" << std::endl;
+
+        } else { std::cout << _errc.message() << std::endl; }
+
+    } else { std::cout << "parsed toc is not not valid." << std::endl; }
 
     //lookup from freedb
 
