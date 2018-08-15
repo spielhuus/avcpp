@@ -434,6 +434,9 @@ time time::operator+ ( const time& rhs ) const {
 
 bool valid ( const toc_t& t ) {
 
+    if ( t.empty() )
+    {return false;}
+
     toc_time_t _last_sector = 0;
 
     for ( auto& __t : t ) {
