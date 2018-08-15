@@ -26,6 +26,28 @@
 #include <gtest/gtest.h>
 
 namespace av {
+TEST ( TocTest, validate_toc_empty ) {
+
+    discid::toc_t toc;
+    EXPECT_FALSE ( discid::valid ( toc ) );
+}
+
+TEST ( TocTest, validate_toc ) {
+
+    std::stringstream ss ( MARC_EDWARDS_WEASEL_WALTER_GROUP_SOLAR_EMISSION_LOG );
+
+    auto toc = discid::parse_logfile ( ss );
+    EXPECT_TRUE ( discid::valid ( toc ) );
+}
+
+TEST ( TocTest, validate_toc_false ) {
+
+    auto toc = {
+        discid::toc ( 1, discid::time{0,0,0}, discid::time{0,1,0}, 0, 999999999 ),
+        discid::toc ( 1, discid::time{0,1,0}, discid::time{0,2,0}, 0, 12323 )
+    };
+    EXPECT_FALSE ( discid::valid ( toc ) );
+}
 
 TEST ( TocTest, parse_solar_emission_log ) {
     std::stringstream ss ( MARC_EDWARDS_WEASEL_WALTER_GROUP_SOLAR_EMISSION_LOG );

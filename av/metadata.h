@@ -88,8 +88,6 @@ public:
     iterator end()
     {return tags.end();}
 
-private:
-
     const static std::string _TITLE;
     const static std::string _ALBUM;
     const static std::string _ARTIST;
@@ -101,6 +99,8 @@ private:
     const static std::string _DISC;
     const static std::string _GENRE;
     const static std::string _PUBLISHER;
+
+private:
 
     const static std::array< std::string, 11 > _tag_names;
     std::map< std::string, std::string > tags;
