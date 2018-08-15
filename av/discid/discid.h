@@ -103,6 +103,9 @@ std::ostream& operator<< (
 
 bool match_album ( const std::string& album, const release& release );
 
+/** @brief check if toc contains metadata */
+bool has_metadata ( const toc_t );
+
 /** @brief get the content from the webserver */
 std::error_code get (
     /** complete uri of the request */ const std::string& uri,

@@ -72,7 +72,7 @@ public:
     /** @brief get keys of valid metadata elments.
         @return the keys of the defined metadata elements */
 
-    std::vector< std::string > tag_names ();
+    std::vector< std::string > tag_names () const;
 
     friend std::ostream& operator<< ( std::ostream& stream, const Metadata& meta_data ) {
         for ( auto& __tag : meta_data.tags ) {

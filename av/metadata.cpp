@@ -73,7 +73,7 @@ std::string& Metadata::get ( const std::string& key ) {
     return tags[ key ];
 }
 
-std::vector< std::string > Metadata::tag_names () {
+std::vector< std::string > Metadata::tag_names () const {
     std::vector< std::string > _keys;
 
     for ( auto const& k: tags )

@@ -162,6 +162,33 @@ bool match_album ( const std::string& album, const release& release ) {
     return false;
 }
 
+bool has_metadata ( toc_t& toc ) {
+    if ( toc.empty() ) { return false; }
+
+    for ( auto& __toc : toc ) {
+        std::vector< std::string > _tag_names = __toc.metadata.tag_names();
+
+        if ( std::find ( _tag_names.begin(), _tag_names.end(), "album" ) == _tag_names.end() ||
+                __toc.metadata.get ( "album" ).empty() )
+        { return false; }
+
+        if ( std::find ( _tag_names.begin(), _tag_names.end(), "title" ) == _tag_names.end() ||
+                __toc.metadata.get ( "title" ).empty() )
+        { return false; }
+
+        if ( std::find ( _tag_names.begin(), _tag_names.end(), "year" ) == _tag_names.end() ||
+                __toc.metadata.get ( "year" ).empty() )
+        { return false; }
+
+        if ( ( std::find ( _tag_names.begin(), _tag_names.end(), "artist" ) == _tag_names.end() ||
+                __toc.metadata.get ( "artist" ).empty() ) &&
+                __toc.artists.empty() )
+        { return false; }
+    }
+
+    return true;
+}
+
 std::error_code mb ( const std::string& mbid, toc_t& target, const std::string& musicbrainz ) {
 
     std::error_code _errc;
